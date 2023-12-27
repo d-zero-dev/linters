@@ -1,0 +1,19 @@
+{
+	"name": "@d-zero/pug-lint-config",
+	"version": "5.0.0-alpha.0",
+	"description": "Configurations of pug-lint",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"index.js"
+	],
+	"main": "index.js",
+	"dependencies": {
+		"pug-lint": "2.7.0"
+	}
+}

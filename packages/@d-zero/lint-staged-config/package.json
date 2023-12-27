@@ -1,0 +1,24 @@
+{
+	"name": "@d-zero/lint-staged-config",
+	"version": "5.0.0-alpha.0",
+	"description": "Configurations of lint-staged",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"type": "module",
+	"files": [
+		"index.mjs",
+		"types.ts"
+	],
+	"exports": {
+		"import": "./index.mjs",
+		"types": "./types.ts"
+	},
+	"dependencies": {
+		"lint-staged": "15.2.0"
+	}
+}

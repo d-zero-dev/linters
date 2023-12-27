@@ -1,0 +1,40 @@
+{
+	"name": "@d-zero/eslint-config",
+	"version": "5.0.0-alpha.0",
+	"description": "Configurations of ESLint",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"index.js",
+		"base.js"
+	],
+	"type": "commonjs",
+	"main": "index.js",
+	"exports": {
+		".": {
+			"require": "./index.js"
+		},
+		"./base": {
+			"require": "./base.js"
+		}
+	},
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "6.16.0",
+		"@typescript-eslint/parser": "6.16.0",
+		"eslint": "8.56.0",
+		"eslint-plugin-eslint-comments": "3.2.0",
+		"eslint-plugin-import": "2.29.1",
+		"eslint-plugin-jsdoc": "46.9.1",
+		"eslint-plugin-regexp": "2.1.2",
+		"eslint-plugin-sort-class-members": "1.19.0",
+		"eslint-plugin-unicorn": "50.0.1"
+	},
+	"peerDependencies": {
+		"@d-zero/tsconfig": ">= 5"
+	}
+}

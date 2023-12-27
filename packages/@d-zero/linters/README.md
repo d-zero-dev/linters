@@ -1,0 +1,158 @@
+# `@d-zero/linters`
+
+複数のリンターと共有設定ファイルを含んだ統合リンターパッケージ
+
+このパッケージ自体は空です。依存関係に以下のリンターと設定をリンクしています。
+
+- [`@d-zero/cspell-config`](../configs/cspell-config/)
+- [`@d-zero/eslint-config`](../configs/eslint-config/)
+- [`@d-zero/lint-staged-config`](../configs/lint-staged-config/)
+- [`@d-zero/markuplint-config`](../configs/markuplint-config/)
+- [`@d-zero/prettier-config`](../configs/prettier-config/)
+- [`@d-zero/pug-lint-config`](../configs/pug-lint-config/)
+- [`@d-zero/stylelint-config`](../configs/stylelint-config/)
+- [`@d-zero/textlint-config`](../configs/textlint-config/)
+
+このパッケージは各依存パッケージのバージョン管理を簡潔にすることを目的としています。
+
+:warning: プロジェクトによっては各パッケージをバラバラにインストールする方がよいかもしれません。
+
+## インストール
+
+```shell
+yarn add -D @d-zero/linters
+```
+
+## 使い方
+
+プロジェクトで利用するには**設定ファイルを用意する必要があります**。このパッケージに含まれる設定ファイルを利用するには、それぞれの設定ファイルのExtends機能などを利用します。
+
+PrettierがESM形式を要求するため、プロジェクトのモジュールタイプもESM形式にする必要があります。
+
+```json
+// package.json
+{
+	"type": "module"
+}
+```
+
+### CSpell
+
+`cspell.json`
+
+```json
+{
+	"import": ["@d-zero/cspell-config"]
+}
+```
+
+詳細: [`@d-zero/cspell-config`](../configs/cspell-config/)
+
+### ESLint
+
+`.eslintrc`
+
+```json
+{
+	"extends": ["@d-zero/eslint-config"]
+}
+```
+
+もしくは
+
+`.eslintrc.cjs`
+
+```cjs
+module.exports = {
+	extends: ['@d-zero/eslint-config'],
+};
+```
+
+#### JavaScriptのみ
+
+:warning: TypeScriptを利用**しない**場合は、`@d-zero/eslint-config`の代わりに`@d-zero/eslint-config/base`を利用します。
+
+```json
+{
+	"extends": ["@d-zero/eslint-config/base"]
+}
+```
+
+詳細: [`@d-zero/eslint-config`](../configs/eslint-config/)
+
+### lint-staged
+
+`lint-staged.config.mjs`
+
+```js
+import lintStagedConfigGenerator from '@d-zero/lint-staged-config';
+export default lintStagedConfigGenerator();
+```
+
+詳細: [`@d-zero/lint-staged-config`](../configs/lint-staged-config/)
+
+### Markuplint
+
+`.markuplintrc`
+
+```json
+{
+	"extends": ["@d-zero/markuplint-config"]
+}
+```
+
+詳細: [`@d-zero/markuplint-config`](../configs/markuplint-config/)
+
+### Prettier
+
+`.prettierrc.mjs`
+
+```js
+import prettierConfig from '@d-zero/prettier-config';
+
+export default {
+	...prettierConfig,
+};
+```
+
+:warning: CommonJS、JSON、`package.json`からは利用できません。
+
+詳細: [`@d-zero/prettier-config`](../configs/prettier-config/)
+
+### pug-lint
+
+`.pug-lintrc`
+
+```json
+{
+	"extends": "@d-zero/pug-lint-config"
+}
+```
+
+詳細: [`@d-zero/pug-lint-config`](../configs/pug-lint-config/)
+
+### Stylelint
+
+`.stylelintrc`
+
+```json
+{
+	"extends": ["@d-zero/stylelint-config"]
+}
+```
+
+詳細: [`@d-zero/stylelint-config`](../configs/stylelint-config/)
+
+### textlint
+
+`.textlintrc.js`
+
+```js
+module.exports = {
+	...require('@d-zero/textlint-config'),
+};
+```
+
+:warning: 拡張子が`.js`でもCommonJS形式で書きます。ESMには対応していません。
+
+詳細: [`@d-zero/textlint-config`](../configs/textlint-config/)

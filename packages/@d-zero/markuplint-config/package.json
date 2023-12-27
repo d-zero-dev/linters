@@ -1,0 +1,20 @@
+{
+	"name": "@d-zero/markuplint-config",
+	"version": "5.0.0-alpha.0",
+	"description": "Configurations of Markuplint",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		".markuplintrc.json"
+	],
+	"main": ".markuplintrc.json",
+	"dependencies": {
+		"@markuplint/pug-parser": "4.0.0-dev.20",
+		"markuplint": "4.0.0-dev.20"
+	}
+}

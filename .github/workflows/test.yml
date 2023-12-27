@@ -1,0 +1,45 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest]
+        node: [18]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Cache dependencies
+        id: cache-depends
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: os-${{ matrix.os }}-node${{ matrix.node }}-${{ hashFiles('yarn.lock') }}
+
+      - name: Create .yarnrc for Windows
+        if: runner.os == 'Windows' && steps.cache-depends.outputs.cache-hit != 'true'
+        run: echo "network-timeout 600000" > .yarnrc
+
+      - name: Install dependencies
+        if: steps.cache-depends.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile --check-files
+
+      - name: Test
+        run: yarn test

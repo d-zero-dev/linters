@@ -1,0 +1,11 @@
+{
+	"extends": ["@d-zero/eslint-config"],
+	"overrides": [
+		{
+			"files": ["*.mjs", "**/*.spec.{js,mjs}"],
+			"rules": {
+				"import/no-extraneous-dependencies": 0
+			}
+		}
+	]
+}

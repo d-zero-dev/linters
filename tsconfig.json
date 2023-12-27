@@ -1,0 +1,7 @@
+// このファイルは ./.eslintrc がextendsしている @d-zero/eslint-config が
+// "./tsconfig.json" を要求するために作られたファイルです。
+{
+	"compilerOptions": {
+		"noEmit": true
+	}
+}

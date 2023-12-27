@@ -1,0 +1,20 @@
+{
+	"jestrunner.jestCommand": "yarn cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+	"editor.renderWhitespace": "all",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	},
+	"eslint.validate": ["javascript", "javascriptreact"],
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"github.copilot.enable": {
+		"*": true,
+		".env": false
+	}
+}

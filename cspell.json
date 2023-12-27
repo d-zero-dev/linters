@@ -1,0 +1,13 @@
+{
+	"import": ["@d-zero/cspell-config"],
+	"words": [
+		//
+		"htdocs",
+		"lintrc",
+		"markuplintrc",
+		"nocjsp",
+		"stylelintrc",
+		"textlintrc",
+		"unspaced"
+	]
+}

@@ -1,0 +1,37 @@
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+	"allowCompoundWords": true,
+	"language": "en-US",
+	"useGitignore": true,
+	"ignorePaths": [
+		//
+		"**/.gitignore",
+		"**/*.svg",
+		"**/cspell.json",
+		"**/package.json"
+	],
+	"dictionaries": [
+		// https://cspell.org/docs/dictionaries/
+		"css",
+		"en_US",
+		"en-gb",
+		"html-symbol-entities",
+		"html",
+		"node",
+		"npm",
+		"softwareTerms",
+		"typescript"
+	],
+	"words": ["astrojs", "htdocs", "tsconfigs"],
+	"overrides": [
+		{
+			"filename": ["**/*.{css,scss}", "**/tailwind.config.*"],
+			"words": [
+				// Font settings
+				"noto",
+				"pcap",
+				"palt"
+			]
+		}
+	]
+}

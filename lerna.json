@@ -1,0 +1,6 @@
+{
+	"lerna": "8.0.1",
+	"version": "fixed",
+	"npmClient": "yarn",
+	"packages": ["packages/@d-zero/*"]
+}

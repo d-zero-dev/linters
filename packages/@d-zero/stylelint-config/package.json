@@ -1,0 +1,33 @@
+{
+	"name": "@d-zero/stylelint-config",
+	"version": "5.0.0-alpha.0",
+	"description": "Configurations of Stylelint",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"type": "commonjs",
+	"exports": {
+		".": "./index.js",
+		"./base": "./base.js",
+		"./name": "./name.js",
+		"./values": "./values.js"
+	},
+	"files": [
+		"base.js",
+		"index.js",
+		"name.js",
+		"values.js"
+	],
+	"main": "index.js",
+	"dependencies": {
+		"stylelint": "16.1.0",
+		"stylelint-config-recess-order": "4.4.0",
+		"stylelint-config-standard": "36.0.0",
+		"stylelint-order": "6.0.4",
+		"stylelint-scss": "6.0.0"
+	}
+}
