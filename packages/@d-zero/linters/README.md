@@ -4,14 +4,14 @@
 
 このパッケージ自体は空です。依存関係に以下のリンターと設定をリンクしています。
 
-- [`@d-zero/cspell-config`](../configs/cspell-config/)
-- [`@d-zero/eslint-config`](../configs/eslint-config/)
-- [`@d-zero/lint-staged-config`](../configs/lint-staged-config/)
-- [`@d-zero/markuplint-config`](../configs/markuplint-config/)
-- [`@d-zero/prettier-config`](../configs/prettier-config/)
-- [`@d-zero/pug-lint-config`](../configs/pug-lint-config/)
-- [`@d-zero/stylelint-config`](../configs/stylelint-config/)
-- [`@d-zero/textlint-config`](../configs/textlint-config/)
+- [`@d-zero/cspell-config`](../cspell-config/)
+- [`@d-zero/eslint-config`](../eslint-config/)
+- [`@d-zero/lint-staged-config`](../lint-staged-config/)
+- [`@d-zero/markuplint-config`](../markuplint-config/)
+- [`@d-zero/prettier-config`](../prettier-config/)
+- [`@d-zero/pug-lint-config`](../pug-lint-config/)
+- [`@d-zero/stylelint-config`](../stylelint-config/)
+- [`@d-zero/textlint-config`](../textlint-config/)
 
 このパッケージは各依存パッケージのバージョン管理を簡潔にすることを目的としています。
 
@@ -46,7 +46,7 @@ PrettierがESM形式を要求するため、プロジェクトのモジュール
 }
 ```
 
-詳細: [`@d-zero/cspell-config`](../configs/cspell-config/)
+詳細: [`@d-zero/cspell-config`](../cspell-config/)
 
 ### ESLint
 
@@ -78,7 +78,7 @@ module.exports = {
 }
 ```
 
-詳細: [`@d-zero/eslint-config`](../configs/eslint-config/)
+詳細: [`@d-zero/eslint-config`](../eslint-config/)
 
 ### lint-staged
 
@@ -89,7 +89,7 @@ import lintStagedConfigGenerator from '@d-zero/lint-staged-config';
 export default lintStagedConfigGenerator();
 ```
 
-詳細: [`@d-zero/lint-staged-config`](../configs/lint-staged-config/)
+詳細: [`@d-zero/lint-staged-config`](../lint-staged-config/)
 
 ### Markuplint
 
@@ -101,7 +101,7 @@ export default lintStagedConfigGenerator();
 }
 ```
 
-詳細: [`@d-zero/markuplint-config`](../configs/markuplint-config/)
+詳細: [`@d-zero/markuplint-config`](../markuplint-config/)
 
 ### Prettier
 
@@ -117,7 +117,7 @@ export default {
 
 :warning: CommonJS、JSON、`package.json`からは利用できません。
 
-詳細: [`@d-zero/prettier-config`](../configs/prettier-config/)
+詳細: [`@d-zero/prettier-config`](../prettier-config/)
 
 ### pug-lint
 
@@ -129,7 +129,7 @@ export default {
 }
 ```
 
-詳細: [`@d-zero/pug-lint-config`](../configs/pug-lint-config/)
+詳細: [`@d-zero/pug-lint-config`](../pug-lint-config/)
 
 ### Stylelint
 
@@ -141,7 +141,7 @@ export default {
 }
 ```
 
-詳細: [`@d-zero/stylelint-config`](../configs/stylelint-config/)
+詳細: [`@d-zero/stylelint-config`](../stylelint-config/)
 
 ### textlint
 
@@ -155,4 +155,4 @@ module.exports = {
 
 :warning: 拡張子が`.js`でもCommonJS形式で書きます。ESMには対応していません。
 
-詳細: [`@d-zero/textlint-config`](../configs/textlint-config/)
+詳細: [`@d-zero/textlint-config`](../textlint-config/)
