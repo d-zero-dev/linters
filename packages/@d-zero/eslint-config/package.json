@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/eslint-config",
-	"version": "5.0.0-alpha.3",
+	"version": "5.0.0-alpha.4",
 	"description": "Configurations of ESLint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
