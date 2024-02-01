@@ -19,6 +19,6 @@
 		"types": "./types.ts"
 	},
 	"dependencies": {
-		"lint-staged": "15.2.0"
+		"lint-staged": "15.2.1"
 	}
 }
