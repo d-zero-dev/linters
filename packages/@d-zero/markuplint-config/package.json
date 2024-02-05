@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/markuplint-config",
-	"version": "5.0.0-alpha.5",
+	"version": "5.0.0-alpha.6",
 	"description": "Configurations of Markuplint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
