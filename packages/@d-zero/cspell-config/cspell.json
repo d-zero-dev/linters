@@ -22,7 +22,17 @@
 		"softwareTerms",
 		"typescript"
 	],
-	"words": ["astrojs", "htdocs", "tsconfigs"],
+	"words": [
+		"astrojs",
+		"htdocs",
+		"tsconfigs",
+		"ckeditor",
+		// Font
+		"noto",
+		"FOUT",
+		// Layout
+		"trbl" // top, right, bottom, left
+	],
 	"overrides": [
 		{
 			"filename": ["**/*.{css,scss}", "**/tailwind.config.*"],
