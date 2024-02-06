@@ -11,7 +11,7 @@
 	],
 	"scripts": {
 		"test": "vitest run",
-		"lint": "npm-run-all -p lint:*",
+		"lint": "run-s lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
 		"lint:cspell": "cspell --no-progress --show-suggestions \"{*,packages/@d-zero/**/*}/\"",
 		"lint:eslint": "eslint --fix \"{*,packages/@d-zero/**/*}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
 		"lint:prettier": "prettier --write \"{*,packages/@d-zero/**/*}.{md,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
@@ -27,8 +27,8 @@
 		"@secretlint/secretlint-rule-preset-recommend": "^8.1.1",
 		"execa": "^8.0.1",
 		"husky": "^9.0.10",
-		"lerna": "^8.0.2",
-		"npm-run-all": "^4.1.5",
+		"lerna": "^8.1.2",
+		"npm-run-all2": "^6.1.2",
 		"prettier": "^3.2.5",
 		"secretlint": "^8.1.1",
 		"vitest": "^1.2.2"
