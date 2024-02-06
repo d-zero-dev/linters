@@ -2,6 +2,6 @@
 // "./tsconfig.json" を要求するために作られたファイルです。
 {
 	"compilerOptions": {
-		"noEmit": true,
-	},
+		"noEmit": true
+	}
 }
