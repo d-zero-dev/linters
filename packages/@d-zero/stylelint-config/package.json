@@ -25,7 +25,7 @@
 	"main": "index.js",
 	"dependencies": {
 		"stylelint": "16.2.1",
-		"stylelint-config-recess-order": "4.4.0",
+		"stylelint-config-recess-order": "4.6.0",
 		"stylelint-config-standard": "36.0.0",
 		"stylelint-order": "6.0.4",
 		"stylelint-scss": "6.1.0"
