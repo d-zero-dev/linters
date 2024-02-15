@@ -20,8 +20,7 @@
 		"lint:actionlint": "actionlint .github/workflows/*.yml",
 		"release": "lerna publish --exact --force-publish",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
-		"up": "yarn upgrade-interactive --latest",
-		"prepare": "husky install"
+		"up": "yarn upgrade-interactive --latest"
 	},
 	"devDependencies": {
 		"@secretlint/secretlint-rule-preset-recommend": "^8.1.1",
