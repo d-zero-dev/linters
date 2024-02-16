@@ -3,6 +3,14 @@ import path from 'node:path';
 import { execa } from 'execa';
 import { describe, test, expect } from 'vitest';
 
+/**
+ * @param {string} filePath
+ * @returns {string}
+ */
+function n(filePath) {
+	return path.relative(process.cwd(), filePath.replaceAll(path.sep, '/'));
+}
+
 describe('markuplint', () => {
 	test('CLI', async () => {
 		const { stdout } = await execa(
@@ -23,8 +31,7 @@ describe('markuplint', () => {
 		const result = lines.slice(1).join('\n');
 		const violations = JSON.parse(result);
 		const formatted = violations.map(
-			(v) =>
-				`${path.relative(process.cwd(), v.filePath)}:${v.line}:${v.col} ${v.message}`,
+			(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
 		);
 		expect(formatted).toStrictEqual([
 			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
@@ -59,8 +66,7 @@ describe('stylelint', () => {
 			.toSorted((a, b) => a.line - b.line)
 			.toSorted((a, b) => a.source - b.source)
 			.map(
-				(v) =>
-					`${path.relative(process.cwd(), v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
+				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
 			);
 		expect(formatted).toStrictEqual([
 			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component',
@@ -95,8 +101,7 @@ describe('stylelint', () => {
 			.toSorted((a, b) => a.line - b.line)
 			.toSorted((a, b) => a.source - b.source)
 			.map(
-				(v) =>
-					`${path.relative(process.cwd(), v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
+				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
 			);
 		expect(formatted).toStrictEqual([
 			'test/fixtures/stylelint/unit.scss:12:13 Unexpected value "3em" for property "font-size" (declaration-property-value-allowed-list)',
