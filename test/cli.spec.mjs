@@ -8,7 +8,7 @@ import { describe, test, expect } from 'vitest';
  * @returns {string}
  */
 function n(filePath) {
-	return path.relative(process.cwd(), filePath.replaceAll(path.sep, '/'));
+	return path.relative(process.cwd(), filePath).replaceAll(path.sep, '/');
 }
 
 describe('markuplint', () => {
