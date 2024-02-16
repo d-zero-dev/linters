@@ -6,7 +6,6 @@ module.exports = {
 	...base,
 	ignoreFiles: [
 		'__assets/**/*.{js,jsx,ts,tsx,html,pug}',
-		'__assets/css/_syntax-rules.scss',
 		'htdocs/**/*',
 		'docs/**/*.md',
 	],

@@ -132,10 +132,4 @@ module.exports = {
 		'custom-property-pattern': null,
 		'selector-class-pattern': null,
 	},
-	overrides: [
-		{
-			files: ['__assets/**/*.scss'],
-			customSyntax: 'postcss-scss',
-		},
-	],
 };
