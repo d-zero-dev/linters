@@ -85,7 +85,7 @@ describe('stylelint', () => {
 				'stylelint',
 				path.normalize('test/fixtures/stylelint/unit.scss'),
 				'-c',
-				'test/fixtures/stylelint/.stylelintrc.unit.json',
+				path.normalize('test/fixtures/stylelint/.stylelintrc.unit.json'),
 				'-f',
 				'json',
 			],
