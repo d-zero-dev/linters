@@ -1,34 +1,7 @@
 module.exports = {
-	extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
-	plugins: ['stylelint-scss', 'stylelint-order'],
+	extends: ['stylelint-config-standard'],
+	plugins: ['stylelint-scss'],
 	rules: {
-		'order/order': [
-			'dollar-variables',
-			'custom-properties',
-			{
-				type: 'at-rule',
-				name: 'custom-media',
-			},
-			{
-				type: 'at-rule',
-				name: 'extend',
-			},
-			{
-				type: 'at-rule',
-				name: 'mixin',
-			},
-			'declarations',
-			{
-				type: 'at-rule',
-				name: 'supports',
-			},
-			{
-				type: 'at-rule',
-				name: 'media',
-				hasBlock: true,
-			},
-			'rules',
-		],
 		'at-rule-disallowed-list': null,
 		'at-rule-empty-line-before': [
 			'always',

@@ -14,6 +14,7 @@
 		".": "./index.js",
 		"./base": "./base.js",
 		"./name": "./name.js",
+		"./order": "./order.js",
 		"./values": "./values.js"
 	},
 	"files": [
