@@ -1,0 +1,102 @@
+// stylelint-disable declaration-block-no-duplicate-properties
+
+.font-size {
+	//
+	// 🎨 font-sizeのルール
+	//
+	// 単位は `em` `rem` `vw` を使用する
+	font-size: 1em; // ✅
+	font-size: 1.6rem; // ✅
+	// ただし `em` `vw` の場合は何を基準にしているのかを明示的に `calc()` を使って指定する
+	// ※ `calc()` は算出が可能な場合はPostCSSのプラグインによって実数に変換される
+	font-size: 3em; // ❌
+	font-size: 1.2em; // ❌
+	font-size: 0.5em; // ❌
+	font-size: 4vw; // ❌
+	font-size: calc(
+		14 / 16 * 1em
+	); // ✅ 親要素が16pxだったときに14pxになる相対値を表わす 「.875em」に変換される
+	font-size: calc(
+		36 / 320 * 100vw
+	); // ✅ ビューポートが320pxだったときに35pxになるvw値を表わす 「11.25vw」に変換される
+	font-size: calc(
+		36 / $width * 100vw
+	); // ✅ ビューポートが変数$widthだったときに35pxになるvw値を表わす 値は$widthの内容によって変化する
+	font-size: calc(
+		$font-size / $width * 100vw
+	); // ✅ ビューポートが変数$widthだったときに$font-sizeになるvw値を表わす 値は$widthと$font-sizeの内容によって変化する
+	//
+	// このルールは次の設定による
+	// - unit-disallowed-list
+	// 絶対値になる単位は使用しない
+	font-size: 16px; // ❌
+	// その他の単位も混乱を避けるため使用しない
+	font-size: 16ex; // ❌
+	font-size: 16pt; // ❌
+	font-size: 16cm; // ❌
+}
+
+.font-weight {
+	//
+	// 🎨 フォントウェイトのルール
+	//
+	// `400` `700` の場合はそれぞれ `normal` `bold` キーワードにする
+	//
+	font-weight: 400; // ❌
+	font-weight: bold; // ✅
+	font-weight: 500; // ✅ `400` `700` 以外はキーワードはないので数値のままでよい
+}
+
+.dimension {
+	//
+	// 🎨 幅・高さのルール
+	//
+	// `width` `height` `max-width` `max-height` `min-width` `min-height` `flex-basis` を対象としたルール
+	//
+	// ゼロは単位を付けない
+	width: 0px; // ❌
+	width: 0; // ✅
+	// 単位は `px` `%` `em` `rem` `vw` `vh` を使用する
+	width: 100px; // ✅
+	height: 5em; // ✅
+	max-width: 50rem; // ✅
+	max-height: 100vw; // ✅
+	min-height: 100vh; // ✅
+	flex-basis: 100%; // ✅
+	// ただし `%` `vw` `vh` の場合は何を基準にしているのかを明示的に `calc()` を使って指定する
+	width: 5%; // ❌
+	width: 50%; // ❌
+	flex-basis: 33.3%; // ❌
+	flex-basis: calc(100% / 3); // ✅ 明示的な三等分 「33.33333%」に変換されます
+	height: calc(
+		160 / 320 * 100vw
+	); // ✅ ビューポートが320pxだったときに160pxになるvw値を表わす 「50vw」に変換される
+	// `100%` `100vw` `100vh` 以外の基準は意図がわかりにくいので避ける
+	max-width: calc(160 / 320 * 54.2vw); // ❌
+	min-height: calc(2vw / 2); // ❌
+	min-height: calc(50vh / 2); // ❌
+	flex-basis: calc(105% / 3); // ❌
+	flex-basis: calc(120% / 3); // ❌
+	flex-basis: calc(200% / 3); // ❌
+	flex-basis: calc(1000% / 3); // ❌
+	// その他の単位は混乱を避けるため使用しない
+	width: 16ex; // ❌
+	width: 16pt; // ❌
+	width: 16cm; // ❌
+
+	//
+	// 🎨 flexのルール
+	//
+	// このルールは次の設定による
+	// - [declaration-property-value-whitelist](https://stylelint.io/user-guide/rules/declaration-property-value-whitelist/)
+	// - [unit-blacklist](https://stylelint.io/user-guide/rules/unit-blacklist/)
+	//
+	// IE11で動作しないバグがあるのでcalcを使用しない
+	// calcが必要な場合はショートハンドを利用しない
+	flex: 0 1 calc(100% / 3); // ❌
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: calc(100% / 3); // ✅
+}
+
+// stylelint-enable declaration-block-no-duplicate-properties

@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"@d-zero/stylelint-config/scss",
+		"@d-zero/stylelint-config/base",
+		"@d-zero/stylelint-config/values"
+	]
+}
