@@ -1,6 +1,5 @@
 module.exports = {
 	extends: ['stylelint-config-standard'],
-	plugins: ['stylelint-scss'],
 	rules: {
 		'at-rule-disallowed-list': null,
 		'at-rule-empty-line-before': [
@@ -11,12 +10,7 @@ module.exports = {
 			},
 		],
 		'at-rule-no-vendor-prefix': true,
-		'at-rule-no-unknown': [
-			true,
-			{
-				ignoreAtRules: ['mixin', 'extend', 'for', 'if', 'include', 'use', 'forward'],
-			},
-		],
+		'at-rule-no-unknown': true,
 		'color-hex-length': 'short',
 		'color-named': 'never',
 		'color-no-invalid-hex': true,
@@ -45,12 +39,7 @@ module.exports = {
 		'function-calc-no-unspaced-operator': true,
 		'function-linear-gradient-no-nonstandard-direction': true,
 		'function-name-case': 'lower',
-		'function-no-unknown': [
-			true,
-			{
-				ignoreFunctions: ['a', 'lighten', 'darken', 'resolve'],
-			},
-		],
+		'function-no-unknown': true,
 		'function-url-scheme-allowed-list': null,
 		'function-url-no-scheme-relative': true,
 		'function-url-quotes': 'always',

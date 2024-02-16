@@ -15,6 +15,7 @@
 		"./base": "./base.js",
 		"./name": "./name.js",
 		"./order": "./order.js",
+		"./scss": "./scss.js",
 		"./values": "./values.js"
 	},
 	"files": [
@@ -30,5 +31,11 @@
 		"stylelint-config-standard": "36.0.0",
 		"stylelint-order": "6.0.4",
 		"stylelint-scss": "6.1.0"
+	},
+	"devDependencies": {
+		"postcss-scss": "4.0.9"
+	},
+	"peerDependencies": {
+		"postcss-scss": "4"
 	}
 }
