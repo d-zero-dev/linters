@@ -11,10 +11,10 @@ module.exports = {
 	plugins: [...scss.plugins, ...order.plugins],
 	ignoreFiles: ['**/*.{js,jsx,ts,tsx,html,pug}', 'htdocs/**/*', 'docs/**/*.md'],
 	rules: {
-		...scss.rules,
 		...base.rules,
 		...order.rules,
 		...name.rules,
 		...values.rules,
+		...scss.rules,
 	},
 };
