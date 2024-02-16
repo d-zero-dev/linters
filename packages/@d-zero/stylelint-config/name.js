@@ -11,7 +11,6 @@ module.exports = {
 				resolveNestedSelectors: true,
 			},
 		],
-		'selector-id-pattern': '^$',
 		'selector-nested-pattern': '^[^.]+.*',
 	},
 };
