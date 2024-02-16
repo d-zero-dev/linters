@@ -19,10 +19,7 @@
 		"./values": "./values.js"
 	},
 	"files": [
-		"base.js",
-		"index.js",
-		"name.js",
-		"values.js"
+		"*.js"
 	],
 	"main": "index.js",
 	"dependencies": {
