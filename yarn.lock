@@ -1313,22 +1313,27 @@
   integrity sha512-tktvuPJsY36xKDhlssxPvrALnniGszLh6NNdTL3VaHEfIKovCIhk4CSAROKnp/Tsa/1/3s3ttQZR2OzaAIUYiA==
 
 "@secretlint/secretlint-rule-preset-recommend@^8.1.1":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@secretlint/secretlint-rule-preset-recommend/-/secretlint-rule-preset-recommend-8.1.1.tgz#cb7bb58c98fbb5e6ab1bf8dce16a6e196dae04a6"
-  integrity sha512-L9/f4womPm+Qpr4IwkkusEo1fAkrx+stUD550etruBCXxI4Mvkeq6NFfJu949c8cSVuBfXiIi06VY82XWNOHzw==
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@secretlint/secretlint-rule-preset-recommend/-/secretlint-rule-preset-recommend-8.1.2.tgz#2bc69c707b59b2f2ed8bc6c280b72c2e7afbee68"
+  integrity sha512-JSbpTNhcyB/Ox/CXptK2ihjqoWZvcpJu2Ev3XYgO3/yRwx3O64jWGqHn2axGh6fcaIfUGgwoUVQa5GanlqKAWg==
 
 "@secretlint/source-creator@^8.1.1":
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/@secretlint/source-creator/-/source-creator-8.1.1.tgz#a51bba5b8f01e39eb94f50b61376b9210bda46a8"
-  integrity sha512-hQrIk367iigA4ATR+swpGjnq8iKaK8snx26BJfxnxkzei9aZoKnVVz1A36n7yi/fDZqEYIykCrRrpHcL8phmFw==
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@secretlint/source-creator/-/source-creator-8.1.2.tgz#53675225dc76b96f852c5fa31a598ac2f9e6f6ac"
+  integrity sha512-7I7LZyTWHTWB2toGpaNy/gOwguhVdG/fuw/JmeoF7YwBOFd80S1vQ/UpS8DWLkXlALkyIQ56ovkiKgF7739PsA==
   dependencies:
-    "@secretlint/types" "^8.1.1"
+    "@secretlint/types" "^8.1.2"
     istextorbinary "^6.0.0"
 
 "@secretlint/types@^8.1.1":
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/@secretlint/types/-/types-8.1.1.tgz#dfd9bd4f8df27343546e7fb712fd77c268867879"
   integrity sha512-0CRrqvW1/xDK6PatQSA0gq9TF1W+d3514PUc6Ccu5PQRRZZXBxJpJBFnPV+9uuzDDpNsm4LHs5Xi4HNs7PzhsA==
+
+"@secretlint/types@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@secretlint/types/-/types-8.1.2.tgz#866915d532432181cd62ff3a311422a4d4de04b3"
+  integrity sha512-EBnWaioSVN/xEwPzInHNrpHzXDNwySFva548oVi0q4e8cjmKs/5j15bp6Hb4cWZaj4walKEdBblK/qra+NISMw==
 
 "@sigstore/bundle@^1.1.0":
   version "1.1.0"
