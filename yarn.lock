@@ -729,6 +729,16 @@
     parse5 "7.1.2"
     type-fest "^4.10.2"
 
+"@markuplint/html-parser@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@markuplint/html-parser/-/html-parser-4.2.0.tgz#25fc17f3ac2a6237fde7abf75cfc5154b15e6f05"
+  integrity sha512-K0W70P7uIcRSJIslIvRxdx4d5xkeJJF6/EE/x4sfSvagUt23hI5PWeOfRQHeKJa8CorC+gEpE+qes26u8OuOGg==
+  dependencies:
+    "@markuplint/ml-ast" "4.0.1"
+    "@markuplint/parser-utils" "4.2.0"
+    parse5 "7.1.2"
+    type-fest "^4.10.2"
+
 "@markuplint/html-spec@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@markuplint/html-spec/-/html-spec-4.1.0.tgz#20771df863d8b62a122cf0d8f489401f19d5f286"
@@ -790,6 +800,17 @@
     is-plain-object "^5.0.0"
     type-fest "^4.10.2"
 
+"@markuplint/ml-spec@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@markuplint/ml-spec/-/ml-spec-4.1.0.tgz#7b126b33f8ed32b52dc5a59ef3d080880d75c66c"
+  integrity sha512-ZKfIozGAlnEv+gMT824yNJEGEG+D6kKcPRSzxspe16k8yvwkSILq+GTeT5adPnLdq7XFkiG4JW2hBAS8QOfiRg==
+  dependencies:
+    "@markuplint/ml-ast" "4.0.1"
+    "@markuplint/types" "4.0.2"
+    dom-accessibility-api "^0.6.3"
+    is-plain-object "^5.0.0"
+    type-fest "^4.10.2"
+
 "@markuplint/parser-utils@4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@markuplint/parser-utils/-/parser-utils-4.1.0.tgz#0959954956c797660cbffac52be3d464c70d85b2"
@@ -804,14 +825,28 @@
     type-fest "^4.10.2"
     uuid "^9.0.1"
 
-"@markuplint/pug-parser@4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@markuplint/pug-parser/-/pug-parser-4.1.0.tgz#8665c0596e824d55cc3ffe64ff84857e9edb841c"
-  integrity sha512-BhOnZ/OfLTIbS5mXyTo5qT9x4FbsMAH3nZJKMmjssQGu2XiNfteOQMhZ1MO9cUt5Ez0+xSVnXt61IzJImWmbOA==
+"@markuplint/parser-utils@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@markuplint/parser-utils/-/parser-utils-4.2.0.tgz#bee818c7fb800cd79720cb68aceb97e2669dee9d"
+  integrity sha512-Dc8P9uq6CTScvgmeouvwF6drTNOiHvudvDOEmkz0JS+MiA0rR5uOhST2zlNCTKxScwOYc+LSpYwFz5zoHQ+03Q==
   dependencies:
-    "@markuplint/html-parser" "4.1.0"
     "@markuplint/ml-ast" "4.0.1"
-    "@markuplint/parser-utils" "4.1.0"
+    "@markuplint/ml-spec" "4.1.0"
+    "@markuplint/types" "4.0.2"
+    "@types/uuid" "^9.0.8"
+    debug "^4.3.4"
+    espree "^10.0.1"
+    type-fest "^4.10.2"
+    uuid "^9.0.1"
+
+"@markuplint/pug-parser@4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@markuplint/pug-parser/-/pug-parser-4.2.0.tgz#a89522866296791d2e02a4367407a18c7719efc3"
+  integrity sha512-7skSUIiywMQXZ+YJ7TidmaXnJTSxcHg5JEWWPc3gR7oOTroWyo12sSZSXkcIK2ZESFzSnpgWeUZJPqqLX6xHpg==
+  dependencies:
+    "@markuplint/html-parser" "4.2.0"
+    "@markuplint/ml-ast" "4.0.1"
+    "@markuplint/parser-utils" "4.2.0"
     pug-lexer "^5.0.1"
     pug-parser "^6.0.0"
 
@@ -857,6 +892,21 @@
   integrity sha512-X3E6RrAMTMVil4F4xawh54YNnPL/vzvJ9K0CJF2581rf2h9w7jPrm6G9H0O+G5811dtkk4OxrNG5xGFGMP2wZw==
   dependencies:
     "@types/css-tree" "^2.3.4"
+    "@types/debug" "^4.1.12"
+    "@types/whatwg-mimetype" "3.0.2"
+    bcp-47 "^2.1.0"
+    css-tree "^2.3.1"
+    debug "^4.3.4"
+    leven "^4.0.0"
+    type-fest "^4.10.2"
+    whatwg-mimetype "^4.0.0"
+
+"@markuplint/types@4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@markuplint/types/-/types-4.0.2.tgz#43a36db83e264733fd244a44018cb8b66ccc2c51"
+  integrity sha512-Us/OPFOzqsIWLPY9KVhIYk55INo1k8JYggL/6Hk5XhjEGVKdoR2hfn4iDPnkFS3RrClr3mw9ClNwCozC19KGaA==
+  dependencies:
+    "@types/css-tree" "^2.3.6"
     "@types/debug" "^4.1.12"
     "@types/whatwg-mimetype" "3.0.2"
     bcp-47 "^2.1.0"
@@ -1672,6 +1722,11 @@
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/@types/css-tree/-/css-tree-2.3.5.tgz#3fe4bda33e7dd0f925b6d583e4bd79afa793b1f1"
   integrity sha512-TtXNeuMuwBH5LnAYmjMxre0/CNBfwaNN9VTiW8DlWTfopKYZRWYzBYIp7y3YIvobBrc7JjnKsa0F8V/tO//laQ==
+
+"@types/css-tree@^2.3.6":
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/@types/css-tree/-/css-tree-2.3.6.tgz#9bcc75dc0752cd245772f8a2256bcd606187e0a3"
+  integrity sha512-TMZiGQ0PzBDlOLQ4qVz8+GGVhVGAPqMAHbXxDkmxjTexB/4rWeeK8N3IvdJXmR3lvio2MYnnn72DzgnHYu9mSA==
 
 "@types/debug@^4.1.12":
   version "4.1.12"
