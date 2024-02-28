@@ -1,0 +1,15 @@
+{
+	"extends": "../../../tsconfig.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"outDir": "dist",
+		"rootDir": "src"
+	},
+	"references": [
+		{
+			"path": "../csstree-scss-syntax"
+		}
+	],
+	"include": ["src"],
+	"exclude": ["dist"]
+}
