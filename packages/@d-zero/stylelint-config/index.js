@@ -8,7 +8,7 @@ module.exports = {
 	...scss,
 	...base,
 	extends: [...base.extends, ...order.extends],
-	plugins: [...scss.plugins, ...order.plugins],
+	plugins: [...scss.plugins, ...order.plugins, ...values.plugins],
 	ignoreFiles: ['**/*.{js,jsx,ts,tsx,html,pug}', 'htdocs/**/*', 'docs/**/*.md'],
 	rules: {
 		...base.rules,

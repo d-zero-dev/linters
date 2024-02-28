@@ -1,4 +1,4 @@
-// stylelint-disable declaration-block-no-duplicate-properties
+// stylelint-disable declaration-block-no-duplicate-properties, declaration-block-no-shorthand-property-overrides
 
 .font-size {
 	//
@@ -51,26 +51,25 @@
 	//
 	// 🎨 幅・高さのルール
 	//
-	// `width` `height` `max-width` `max-height` `min-width` `min-height` `flex-basis` を対象としたルール
+	// 値の型が`<length>` `<length-percentage>`のルール（`font-size`を除く）
 	//
 	// ゼロは単位を付けない
 	width: 0px; // ❌
 	width: 0; // ✅
-	// 単位は `px` `%` `em` `rem` `vw` `vh` を使用する
+	// 単位は `px` `%` `em` `rem` `*v*`  を使用する
 	width: 100px; // ✅
 	height: 5em; // ✅
 	max-width: 50rem; // ✅
 	max-height: 100vw; // ✅
 	min-height: 100vh; // ✅
 	flex-basis: 100%; // ✅
-	// ただし `%` `vw` `vh` の場合は何を基準にしているのかを明示的に `calc()` を使って指定する
+	// ただし `%` `*w*` の場合は何を基準にしているのかを明示的に `calc()` を使って指定する
 	width: 5%; // ❌
 	width: 50%; // ❌
 	flex-basis: 33.3%; // ❌
 	flex-basis: calc(100% / 3); // ✅ 明示的な三等分 「33.33333%」に変換されます
-	height: calc(
-		160 / 320 * 100vw
-	); // ✅ ビューポートが320pxだったときに160pxになるvw値を表わす 「50vw」に変換される
+	// ✅ ビューポートが320pxだったときに160pxになるvw値を表わす 「50vw」に変換される
+	height: calc(160 / 320 * 100vw);
 	// `100%` `100vw` `100vh` 以外の基準は意図がわかりにくいので避ける
 	max-width: calc(160 / 320 * 54.2vw); // ❌
 	min-height: calc(2vw / 2); // ❌
@@ -79,6 +78,7 @@
 	flex-basis: calc(120% / 3); // ❌
 	flex-basis: calc(200% / 3); // ❌
 	flex-basis: calc(1000% / 3); // ❌
+	flex: 0 1 calc(105% / 3); // ❌
 	// その他の単位は混乱を避けるため使用しない
 	width: 16ex; // ❌
 	width: 16pt; // ❌
@@ -87,16 +87,18 @@
 	//
 	// 🎨 flexのルール
 	//
-	// このルールは次の設定による
-	// - [declaration-property-value-whitelist](https://stylelint.io/user-guide/rules/declaration-property-value-whitelist/)
-	// - [unit-blacklist](https://stylelint.io/user-guide/rules/unit-blacklist/)
+	// growとshrinkは0か1を指定する
+	// basisは「幅・高さのルール」に準じる
 	//
-	// IE11で動作しないバグがあるのでcalcを使用しない
-	// calcが必要な場合はショートハンドを利用しない
-	flex: 0 1 calc(100% / 3); // ❌
-	flex-grow: 0;
-	flex-shrink: 1;
-	flex-basis: calc(100% / 3); // ✅
+	flex: 0 0 calc(100% / 3); // ✅
+	flex: 0 1 calc(100% / 3); // ✅
+	flex: 0 2 calc(100% / 3); // ❌
+	flex-grow: 0; // ✅
+	flex-grow: 1; // ✅
+	flex-grow: 2; // ❌
+	flex-shrink: 0; // ✅
+	flex-shrink: 1; // ✅
+	flex-shrink: 2; // ❌
 }
 
-// stylelint-enable declaration-block-no-duplicate-properties
+// stylelint-enable declaration-block-no-duplicate-properties, declaration-block-no-shorthand-property-overrides

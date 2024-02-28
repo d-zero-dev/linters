@@ -23,6 +23,7 @@
 	],
 	"main": "index.js",
 	"dependencies": {
+		"@d-zero/stylelint-rules": "5.0.0-alpha.10",
 		"stylelint": "16.2.1",
 		"stylelint-config-recess-order": "4.6.0",
 		"stylelint-config-standard": "36.0.0",

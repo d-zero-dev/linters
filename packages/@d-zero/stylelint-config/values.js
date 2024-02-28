@@ -1,19 +1,39 @@
+/**
+ * @see https://drafts.csswg.org/css-values-4/#viewport-relative-lengths
+ */
+const VIEWPORT_PERCENTAGE_LENGTHS = '[ls]?v(?:w|h|i|d|max|min)';
+
+const PERCENTATE_UNITS = `(?:%|${VIEWPORT_PERCENTAGE_LENGTHS})`;
+
 module.exports = {
+	plugins: ['@d-zero/stylelint-rules'],
 	rules: {
+		'@d-zero/declaration-value-type-disallowed-list': {
+			'/^length|percentage$/': {
+				ignoreProperties: ['font-size'],
+				patterns: [
+					// float
+					`/[1-9]*\\.[0-9]+${PERCENTATE_UNITS}/`,
+
+					// 1% - 99%
+					`/[1-9][0-9]?${PERCENTATE_UNITS}/`,
+
+					// 101% - 199%
+					`/1[0-9][1-9]${PERCENTATE_UNITS}/`,
+					`/1[1-9][0-9]${PERCENTATE_UNITS}/`,
+
+					// 200% - 999%
+					`/[2-9][0-9][0-9]${PERCENTATE_UNITS}/`,
+
+					// 1000% or larger
+					`/[1-9][0-9]{3,}${PERCENTATE_UNITS}/`,
+				],
+			},
+		},
 		'declaration-property-value-disallowed-list': {
 			'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
 				['/#[0-9a-f]{3}/', '/(?:rgb|hsl)a?\\(.+?\\)/'],
 			content: ['/^\\"\\\\[0-9a-fA-F]{1,6}\\"$/'],
-			flex: ['/calc/'],
-			'/^(?:max-|min-)?(?:width|height)|^flex/': [
-				'/[1-9]*\\.[0-9]+(?:%|vw|vh)/',
-				'/(?:^|[^0-9])[0-9](?:%|vw|vh)/',
-				'/(?:^|[^0-9])[0-9]{2}(?:%|vw|vh)/',
-				'/1[0-9][1-9](?:%|vw|vh)/',
-				'/1[1-9][0-9](?:%|vw|vh)/',
-				'/[2-9][0-9][0-9](?:%|vw|vh)/',
-				'/[0-9]{4,}(?:%|vw|vh)/',
-			],
 		},
 		'declaration-property-value-allowed-list': {
 			'font-size': [
@@ -25,6 +45,9 @@ module.exports = {
 				'/^(?:[0-9]*\\.)?[0-9]+rem/',
 				'/^clamp\\(/',
 			],
+			flex: ['/^\\s*[01]\\s+[01]\\s.+/'],
+			'flex-grow': ['0', '1'],
+			'flex-shrink': ['0', '1'],
 		},
 		'unit-disallowed-list': [
 			'ex',
