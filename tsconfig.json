@@ -1,7 +1,13 @@
-// このファイルは ./.eslintrc がextendsしている @d-zero/eslint-config が
-// "./tsconfig.json" を要求するために作られたファイルです。
 {
+	"extends": [
+		// https://github.com/tsconfig/bases
+		"@tsconfig/recommended",
+		"@tsconfig/strictest",
+		"@tsconfig/node-lts"
+	],
 	"compilerOptions": {
+		"lib": ["ESNext", "DOM"],
 		"noEmit": true
-	}
+	},
+	"include": ["**/*.ts"]
 }

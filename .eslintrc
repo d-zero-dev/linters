@@ -1,5 +1,8 @@
 {
 	"extends": ["@d-zero/eslint-config"],
+	"rules": {
+		"@typescript-eslint/ban-ts-comment": 0
+	},
 	"overrides": [
 		{
 			"files": ["*.mjs", "**/*.spec.{js,mjs}"],

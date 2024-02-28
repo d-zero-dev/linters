@@ -1,6 +1,0 @@
-{
-	"extends": "@d-zero/tsconfig/tsconfig.json",
-	"compilerOptions": {
-		"noEmit": true
-	}
-}
