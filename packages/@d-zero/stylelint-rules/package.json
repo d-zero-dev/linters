@@ -20,14 +20,9 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"css-tree": "2.3.1",
-		"postcss-value-parser": "4.2.0"
-	},
-	"devDependencies": {
 		"@d-zero/csstree-scss-syntax": "5.0.0-alpha.10",
-		"stylelint": "16.2.1"
-	},
-	"peerDependencies": {
-		"stylelint": "16"
+		"css-tree": "2.3.1",
+		"stylelint": "16.2.1",
+		"postcss-value-parser": "4.2.0"
 	}
 }

@@ -22,7 +22,7 @@
 	"scripts": {
 		"build": "tsc"
 	},
-	"peerDependencies": {
-		"css-tree": "2"
+	"dependencies": {
+		"css-tree": "2.3.1"
 	}
 }
