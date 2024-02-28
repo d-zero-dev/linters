@@ -33,8 +33,5 @@
 		"eslint-plugin-regexp": "2.2.0",
 		"eslint-plugin-sort-class-members": "1.19.0",
 		"eslint-plugin-unicorn": "51.0.1"
-	},
-	"peerDependencies": {
-		"@d-zero/tsconfig": ">= 5"
 	}
 }

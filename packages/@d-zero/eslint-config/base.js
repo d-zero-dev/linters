@@ -89,13 +89,11 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: '**/*.spec.*',
-			rules: {
-				'import/no-extraneous-dependencies': 0,
-			},
-		},
-		{
-			files: ['*.config.{js,mjs,json,ts}', '.*rc.{js,mjs,json,ts}'],
+			files: [
+				'*.{test,spec}.{js,mjs,json}',
+				'*.config.{js,mjs,json}',
+				'.*rc.{js,mjs,json}',
+			],
 			rules: {
 				'import/no-extraneous-dependencies': 0,
 			},

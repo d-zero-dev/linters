@@ -6,8 +6,9 @@ const base = require('./base');
 module.exports = {
 	...base,
 	overrides: [
+		...base.overrides,
 		{
-			files: '**/*.{ts,tsx}',
+			files: ['*.{ts,tsx}', '**/*.{ts,tsx}'],
 			extends: ['plugin:import/typescript', 'plugin:@typescript-eslint/recommended'],
 			plugins: ['@typescript-eslint', ...base.plugins],
 			parser: '@typescript-eslint/parser',
@@ -73,6 +74,12 @@ module.exports = {
 						},
 					},
 				],
+			},
+		},
+		{
+			files: ['*.{test,spec}.{ts,mts,tsx}'],
+			rules: {
+				'import/no-extraneous-dependencies': 0,
 			},
 		},
 	],
