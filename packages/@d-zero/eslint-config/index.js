@@ -33,6 +33,7 @@ module.exports = {
 				'@typescript-eslint/no-var-requires': 2,
 				'@typescript-eslint/no-unnecessary-type-assertion': 2,
 				'@typescript-eslint/restrict-plus-operands': 0,
+				'@typescript-eslint/no-explicit-any': [1, { fixToUnknown: true }],
 				'@typescript-eslint/consistent-type-imports': 1,
 				'@typescript-eslint/require-await': 2,
 				'@typescript-eslint/no-floating-promises': 2,
