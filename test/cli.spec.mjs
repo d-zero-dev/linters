@@ -11,6 +11,45 @@ function n(filePath) {
 	return path.relative(process.cwd(), filePath).replaceAll(path.sep, '/');
 }
 
+describe('ESLint', () => {
+	test('sort-class-members', async () => {
+		const { stdout } = await execa(
+			'yarn',
+			[
+				'eslint',
+				path.normalize('test/fixtures/eslint/sort-class-members.ts'),
+				'-f',
+				'compact',
+			],
+			{
+				reject: false,
+			},
+		);
+		const lines = stdout.split('\n');
+		const result = lines
+			.slice(1)
+			.slice(0, -1)
+			.filter(Boolean)
+			.map((line) => line.replace(process.cwd() + path.sep, ''));
+
+		expect(result).toStrictEqual([
+			'test/fixtures/eslint/sort-class-members.ts: line 3, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 8, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 11, col 2, Warning - Expected method method to come before static property staticMember. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 16, col 2, Warning - Expected property c1 to come before property #a. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 17, col 2, Warning - Expected property c2 to come before property #a. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 17, col 2, Warning - Expected property c2 to come before property c1. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 18, col 2, Warning - Expected property b2 to come before property #a. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 19, col 2, Warning - Expected property b1 to come before property #a. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 19, col 2, Warning - Expected property b1 to come before property b2. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 24, col 2, Warning - Expected getter a to come immediately before setter a. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 41, col 2, Warning - Expected method #privateMethod to come before method _method. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 42, col 2, Warning - Expected method method2 to come before method _method. (sort-class-members/sort-class-members)',
+			'test/fixtures/eslint/sort-class-members.ts: line 42, col 2, Warning - Expected method method2 to come before method #privateMethod. (sort-class-members/sort-class-members)',
+		]);
+	});
+});
+
 describe('markuplint', () => {
 	test('CLI', async () => {
 		const { stdout } = await execa(
