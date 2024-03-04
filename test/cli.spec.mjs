@@ -27,9 +27,7 @@ describe('ESLint', () => {
 		);
 		const lines = stdout.split('\n');
 		const result = lines
-			.slice(1)
-			.slice(0, -1)
-			.filter(Boolean)
+			.filter((line) => line.includes('sort-class-members/sort-class-members'))
 			.map((line) => line.replace(process.cwd() + path.sep, ''));
 
 		expect(result).toStrictEqual([
