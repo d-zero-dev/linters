@@ -62,19 +62,112 @@ module.exports = {
 			},
 		],
 
-		// sort-class-members
+		// Sort Class members
 		'sort-class-members/sort-class-members': [
 			1,
 			{
 				order: [
+					'[public-properties]',
+					'[public-readonly-properties]',
+					'[public-properties-function]',
+					'[private-properties]',
+					'[private-properties-function]',
+					'[accessor-pairs]',
+					'constructor',
+					'[public-methods]',
+					'[private-methods]',
+					'[protedted-methods]',
 					'[static-properties]',
 					'[static-methods]',
-					'[properties]',
-					'[conventional-private-properties]',
-					'constructor',
-					'[methods]',
-					'[conventional-private-methods]',
+					'[everything-else]',
 				],
+				groups: {
+					'public-properties': [
+						{
+							type: 'property',
+							kind: 'nonAccessor',
+							static: false,
+							private: false,
+							override: false,
+							readonly: false,
+							sort: 'alphabetical',
+						},
+					],
+					'public-readonly-properties': [
+						{
+							type: 'property',
+							kind: 'nonAccessor',
+							static: false,
+							private: false,
+							override: false,
+							readonly: true,
+							sort: 'alphabetical',
+						},
+					],
+					'public-properties-function': [
+						{
+							type: 'property',
+							propertyType: 'ArrowFunctionExpression',
+							kind: 'nonAccessor',
+							static: false,
+							private: false,
+							accessibility: 'public',
+							override: false,
+							sort: 'alphabetical',
+						},
+					],
+					'private-properties': [
+						{
+							type: 'property',
+							kind: 'nonAccessor',
+							static: false,
+							private: true,
+							override: false,
+							sort: 'alphabetical',
+						},
+					],
+					'private-properties-function': [
+						{
+							type: 'property',
+							propertyType: 'ArrowFunctionExpression',
+							kind: 'nonAccessor',
+							static: false,
+							private: true,
+							accessibility: 'public',
+							override: false,
+							sort: 'alphabetical',
+						},
+					],
+					'public-methods': [
+						{
+							type: 'method',
+							kind: 'nonAccessor',
+							static: false,
+							private: false,
+							override: false,
+							sort: 'alphabetical',
+						},
+					],
+					'private-methods': [
+						{
+							name: '/#.+/',
+							type: 'method',
+							kind: 'nonAccessor',
+							static: false,
+							private: true,
+							override: false,
+							sort: 'alphabetical',
+						},
+					],
+					'protedted-methods': [
+						{
+							name: '/_.+/',
+							type: 'method',
+							static: false,
+							sort: 'alphabetical',
+						},
+					],
+				},
 				accessorPairPositioning: 'getThenSet',
 			},
 		],
