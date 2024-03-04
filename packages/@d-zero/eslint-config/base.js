@@ -73,6 +73,8 @@ module.exports = {
 					'[private-properties]',
 					'[private-properties-function]',
 					'[accessor-pairs]',
+					'[getters]',
+					'[setters]',
 					'constructor',
 					'[public-methods]',
 					'[private-methods]',

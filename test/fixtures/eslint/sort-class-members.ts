@@ -5,6 +5,7 @@ export class Test1 {
 
 export class Test2 {
 	constructor() {}
+	get getter() { return true; }
 	member = true;
 	
 	static staticMember = true;
@@ -18,10 +19,15 @@ export class Test3 {
 	b2 = () => {};
 	b1 = () => {};
 
-	set a(value) {
+	set b(value) {
 		this.#a = value;
 	}
+
 	get a() {
+		return !this.#a;
+	}
+
+	get b() {
 		return this.#a;
 	}
 
