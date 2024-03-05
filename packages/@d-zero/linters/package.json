@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/linters",
-	"version": "5.0.0-alpha.13",
+	"version": "5.0.0-alpha.14",
 	"description": "Unified Linter Package that easily integrates multiple linters and shared configuration files",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -10,13 +10,13 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@d-zero/cspell-config": "5.0.0-alpha.13",
-		"@d-zero/eslint-config": "5.0.0-alpha.13",
-		"@d-zero/lint-staged-config": "5.0.0-alpha.13",
-		"@d-zero/markuplint-config": "5.0.0-alpha.13",
-		"@d-zero/prettier-config": "5.0.0-alpha.13",
-		"@d-zero/pug-lint-config": "5.0.0-alpha.13",
-		"@d-zero/stylelint-config": "5.0.0-alpha.13",
-		"@d-zero/textlint-config": "5.0.0-alpha.13"
+		"@d-zero/cspell-config": "5.0.0-alpha.14",
+		"@d-zero/eslint-config": "5.0.0-alpha.14",
+		"@d-zero/lint-staged-config": "5.0.0-alpha.14",
+		"@d-zero/markuplint-config": "5.0.0-alpha.14",
+		"@d-zero/prettier-config": "5.0.0-alpha.14",
+		"@d-zero/pug-lint-config": "5.0.0-alpha.14",
+		"@d-zero/stylelint-config": "5.0.0-alpha.14",
+		"@d-zero/textlint-config": "5.0.0-alpha.14"
 	}
 }
