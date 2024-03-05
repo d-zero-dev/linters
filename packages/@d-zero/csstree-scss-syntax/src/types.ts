@@ -64,11 +64,23 @@ export type TypeToken = {
 	syntax: Syntax<'Type'> & {
 		opts: null | Record<string, string>;
 	};
-	match: (TypeToken | KeywordToken)[];
+	match: (TypeToken | KeywordToken)[] | [ValueToken];
 };
 
 export type KeywordToken = {
 	syntax: Syntax<'Keyword'>;
 	token: string;
 	node: null;
+};
+
+export type ValueToken = {
+	syntax: null;
+	token: string;
+	node: ValueNode;
+};
+
+type ValueNode = {
+	type: string;
+	value: string;
+	loc: null;
 };

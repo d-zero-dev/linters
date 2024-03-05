@@ -1,4 +1,9 @@
-import type { KeywordToken, PropertyToken, TypeToken } from '@d-zero/csstree-scss-syntax';
+import type {
+	ValueToken,
+	KeywordToken,
+	PropertyToken,
+	TypeToken,
+} from '@d-zero/csstree-scss-syntax';
 import type { Declaration } from 'postcss';
 
 import CSSTree from '@d-zero/csstree-scss-syntax';
@@ -41,41 +46,54 @@ function _getValueType(
 		return null;
 	}
 
-	const valueTypes = props.match.map((node) => getValueNode(node).syntax.name);
+	const valueTypes = props.match
+		.flatMap((node) => getValueNode(node))
+		.map((node) => node.syntax.name);
 
 	return values.map((value, i) => {
 		const valueType = valueTypes[i] ?? null;
 
-		if (valueType === null) {
-			if (value.type === 'word' && value.value.startsWith('$')) {
-				return {
-					value: value,
-					valueType: '$SASS_VARIABLE',
-				};
-			}
-
-			throw new Error('Value type not found');
+		if (valueType === null && value.type === 'word' && value.value.startsWith('$')) {
+			return {
+				value: value,
+				valueType: '$SASS_VARIABLE',
+			};
 		}
 
 		return {
 			value,
-			valueType,
+			valueType: valueType ?? 'unknown',
 		};
 	});
 }
 
 function getValueNode(
 	node: PropertyToken | TypeToken | KeywordToken,
-): TypeToken | KeywordToken {
-	if (isProperty(node)) {
-		const firstChild = node.match.at(0)!;
-		return getValueNode(firstChild);
+): (TypeToken | KeywordToken)[] {
+	if (isProperty(node) || isType(node)) {
+		if (node.match[0].syntax === null) {
+			return isProperty(node) ? [] : [node];
+		}
+
+		if (isType(node) && node.match.length === 1) {
+			return [node];
+		}
+
+		return node.match.flatMap((child) =>
+			child.syntax === null ? [] : getValueNode(child),
+		);
 	}
-	return node;
+	return [node];
 }
 
 function isProperty(
-	node: PropertyToken | TypeToken | KeywordToken,
+	node: PropertyToken | TypeToken | KeywordToken | ValueToken,
 ): node is PropertyToken {
-	return node.syntax.type === 'Property';
+	return node.syntax?.type === 'Property';
+}
+
+function isType(
+	node: PropertyToken | TypeToken | KeywordToken | ValueToken,
+): node is TypeToken {
+	return node.syntax?.type === 'Type';
 }

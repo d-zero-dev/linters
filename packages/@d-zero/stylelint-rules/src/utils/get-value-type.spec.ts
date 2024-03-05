@@ -30,6 +30,16 @@ describe('getValueType', () => {
 		expect(p('a { height: 100vw }')).toEqual(['length']);
 	});
 
+	test('background', () => {
+		expect(p('a { background: url(../../img/edit.png) no-repeat scroll 0 0 }')).toEqual([
+			'bg-image',
+			'repeat-style',
+			'attachment',
+			'length-percentage',
+			'length-percentage',
+		]);
+	});
+
 	test('SASS Variable', () => {
 		expect(p('a { flex: 1 2 $basis }')).toEqual(['number', 'number', '$SASS_VARIABLE']);
 	});
