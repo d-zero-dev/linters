@@ -47,6 +47,10 @@ export default createRule<Record<string, string[] | Options>>({
 			root.walkDecls((decl) => {
 				const nodes = getValueType(decl);
 
+				if (nodes === null) {
+					return;
+				}
+
 				for (const node of nodes) {
 					if (!node.valueType) {
 						continue;

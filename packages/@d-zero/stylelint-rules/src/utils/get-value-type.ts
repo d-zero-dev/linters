@@ -5,16 +5,21 @@ import CSSTree from '@d-zero/csstree-scss-syntax';
 import postcssValueParser from 'postcss-value-parser';
 
 export function getValueType(decl: Declaration) {
+	if (decl.prop.startsWith('$')) {
+		return null;
+	}
 	return _getValueType(decl.prop, decl.value);
 }
 
 function _getValueType(
 	prop: string,
 	value: string,
-): {
-	value: postcssValueParser.Node;
-	valueType: string | null;
-}[] {
+):
+	| {
+			value: postcssValueParser.Node;
+			valueType: string | null;
+	  }[]
+	| null {
 	const valueAst = postcssValueParser(value);
 	const valueAstFromCssTree = CSSTree.parse(value, { context: 'value' });
 	let cssTreeDecl = CSSTree.lexer.matchProperty(prop, valueAstFromCssTree);
@@ -33,7 +38,7 @@ function _getValueType(
 
 	const props = cssTreeDecl.matched;
 	if (props === null) {
-		throw cssTreeDecl.error;
+		return null;
 	}
 
 	const valueTypes = props.match.map((node) => getValueNode(node).syntax.name);
