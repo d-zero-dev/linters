@@ -6,6 +6,8 @@
 		"@tsconfig/node-lts"
 	],
 	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"lib": ["ESNext", "DOM"],
 		"noEmit": true
 	},
