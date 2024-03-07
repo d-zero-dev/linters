@@ -38,6 +38,7 @@ module.exports = {
 				'@typescript-eslint/require-await': 2,
 				'@typescript-eslint/no-floating-promises': 2,
 				'@typescript-eslint/member-ordering': 0,
+				'@typescript-eslint/ban-ts-comment': 0,
 			},
 		},
 		{

@@ -39,6 +39,7 @@ module.exports = {
 		'unicorn/prefer-query-selector': 0,
 		'unicorn/prefer-ternary': 0,
 		'unicorn/prevent-abbreviations': 0,
+		'unicorn/no-process-exit': 0,
 
 		// import
 		'import/no-named-as-default': 0,
