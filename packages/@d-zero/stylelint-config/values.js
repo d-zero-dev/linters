@@ -8,28 +8,6 @@ const PERCENTATE_UNITS = `(?:%|${VIEWPORT_PERCENTAGE_LENGTHS})`;
 module.exports = {
 	plugins: ['@d-zero/stylelint-rules'],
 	rules: {
-		'@d-zero/declaration-value-type-disallowed-list': {
-			'/^length|percentage$/': {
-				ignoreProperties: ['font-size'],
-				patterns: [
-					// float
-					`/[1-9]*\\.[0-9]+${PERCENTATE_UNITS}/`,
-
-					// 1% - 99%
-					`/[1-9][0-9]?${PERCENTATE_UNITS}/`,
-
-					// 101% - 199%
-					`/1[0-9][1-9]${PERCENTATE_UNITS}/`,
-					`/1[1-9][0-9]${PERCENTATE_UNITS}/`,
-
-					// 200% - 999%
-					`/[2-9][0-9][0-9]${PERCENTATE_UNITS}/`,
-
-					// 1000% or larger
-					`/[1-9][0-9]{3,}${PERCENTATE_UNITS}/`,
-				],
-			},
-		},
 		'declaration-property-value-disallowed-list': {
 			'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
 				['/#[0-9a-f]{3}/', '/(?:rgb|hsl)a?\\(.+?\\)/'],
@@ -70,5 +48,28 @@ module.exports = {
 				ignoreProperties: ['/^\\$font-family-/'],
 			},
 		],
+
+		'@d-zero/declaration-value-type-disallowed-list': {
+			'/^length|percentage$/': {
+				ignoreProperties: ['font-size'],
+				patterns: [
+					// float
+					`/[1-9]*\\.[0-9]+${PERCENTATE_UNITS}/`,
+
+					// 1% - 99%
+					`/[1-9][0-9]?${PERCENTATE_UNITS}/`,
+
+					// 101% - 199%
+					`/1[0-9][1-9]${PERCENTATE_UNITS}/`,
+					`/1[1-9][0-9]${PERCENTATE_UNITS}/`,
+
+					// 200% - 999%
+					`/[2-9][0-9][0-9]${PERCENTATE_UNITS}/`,
+
+					// 1000% or larger
+					`/[1-9][0-9]{3,}${PERCENTATE_UNITS}/`,
+				],
+			},
+		},
 	},
 };

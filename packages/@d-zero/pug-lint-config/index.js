@@ -1,6 +1,6 @@
 module.exports = {
-	disallowClassAttributeWithStaticValue: true,
 	disallowAttributeTemplateString: true,
+	disallowClassAttributeWithStaticValue: true,
 	disallowDuplicateAttributes: true,
 	disallowIdAttributeWithStaticValue: true,
 	disallowLegacyMixinCall: true,
@@ -12,8 +12,8 @@ module.exports = {
 	requireStrictEqualityOperators: true,
 	validateAttributeQuoteMarks: '"',
 	validateAttributeSeparator: {
-		separator: ' ',
 		multiLineSeparator: '\n\t',
+		separator: ' ',
 	},
 	validateLineBreaks: 'LF',
 	validateSelfClosingTags: true,

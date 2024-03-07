@@ -1,5 +1,6 @@
 export default {
 	plugins: ['@prettier/plugin-pug'],
+
 	arrowParens: 'always',
 	bracketSameLine: true,
 	bracketSpacing: true,
@@ -11,12 +12,14 @@ export default {
 	tabWidth: 2,
 	trailingComma: 'all',
 	useTabs: true,
+
 	pugAttributeSeparator: 'as-needed',
-	pugSingleQuote: false,
-	pugEmptyAttributes: 'none',
 	pugCommentPreserveSpaces: 'trim-all',
+	pugEmptyAttributes: 'none',
+	pugSingleQuote: false,
 	pugSortAttributesBeginning: ['class'],
 	pugSortAttributesEnd: ['id'],
+
 	overrides: [
 		{
 			files: '.*rc',

@@ -8,8 +8,8 @@
 		"**/.gitignore",
 		"**/*.svg",
 		"**/cspell.json",
-		"**/package.json",
-		"**/LICENSE"
+		"**/LICENSE",
+		"**/package.json"
 	],
 	"dictionaries": [
 		// https://cspell.org/docs/dictionaries/
@@ -25,12 +25,12 @@
 	],
 	"words": [
 		"astrojs",
+		"ckeditor",
 		"htdocs",
 		"tsconfigs",
-		"ckeditor",
 		// Font
-		"noto",
 		"FOUT",
+		"noto",
 		// Layout
 		"trbl" // top, right, bottom, left
 	],
@@ -40,8 +40,8 @@
 			"words": [
 				// Font settings
 				"noto",
-				"pcap",
-				"palt"
+				"palt",
+				"pcap"
 			]
 		}
 	]

@@ -22,10 +22,31 @@ module.exports = {
 	},
 	rules: {
 		// Standard
-		'no-var': 2,
-		'no-unused-vars': 0,
 		'no-console': 'warn',
 		'no-mixed-spaces-and-tabs': 0,
+		'no-restricted-syntax': [
+			2,
+			{
+				selector:
+					':matches(PropertyDefinition, MethodDefinition)[accessibility="private"]',
+				message: 'Use #private instead',
+			},
+			{
+				selector:
+					':matches(PropertyDefinition, MethodDefinition)[accessibility="public"]',
+				message: 'Remove public keyword',
+			},
+			{
+				selector: 'MethodDefinition[key.name=/^_/]:not([accessibility="protected"])',
+				message: 'Add protected keyword',
+			},
+			{
+				selector: 'MethodDefinition:not([key.name=/^_/])[accessibility="protected"]',
+				message: 'Start with `_` if you want to use protected',
+			},
+		],
+		'no-unused-vars': 0,
+		'no-var': 2,
 		'prefer-const': 2,
 		'prefer-rest-params': 2,
 		'prefer-spread': 2,
@@ -36,15 +57,15 @@ module.exports = {
 		'unicorn/no-array-callback-reference': 0,
 		'unicorn/no-nested-ternary': 0,
 		'unicorn/no-null': 0,
+		'unicorn/no-process-exit': 0,
 		'unicorn/prefer-query-selector': 0,
 		'unicorn/prefer-ternary': 0,
 		'unicorn/prevent-abbreviations': 0,
-		'unicorn/no-process-exit': 0,
 
 		// import
+		'import/no-extraneous-dependencies': 2,
 		'import/no-named-as-default': 0,
 		'import/no-unresolved': 0,
-		'import/no-extraneous-dependencies': 2,
 		'import/order': [
 			2,
 			{
@@ -172,28 +193,6 @@ module.exports = {
 					],
 				},
 				accessorPairPositioning: 'getThenSet',
-			},
-		],
-
-		'no-restricted-syntax': [
-			2,
-			{
-				selector:
-					':matches(PropertyDefinition, MethodDefinition)[accessibility="private"]',
-				message: 'Use #private instead',
-			},
-			{
-				selector:
-					':matches(PropertyDefinition, MethodDefinition)[accessibility="public"]',
-				message: 'Remove public keyword',
-			},
-			{
-				selector: 'MethodDefinition[key.name=/^_/]:not([accessibility="protected"])',
-				message: 'Add protected keyword',
-			},
-			{
-				selector: 'MethodDefinition:not([key.name=/^_/])[accessibility="protected"]',
-				message: 'Start with `_` if you want to use protected',
 			},
 		],
 	},
