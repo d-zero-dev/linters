@@ -1,4 +1,29 @@
 # `@d-zero/lint-staged-config`
 
-- 使用: 🆗 使用可
-- 解説: 🚧 準備中
+## 個別インストール
+
+```sh
+yarn add -D @d-zero/lint-staged-config
+```
+
+## 使い方
+
+`lint-staged.config.mjs`を作成し、読み込んだジェネレーター関数で設定を生成しエクスポートします。
+
+```js
+import lintStagedConfigGenerator from '@d-zero/lint-staged-config';
+export default lintStagedConfigGenerator();
+```
+
+### 拡張
+
+プロジェクトに合わせて設定を追加します。
+
+```js
+import lintStagedConfigGenerator, { defaultMapping } from '@d-zero/lint-staged-config';
+export default lintStagedConfigGenerator(process.cwd(), {
+	...defaultMapping,
+	// 例: PHPファイルに対して`markuplint`、`prettier`、`cspell`を実行する
+	php: ['markuplint', 'prettier', 'cspell'],
+});
+```

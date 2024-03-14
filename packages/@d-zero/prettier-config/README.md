@@ -1,4 +1,29 @@
 # `@d-zero/prettier-config`
 
-- 使用: 🆗 使用可
-- 解説: 🚧 準備中
+## 個別インストール
+
+```sh
+yarn add -D @d-zero/prettier-config
+```
+
+## 使い方
+
+`.prettierrc.mjs`を作成し、設定を読み込みエクスポートします。
+
+```js
+import config from '@d-zero/prettier-config';
+export default config;
+```
+
+### 拡張
+
+プロジェクトに合わせて設定を追加します。
+
+```js
+import config from '@d-zero/prettier-config';
+export default {
+	...config,
+	// 例: タブをスペースに変換しない
+	useTabs: false,
+};
+```
