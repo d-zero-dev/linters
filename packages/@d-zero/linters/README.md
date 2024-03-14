@@ -58,16 +58,6 @@ PrettierがESM形式を要求するため、プロジェクトのモジュール
 }
 ```
 
-もしくは
-
-`.eslintrc.cjs`
-
-```cjs
-module.exports = {
-	extends: ['@d-zero/eslint-config'],
-};
-```
-
 #### JavaScriptのみ
 
 :warning: TypeScriptを利用**しない**場合は、`@d-zero/eslint-config`の代わりに`@d-zero/eslint-config/base`を利用します。
@@ -108,11 +98,9 @@ export default lintStagedConfigGenerator();
 `.prettierrc.mjs`
 
 ```js
-import prettierConfig from '@d-zero/prettier-config';
+import config from '@d-zero/prettier-config';
 
-export default {
-	...prettierConfig,
-};
+export default config;
 ```
 
 :warning: CommonJS、JSON、`package.json`からは利用できません。

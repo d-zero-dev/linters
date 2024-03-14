@@ -4,12 +4,9 @@
 
 ### メインパッケージ
 
-- [`@d-zero/linters`](./packages/%40d-zero/linters/)
-
-### サブパッケージ
-
 | パッケージ名                                                             | 内容                                                                 |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| [`@d-zero/linters`](./packages/%40d-zero/linters/)                       | 以下の設定などをまとめたパッケージ                                   |
 | [`@d-zero/cspell-config`](./packages/%40d-zero/cspell-config/)           | [_CSpell_](https://cspell.org/)の設定ファイル                        |
 | [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)           | [_ESLint_](https://eslint.org/)の設定ファイル                        |
 | [`@d-zero/lint-staged-config`](./packages/%40d-zero/lint-staged-config/) | [_lint-staged_](https://github.com/okonet/lint-staged)の設定ファイル |
@@ -19,22 +16,30 @@
 | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)     | [_Stylelint_](https://stylelint.io/)の設定ファイル                   |
 | [`@d-zero/textlint-config`](./packages/%40d-zero/textlint-config/)       | [_textlint_](https://textlint.github.io/)の設定ファイル              |
 
+### サブパッケージ
+
+| パッケージ名                                                               | 内容                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
+| [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)         | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)に設定されているディーゼロ独自のStylelintルール                                                                                             |
+
 ---
 
 ## メンテナンス環境
 
-このリポジトリ自体の開発およびメンテナンスに必要なツールは次のとおりです。
-
-- **Node.js** v20最新
-- **yarn** (*Node.js*付属もしくは*npm*よりグローバルインストール)
-- [**actionlint**](https://github.com/rhysd/actionlint)
+- [Volta](https://volta.sh/)によって管理しています。
+  - [Node.js](https://nodejs.org/)のバージョンは[`package.json`](./package.json)に記載しています
+  - [yarn](https://yarnpkg.com/)のバージョンは[`package.json`](./package.json)に記載しています
+  - このバージョンは[Renovate](https://www.mend.io/renovate/)によってアップデートされます
+- [**actionlint**](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
 
 ### メンテ用コマンド
 
-| コマンド    | 内容                             |
-| ----------- | -------------------------------- |
-| `yarn lint` | リント（各種リントを実行します） |
-| `yarn test` | テスト（*Vitest*を実行します）   |
+| コマンド     | 内容                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------- |
+| `yarn build` | 各パッケージのビルドを行います                                                         |
+| `yarn lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
+| `yarn test`  | テスト（*Vitest*を実行します）                                                         |
 
 ---
 
@@ -52,7 +57,7 @@
 
 脆弱性のあるパッケージが、どのパッケージに依存しているかは次のコマンドで発見できます。
 
-```shell
+```sh
 yarn why <package_name>
 ```
 
