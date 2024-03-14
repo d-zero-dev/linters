@@ -1,0 +1,13 @@
+{
+	"type": "module",
+	"scripts": {
+		"lint": "run-s lint:eslint lint:stylelint lint:markuplint lint:pug-lint lint:prettier lint:textlint lint:cspell",
+		"lint:cspell": "cspell --no-progress --show-suggestions \"{*,__SOURCE_DIR__/**/*}/\"",
+		"lint:eslint": "eslint --fix \"{*,__SOURCE_DIR__/**/*}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:markuplint": "markuplint \"./{*,__SOURCE_DIR__/**/*}.{html,pug,jsx,tsx,vue,svelte,astro}\"",
+		"lint:prettier": "prettier --write \"{*,__SOURCE_DIR__/**/*}.{md,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:pug-lint": "pug-lint \"./__SOURCE_DIR__/__SUB_DIR__/**/*}.pug\" -r console; pug-lint \"./__SOURCE_DIR__/__SUB_DIR_2__/**/*}.pug\" -r console",
+		"lint:stylelint": "stylelint \"./{*,__SOURCE_DIR__/**/*}.scss\"",
+		"lint:textlint": "textlint --fix \"./{*,__SOURCE_DIR__/**/*}.{md}\""
+	}
+}

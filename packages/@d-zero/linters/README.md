@@ -144,3 +144,7 @@ module.exports = {
 :warning: 拡張子が`.js`でもCommonJS形式で書きます。ESMには対応していません。
 
 詳細: [`@d-zero/textlint-config`](../textlint-config/)
+
+## サンプルファイル
+
+[./scaffold](./scaffold/)に各設定ファイルのサンプルを用意しています。
