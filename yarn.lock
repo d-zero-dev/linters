@@ -408,6 +408,15 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-3.0.2.tgz#ea61ba7bb24be3502c6aaa3190ed231f4633a81e"
   integrity sha512-RpHaZ1h9LE7aALeQXmXrJkRG84ZxIsctEN2biEUmFyKpzFM3zZ35eUMcIzZFsw/2olQE6v69+esEqU2f1MKycg==
 
+"@d-zero/tsconfig@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@d-zero/tsconfig/-/tsconfig-0.1.1.tgz#50426603bd056504161c3a630f594ec336617055"
+  integrity sha512-V1XDhBm2tEKDLx7TOyquETyJHnlDS4tTcyaTx12hthjZCMLl3I23PNqBZ1l1eo+/7ZjLESF9xmeqap2fib1R5w==
+  dependencies:
+    "@tsconfig/node-lts" "20.1.1"
+    "@tsconfig/recommended" "1.0.3"
+    "@tsconfig/strictest" "2.0.3"
+
 "@es-joy/jsdoccomment@~0.42.0":
   version "0.42.0"
   resolved "https://registry.yarnpkg.com/@es-joy/jsdoccomment/-/jsdoccomment-0.42.0.tgz#59e878708336aaee88c2b34c894f73dbf77ae2b0"

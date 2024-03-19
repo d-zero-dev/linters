@@ -25,10 +25,8 @@
 		"up": "yarn upgrade-interactive --latest"
 	},
 	"devDependencies": {
+		"@d-zero/tsconfig": "0.1.1",
 		"@secretlint/secretlint-rule-preset-recommend": "8.1.2",
-		"@tsconfig/node-lts": "20.1.1",
-		"@tsconfig/recommended": "1.0.3",
-		"@tsconfig/strictest": "2.0.3",
 		"execa": "8.0.1",
 		"husky": "9.0.11",
 		"lerna": "8.1.2",

@@ -1,14 +1,6 @@
 {
-	"extends": [
-		// https://github.com/tsconfig/bases
-		"@tsconfig/recommended",
-		"@tsconfig/strictest",
-		"@tsconfig/node-lts"
-	],
+	"extends": ["@d-zero/tsconfig"],
 	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"lib": ["ESNext", "DOM"],
 		"noEmit": true
 	},
 	"include": ["**/*.ts"]
