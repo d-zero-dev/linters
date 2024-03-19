@@ -28,6 +28,8 @@
 		"ckeditor",
 		"htdocs",
 		"tsconfigs",
+		"markuplintrc",
+		"stylelintrc",
 		// Font
 		"FOUT",
 		"noto",
