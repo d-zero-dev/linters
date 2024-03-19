@@ -13,6 +13,23 @@ const config = (settings: Record<string, unknown> | boolean = true) => ({
 	},
 });
 
+describe('Parse Error', () => {
+	test('SCSS Syntax', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			code: '* { background: url("a" + $b + "c") }',
+			config: config({
+				length: ['px'],
+			}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+});
+
 describe('length-pattern', () => {
 	test('length in flex', async () => {
 		const {

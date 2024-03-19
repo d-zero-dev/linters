@@ -13,7 +13,19 @@ export function getValueType(decl: Declaration) {
 	if (decl.prop.startsWith('$')) {
 		return null;
 	}
-	return _getValueType(decl.prop, decl.value);
+	try {
+		return _getValueType(decl.prop, decl.value);
+	} catch (error) {
+		if (
+			error instanceof SyntaxError &&
+			'source' in error &&
+			error.source === decl.value
+		) {
+			// Unsupported SCSS syntax by CSSTree
+			return null;
+		}
+		throw error;
+	}
 }
 
 function _getValueType(
