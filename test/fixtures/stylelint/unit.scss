@@ -54,35 +54,35 @@
 	// 値の型が`<length>` `<length-percentage>`のルール（`font-size`を除く）
 	//
 	// ゼロは単位を付けない
-	width: 0px; // ❌
-	width: 0; // ✅
+	inline-size: 0px; // ❌
+	inline-size: 0; // ✅
 	// 単位は `px` `%` `em` `rem` `*v*`  を使用する
-	width: 100px; // ✅
-	height: 5em; // ✅
-	max-width: 50rem; // ✅
-	max-height: 100vw; // ✅
-	min-height: 100vh; // ✅
+	inline-size: 100px; // ✅
+	block-size: 5em; // ✅
+	max-inline-size: 50rem; // ✅
+	max-block-size: 100vw; // ✅
+	min-block-size: 100vh; // ✅
 	flex-basis: 100%; // ✅
 	// ただし `%` `*w*` の場合は何を基準にしているのかを明示的に `calc()` を使って指定する
-	width: 5%; // ❌
-	width: 50%; // ❌
+	inline-size: 5%; // ❌
+	inline-size: 50%; // ❌
 	flex-basis: 33.3%; // ❌
 	flex-basis: calc(100% / 3); // ✅ 明示的な三等分 「33.33333%」に変換されます
 	// ✅ ビューポートが320pxだったときに160pxになるvw値を表わす 「50vw」に変換される
-	height: calc(160 / 320 * 100vw);
+	block-size: calc(160 / 320 * 100vw);
 	// `100%` `100vw` `100vh` 以外の基準は意図がわかりにくいので避ける
-	max-width: calc(160 / 320 * 54.2vw); // ❌
-	min-height: calc(2vw / 2); // ❌
-	min-height: calc(50vh / 2); // ❌
+	max-inline-size: calc(160 / 320 * 54.2vw); // ❌
+	min-block-size: calc(2vw / 2); // ❌
+	min-block-size: calc(50vh / 2); // ❌
 	flex-basis: calc(105% / 3); // ❌
 	flex-basis: calc(120% / 3); // ❌
 	flex-basis: calc(200% / 3); // ❌
 	flex-basis: calc(1000% / 3); // ❌
 	flex: 0 1 calc(105% / 3); // ❌
 	// その他の単位は混乱を避けるため使用しない
-	width: 16ex; // ❌
-	width: 16pt; // ❌
-	width: 16cm; // ❌
+	inline-size: 16ex; // ❌
+	inline-size: 16pt; // ❌
+	inline-size: 16cm; // ❌
 
 	//
 	// 🎨 flexのルール

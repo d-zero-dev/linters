@@ -1,4 +1,5 @@
 module.exports = {
+	plugins: ['stylelint-use-logical'],
 	extends: ['stylelint-config-standard'],
 	rules: {
 		'at-rule-disallowed-list': null,
@@ -89,6 +90,9 @@ module.exports = {
 		'unit-no-unknown': true,
 		'value-keyword-case': null,
 		'value-no-vendor-prefix': true,
+
+		// Plugin stylelint-use-logical
+		'csstools/use-logical': 'always',
 
 		// Overwrite stylelint-config-standard
 		'custom-media-pattern': null,
