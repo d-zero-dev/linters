@@ -43,6 +43,7 @@ module.exports = {
 		'function-url-scheme-allowed-list': null,
 		'function-url-no-scheme-relative': true,
 		'function-url-quotes': 'always',
+		'import-notation': 'string',
 		'keyframe-declaration-no-important': true,
 		'length-zero-no-unit': true,
 		'max-nesting-depth': 8,
