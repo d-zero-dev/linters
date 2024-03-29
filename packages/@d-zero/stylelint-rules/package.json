@@ -23,6 +23,9 @@
 		"@d-zero/csstree-scss-syntax": "5.0.0-alpha.20",
 		"css-tree": "2.3.1",
 		"postcss-value-parser": "4.2.0",
-		"stylelint": "16.2.1"
+		"stylelint": "16.3.1"
+	},
+	"devDependencies": {
+		"postcss": "8.4.38"
 	}
 }
