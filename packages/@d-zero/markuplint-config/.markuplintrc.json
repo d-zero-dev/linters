@@ -4,6 +4,7 @@
 		".pug$": "@markuplint/pug-parser"
 	},
 	"rules": {
+		"character-reference": false,
 		"class-naming": {
 			"severity": "error",
 			"value": "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/",
