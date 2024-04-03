@@ -26,10 +26,17 @@
 	"words": [
 		"astrojs",
 		"ckeditor",
+		"execa",
 		"htdocs",
-		"tsconfigs",
+		"nocjsp",
+		"ress",
+
+		// Configurations
+		"lintrc",
 		"markuplintrc",
 		"stylelintrc",
+		"textlintrc",
+		"tsconfigs",
 		// Font
 		"FOUT",
 		"noto",

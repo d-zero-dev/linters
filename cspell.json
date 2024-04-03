@@ -2,13 +2,6 @@
 	"import": ["@d-zero/cspell-config"],
 	"words": [
 		//
-		"execa",
-		"htdocs",
-		"lintrc",
-		"markuplintrc",
-		"nocjsp",
-		"stylelintrc",
-		"textlintrc",
 		"unspaced"
 	]
 }
