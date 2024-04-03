@@ -6,14 +6,19 @@
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"private": false,
-	"type": "module",
 	"publishConfig": {
 		"access": "public"
 	},
+	"type": "module",
+	"exports": {
+		".": "./index.js",
+		"./base": "./base.js",
+		"./name": "./name.js",
+		"./pug": "./pug.js"
+	},
 	"files": [
-		".markuplintrc.js"
+		"*.js"
 	],
-	"main": ".markuplintrc.js",
 	"dependencies": {
 		"@markuplint/pug-parser": "4.3.0",
 		"markuplint": "4.4.0"

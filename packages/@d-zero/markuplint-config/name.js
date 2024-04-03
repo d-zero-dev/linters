@@ -1,10 +1,5 @@
 export default {
-	extends: ['markuplint:recommended'],
-	parser: {
-		'.pug$': '@markuplint/pug-parser',
-	},
 	rules: {
-		'character-reference': false,
 		'class-naming': {
 			severity: 'error',
 			value: '/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/',
@@ -12,14 +7,6 @@ export default {
 				'クラス名の形式はディーゼロのコーディングガイドラインに則って命名する必要があります。 http://tmpl.d-zero.com/__guideline/coding-guideline/html.html#%F0%9F%92%8E-%E3%82%B3%E3%83%B3%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88',
 		},
 	},
-	nodeRules: [
-		{
-			selector: "script[src^='https://']",
-			rules: {
-				'required-attr': false,
-			},
-		},
-	],
 	childNodeRules: [
 		{
 			regexSelector: {
