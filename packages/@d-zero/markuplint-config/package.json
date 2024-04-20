@@ -14,7 +14,7 @@
 	],
 	"main": ".markuplintrc.json",
 	"dependencies": {
-		"@markuplint/pug-parser": "4.3.0",
+		"@markuplint/pug-parser": "4.5.1",
 		"markuplint": "4.4.0"
 	}
 }
