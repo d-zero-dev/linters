@@ -10,7 +10,7 @@
 		"access": "public"
 	},
 	"engines": {
-		"node": ">=22.0.0"
+		"node": ">=20.12"
 	},
 	"dependencies": {
 		"@d-zero/cspell-config": "5.0.0-alpha.23",
