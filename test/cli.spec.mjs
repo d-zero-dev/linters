@@ -83,23 +83,41 @@ describe('markuplint', () => {
 });
 
 describe('stylelint', () => {
-	test('Class Name', async () => {
+	async function stylelint(filePath, configFilePath) {
 		const { stdout, stderr } = await execa(
 			'yarn',
 			[
 				'run',
 				'stylelint',
-				path.normalize('test/fixtures/stylelint/class-name.scss'),
+				filePath,
+				configFilePath ? ['-c', configFilePath] : [],
 				'-f',
 				'json',
-			],
+			].flat(),
 			{
 				reject: false,
 			},
 		);
 
 		const json = stderr.split('error Command failed')[0] ?? stdout;
-		const violations = JSON.parse(json);
+		let violations;
+		try {
+			violations = JSON.parse(json);
+		} catch (error) {
+			if (error instanceof SyntaxError) {
+				throw new TypeError(`Output is not JSON: ${json}`, { ...error });
+			}
+			throw error;
+		}
+
+		return { violations };
+	}
+
+	test('Class Name', async () => {
+		const { violations } = await stylelint(
+			path.normalize('test/fixtures/stylelint/class-name.scss'),
+		);
+
 		const formatted = violations
 			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
 			.toSorted((a, b) => a.line - b.line)
@@ -117,30 +135,10 @@ describe('stylelint', () => {
 	});
 
 	test('Value and Unit', async () => {
-		const { stdout, stderr } = await execa(
-			'yarn',
-			[
-				'run',
-				'stylelint',
-				path.normalize('test/fixtures/stylelint/unit.scss'),
-				'-c',
-				path.normalize('test/fixtures/stylelint/.stylelintrc.unit.json'),
-				'-f',
-				'json',
-			],
-			{
-				reject: false,
-			},
+		const { violations } = await stylelint(
+			path.normalize('test/fixtures/stylelint/unit.scss'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.unit.json'),
 		);
-
-		const json = stderr.split('error Command failed')[0] ?? stdout;
-
-		let violations;
-		try {
-			violations = JSON.parse(json);
-		} catch {
-			throw new Error(stderr);
-		}
 
 		const formatted = violations
 			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
