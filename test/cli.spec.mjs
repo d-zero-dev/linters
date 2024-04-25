@@ -96,6 +96,10 @@ describe('stylelint', () => {
 			].flat(),
 			{
 				reject: false,
+				env: {
+					// For `DeprecationWarning: fs.Stats constructor is deprecated.` in `stylelint`
+					NODE_NO_WARNINGS: '1',
+				},
 			},
 		);
 
