@@ -9,6 +9,9 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
 	"dependencies": {
 		"@d-zero/cspell-config": "5.0.0-alpha.22",
 		"@d-zero/eslint-config": "5.0.0-alpha.22",
