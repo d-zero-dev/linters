@@ -25,16 +25,16 @@
 		"up": "yarn upgrade-interactive --latest"
 	},
 	"devDependencies": {
-		"@d-zero/tsconfig": "0.1.1",
-		"@secretlint/secretlint-rule-preset-recommend": "8.1.2",
+		"@d-zero/tsconfig": "0.2.0",
+		"@secretlint/secretlint-rule-preset-recommend": "8.2.3",
 		"execa": "8.0.1",
 		"husky": "9.0.11",
 		"lerna": "8.1.2",
 		"npm-run-all2": "6.1.2",
 		"prettier": "3.2.5",
-		"secretlint": "8.1.2",
-		"typescript": "5.4.3",
-		"vitest": "1.4.0"
+		"secretlint": "8.2.3",
+		"typescript": "5.4.5",
+		"vitest": "1.5.1"
 	},
 	"volta": {
 		"node": "20.12.0",
