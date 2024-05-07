@@ -26,15 +26,15 @@
 	},
 	"devDependencies": {
 		"@d-zero/tsconfig": "0.2.0",
-		"@secretlint/secretlint-rule-preset-recommend": "8.2.3",
+		"@secretlint/secretlint-rule-preset-recommend": "8.2.4",
 		"execa": "8.0.1",
 		"husky": "9.0.11",
 		"lerna": "8.1.2",
 		"npm-run-all2": "6.1.2",
 		"prettier": "3.2.5",
-		"secretlint": "8.2.3",
+		"secretlint": "8.2.4",
 		"typescript": "5.4.5",
-		"vitest": "1.5.2"
+		"vitest": "1.6.0"
 	},
 	"volta": {
 		"node": "22.0.0",
