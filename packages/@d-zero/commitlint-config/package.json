@@ -1,0 +1,27 @@
+{
+	"name": "@d-zero/commitlint-config",
+	"version": "5.0.0-alpha.23",
+	"description": "Configurations of commitlint",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"files": [
+		"index.js"
+	],
+	"exports": {
+		".": "./index.js"
+	},
+	"dependencies": {
+		"@commitlint/cli": "19.3.0",
+		"@commitlint/config-conventional": "19.2.2",
+		"@d-zero/cz-config": "5.0.0-alpha.23"
+	}
+}
