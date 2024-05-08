@@ -5,6 +5,7 @@ module.exports = [
 	...monorepoScopes([/^@d-zero\//i, /-config$/i]),
 
 	// Others
+	'repo',
 	'release',
 	'deps',
 	'changelog',
