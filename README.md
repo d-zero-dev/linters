@@ -34,7 +34,7 @@
   - [yarn](https://yarnpkg.com/)のバージョンは[`package.json`](./package.json)に記載しています
   - このバージョンは[Renovate](https://www.mend.io/renovate/)によってアップデートされます
 - [Commitizen](https://github.com/commitizen/cz-cli)を利用してコミットメッセージを作ります。メッセージは[_commitlint_](https://commitlint.js.org/)によってチェックされます。
-- [**actionlint**](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
+- [actionlint](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
 
 ### メンテ用コマンド
 
@@ -43,7 +43,7 @@
 | `yarn build` | 各パッケージのビルドを行います                                                         |
 | `yarn lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
 | `yarn test`  | テスト（*Vitest*を実行します）                                                         |
-| `yarn co`    | Gitコミットを**Commitizen**経由で実行します                                            |
+| `yarn co`    | Gitコミットを*Commitizen*経由で実行します                                              |
 
 ---
 
