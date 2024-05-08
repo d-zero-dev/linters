@@ -20,6 +20,8 @@
 
 | パッケージ名                                                               | 内容                                                                                                                                                                                                            |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@d-zero/commitlint-config`](./packages/%40d-zero/commitlint-config/)     | [_commitlint_](https://commitlint.js.org/)の設定ファイル（[`@d-zero/linters`](./packages/%40d-zero/linters/)には含まれません）                                                                                  |
+| [`@d-zero/cz-config`](./packages/%40d-zero/cz-config/)                     | [_cz-customizable_](https://github.com/leoforfree/cz-customizable)の設定ファイル（[`@d-zero/linters`](./packages/%40d-zero/linters/)には含まれません）                                                          |
 | [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
 | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)         | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)に設定されているディーゼロ独自のStylelintルール                                                                                             |
 
@@ -31,6 +33,7 @@
   - [Node.js](https://nodejs.org/)のバージョンは[`package.json`](./package.json)に記載しています
   - [yarn](https://yarnpkg.com/)のバージョンは[`package.json`](./package.json)に記載しています
   - このバージョンは[Renovate](https://www.mend.io/renovate/)によってアップデートされます
+- [Commitizen](https://github.com/commitizen/cz-cli)を利用してコミットメッセージを作ります。メッセージは[_commitlint_](https://commitlint.js.org/)によってチェックされます。
 - [**actionlint**](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
 
 ### メンテ用コマンド
@@ -40,6 +43,7 @@
 | `yarn build` | 各パッケージのビルドを行います                                                         |
 | `yarn lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
 | `yarn test`  | テスト（*Vitest*を実行します）                                                         |
+| `yarn co`    | Gitコミットを**Commitizen**経由で実行します                                            |
 
 ---
 
