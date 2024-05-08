@@ -22,7 +22,17 @@
 		"lint:actionlint": "actionlint .github/workflows/*.yml",
 		"release": "lerna publish --exact --force-publish",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
+		"commit": "cz",
+		"co": "cz",
 		"up": "yarn upgrade-interactive --latest"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": "./node_modules/@d-zero/cz-config"
+		}
 	},
 	"devDependencies": {
 		"@d-zero/tsconfig": "0.2.0",
