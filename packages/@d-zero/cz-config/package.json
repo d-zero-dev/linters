@@ -1,0 +1,27 @@
+{
+	"name": "@d-zero/cz-config",
+	"version": "5.0.0-alpha.23",
+	"description": "Configurations of cz-customizable",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"type": "commonjs",
+	"exports": {
+		".": "./index.js",
+		"./scopes": "./scopes.js"
+	},
+	"files": [
+		"*.js"
+	],
+	"dependencies": {
+		"commitizen": "4.3.0",
+		"cz-customizable": "7.0.0"
+	}
+}
