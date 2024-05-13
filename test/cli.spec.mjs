@@ -15,12 +15,7 @@ describe('ESLint', () => {
 	test('sort-class-members', async () => {
 		const { stdout } = await execa(
 			'yarn',
-			[
-				'eslint',
-				path.normalize('test/fixtures/eslint/sort-class-members.ts'),
-				'-f',
-				'compact',
-			],
+			['eslint', 'test/fixtures/eslint/sort-class-members.ts', '-f', 'compact'],
 			{
 				reject: false,
 			},
@@ -28,7 +23,9 @@ describe('ESLint', () => {
 		const lines = stdout.split('\n');
 		const result = lines
 			.filter((line) => line.includes('sort-class-members/sort-class-members'))
-			.map((line) => line.replace(process.cwd() + path.sep, ''));
+			.map((line) =>
+				line.replace(process.cwd() + path.sep, '').replaceAll(path.sep, '/'),
+			);
 
 		expect(result).toStrictEqual([
 			'test/fixtures/eslint/sort-class-members.ts: line 3, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
@@ -54,14 +51,7 @@ describe('markuplint', () => {
 	test('CLI', async () => {
 		const { stdout } = await execa(
 			'yarn',
-			[
-				'markuplint',
-				path.normalize('test/fixtures/markuplint/*'),
-				'--format',
-				'json',
-				'--locale',
-				'en',
-			],
+			['markuplint', 'test/fixtures/markuplint/*', '--format', 'json', '--locale', 'en'],
 			{
 				reject: false,
 			},
