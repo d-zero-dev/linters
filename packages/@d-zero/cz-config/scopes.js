@@ -2,7 +2,7 @@ const monorepoScopes = require('./monorepo-scopes');
 
 module.exports = [
 	// Packages
-	...monorepoScopes([/^@d-zero\//i, /-config$/i]),
+	...monorepoScopes([/^@[a-z][\w-]+\//i, /-config$/i]),
 
 	// Others
 	'repo',
