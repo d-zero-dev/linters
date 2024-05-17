@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.27](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.26...v5.0.0-alpha.27) (2024-05-17)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-jsdoc to v48.2.5 ([0cbb8a2](https://github.com/d-zero-dev/linters/commit/0cbb8a26e24b230a55c9f252894943ff9e8d8c04))
+
+### Features
+
+- **cz:** remove namespace from a monorepo package name ([70b0c1c](https://github.com/d-zero-dev/linters/commit/70b0c1c3217ab98d5ceb12b79293c3391c94b4ce))
+
 # [5.0.0-alpha.26](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.25...v5.0.0-alpha.26) (2024-05-14)
 
 **Note:** Version bump only for package linters
