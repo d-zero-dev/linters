@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.28](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.27...v5.0.0-alpha.28) (2024-05-21)
+
+### Features
+
+- **cz:** add ui types as `@d-zero/cz-config/ui` ([a65380c](https://github.com/d-zero-dev/linters/commit/a65380cb4198d6a8d645dc639d8407d9bc2105b6))
+
 # [5.0.0-alpha.27](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.26...v5.0.0-alpha.27) (2024-05-17)
 
 ### Features
