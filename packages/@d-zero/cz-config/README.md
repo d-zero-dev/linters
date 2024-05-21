@@ -22,3 +22,12 @@ yarn add -D @d-zero/cz-config
 	}
 }
 ```
+
+UI用のコミットタイプ利用したい場合は`@d-zero/cz-config/ui`に変更します。
+
+```diff
+		"cz-customizable": {
+-			"config": "./node_modules/@d-zero/cz-config"
++			"config": "./node_modules/@d-zero/cz-config/ui"
+		}
+```
