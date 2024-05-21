@@ -1,37 +1,15 @@
 const scopes = require('./scopes');
+const types = require('./types');
 
 module.exports = {
 	types: [
-		{
-			value: 'feat',
-			name: 'feat:     機能追加',
-			title: 'Features',
-		},
-		{
-			value: 'fix',
-			name: 'fix:      バグ修正',
-			title: 'Bug Fixes',
-		},
-		{
-			value: 'docs',
-			name: 'docs:     ドキュメントのみの変更',
-			title: 'Documentation',
-		},
-		{
-			value: 'refactor',
-			name: 'refactor: バグの修正や機能の追加ではないコードの変更',
-			title: 'Code Refactoring',
-		},
-		{
-			value: 'test',
-			name: 'test:     テストの追加や既存のテストの修正',
-			title: 'Tests',
-		},
-		{
-			value: 'chore',
-			name: 'chore:    ビルドプロセスや補助ツールやライブラリの変更',
-			title: 'Chores',
-		},
+		// Default
+		types.feat,
+		types.fix,
+		types.docs,
+		types.refactor,
+		types.test,
+		types.chore,
 	],
 	scopes: scopes.map((scope) => ({
 		name: scope,
