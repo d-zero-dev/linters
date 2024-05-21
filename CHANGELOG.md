@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.30](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.29...v5.0.0-alpha.30) (2024-05-21)
+
+### Bug Fixes
+
+- **commitlint:** fix missing file packaging ([3307b42](https://github.com/d-zero-dev/linters/commit/3307b4293c3079daefbc53362ee282ff3a60da27))
+
 # [5.0.0-alpha.29](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.28...v5.0.0-alpha.29) (2024-05-21)
 
 ### Features
