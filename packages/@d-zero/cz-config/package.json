@@ -15,6 +15,7 @@
 	"type": "commonjs",
 	"exports": {
 		".": "./index.js",
+		"./ui": "./ui.js",
 		"./scopes": "./scopes.js"
 	},
 	"files": [

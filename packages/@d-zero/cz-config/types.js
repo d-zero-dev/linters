@@ -9,6 +9,16 @@ module.exports = {
 		name: 'fix:      バグ修正',
 		title: 'Bug Fixes',
 	},
+	ui: {
+		value: 'ui',
+		name: 'ui        スタイル以外のUIの変更',
+		title: 'Improvements to the UI',
+	},
+	style: {
+		value: 'style',
+		name: 'style     UIのスタイル変更',
+		title: 'Styling',
+	},
 	docs: {
 		value: 'docs',
 		name: 'docs:     ドキュメントのみの変更',
