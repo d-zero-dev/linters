@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/cz-config",
-	"version": "5.0.0-alpha.28",
+	"version": "5.0.0-alpha.29",
 	"description": "Configurations of cz-customizable",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",

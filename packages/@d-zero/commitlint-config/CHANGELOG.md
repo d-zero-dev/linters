@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.29](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.28...v5.0.0-alpha.29) (2024-05-21)
+
+### Features
+
+- **commitlint:** add autoloading `cz-config` ([e890781](https://github.com/d-zero-dev/linters/commit/e890781abd457b3e7c0eaf3614a600181efaf8b3))
+
 # [5.0.0-alpha.28](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.27...v5.0.0-alpha.28) (2024-05-21)
 
 **Note:** Version bump only for package @d-zero/commitlint-config
