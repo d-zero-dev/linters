@@ -1,3 +1,6 @@
+/**
+ * @type {import('@markuplint/ml-config').Config}
+ */
 export default {
 	rules: {
 		'class-naming': {

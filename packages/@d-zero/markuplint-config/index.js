@@ -2,6 +2,9 @@ import base from './base.js';
 import name from './name.js';
 import pug from './pug.js';
 
+/**
+ * @type {import('@markuplint/ml-config').Config}
+ */
 export default {
 	...base,
 	...pug,
