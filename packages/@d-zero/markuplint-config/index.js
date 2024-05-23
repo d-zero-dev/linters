@@ -31,4 +31,8 @@ export default {
 		...(pug.childNodeRules ?? []),
 		...(name.childNodeRules ?? []),
 	],
+	overrideMode: 'merge',
+	overrides: {
+		...pug.overrides,
+	},
 };
