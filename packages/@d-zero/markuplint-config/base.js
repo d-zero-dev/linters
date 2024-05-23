@@ -1,8 +1,5 @@
 export default {
-	extends: ['markuplint:recommended'],
-	rules: {
-		'character-reference': false,
-	},
+	extends: ['markuplint:recommended-static-html'],
 	nodeRules: [
 		{
 			selector: "script[src^='https://']",
