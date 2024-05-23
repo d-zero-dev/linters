@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.8.2 ([84924da](https://github.com/d-zero-dev/linters/commit/84924dad918b7974aee78aa3dc6114ef04cdd2d6))
+- **deps:** update dependency eslint-plugin-regexp to v2.6.0 ([7f9650a](https://github.com/d-zero-dev/linters/commit/7f9650a96eaee18c059557574e6b2b8357f73054))
+- **deps:** update dependency lint-staged to v15.2.4 ([12d17f5](https://github.com/d-zero-dev/linters/commit/12d17f5a03aa2c0c50f052e8422db031fa79e7b3))
+
+### Features
+
+- **markuplint:** replace `recommended` with `recommended-static-html` ([6207ec8](https://github.com/d-zero-dev/linters/commit/6207ec83c2df1fe013b63aa58b57bd9690440870))
+
 # [5.0.0-alpha.30](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.29...v5.0.0-alpha.30) (2024-05-21)
 
 ### Bug Fixes

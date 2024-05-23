@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-regexp to v2.6.0 ([7f9650a](https://github.com/d-zero-dev/linters/commit/7f9650a96eaee18c059557574e6b2b8357f73054))
+
 # [5.0.0-alpha.30](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.29...v5.0.0-alpha.30) (2024-05-21)
 
 **Note:** Version bump only for package @d-zero/eslint-config

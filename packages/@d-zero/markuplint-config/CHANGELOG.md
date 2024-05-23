@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
+
+### Features
+
+- **markuplint:** replace `recommended` with `recommended-static-html` ([6207ec8](https://github.com/d-zero-dev/linters/commit/6207ec83c2df1fe013b63aa58b57bd9690440870))
+
 # [5.0.0-alpha.30](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.29...v5.0.0-alpha.30) (2024-05-21)
 
 **Note:** Version bump only for package @d-zero/markuplint-config

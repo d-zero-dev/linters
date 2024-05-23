@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/textlint-config",
-	"version": "5.0.0-alpha.30",
+	"version": "5.0.0-alpha.31",
 	"description": "Configurations of textlint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
