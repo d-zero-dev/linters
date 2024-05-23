@@ -65,6 +65,7 @@ describe('markuplint', () => {
 		expect(formatted).toStrictEqual([
 			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
+			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
 			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
