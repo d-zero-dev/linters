@@ -10,8 +10,8 @@ module.exports = {
 	rules: {
 		'declaration-property-value-disallowed-list': {
 			'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
-				['/#[0-9a-f]{3}/', '/(?:rgb|hsl)a?\\(.+?\\)/'],
-			content: ['/^\\"\\\\[0-9a-fA-F]{1,6}\\"$/'],
+				['/#[0-9a-f]{3}/', String.raw`/(?:rgb|hsl)a?\(.+?\)/`],
+			content: [String.raw`/^\"\\[0-9a-fA-F]{1,6}\"$/`],
 		},
 		'declaration-property-value-allowed-list': {
 			'font-size': [
@@ -19,16 +19,16 @@ module.exports = {
 				'$root-font-size',
 				'$base-font-size',
 				'1em',
-				'/^calc\\(\\s*(?:\\$[a-z_][a-z0-9_-]*|(?:[0-9]*\\.)?[0-9]+) \\/ (?:\\$[a-z_][a-z0-9_-]*|(?:[0-9]*\\.)?[0-9]+) \\* (?:1em|100vw)\\s*\\)$/',
-				'/^(?:[0-9]*\\.)?[0-9]+rem/',
-				'/^clamp\\(/',
+				String.raw`/^calc\(\s*(?:\$[a-z_][a-z0-9_-]*|(?:[0-9]*\.)?[0-9]+) \/ (?:\$[a-z_][a-z0-9_-]*|(?:[0-9]*\.)?[0-9]+) \* (?:1em|100vw)\s*\)$/`,
+				String.raw`/^(?:[0-9]*\.)?[0-9]+rem/`,
+				String.raw`/^clamp\(/`,
 				// Custom properties
-				'/^var\\(/',
+				String.raw`/^var\(/`,
 			],
 			flex: [
-				'/^\\s*[01]\\s+[01]\\s.+/',
+				String.raw`/^\s*[01]\s+[01]\s.+/`,
 				// Custom properties
-				'/^var\\(/',
+				String.raw`/^var\(/`,
 			],
 			'flex-grow': ['0', '1'],
 			'flex-shrink': ['0', '1'],
@@ -51,7 +51,7 @@ module.exports = {
 		'value-keyword-case': [
 			'lower',
 			{
-				ignoreProperties: ['/^\\$font-family-/'],
+				ignoreProperties: [String.raw`/^\$font-family-/`],
 			},
 		],
 
