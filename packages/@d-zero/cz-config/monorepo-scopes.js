@@ -9,7 +9,11 @@ const path = require('node:path');
  */
 module.exports = function (removes) {
 	const cwd = process.cwd();
-	const lerna = JSON.parse(fs.readFileSync(path.resolve(cwd, 'lerna.json'), 'utf8'));
+	const lernaPath = path.resolve(cwd, 'lerna.json');
+	if (!fs.existsSync(lernaPath)) {
+		return [];
+	}
+	const lerna = JSON.parse(fs.readFileSync(lernaPath, 'utf8'));
 	const packages = fs.globSync(lerna.packages);
 	return packages.map((packagePath) => {
 		const pkg = JSON.parse(
