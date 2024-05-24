@@ -54,6 +54,7 @@ module.exports = {
 		// Unicorn
 		'unicorn/consistent-destructuring': 0,
 		'unicorn/consistent-function-scoping': 0,
+		'unicorn/no-anonymous-default-export': 0,
 		'unicorn/no-array-callback-reference': 0,
 		'unicorn/no-nested-ternary': 0,
 		'unicorn/no-null': 0,
