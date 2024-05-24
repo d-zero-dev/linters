@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.32](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.31...v5.0.0-alpha.32) (2024-05-24)
+
+### Bug Fixes
+
+- **cz:** fix for env no use lerna ([789286d](https://github.com/d-zero-dev/linters/commit/789286dde4da56d99c169d537c995c37ba724243))
+
 # [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
 
 **Note:** Version bump only for package @d-zero/cz-config

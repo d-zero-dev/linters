@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.32](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.31...v5.0.0-alpha.32) (2024-05-24)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
 # [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
 
 **Note:** Version bump only for package @d-zero/csstree-scss-syntax

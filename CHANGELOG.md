@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.32](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.31...v5.0.0-alpha.32) (2024-05-24)
+
+### Bug Fixes
+
+- **cz:** fix for env no use lerna ([789286d](https://github.com/d-zero-dev/linters/commit/789286dde4da56d99c169d537c995c37ba724243))
+- **deps:** update dependency cspell to v8.8.3 ([0942ccb](https://github.com/d-zero-dev/linters/commit/0942ccba117082350bf742f7efbcf6054198b084))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.2.6 ([aed794f](https://github.com/d-zero-dev/linters/commit/aed794f96417febd0a4c898a947c4eeeafb74fc1))
+- **deps:** update dependency eslint-plugin-unicorn to v53 ([c486d08](https://github.com/d-zero-dev/linters/commit/c486d08a22fa225e17f62b6b706a9edfb2c47c84))
+- **deps:** update dependency stylelint to v16.6.0 ([e772740](https://github.com/d-zero-dev/linters/commit/e772740ea121a60cefcb8a5e2086ab5ec0c0afc2))
+
+### Features
+
+- **eslint:** disable `unicorn/no-anonymous-default-export` with unicorn update ([e43dd27](https://github.com/d-zero-dev/linters/commit/e43dd2714808827f2d5217821bfb5b9fc715e756))
+
 # [5.0.0-alpha.31](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.30...v5.0.0-alpha.31) (2024-05-23)
 
 ### Bug Fixes
