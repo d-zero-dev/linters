@@ -29,7 +29,7 @@
 		"execa",
 		"htdocs",
 		"nocjsp",
-		"ress",
+		"destyle",
 
 		// Configurations
 		"commitlintrc",
