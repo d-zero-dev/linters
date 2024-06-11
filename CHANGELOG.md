@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.35](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.34...v5.0.0-alpha.35) (2024-06-11)
+
+### Bug Fixes
+
+- **deps:** update typescript-eslint monorepo to v7.13.0 ([f151d1b](https://github.com/d-zero-dev/linters/commit/f151d1b21d00993873cf160279faf467722ae838))
+
+### Features
+
+- **cspell:** replace `ress` with `destyle` ([de19be6](https://github.com/d-zero-dev/linters/commit/de19be6eb0436d0786032f1d5822f8a72cfe1cf2))
+
 # [5.0.0-alpha.34](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.33...v5.0.0-alpha.34) (2024-06-10)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/cspell-config",
-	"version": "5.0.0-alpha.34",
+	"version": "5.0.0-alpha.35",
 	"description": "Configurations of CSpell",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
