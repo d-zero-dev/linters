@@ -3,5 +3,12 @@
 	"words": [
 		//
 		"unspaced"
+	],
+	"overrides": [
+		{
+			// Past supported words
+			"filename": "CHANGELOG.md",
+			"words": ["ress"]
+		}
 	]
 }
