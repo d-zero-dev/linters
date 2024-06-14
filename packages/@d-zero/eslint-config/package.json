@@ -35,6 +35,6 @@
 		"eslint-plugin-jsdoc": "48.2.11",
 		"eslint-plugin-regexp": "2.6.0",
 		"eslint-plugin-sort-class-members": "1.20.0",
-		"eslint-plugin-unicorn": "53.0.0"
+		"eslint-plugin-unicorn": "54.0.0"
 	}
 }
