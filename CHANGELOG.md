@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.36](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.35...v5.0.0-alpha.36) (2024-06-24)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.9.0 ([a457337](https://github.com/d-zero-dev/linters/commit/a457337829d1cea1715e01b2257c199ac9b275d6))
+- **deps:** update dependency cspell to v8.9.1 ([8bc1419](https://github.com/d-zero-dev/linters/commit/8bc14194618e866593efe1277ce171938be51806))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.2.11 ([a7f0c6f](https://github.com/d-zero-dev/linters/commit/a7f0c6fd36c325a608ec759bc448e79cae277bc5))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.2.12 ([fe766a8](https://github.com/d-zero-dev/linters/commit/fe766a8584f5e68bac499639c6e56196e6af4fde))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.3.0 ([510c382](https://github.com/d-zero-dev/linters/commit/510c3823370a8dde69c8fa241bbe46c50a48e3d7))
+- **deps:** update dependency eslint-plugin-unicorn to v54 ([fad0d15](https://github.com/d-zero-dev/linters/commit/fad0d1558582a0a5d03495b4f74cef2bca671bc5))
+- **deps:** update dependency lint-staged to v15.2.6 ([fe93b93](https://github.com/d-zero-dev/linters/commit/fe93b933977e7b9d99060c8b2d6f7c20cdca715c))
+- **deps:** update dependency lint-staged to v15.2.7 ([d4a759a](https://github.com/d-zero-dev/linters/commit/d4a759afff5a51dd0b58bdf530b2e9309ff3bb8b))
+- **deps:** update dependency prettier to v3.3.2 ([477485a](https://github.com/d-zero-dev/linters/commit/477485a35823fbe93c7267320db1c871b6655e6f))
+- **deps:** update dependency stylelint-config-standard to v36.0.1 ([a18e4bd](https://github.com/d-zero-dev/linters/commit/a18e4bd5ae70e9d5a7cf72d35ae176b59b538258))
+- **deps:** update dependency stylelint-scss to v6.3.2 ([5077608](https://github.com/d-zero-dev/linters/commit/50776087ad61842cd2296d805d4f976ba154a9f7))
+- **deps:** update typescript-eslint monorepo to v7.13.1 ([22a54fd](https://github.com/d-zero-dev/linters/commit/22a54fd28566655a4e8fa7738d1fd503f7c7e18c))
+
 # [5.0.0-alpha.35](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.34...v5.0.0-alpha.35) (2024-06-11)
 
 ### Bug Fixes
