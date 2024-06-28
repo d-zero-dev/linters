@@ -7,7 +7,7 @@ import { NAMESPACE, REPOSITORY_URL } from '../const.js';
 type Settings<P, S> = {
 	name: string;
 	rule: (ruleName: string, messages: Messages) => RuleBase<P, S>;
-} & Messages;
+} & Partial<Messages>;
 
 type Messages = {
 	rejected: (...values: string[]) => string;
@@ -22,7 +22,7 @@ export function createRule<P = any, S = any>(setting: Settings<P, S>) {
 	};
 
 	const messages = stylelint.utils.ruleMessages(ruleName, {
-		rejected: setting.rejected,
+		rejected: setting.rejected ?? (() => ''),
 	});
 
 	const ruleBase = setting.rule(ruleName, messages);

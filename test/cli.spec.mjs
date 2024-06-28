@@ -175,4 +175,22 @@ describe('stylelint', () => {
 			'test/fixtures/stylelint/unit.scss:101:15 Unexpected value "2" for property "flex-shrink" (declaration-property-value-allowed-list)',
 		]);
 	});
+
+	test('Component', async () => {
+		const { violations } = await stylelint(
+			path.normalize('test/fixtures/stylelint/_c-component.scss'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
+		);
+
+		const formatted = violations
+			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
+			.toSorted((a, b) => a.line - b.line)
+			.toSorted((a, b) => a.source - b.source)
+			.map(
+				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
+			);
+		expect(formatted).toStrictEqual([
+			'test/fixtures/stylelint/_c-component.scss:8:1 1つのファイルに定義できるコンポーネントクラスは1つだけです',
+		]);
+	});
 });

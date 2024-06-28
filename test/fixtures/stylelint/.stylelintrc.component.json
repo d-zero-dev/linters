@@ -1,0 +1,14 @@
+{
+	"extends": ["@d-zero/stylelint-config/scss"],
+	"plugins": ["@d-zero/stylelint-rules"],
+	"overrides": [
+		{
+			"files": ["_c-component.scss"],
+			"rules": {
+				"@d-zero/component": {
+					"allowMultipleSelectors": true
+				}
+			}
+		}
+	]
+}
