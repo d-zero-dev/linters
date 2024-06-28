@@ -14,6 +14,8 @@
 	],
 	"github.copilot.enable": {
 		"*": true,
-		".env": false
+		".env": false,
+		"markdown": true,
+		"plaintext": true
 	}
 }
