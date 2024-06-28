@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.37](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.36...v5.0.0-alpha.37) (2024-06-28)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.5 ([a68d86f](https://github.com/d-zero-dev/linters/commit/a68d86f54c32a0d04eb31fd3f3d92aa191ff364b))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.4.0 ([a93a884](https://github.com/d-zero-dev/linters/commit/a93a88486daa78bf02472cd43fe6962aa9b02ea7))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.5.0 ([9695b51](https://github.com/d-zero-dev/linters/commit/9695b51d69c9682bc9d8be4da1aa92fdb3dc3b5e))
+- **deps:** update dependency markuplint to v4.9.2 ([e3f3f62](https://github.com/d-zero-dev/linters/commit/e3f3f625f326bbf7520e345dbfdcb2471f5b1f71))
+- **deps:** update typescript-eslint monorepo to v7.14.1 ([a89a018](https://github.com/d-zero-dev/linters/commit/a89a018475340fa0041a42379f8806a038c6836c))
+
+### Features
+
+- **stylelint-rules:** `@d-zero/component`ルールの追加 ([2fd23f4](https://github.com/d-zero-dev/linters/commit/2fd23f42fa663a570c4e6537559479717ab5785d))
+
 # [5.0.0-alpha.36](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.35...v5.0.0-alpha.36) (2024-06-24)
 
 ### Bug Fixes

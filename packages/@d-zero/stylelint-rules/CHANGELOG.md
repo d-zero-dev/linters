@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.37](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.36...v5.0.0-alpha.37) (2024-06-28)
+
+### Features
+
+- **stylelint-rules:** `@d-zero/component`ルールの追加 ([2fd23f4](https://github.com/d-zero-dev/linters/commit/2fd23f42fa663a570c4e6537559479717ab5785d))
+
 # [5.0.0-alpha.36](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.35...v5.0.0-alpha.36) (2024-06-24)
 
 **Note:** Version bump only for package @d-zero/stylelint-rules
