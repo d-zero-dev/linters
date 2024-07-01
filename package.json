@@ -45,7 +45,7 @@
 		"npm-run-all2": "6.2.0",
 		"prettier": "3.3.2",
 		"secretlint": "8.2.4",
-		"typescript": "5.5.2",
+		"typescript": "5.5.3",
 		"vitest": "1.6.0"
 	},
 	"volta": {
