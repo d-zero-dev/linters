@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import { describe, test, expect } from 'vitest';
 
-import lintStagedConfigGenerator from './index.mjs';
+import lintStagedConfigGenerator from './index.js';
 
 describe('lintStagedConfigGenerator', () => {
 	const defaultConfig = lintStagedConfigGenerator();
@@ -15,6 +15,7 @@ describe('lintStagedConfigGenerator', () => {
 			),
 		).toStrictEqual([
 			'prettier --write "./README.md"',
+			'textlint "./README.md"',
 			'cspell --no-must-find-files --show-suggestions "./README.md"',
 		]);
 	});

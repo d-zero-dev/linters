@@ -13,15 +13,20 @@
 		"node": ">=22.0.0"
 	},
 	"type": "module",
-	"files": [
-		"index.mjs",
-		"types.ts"
-	],
 	"exports": {
-		"import": "./index.mjs",
-		"types": "./types.ts"
+		"import": "./dist/index.js"
+	},
+	"files": [
+		"src"
+	],
+	"scripts": {
+		"build": "tsc"
 	},
 	"dependencies": {
-		"lint-staged": "15.2.7"
+		"lint-staged": "15.2.7",
+		"micromatch": "4.0.7"
+	},
+	"devDependencies": {
+		"@types/micromatch": "4.0.9"
 	}
 }
