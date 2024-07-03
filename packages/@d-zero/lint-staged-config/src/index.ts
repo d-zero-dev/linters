@@ -7,15 +7,30 @@ import micromatch from 'micromatch';
 import { commands } from './commands.js';
 import { defaultMapping } from './default-mapping.js';
 
+export interface DirectoryOptions {
+	/**
+	 * ファイルを検索するディレクトリ
+	 */
+	dir?: string;
+
+	/**
+	 * 除外するファイルのパターン
+	 */
+	ignore?: string[];
+}
+
 export default function (
-	dir?: string,
+	dirOptions?: string | DirectoryOptions,
 	mapping?: CommandMappings,
 ): LintStagedCommandMapper {
 	return (allStagedFiles) => {
 		const commandList: string[] = [];
 		const cwd = process.cwd();
 
-		dir = dir
+		const dir = typeof dirOptions === 'string' ? dirOptions : dirOptions?.dir;
+		const ignore = typeof dirOptions === 'string' ? null : dirOptions?.ignore;
+
+		const baseDir = dir
 			? // 絶対パスかどうか
 				path.isAbsolute(dir)
 				? // 絶対パスならそのまま
@@ -36,12 +51,16 @@ export default function (
 				}
 
 				const pattern = path
-					.resolve(dir, '**', `{*.${ext},.*.${ext}}`)
+					.resolve(baseDir, '**', `{*.${ext},.*.${ext}}`)
 					.replaceAll(path.sep, '/');
 
 				const files = allStagedFiles.map((f) => f.replaceAll(path.sep, '/'));
 
-				const targetFiles = micromatch(files, pattern);
+				let targetFiles = micromatch(files, pattern);
+
+				if (ignore) {
+					targetFiles = micromatch.not(targetFiles, ignore);
+				}
 
 				if (targetFiles.length <= 0) {
 					continue;

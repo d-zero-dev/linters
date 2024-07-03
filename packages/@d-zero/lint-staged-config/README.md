@@ -21,9 +21,14 @@ export default lintStagedConfigGenerator();
 
 ```js
 import lintStagedConfigGenerator, { defaultMapping } from '@d-zero/lint-staged-config';
-export default lintStagedConfigGenerator(process.cwd(), {
-	...defaultMapping,
-	// 例: PHPファイルに対して`markuplint`、`prettier`、`cspell`を実行する
-	php: ['markuplint', 'prettier', 'cspell'],
-});
+export default lintStagedConfigGenerator(
+	{
+		ignore: [path.resolve(process.cwd(), 'dist', '**', '*')],
+	},
+	{
+		...defaultMapping,
+		// 例: PHPファイルに対して`markuplint`、`prettier`、`cspell`を実行する
+		php: ['markuplint', 'prettier', 'cspell'],
+	},
+);
 ```
