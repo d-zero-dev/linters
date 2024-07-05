@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.39](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.38...v5.0.0-alpha.39) (2024-07-05)
+
+### Bug Fixes
+
+- **lint-staged:** fix including path within a package ([a13a721](https://github.com/d-zero-dev/linters/commit/a13a721e93e15228e3f5e2805ed7b387fa718853))
+
 # [5.0.0-alpha.38](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.37...v5.0.0-alpha.38) (2024-07-05)
 
 ### Features
