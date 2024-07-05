@@ -17,7 +17,7 @@
 		"import": "./dist/index.js"
 	},
 	"files": [
-		"src"
+		"dist"
 	],
 	"scripts": {
 		"build": "tsc"
