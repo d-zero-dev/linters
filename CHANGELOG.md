@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.38](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.37...v5.0.0-alpha.38) (2024-07-05)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.10.0 ([f2ead6d](https://github.com/d-zero-dev/linters/commit/f2ead6d62a921a5011fb188c5416d8e3c853137a))
+- **deps:** update typescript-eslint monorepo to v7.15.0 ([535a8ef](https://github.com/d-zero-dev/linters/commit/535a8ef873dbcd5dfa887d4f25936697d6c7f6b6))
+
+### Features
+
+- **lint-staged:** `ignore`オプションの追加 ([7835aef](https://github.com/d-zero-dev/linters/commit/7835aeff407c7e5f37bc39791da8b2f42206c420))
+
 # [5.0.0-alpha.37](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.36...v5.0.0-alpha.37) (2024-06-28)
 
 ### Bug Fixes

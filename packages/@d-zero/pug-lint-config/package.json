@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/pug-lint-config",
-	"version": "5.0.0-alpha.37",
+	"version": "5.0.0-alpha.38",
 	"description": "Configurations of pug-lint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
