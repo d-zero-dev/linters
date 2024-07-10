@@ -3531,10 +3531,10 @@ cz-conventional-changelog@3.3.0:
   optionalDependencies:
     "@commitlint/load" ">6.1.1"
 
-cz-customizable@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/cz-customizable/-/cz-customizable-7.0.0.tgz#2a291010bae48936cb2d917447bf83b67fa497df"
-  integrity sha512-pQKkGSm+8SY9VY/yeJqDOla1MjrGaG7WG4EYLLEV4VNctGO7WdzdGtWEr2ydKSkrpmTs7f8fmBksg/FaTrUAyw==
+cz-customizable@7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/cz-customizable/-/cz-customizable-7.1.0.tgz#294a1592dc5caac2045c9a5617888215e484bdfc"
+  integrity sha512-wC0nz7AqYe5fN/xlGaj3Fk8mLjanJlhP+g5qwbagGgNBmOAKo/isc+XNSaR340CC+aSbgO0/vIWM8yJBhBX4Bg==
   dependencies:
     editor "1.0.0"
     find-config "^1.0.0"
