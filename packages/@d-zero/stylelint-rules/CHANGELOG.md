@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
+
+### Bug Fixes
+
+- **deps:** update dependency postcss-selector-parser to v6.1.1 ([96b1c05](https://github.com/d-zero-dev/linters/commit/96b1c056fb7d0136656a21e742e0f1b9c97f4c73))
+
 # [5.0.0-alpha.39](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.38...v5.0.0-alpha.39) (2024-07-05)
 
 **Note:** Version bump only for package @d-zero/stylelint-rules

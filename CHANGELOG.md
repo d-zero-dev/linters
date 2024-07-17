@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.10.1 ([fd07d4f](https://github.com/d-zero-dev/linters/commit/fd07d4f52525fb10aba8e651b84d73dd6bc91cd3))
+- **deps:** update dependency cspell to v8.10.4 ([f3cc781](https://github.com/d-zero-dev/linters/commit/f3cc781d2cf29902c573df2a3c68eb09fade7021))
+- **deps:** update dependency cspell to v8.11.0 ([24ce901](https://github.com/d-zero-dev/linters/commit/24ce901122d6857186b24a24b64207a4825ff6ec))
+- **deps:** update dependency cz-customizable to v7.1.0 ([4417ef3](https://github.com/d-zero-dev/linters/commit/4417ef34ead527f2a186c0f9c28e865f1c63824d))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.5.2 ([ef3acb8](https://github.com/d-zero-dev/linters/commit/ef3acb8d1de489694b23485988e3de53e17ea12b))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.6.0 ([01a553e](https://github.com/d-zero-dev/linters/commit/01a553e9a1b47f7e788eba26cd3aafa596ffe79a))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.7.0 ([79367c2](https://github.com/d-zero-dev/linters/commit/79367c2f5aff7528cfac304865b29e6de94469ef))
+- **deps:** update dependency postcss-selector-parser to v6.1.1 ([96b1c05](https://github.com/d-zero-dev/linters/commit/96b1c056fb7d0136656a21e742e0f1b9c97f4c73))
+- **deps:** update dependency prettier to v3.3.3 ([9e5419d](https://github.com/d-zero-dev/linters/commit/9e5419da83411e61e89731aced5172971f2a98fd))
+- **deps:** update dependency stylelint-scss to v6.4.0 ([6b86c8e](https://github.com/d-zero-dev/linters/commit/6b86c8ef6b15fe0d8affbbb06b23024b564311f7))
+- **deps:** update dependency stylelint-scss to v6.4.1 ([4bdf84f](https://github.com/d-zero-dev/linters/commit/4bdf84f33e1ca2ea4df4066142a51725b6eec591))
+- **deps:** update typescript-eslint monorepo to v7.16.0 ([24ae8e3](https://github.com/d-zero-dev/linters/commit/24ae8e336e086c8df3ceb68a9c52fe4669889e27))
+- **deps:** update typescript-eslint monorepo to v7.16.1 ([11074ab](https://github.com/d-zero-dev/linters/commit/11074ab80490ef18ebc8120e8cd9178ff532d784))
+
 # [5.0.0-alpha.39](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.38...v5.0.0-alpha.39) (2024-07-05)
 
 ### Bug Fixes

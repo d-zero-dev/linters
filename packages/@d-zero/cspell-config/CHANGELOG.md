@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.10.1 ([fd07d4f](https://github.com/d-zero-dev/linters/commit/fd07d4f52525fb10aba8e651b84d73dd6bc91cd3))
+- **deps:** update dependency cspell to v8.10.4 ([f3cc781](https://github.com/d-zero-dev/linters/commit/f3cc781d2cf29902c573df2a3c68eb09fade7021))
+- **deps:** update dependency cspell to v8.11.0 ([24ce901](https://github.com/d-zero-dev/linters/commit/24ce901122d6857186b24a24b64207a4825ff6ec))
+
 # [5.0.0-alpha.39](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.38...v5.0.0-alpha.39) (2024-07-05)
 
 **Note:** Version bump only for package @d-zero/cspell-config
