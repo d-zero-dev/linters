@@ -23,6 +23,6 @@
 	],
 	"dependencies": {
 		"commitizen": "4.3.0",
-		"cz-customizable": "7.1.0"
+		"cz-customizable": "7.2.1"
 	}
 }
