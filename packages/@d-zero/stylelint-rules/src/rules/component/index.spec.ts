@@ -48,6 +48,7 @@ describe('Exact Match', () => {
 				rule: '@d-zero/component',
 				severity: 'error',
 				text: 'クラス名がファイル名と一致しません',
+				url: undefined,
 			},
 			{
 				column: 1,
@@ -57,6 +58,7 @@ describe('Exact Match', () => {
 				rule: '@d-zero/component',
 				severity: 'error',
 				text: 'セレクタの定義は1つだけです',
+				url: undefined,
 			},
 		]);
 	});

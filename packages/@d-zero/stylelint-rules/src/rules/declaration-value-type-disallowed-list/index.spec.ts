@@ -52,6 +52,7 @@ describe('length-pattern', () => {
 				column: 15,
 				endColumn: 19,
 				text: 'Unexpected value "10px" for type "length" (@d-zero/declaration-value-type-disallowed-list)',
+				url: undefined,
 			},
 		]);
 	});
