@@ -31,19 +31,19 @@
 
 - [Volta](https://volta.sh/)によって管理しています。
   - [Node.js](https://nodejs.org/)のバージョンは[`package.json`](./package.json)に記載しています。
-  - [yarn](https://yarnpkg.com/)のバージョンは[`package.json`](./package.json)に記載しています。
+  - [npm](https://docs.npmjs.com/)のバージョンは[`package.json`](./package.json)に記載しています。
   - このバージョンは[Renovate](https://www.mend.io/renovate/)によってアップデートされます。
 - [Commitizen](https://github.com/commitizen/cz-cli)を利用してコミットメッセージを作ります。メッセージは[_commitlint_](https://commitlint.js.org/)によってチェックされます。
 - [actionlint](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
 
 ### メンテ用コマンド
 
-| コマンド     | 内容                                                                                   |
-| ------------ | -------------------------------------------------------------------------------------- |
-| `yarn build` | 各パッケージのビルドを行います                                                         |
-| `yarn lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
-| `yarn test`  | テスト（*Vitest*を実行します）                                                         |
-| `yarn co`    | Gitコミットを*Commitizen*経由で実行します                                              |
+| コマンド        | 内容                                                                                   |
+| --------------- | -------------------------------------------------------------------------------------- |
+| `npm run build` | 各パッケージのビルドを行います                                                         |
+| `npm run lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
+| `npm run test`  | テスト（*Vitest*を実行します）                                                         |
+| `npm run co`    | Gitコミットを*Commitizen*経由で実行します                                              |
 
 ---
 
@@ -62,7 +62,7 @@
 脆弱性のあるパッケージが、どのパッケージに依存しているかは次のコマンドで発見できます。
 
 ```sh
-yarn why <package_name>
+npm explain <package_name>
 ```
 
 依存関係を確認後、対応方法を検討し、必要があれば対象のパッケージをアップデートしてください。

@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/commitlint-config
+npm install -D @d-zero/commitlint-config
 ```
 
 ## 使い方
@@ -22,5 +22,5 @@ yarn add -D @d-zero/commitlint-config
 
 ```sh
 #!/bin/sh
-yarn commitlint --edit "$1"
+npm run commitlint --edit "$1"
 ```

@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/cz-config
+npm install -D @d-zero/cz-config
 ```
 
 ## 使い方

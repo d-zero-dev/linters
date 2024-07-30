@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/eslint-config
+npm install -D @d-zero/eslint-config
 ```
 
 ## 使い方
