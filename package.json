@@ -25,8 +25,7 @@
 		"release:next": "lerna publish --dist-tag next --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
 		"commit": "cz",
-		"co": "cz",
-		"up": "yarn upgrade-interactive --latest"
+		"co": "cz"
 	},
 	"config": {
 		"commitizen": {
@@ -50,6 +49,6 @@
 	},
 	"volta": {
 		"node": "22.5.1",
-		"yarn": "1.22.22"
+		"npm": "10.8.2"
 	}
 }
