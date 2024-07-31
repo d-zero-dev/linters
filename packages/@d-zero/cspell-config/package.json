@@ -17,6 +17,6 @@
 	],
 	"main": "cspell.json",
 	"dependencies": {
-		"cspell": "8.12.1"
+		"cspell": "8.13.0"
 	}
 }
