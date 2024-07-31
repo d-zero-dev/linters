@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
+
+### Features
+
+- **lint-staged:** export type declaration files ([349a811](https://github.com/d-zero-dev/linters/commit/349a811ee74f143f669b6e95499463b5a0a5e8c8))
+- **lint-staged:** 特定のファイルに対しての特定のリンターの実行を除外するオプションを追加 ([fea733b](https://github.com/d-zero-dev/linters/commit/fea733b452740c6fa68f3b5ad73b9ef0cf1aa6ec))
+
 # [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
 
 **Note:** Version bump only for package @d-zero/lint-staged-config

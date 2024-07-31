@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
+
+**Note:** Version bump only for package @d-zero/linters
+
 # [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
 
 **Note:** Version bump only for package @d-zero/linters
