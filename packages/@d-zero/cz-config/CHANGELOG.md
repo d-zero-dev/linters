@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
+
+### Bug Fixes
+
+- **deps:** update dependency cz-customizable to v7.2.1 ([1e91c96](https://github.com/d-zero-dev/linters/commit/1e91c968dd919aeaa587c89d4f25552de5fb07e6))
+
 # [5.0.0-alpha.40](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.39...v5.0.0-alpha.40) (2024-07-17)
 
 ### Bug Fixes

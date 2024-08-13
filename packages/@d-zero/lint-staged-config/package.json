@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/lint-staged-config",
-	"version": "5.0.0-alpha.40",
+	"version": "5.0.0-alpha.41",
 	"description": "Configurations of lint-staged",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -14,7 +14,8 @@
 	},
 	"type": "module",
 	"exports": {
-		"import": "./dist/index.js"
+		"import": "./dist/index.js",
+		"types": "./dist/index.d.ts"
 	},
 	"files": [
 		"dist"
@@ -23,7 +24,7 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"lint-staged": "15.2.7",
+		"lint-staged": "15.2.8",
 		"micromatch": "4.0.7"
 	},
 	"devDependencies": {

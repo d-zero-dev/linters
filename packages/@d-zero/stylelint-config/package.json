@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/stylelint-config",
-	"version": "5.0.0-alpha.40",
+	"version": "5.0.0-alpha.41",
 	"description": "Configurations of Stylelint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -26,13 +26,13 @@
 	],
 	"main": "index.js",
 	"dependencies": {
-		"@d-zero/stylelint-rules": "5.0.0-alpha.40",
+		"@d-zero/stylelint-rules": "5.0.0-alpha.41",
 		"postcss-scss": "4.0.9",
-		"stylelint": "16.8.0",
+		"stylelint": "16.8.1",
 		"stylelint-config-recess-order": "5.0.1",
 		"stylelint-config-standard": "36.0.1",
 		"stylelint-order": "6.0.4",
-		"stylelint-scss": "6.4.1",
+		"stylelint-scss": "6.5.0",
 		"stylelint-use-logical": "2.1.2"
 	}
 }

@@ -41,4 +41,26 @@ describe('lintStagedConfigGenerator', () => {
 			'cspell --no-must-find-files --show-suggestions "./packages/@d-zero/lint-staged-config/CHANGELOG.md"',
 		]);
 	});
+
+	test('ignore option (IgnoreMap)', () => {
+		const config = lintStagedConfigGenerator({
+			ignore: [
+				resolve('packages', '@d-zero', 'eslint-config', '*'),
+				{
+					textlint: 'CHANGELOG.md',
+				},
+			],
+		});
+		const commands = toRelativePath(
+			...config([
+				resolve('packages', '@d-zero', 'eslint-config', 'CHANGELOG.md'),
+				resolve('packages', '@d-zero', 'lint-staged-config', 'CHANGELOG.md'),
+			]),
+		);
+
+		expect(commands).toStrictEqual([
+			'prettier --write "./packages/@d-zero/lint-staged-config/CHANGELOG.md"',
+			'cspell --no-must-find-files --show-suggestions "./packages/@d-zero/lint-staged-config/CHANGELOG.md"',
+		]);
+	});
 });

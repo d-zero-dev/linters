@@ -1,4 +1,4 @@
-import type { CommandMappings, LintStagedCommandMapper } from './types.js';
+import type { CommandMappings, CommandType, LintStagedCommandMapper } from './types.js';
 
 import path from 'node:path';
 
@@ -16,8 +16,10 @@ export interface DirectoryOptions {
 	/**
 	 * 除外するファイルのパターン
 	 */
-	ignore?: string[];
+	ignore?: (string | IgnoreMap)[];
 }
+
+export type IgnoreMap = Partial<Record<CommandType, string | string[]>>;
 
 export default function (
 	dirOptions?: string | DirectoryOptions,
@@ -59,7 +61,23 @@ export default function (
 				let targetFiles = micromatch(files, pattern);
 
 				if (ignore) {
-					targetFiles = micromatch.not(targetFiles, ignore);
+					for (const ignoreMap of ignore) {
+						const ignorePattern =
+							typeof ignoreMap === 'string' ? ignoreMap : ignoreMap[commandType];
+						if (!ignorePattern) {
+							continue;
+						}
+						const ignorePatterns = Array.isArray(ignorePattern)
+							? ignorePattern
+							: [ignorePattern];
+						const absIgnorePatterns = ignorePatterns.map((p) => {
+							if (p === path.basename(p)) {
+								return path.resolve('**', p);
+							}
+							return path.isAbsolute(p) ? p : path.resolve(baseDir, p);
+						});
+						targetFiles = micromatch.not(targetFiles, absIgnorePatterns);
+					}
 				}
 
 				if (targetFiles.length <= 0) {

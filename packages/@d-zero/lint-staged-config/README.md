@@ -24,6 +24,10 @@ import lintStagedConfigGenerator, { defaultMapping } from '@d-zero/lint-staged-c
 export default lintStagedConfigGenerator(
 	{
 		ignore: [path.resolve(process.cwd(), 'dist', '**', '*')],
+		{
+			// 例: `CHANGELOG.md`に対してのみ`textlint`を除外する
+			textlint: "CHANGELOG.md",
+		}
 	},
 	{
 		...defaultMapping,

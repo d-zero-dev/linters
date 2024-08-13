@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/cspell-config",
-	"version": "5.0.0-alpha.40",
+	"version": "5.0.0-alpha.41",
 	"description": "Configurations of CSpell",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -17,6 +17,6 @@
 	],
 	"main": "cspell.json",
 	"dependencies": {
-		"cspell": "8.12.1"
+		"cspell": "8.13.1"
 	}
 }
