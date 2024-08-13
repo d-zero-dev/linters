@@ -25,7 +25,8 @@
 		"release:next": "lerna publish --dist-tag next --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
 		"commit": "cz",
-		"co": "cz"
+		"co": "cz",
+		"up": "npx npm-check-updates --interactive --format group"
 	},
 	"config": {
 		"commitizen": {
