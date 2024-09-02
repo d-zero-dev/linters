@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.42](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.41...v5.0.0-alpha.42) (2024-09-02)
+
+### Bug Fixes
+
+- **deps:** update dependency lint-staged to v15.2.10 ([aaf7c53](https://github.com/d-zero-dev/linters/commit/aaf7c5326cb941d8a4e9e3b7e5183f836bcb4aab))
+- **deps:** update dependency lint-staged to v15.2.8 ([70288c6](https://github.com/d-zero-dev/linters/commit/70288c625bb801f25e2297a983c2f7a261c0dd61))
+- **deps:** update dependency micromatch to v4.0.8 [security] ([865c65e](https://github.com/d-zero-dev/linters/commit/865c65e2bbdddfd0690067167b4df3298fa505ee))
+
 # [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
 
 ### Features

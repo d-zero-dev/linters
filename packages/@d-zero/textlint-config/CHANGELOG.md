@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.42](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.41...v5.0.0-alpha.42) (2024-09-02)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v14.2.0 ([8819f49](https://github.com/d-zero-dev/linters/commit/8819f49bac13d7accd86e264097cb7a9930360d6))
+- **deps:** update dependency textlint-plugin-html to v1.0.1 ([46eb54b](https://github.com/d-zero-dev/linters/commit/46eb54b70a33a74cb64c622c948e852516d35abc))
+
 # [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
 
 **Note:** Version bump only for package @d-zero/textlint-config

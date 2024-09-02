@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.42](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.41...v5.0.0-alpha.42) (2024-09-02)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.4.1 ([bbd2e8d](https://github.com/d-zero-dev/linters/commit/bbd2e8d778e8ba7e6a77c5c9a6b21da0cb7223af))
+- **deps:** update dependency @markuplint/pug-parser to v4.6.6 ([347678a](https://github.com/d-zero-dev/linters/commit/347678a9393d6df10114c8ca6236d1e8ede5d42a))
+- **deps:** update dependency cspell to v8.13.1 ([9d5bf39](https://github.com/d-zero-dev/linters/commit/9d5bf396faa8f9327db2302f9cc095d5a182775e))
+- **deps:** update dependency cspell to v8.14.2 ([a3d0773](https://github.com/d-zero-dev/linters/commit/a3d0773fe4f5e7ca666987a3c39bc9f798d2b2fa))
+- **deps:** update dependency eslint-plugin-jsdoc to v48.11.0 ([4883945](https://github.com/d-zero-dev/linters/commit/4883945f98da4fac0eb0677835d17a61d2a5ad08))
+- **deps:** update dependency eslint-plugin-jsdoc to v50 ([c2db29e](https://github.com/d-zero-dev/linters/commit/c2db29eb191449241b2fa8639822881032b2bbaf))
+- **deps:** update dependency lint-staged to v15.2.10 ([aaf7c53](https://github.com/d-zero-dev/linters/commit/aaf7c5326cb941d8a4e9e3b7e5183f836bcb4aab))
+- **deps:** update dependency lint-staged to v15.2.8 ([70288c6](https://github.com/d-zero-dev/linters/commit/70288c625bb801f25e2297a983c2f7a261c0dd61))
+- **deps:** update dependency micromatch to v4.0.8 [security] ([865c65e](https://github.com/d-zero-dev/linters/commit/865c65e2bbdddfd0690067167b4df3298fa505ee))
+- **deps:** update dependency stylelint to v16.9.0 ([be51e59](https://github.com/d-zero-dev/linters/commit/be51e596bf344394a81c25340ecaadd03bc01913))
+- **deps:** update dependency stylelint-config-recess-order to v5.1.0 ([52fae2a](https://github.com/d-zero-dev/linters/commit/52fae2a24897253371e39980cbf626258eec2fda))
+- **deps:** update dependency stylelint-scss to v6.5.0 ([ef1a4f9](https://github.com/d-zero-dev/linters/commit/ef1a4f9537e0bb032a387d410cd3cd0ced504dd4))
+- **deps:** update dependency textlint to v14.2.0 ([8819f49](https://github.com/d-zero-dev/linters/commit/8819f49bac13d7accd86e264097cb7a9930360d6))
+- **deps:** update dependency textlint-plugin-html to v1.0.1 ([46eb54b](https://github.com/d-zero-dev/linters/commit/46eb54b70a33a74cb64c622c948e852516d35abc))
+- **deps:** update typescript-eslint monorepo to v8 ([baa9e90](https://github.com/d-zero-dev/linters/commit/baa9e90c22e9057ba43a517f1118511146bbae59))
+
+### Features
+
+- **eslint:** disable `unicorn/prefer-string-raw` ([b25125f](https://github.com/d-zero-dev/linters/commit/b25125fbed2e443d907012589ba42d03f22c0766))
+- **stylelint:** enable `declaration-property-value-no-unknown` ([250ed18](https://github.com/d-zero-dev/linters/commit/250ed181f95dcbd4556ad797bad72a54d1ef3699))
+
 # [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
 
 ### Bug Fixes

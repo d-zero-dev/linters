@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.42](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.41...v5.0.0-alpha.42) (2024-09-02)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.4.1 ([bbd2e8d](https://github.com/d-zero-dev/linters/commit/bbd2e8d778e8ba7e6a77c5c9a6b21da0cb7223af))
+
 # [5.0.0-alpha.41](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.40...v5.0.0-alpha.41) (2024-07-31)
 
 **Note:** Version bump only for package @d-zero/commitlint-config
