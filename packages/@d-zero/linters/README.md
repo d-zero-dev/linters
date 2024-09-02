@@ -20,7 +20,7 @@
 ## インストール
 
 ```shell
-yarn add -D @d-zero/linters
+npm install -D @d-zero/linters
 ```
 
 ## 使い方

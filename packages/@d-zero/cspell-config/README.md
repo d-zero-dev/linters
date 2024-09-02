@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/cspell-config
+npm install -D @d-zero/cspell-config
 ```
 
 ## 使い方

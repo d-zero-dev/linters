@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/prettier-config
+npm install -D @d-zero/prettier-config
 ```
 
 ## 使い方

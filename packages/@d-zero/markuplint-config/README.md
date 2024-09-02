@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/markuplint-config
+npm install -D @d-zero/markuplint-config
 ```
 
 ## 使い方

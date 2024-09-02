@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/pug-lint-config
+npm install -D @d-zero/pug-lint-config
 ```
 
 ## 使い方

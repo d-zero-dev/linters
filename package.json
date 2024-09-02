@@ -26,7 +26,7 @@
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
 		"commit": "cz",
 		"co": "cz",
-		"up": "yarn upgrade-interactive --latest"
+		"up": "npx npm-check-updates --interactive --format group"
 	},
 	"config": {
 		"commitizen": {
@@ -48,8 +48,9 @@
 		"typescript": "5.5.4",
 		"vitest": "2.0.5"
 	},
+	"packageManager": "npm@10.8.2",
 	"volta": {
 		"node": "22.5.1",
-		"yarn": "1.22.22"
+		"npm": "10.8.2"
 	}
 }

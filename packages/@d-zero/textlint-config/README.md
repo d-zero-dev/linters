@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/textlint-config
+npm install -D @d-zero/textlint-config
 ```
 
 ## 使い方

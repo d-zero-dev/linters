@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/stylelint-config
+npm install -D @d-zero/stylelint-config
 ```
 
 ## 使い方

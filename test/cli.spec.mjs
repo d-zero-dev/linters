@@ -14,7 +14,7 @@ function n(filePath) {
 describe('ESLint', () => {
 	test('sort-class-members', async () => {
 		const { stdout } = await execa(
-			'yarn',
+			'npx',
 			['eslint', 'test/fixtures/eslint/sort-class-members.ts', '-f', 'compact'],
 			{
 				reject: false,
@@ -50,15 +50,13 @@ describe('ESLint', () => {
 describe('markuplint', () => {
 	test('CLI', async () => {
 		const { stdout } = await execa(
-			'yarn',
+			'npx',
 			['markuplint', 'test/fixtures/markuplint/*', '--format', 'json', '--locale', 'en'],
 			{
 				reject: false,
 			},
 		);
-		const lines = stdout.split('\n');
-		const result = lines.slice(1).join('\n');
-		const violations = JSON.parse(result);
+		const violations = JSON.parse(stdout);
 		const formatted = violations.map(
 			(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
 		);
@@ -76,9 +74,8 @@ describe('markuplint', () => {
 describe('stylelint', () => {
 	async function stylelint(filePath, configFilePath) {
 		const { stdout, stderr } = await execa(
-			'yarn',
+			'npx',
 			[
-				'run',
 				'stylelint',
 				filePath,
 				configFilePath ? ['-c', configFilePath] : [],

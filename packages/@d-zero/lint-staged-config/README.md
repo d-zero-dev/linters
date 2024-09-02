@@ -3,7 +3,7 @@
 ## 個別インストール
 
 ```sh
-yarn add -D @d-zero/lint-staged-config
+npm install -D @d-zero/lint-staged-config
 ```
 
 ## 使い方
