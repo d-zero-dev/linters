@@ -26,7 +26,7 @@
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
 		"commit": "cz",
 		"co": "cz",
-		"up": "npx npm-check-updates --interactive --format group"
+		"up": "npx npm-check-updates --interactive --workspaces --format group"
 	},
 	"config": {
 		"commitizen": {
