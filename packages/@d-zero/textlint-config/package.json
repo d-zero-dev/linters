@@ -18,7 +18,7 @@
 	"main": "index.js",
 	"dependencies": {
 		"textlint": "14.2.0",
-		"textlint-plugin-html": "1.0.0",
+		"textlint-plugin-html": "1.0.1",
 		"textlint-rule-preset-ja-spacing": "2.4.3",
 		"textlint-rule-preset-japanese": "10.0.3",
 		"textlint-rule-preset-jtf-style": "2.3.14"
