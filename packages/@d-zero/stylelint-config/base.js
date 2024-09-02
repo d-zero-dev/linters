@@ -33,6 +33,11 @@ module.exports = {
 		'declaration-no-important': true,
 		'declaration-property-value-disallowed-list': null,
 		'declaration-property-value-allowed-list': null,
+		'declaration-property-value-no-unknown': {
+			ignoreProperties: {
+				'/.+/': '/calc\\s\\(/',
+			},
+		},
 		'font-family-name-quotes': 'always-where-required',
 		'font-family-no-duplicate-names': true,
 		'font-weight-notation': 'named-where-possible',
