@@ -14,7 +14,7 @@ function toRelativePath(...paths: string[]): string[] {
 }
 
 describe('lintStagedConfigGenerator', () => {
-	test('defaultMapping', () => {
+	test.skip('defaultMapping', () => {
 		const config = lintStagedConfigGenerator();
 		const commands = toRelativePath(...config([resolve('README.md')]));
 		expect(commands).toStrictEqual([
@@ -24,7 +24,7 @@ describe('lintStagedConfigGenerator', () => {
 		]);
 	});
 
-	test('ignore option', () => {
+	test.skip('ignore option', () => {
 		const config = lintStagedConfigGenerator({
 			ignore: [resolve('packages', '@d-zero', 'eslint-config', '*')],
 		});
@@ -42,7 +42,7 @@ describe('lintStagedConfigGenerator', () => {
 		]);
 	});
 
-	test.only('ignore option (IgnoreMap)', () => {
+	test('ignore option (IgnoreMap)', () => {
 		const config = lintStagedConfigGenerator({
 			ignore: [
 				resolve('packages', '@d-zero', 'eslint-config', '*'),
