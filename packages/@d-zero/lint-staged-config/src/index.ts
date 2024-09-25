@@ -77,6 +77,7 @@ export default function (
 							return path.isAbsolute(p) ? p : path.resolve(baseDir, p);
 						});
 						targetFiles = micromatch.not(targetFiles, absIgnorePatterns);
+						console.log({ ignorePatterns, absIgnorePatterns, targetFiles });
 					}
 				}
 

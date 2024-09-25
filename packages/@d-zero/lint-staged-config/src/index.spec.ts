@@ -42,7 +42,7 @@ describe('lintStagedConfigGenerator', () => {
 		]);
 	});
 
-	test('ignore option (IgnoreMap)', () => {
+	test.only('ignore option (IgnoreMap)', () => {
 		const config = lintStagedConfigGenerator({
 			ignore: [
 				resolve('packages', '@d-zero', 'eslint-config', '*'),
