@@ -72,7 +72,7 @@ export default function (
 							: [ignorePattern];
 						const absIgnorePatterns = ignorePatterns.map((p) => {
 							if (p === path.basename(p)) {
-								return path.resolve('**', p);
+								return path.resolve('**', p).replaceAll(path.sep, '/');
 							}
 							return path.isAbsolute(p) ? p : path.resolve(baseDir, p);
 						});
