@@ -37,16 +37,29 @@
 		}
 	},
 	"devDependencies": {
+		"@d-zero/commitlint-config": "5.0.0-alpha.42",
+		"@d-zero/cspell-config": "5.0.0-alpha.42",
+		"@d-zero/csstree-scss-syntax": "5.0.0-alpha.42",
+		"@d-zero/cz-config": "5.0.0-alpha.42",
+		"@d-zero/eslint-config": "5.0.0-alpha.42",
+		"@d-zero/lint-staged-config": "5.0.0-alpha.42",
+		"@d-zero/linters": "5.0.0-alpha.42",
+		"@d-zero/markuplint-config": "5.0.0-alpha.42",
+		"@d-zero/prettier-config": "5.0.0-alpha.42",
+		"@d-zero/pug-lint-config": "5.0.0-alpha.42",
+		"@d-zero/stylelint-config": "5.0.0-alpha.42",
+		"@d-zero/stylelint-rules": "5.0.0-alpha.42",
+		"@d-zero/textlint-config": "5.0.0-alpha.42",
 		"@d-zero/tsconfig": "0.3.2",
 		"@secretlint/secretlint-rule-preset-recommend": "8.2.4",
-		"execa": "9.3.1",
+		"execa": "9.4.0",
 		"husky": "9.1.6",
 		"lerna": "8.1.8",
 		"npm-run-all2": "6.2.3",
 		"prettier": "3.3.3",
 		"secretlint": "8.2.4",
 		"typescript": "5.6.2",
-		"vitest": "2.0.5"
+		"vitest": "2.1.1"
 	},
 	"packageManager": "npm@10.8.3",
 	"volta": {
