@@ -12,10 +12,6 @@
 		"enabled": true,
 		"automerge": true
 	},
-	"postUpgradeTasks": {
-		"commands": ["npm install --no-package-lock --legacy-peer-deps"],
-		"fileFilters": ["package.json", "package-lock.json"]
-	},
 	"autoApprove": true,
 	"labels": ["Dependencies", "Renovate"],
 	"packageRules": [
