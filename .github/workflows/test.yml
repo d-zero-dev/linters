@@ -27,13 +27,13 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install dependencies
-        run: |
-          if [[ "${{ github.actor }}" == "renovate[bot]" || "${{ github.actor }}" == "dependabot[bot]" ]]; then
-            npm install --no-package-lock --legacy-peer-deps
-          else
-            npm ci
-          fi
+      - name: Install dependencies for Renovate/Dependabot
+        if: github.actor == 'renovate[bot]' || github.actor == 'dependabot[bot]'
+        run: npm install --no-package-lock --legacy-peer-deps
+
+      - name: Install dependencies for normal PRs
+        if: github.actor != 'renovate[bot]' && github.actor != 'dependabot[bot]'
+        run: npm ci
 
       - name: Build
         run: npm run build
