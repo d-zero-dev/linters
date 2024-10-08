@@ -102,6 +102,12 @@ describe('stylelint', () => {
 			throw error;
 		}
 
+		for (const violation of violations) {
+			for (const invalidOptionWarning of violation.invalidOptionWarnings) {
+				throw new Error(invalidOptionWarning.text);
+			}
+		}
+
 		return { violations };
 	}
 
