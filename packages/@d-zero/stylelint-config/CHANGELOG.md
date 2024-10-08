@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.44](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.43...v5.0.0-alpha.44) (2024-10-08)
+
+### Features
+
+- **stylelint:** drop `declaration-property-value-no-unknown` ([a392b38](https://github.com/d-zero-dev/linters/commit/a392b38adae3fa3cbab9a2e1b5ae82efd54c8ddf))
+
+### BREAKING CHANGES
+
+- **stylelint:** disable `declaration-property-value-no-unknown` rule
+
 # [5.0.0-alpha.43](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.42...v5.0.0-alpha.43) (2024-09-30)
 
 **Note:** Version bump only for package @d-zero/stylelint-config

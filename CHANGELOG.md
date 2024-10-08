@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.44](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.43...v5.0.0-alpha.44) (2024-10-08)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-import to v2.31.0 ([d4dfbaa](https://github.com/d-zero-dev/linters/commit/d4dfbaa5815ee9052dd107d02b07e810c2040bb6))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.3.1 ([b3a9785](https://github.com/d-zero-dev/linters/commit/b3a978538a357c8d15dbe1b4b1688acc3cee678b))
+- **deps:** update dependency eslint-plugin-unicorn to v56 ([6a9fbb7](https://github.com/d-zero-dev/linters/commit/6a9fbb706a130db642c82a1ba92fe3ba50194597))
+- **deps:** update dependency textlint to v14.2.1 ([18a0da7](https://github.com/d-zero-dev/linters/commit/18a0da7282ca7535a0f56efb58682a8119a43d45))
+- **deps:** update typescript-eslint monorepo to v8.8.0 ([cfa0588](https://github.com/d-zero-dev/linters/commit/cfa05888d3908e7392256a65aeddabdff1bb937e))
+- **deps:** update typescript-eslint monorepo to v8.8.1 ([c14c8ec](https://github.com/d-zero-dev/linters/commit/c14c8ecac876a76738e86b437315f7244fa5c61f))
+
+### Features
+
+- **stylelint:** drop `declaration-property-value-no-unknown` ([a392b38](https://github.com/d-zero-dev/linters/commit/a392b38adae3fa3cbab9a2e1b5ae82efd54c8ddf))
+
+### BREAKING CHANGES
+
+- **stylelint:** disable `declaration-property-value-no-unknown` rule
+
 # [5.0.0-alpha.43](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.42...v5.0.0-alpha.43) (2024-09-30)
 
 ### Bug Fixes

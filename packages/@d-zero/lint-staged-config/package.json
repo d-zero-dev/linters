@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/lint-staged-config",
-	"version": "5.0.0-alpha.43",
+	"version": "5.0.0-alpha.44",
 	"description": "Configurations of lint-staged",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
