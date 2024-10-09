@@ -139,6 +139,13 @@ describe('stylelint', () => {
 		expect(violations).toStrictEqual([
 			'test/fixtures/stylelint/values.scss:8:13 Unexpected value "$size" for property "font-size" (declaration-property-value-allowed-list)',
 			'test/fixtures/stylelint/values.scss:9:13 Unexpected value "$base-line-height" for property "font-size" (declaration-property-value-allowed-list)',
+			'test/fixtures/stylelint/values.scss:15:15 Unexpected value "10.5%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:16:15 Unexpected value "101%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:17:15 Unexpected value "199%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:18:15 Unexpected value "200%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:19:15 Unexpected value "999%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:20:15 Unexpected value "1000%" for type "percentage" (@d-zero/declaration-value-type-disallowed-list)',
+			'test/fixtures/stylelint/values.scss:22:31 Unexpected value "1vw" for type "length" (@d-zero/declaration-value-type-disallowed-list)',
 		]);
 	});
 

@@ -9,4 +9,17 @@
 	font-size: $base-line-height; // ❌️
 }
 
+[rule='@d-zero/declaration-value-type-disallowed-list'] {
+	// '/^length|percentage$/'
+	inline-size: 100%; // ✅
+	inline-size: 10.5%; // ❌️
+	inline-size: 101%; // ❌️
+	inline-size: 199%; // ❌️
+	inline-size: 200%; // ❌️
+	inline-size: 999%; // ❌️
+	inline-size: 1000%; // ❌️
+	inline-size: calc(15 / 320 * 100vw); // ✅
+	inline-size: calc(15 / 320 * 1vw); // ❌️
+}
+
 // stylelint-enable declaration-block-no-duplicate-properties, declaration-block-no-shorthand-property-overrides, selector-class-pattern
