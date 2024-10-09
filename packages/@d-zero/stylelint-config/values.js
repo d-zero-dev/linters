@@ -59,20 +59,20 @@ module.exports = {
 				ignoreProperties: ['font-size'],
 				patterns: [
 					// float
-					`/[1-9]*\\.[0-9]+${PERCENTATE_UNITS}/`,
+					`/[0-9]*?\\.[0-9]+?${PERCENTATE_UNITS}/`,
 
-					// 1% - 99%
-					`/[1-9][0-9]?${PERCENTATE_UNITS}/`,
+					// 1000% or larger
+					`/[1-9][0-9]{3,}?${PERCENTATE_UNITS}/`,
+
+					// 200% - 999%
+					`/[2-9][0-9][0-9]${PERCENTATE_UNITS}/`,
 
 					// 101% - 199%
 					`/1[0-9][1-9]${PERCENTATE_UNITS}/`,
 					`/1[1-9][0-9]${PERCENTATE_UNITS}/`,
 
-					// 200% - 999%
-					`/[2-9][0-9][0-9]${PERCENTATE_UNITS}/`,
-
-					// 1000% or larger
-					`/[1-9][0-9]{3,}${PERCENTATE_UNITS}/`,
+					// 1% - 99%
+					`/[1-9][0-9]?${PERCENTATE_UNITS}/`,
 				],
 			},
 		},
