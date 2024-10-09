@@ -108,22 +108,21 @@ describe('stylelint', () => {
 			}
 		}
 
-		return { violations };
-	}
-
-	test('Class Name', async () => {
-		const { violations } = await stylelint(
-			path.normalize('test/fixtures/stylelint/class-name.scss'),
-		);
-
-		const formatted = violations
+		return violations
 			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
 			.toSorted((a, b) => a.line - b.line)
 			.toSorted((a, b) => a.source - b.source)
 			.map(
 				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
 			);
-		expect(formatted).toStrictEqual([
+	}
+
+	test('Class Name', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/class-name.scss'),
+		);
+
+		expect(violations).toStrictEqual([
 			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component',
 			'test/fixtures/stylelint/class-name.scss:10:2 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: .c-component__invalid__element-name',
 			'test/fixtures/stylelint/class-name.scss:14:2 クラス名に命名規則にない文字が含まれています: .c-component__foo😁bar',
@@ -133,19 +132,12 @@ describe('stylelint', () => {
 	});
 
 	test('Value and Unit', async () => {
-		const { violations } = await stylelint(
+		const violations = await stylelint(
 			path.normalize('test/fixtures/stylelint/unit.scss'),
 			path.normalize('test/fixtures/stylelint/.stylelintrc.unit.json'),
 		);
 
-		const formatted = violations
-			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
-			.toSorted((a, b) => a.line - b.line)
-			.toSorted((a, b) => a.source - b.source)
-			.map(
-				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
-			);
-		expect(formatted).toStrictEqual([
+		expect(violations).toStrictEqual([
 			'test/fixtures/stylelint/unit.scss:12:13 Unexpected value "3em" for property "font-size" (declaration-property-value-allowed-list)',
 			'test/fixtures/stylelint/unit.scss:13:13 Unexpected value "1.2em" for property "font-size" (declaration-property-value-allowed-list)',
 			'test/fixtures/stylelint/unit.scss:14:13 Unexpected value "0.5em" for property "font-size" (declaration-property-value-allowed-list)',
@@ -180,19 +172,12 @@ describe('stylelint', () => {
 	});
 
 	test('Component', async () => {
-		const { violations } = await stylelint(
+		const violations = await stylelint(
 			path.normalize('test/fixtures/stylelint/_c-component.scss'),
 			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
 		);
 
-		const formatted = violations
-			.flatMap((v) => v.warnings.map((w) => ({ ...w, source: v.source })))
-			.toSorted((a, b) => a.line - b.line)
-			.toSorted((a, b) => a.source - b.source)
-			.map(
-				(v) => `${n(v.source)}:${v.line}:${v.column} ${v.text.replaceAll(/\s+/g, ' ')}`,
-			);
-		expect(formatted).toStrictEqual([
+		expect(violations).toStrictEqual([
 			'test/fixtures/stylelint/_c-component.scss:8:1 1つのファイルに定義できるコンポーネントクラスは1つだけです',
 		]);
 	});
