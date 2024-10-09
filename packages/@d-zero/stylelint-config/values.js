@@ -16,8 +16,7 @@ module.exports = {
 		'declaration-property-value-allowed-list': {
 			'font-size': [
 				'inherit',
-				'$root-font-size',
-				'$base-font-size',
+				'/^\\$[a-z][a-z0-9]*-font-size(-[a-z0-9]+)?$/',
 				'1em',
 				String.raw`/^calc\(\s*(?:\$[a-z_][a-z0-9_-]*|(?:[0-9]*\.)?[0-9]+) \/ (?:\$[a-z_][a-z0-9_-]*|(?:[0-9]*\.)?[0-9]+) \* (?:1em|100vw)\s*\)$/`,
 				String.raw`/^(?:[0-9]*\.)?[0-9]+rem/`,
