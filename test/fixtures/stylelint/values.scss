@@ -1,0 +1,12 @@
+// stylelint-disable declaration-block-no-duplicate-properties, declaration-block-no-shorthand-property-overrides, selector-class-pattern
+
+.font-size {
+	font-size: $root-font-size; // ✅
+	font-size: $root-font-size-large; // ✅
+	font-size: $base-font-size; // ✅
+	font-size: $some-font-size; // ✅
+	font-size: $size; // ❌️
+	font-size: $base-line-height; // ❌️
+}
+
+// stylelint-enable declaration-block-no-duplicate-properties, declaration-block-no-shorthand-property-overrides, selector-class-pattern

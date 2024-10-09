@@ -131,6 +131,17 @@ describe('stylelint', () => {
 		]);
 	});
 
+	test('Value', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/values.scss'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/values.scss:8:13 Unexpected value "$size" for property "font-size" (declaration-property-value-allowed-list)',
+			'test/fixtures/stylelint/values.scss:9:13 Unexpected value "$base-line-height" for property "font-size" (declaration-property-value-allowed-list)',
+		]);
+	});
+
 	test('Value and Unit', async () => {
 		const violations = await stylelint(
 			path.normalize('test/fixtures/stylelint/unit.scss'),
