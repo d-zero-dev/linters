@@ -1,7 +1,5 @@
 import stylelint from 'stylelint';
 // @ts-ignore
-import declarationValueIndex from 'stylelint/lib/utils/declarationValueIndex.mjs';
-// @ts-ignore
 import matchesStringOrRegExp from 'stylelint/lib/utils/matchesStringOrRegExp.mjs';
 // @ts-ignore
 import validateObjectWithArrayProps from 'stylelint/lib/utils/validateObjectWithArrayProps.mjs';
@@ -80,22 +78,26 @@ export default createRule<Record<string, string[] | Options>>({
 						continue;
 					}
 
-					const index = declarationValueIndex(decl) + node.value.sourceIndex;
-					const endIndex = index + node.value.sourceEndIndex;
 					const raw = decl.value.slice(
 						node.value.sourceIndex,
 						node.value.sourceIndex + node.value.sourceEndIndex,
 					);
 
-					if (matchesStringOrRegExp(raw, checkList)) {
+					const matched = matchesStringOrRegExp(raw, checkList);
+
+					if (matched) {
+						const word = matched.substring;
+						const index = raw.indexOf(word);
+						const endIndex = index + word.length;
+
 						stylelint.utils.report({
 							result,
 							ruleName,
-							message: messages.rejected(raw, node.valueType),
+							message: messages.rejected(word, node.valueType),
 							node: decl,
 							index,
 							endIndex,
-							word: raw,
+							word,
 						});
 					}
 				}
