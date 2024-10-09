@@ -63,6 +63,7 @@ module.exports = {
 		'unicorn/prefer-ternary': 0,
 		'unicorn/prevent-abbreviations': 0,
 		'unicorn/prefer-string-raw': 0,
+		'unicorn/prefer-global-this': 0,
 
 		// import
 		'import/no-extraneous-dependencies': 2,
