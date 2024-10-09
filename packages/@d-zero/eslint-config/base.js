@@ -59,11 +59,11 @@ module.exports = {
 		'unicorn/no-nested-ternary': 0,
 		'unicorn/no-null': 0,
 		'unicorn/no-process-exit': 0,
+		'unicorn/prefer-global-this': 0,
 		'unicorn/prefer-query-selector': 0,
+		'unicorn/prefer-string-raw': 0,
 		'unicorn/prefer-ternary': 0,
 		'unicorn/prevent-abbreviations': 0,
-		'unicorn/prefer-string-raw': 0,
-		'unicorn/prefer-global-this': 0,
 
 		// import
 		'import/no-extraneous-dependencies': 2,
