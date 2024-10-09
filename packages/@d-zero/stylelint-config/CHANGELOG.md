@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
+
+### Bug Fixes
+
+- **stylelint:** length/percentageの不許可パターンを最長マッチに修正 ([ebb5217](https://github.com/d-zero-dev/linters/commit/ebb5217bdb449003a33f0ff777ff7c242f6f714b))
+
+### Features
+
+- **stylelint:** プロパティ`font-size`の値に任意のプレフィック・サフィックスを許可 ([2d462c6](https://github.com/d-zero-dev/linters/commit/2d462c665fddf88595b73d6edb24eb9078f603ab))
+
 # [5.0.0-alpha.44](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.43...v5.0.0-alpha.44) (2024-10-08)
 
 ### Features
