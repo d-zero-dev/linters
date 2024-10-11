@@ -8,5 +8,11 @@ module.exports = {
 				ignoreAtRules: ['mixin', 'extend', 'for', 'if', 'include', 'use', 'forward'],
 			},
 		],
+		'no-invalid-position-at-import-rule': [
+			true,
+			{
+				ignoreAtRules: ['use'],
+			},
+		],
 	},
 };
