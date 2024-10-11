@@ -27,7 +27,9 @@ export default {
 		},
 		{
 			files: '.html',
-			printWidth: 400,
+			options: {
+				printWidth: 100_000,
+			},
 		},
 	],
 };
