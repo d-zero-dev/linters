@@ -5,6 +5,7 @@
 	"useGitignore": true,
 	"ignorePaths": [
 		//
+		"**/.git/**",
 		"**/.gitignore",
 		"**/*.svg",
 		"**/cspell.json",
