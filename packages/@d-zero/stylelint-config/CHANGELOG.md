@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.46](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.45...v5.0.0-alpha.46) (2024-10-15)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.10.0 ([253c945](https://github.com/d-zero-dev/linters/commit/253c945faff1d316a76d75305c5af9d7f56aa34e))
+- **stylelint:** fix `no-invalid-position-at-import-rule` to allow `[@use](https://github.com/use)` in scss ([3aece71](https://github.com/d-zero-dev/linters/commit/3aece711d97fbb79f835325596e2319fcb8872af))
+
+### Features
+
+- **stylelint:** drop `function-no-unknown` rule on scss ([e7a417c](https://github.com/d-zero-dev/linters/commit/e7a417cdd964d7db8f4284d4ce0b1e82b64bdc53))
+
+### BREAKING CHANGES
+
+- **stylelint:** remove `function-no-unknown` rule
+
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 
 ### Bug Fixes

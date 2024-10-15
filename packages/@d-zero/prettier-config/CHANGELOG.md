@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.46](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.45...v5.0.0-alpha.46) (2024-10-15)
+
+### Bug Fixes
+
+- **deps:** update dependency @prettier/plugin-pug to v3.2.0 ([bea0623](https://github.com/d-zero-dev/linters/commit/bea062306de81698e2df2f747c2687885293f24b))
+
+### Features
+
+- **prettier:** set `printWidth` for HTML ([e8b1000](https://github.com/d-zero-dev/linters/commit/e8b10004a2f85387c858db419b3731fc385a1a56))
+
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 
 **Note:** Version bump only for package @d-zero/prettier-config

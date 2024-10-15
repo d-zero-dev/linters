@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.46](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.45...v5.0.0-alpha.46) (2024-10-15)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.9 ([21ee66a](https://github.com/d-zero-dev/linters/commit/21ee66a97e97b2bde526dbf0be02acbccd477875))
+- **deps:** update dependency markuplint to v4.10.0 ([106bc82](https://github.com/d-zero-dev/linters/commit/106bc8215c4c59d257328af90aa6a8117ac4e6c8))
+- **deps:** update dependency markuplint to v4.10.1 ([6d886b0](https://github.com/d-zero-dev/linters/commit/6d886b06f4ed9fe34d09d3b6e67cbc64b47b0fe3))
+- **markuplint:** disable `required-attr` to `script[src^='https://']` ([7c87d32](https://github.com/d-zero-dev/linters/commit/7c87d32f1f5a6b89565f79cb08f51ed03998ba0a))
+
+### Features
+
+- **markuplint:** html accepts the prefx attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
+
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 
 **Note:** Version bump only for package @d-zero/markuplint-config

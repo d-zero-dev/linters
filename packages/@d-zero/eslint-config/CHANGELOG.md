@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.46](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.45...v5.0.0-alpha.46) (2024-10-15)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-jsdoc to v50.4.1 ([6b4d713](https://github.com/d-zero-dev/linters/commit/6b4d713b80b26703a04bb18f5761fafb0eda4f88))
+- **deps:** update typescript-eslint monorepo to v8.9.0 ([4e1321d](https://github.com/d-zero-dev/linters/commit/4e1321d970577899da4c53c963a93fc8b3e2b19f))
+
+### Features
+
+- **eslint:** disable `unicorn/prefer-global-this` ([3f16169](https://github.com/d-zero-dev/linters/commit/3f161695422c93db89cbfce31ec338932d7c32b6))
+
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 
 **Note:** Version bump only for package @d-zero/eslint-config

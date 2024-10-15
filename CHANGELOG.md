@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.46](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.45...v5.0.0-alpha.46) (2024-10-15)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.9 ([21ee66a](https://github.com/d-zero-dev/linters/commit/21ee66a97e97b2bde526dbf0be02acbccd477875))
+- **deps:** update dependency @prettier/plugin-pug to v3.2.0 ([bea0623](https://github.com/d-zero-dev/linters/commit/bea062306de81698e2df2f747c2687885293f24b))
+- **deps:** update dependency cspell to v8.15.2 ([ccb8ea9](https://github.com/d-zero-dev/linters/commit/ccb8ea9cf402db04e5796f93752f0afde311b34b))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.4.1 ([6b4d713](https://github.com/d-zero-dev/linters/commit/6b4d713b80b26703a04bb18f5761fafb0eda4f88))
+- **deps:** update dependency markuplint to v4.10.0 ([106bc82](https://github.com/d-zero-dev/linters/commit/106bc8215c4c59d257328af90aa6a8117ac4e6c8))
+- **deps:** update dependency markuplint to v4.10.1 ([6d886b0](https://github.com/d-zero-dev/linters/commit/6d886b06f4ed9fe34d09d3b6e67cbc64b47b0fe3))
+- **deps:** update dependency stylelint to v16.10.0 ([253c945](https://github.com/d-zero-dev/linters/commit/253c945faff1d316a76d75305c5af9d7f56aa34e))
+- **deps:** update typescript-eslint monorepo to v8.9.0 ([4e1321d](https://github.com/d-zero-dev/linters/commit/4e1321d970577899da4c53c963a93fc8b3e2b19f))
+- **markuplint:** disable `required-attr` to `script[src^='https://']` ([7c87d32](https://github.com/d-zero-dev/linters/commit/7c87d32f1f5a6b89565f79cb08f51ed03998ba0a))
+- **stylelint:** fix `no-invalid-position-at-import-rule` to allow `[@use](https://github.com/use)` in scss ([3aece71](https://github.com/d-zero-dev/linters/commit/3aece711d97fbb79f835325596e2319fcb8872af))
+
+### Features
+
+- **cspell:** add `.git` directory to ignore paths explicitly ([0d14b1b](https://github.com/d-zero-dev/linters/commit/0d14b1b8baa72d8e38788c41dcd3bdfbdaa109c9))
+- **eslint:** disable `unicorn/prefer-global-this` ([3f16169](https://github.com/d-zero-dev/linters/commit/3f161695422c93db89cbfce31ec338932d7c32b6))
+- **markuplint:** html accepts the prefx attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
+- **prettier:** set `printWidth` for HTML ([e8b1000](https://github.com/d-zero-dev/linters/commit/e8b10004a2f85387c858db419b3731fc385a1a56))
+- **stylelint:** drop `function-no-unknown` rule on scss ([e7a417c](https://github.com/d-zero-dev/linters/commit/e7a417cdd964d7db8f4284d4ce0b1e82b64bdc53))
+
+### BREAKING CHANGES
+
+- **stylelint:** remove `function-no-unknown` rule
+
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 
 ### Bug Fixes
