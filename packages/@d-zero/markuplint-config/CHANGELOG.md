@@ -14,7 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- **markuplint:** html accepts the prefx attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
+- **markuplint:** html accepts the prefix attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
 
 # [5.0.0-alpha.45](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.44...v5.0.0-alpha.45) (2024-10-09)
 

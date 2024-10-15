@@ -3,10 +3,7 @@
 	"ignorePaths": ["**/.*/**"],
 	"words": [
 		//
-		"unspaced",
-
-		// Temporary words
-		"prefx"
+		"unspaced"
 	],
 	"overrides": [
 		{

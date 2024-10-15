@@ -22,7 +22,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **cspell:** add `.git` directory to ignore paths explicitly ([0d14b1b](https://github.com/d-zero-dev/linters/commit/0d14b1b8baa72d8e38788c41dcd3bdfbdaa109c9))
 - **eslint:** disable `unicorn/prefer-global-this` ([3f16169](https://github.com/d-zero-dev/linters/commit/3f161695422c93db89cbfce31ec338932d7c32b6))
-- **markuplint:** html accepts the prefx attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
+- **markuplint:** html accepts the prefix attribute ([1fd7118](https://github.com/d-zero-dev/linters/commit/1fd7118680a960a8d81224c911d334cd64478566))
 - **prettier:** set `printWidth` for HTML ([e8b1000](https://github.com/d-zero-dev/linters/commit/e8b10004a2f85387c858db419b3731fc385a1a56))
 - **stylelint:** drop `function-no-unknown` rule on scss ([e7a417c](https://github.com/d-zero-dev/linters/commit/e7a417cdd964d7db8f4284d4ce0b1e82b64bdc53))
 
