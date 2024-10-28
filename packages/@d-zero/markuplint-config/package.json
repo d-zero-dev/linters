@@ -24,6 +24,6 @@
 	],
 	"dependencies": {
 		"@markuplint/pug-parser": "4.6.10",
-		"markuplint": "4.10.1"
+		"markuplint": "4.11.0"
 	}
 }
