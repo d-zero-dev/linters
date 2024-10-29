@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.48](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.47...v5.0.0-alpha.48) (2024-10-29)
+
+### Features
+
+- **pug-lint:** enable `disallowHtmlText` ([8396085](https://github.com/d-zero-dev/linters/commit/8396085f909781dbfc9b749a50e54dc8d6f1abc7))
+
 # [5.0.0-alpha.47](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.46...v5.0.0-alpha.47) (2024-10-28)
 
 **Note:** Version bump only for package @d-zero/pug-lint-config

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.48](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.47...v5.0.0-alpha.48) (2024-10-29)
+
+### Bug Fixes
+
+- **deps:** update typescript-eslint monorepo to v8.12.1 ([7ca92c8](https://github.com/d-zero-dev/linters/commit/7ca92c8525c703357c82542d8b166ed400633f14))
+
 # [5.0.0-alpha.47](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.46...v5.0.0-alpha.47) (2024-10-28)
 
 ### Bug Fixes

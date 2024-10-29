@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.48](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.47...v5.0.0-alpha.48) (2024-10-29)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.11 ([6f2efc3](https://github.com/d-zero-dev/linters/commit/6f2efc3ffe703238ac94839b9ceffcad83b259fa))
+- **deps:** update dependency markuplint to v4.11.1 ([9e90439](https://github.com/d-zero-dev/linters/commit/9e904399ed319151e933b4f23ed0ef405e640f0f))
+- **deps:** update dependency postcss-selector-parser to v7 ([5327cbb](https://github.com/d-zero-dev/linters/commit/5327cbb226683ddf61c454f9814717cb3c45a265))
+- **deps:** update dependency postcss-selector-parser to v7 ([edbcf37](https://github.com/d-zero-dev/linters/commit/edbcf37ec11da4ff3dd1e4d6ff196d951e40fafa))
+- **deps:** update dependency textlint to v14.3.0 ([51a6f2f](https://github.com/d-zero-dev/linters/commit/51a6f2f60503850e42bdd633e43c489075dd03ef))
+- **deps:** update typescript-eslint monorepo to v8.12.1 ([7ca92c8](https://github.com/d-zero-dev/linters/commit/7ca92c8525c703357c82542d8b166ed400633f14))
+
+### Features
+
+- **markuplint:** a要素href省略原則禁止を追加 ([406f026](https://github.com/d-zero-dev/linters/commit/406f02686a3fb33e9ebc0184ea40569e9a96aaf0))
+- **markuplint:** a要素javascriptスキームの原則禁止を追加 ([398d395](https://github.com/d-zero-dev/linters/commit/398d395895a0f990d72204089dbc05c5308b1123))
+- **markuplint:** br要素原則禁止を追加 ([3771bbc](https://github.com/d-zero-dev/linters/commit/3771bbce0c5e40a5a9e434f4ef35b409218e6da6))
+- **markuplint:** img要素alt省略原則禁止を追加 ([d3c2ab0](https://github.com/d-zero-dev/linters/commit/d3c2ab0b77f69ca4ccae9491ed7518e30beacb1a))
+- **pug-lint:** enable `disallowHtmlText` ([8396085](https://github.com/d-zero-dev/linters/commit/8396085f909781dbfc9b749a50e54dc8d6f1abc7))
+
 # [5.0.0-alpha.47](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.46...v5.0.0-alpha.47) (2024-10-28)
 
 ### Bug Fixes
