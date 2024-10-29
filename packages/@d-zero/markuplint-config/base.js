@@ -51,6 +51,18 @@ export default {
 					reason:
 						'省略可能なケースがほとんど想定されないため、原則禁止としています。省略する場合は明確な理由が必要です。（D-ZERO独自ルール）',
 				},
+				'invalid-attr': {
+					options: {
+						disallowAttrs: [
+							{
+								name: 'href',
+								value: { pattern: '/^javascript:/i' },
+							},
+						],
+					},
+					reason:
+						'JavaScriptのリンクは使用しないでください。代わりに`button`要素を使用してください。',
+				},
 			},
 		},
 	],
