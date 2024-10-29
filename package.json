@@ -38,7 +38,7 @@
 		}
 	},
 	"devDependencies": {
-		"@d-zero/tsconfig": "0.3.2",
+		"@d-zero/tsconfig": "0.3.3",
 		"@secretlint/secretlint-rule-preset-recommend": "9.0.0",
 		"execa": "9.5.0",
 		"husky": "9.1.6",
