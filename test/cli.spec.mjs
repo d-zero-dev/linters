@@ -65,7 +65,13 @@ describe('markuplint', () => {
 			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
 			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
+			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
 			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
+			'test/fixtures/markuplint/test.html:23:3 Require accessible name',
+			'test/fixtures/markuplint/test.html:25:3 Require accessible name',
+			'test/fixtures/markuplint/test.html:23:3 The "img" element expects the "alt" attribute',
+			'test/fixtures/markuplint/test.html:24:3 The "a" element expects the "href" attribute',
 			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
 		]);
 	});
