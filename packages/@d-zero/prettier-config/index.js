@@ -26,7 +26,7 @@ export default {
 			options: { parser: 'json' },
 		},
 		{
-			files: '.html',
+			files: '*.html',
 			options: {
 				printWidth: 100_000,
 			},
