@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.49](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.48...v5.0.0-alpha.49) (2024-10-31)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
 # [5.0.0-alpha.48](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.47...v5.0.0-alpha.48) (2024-10-29)
 
 ### Bug Fixes

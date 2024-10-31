@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.49](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.48...v5.0.0-alpha.49) (2024-10-31)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.12 ([01d86b9](https://github.com/d-zero-dev/linters/commit/01d86b937edf6df87a3dc01703c0acd7d3cc6384))
+- **deps:** update dependency cspell to v8.15.5 ([301f059](https://github.com/d-zero-dev/linters/commit/301f059c11ff78bc0d76713bca5ce57f8b117c34))
+- **deps:** update dependency markuplint to v4.11.2 ([ac22019](https://github.com/d-zero-dev/linters/commit/ac2201915c4cb0eb50f25efd6e131191ddab89fc))
+- **deps:** update dependency postcss-selector-parser to v7 ([6192c6c](https://github.com/d-zero-dev/linters/commit/6192c6c4c2f49e79245900dfe55785d677f04cdb))
+- **deps:** update typescript-eslint monorepo to v8.12.2 ([eef8038](https://github.com/d-zero-dev/linters/commit/eef8038a481e8fdc0d7cf204aaced0011a92aede))
+
+### Features
+
+- **cspell:** add word `webp` ([3ecf975](https://github.com/d-zero-dev/linters/commit/3ecf9755d2a622d8fc5039fdf01356b6b3d003b4))
+
 # [5.0.0-alpha.48](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.47...v5.0.0-alpha.48) (2024-10-29)
 
 ### Bug Fixes
