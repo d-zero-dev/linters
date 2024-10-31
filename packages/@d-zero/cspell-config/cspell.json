@@ -32,6 +32,9 @@
 		"nocjsp",
 		"destyle",
 
+		// File extensions
+		"webp",
+
 		// Configurations
 		"commitlintrc",
 		"lintrc",
