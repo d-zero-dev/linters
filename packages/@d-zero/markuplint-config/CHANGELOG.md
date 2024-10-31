@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
 # [5.0.0-alpha.49](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.48...v5.0.0-alpha.49) (2024-10-31)
 
 ### Bug Fixes

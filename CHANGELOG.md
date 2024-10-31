@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
+
+### Bug Fixes
+
+- **prettier:** fix to enable prettier for HTML files ([a584d47](https://github.com/d-zero-dev/linters/commit/a584d47dd3898f7db82133d8e928e24979c762b1))
+
 # [5.0.0-alpha.49](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.48...v5.0.0-alpha.49) (2024-10-31)
 
 ### Bug Fixes
