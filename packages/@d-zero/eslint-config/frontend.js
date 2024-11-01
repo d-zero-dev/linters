@@ -5,4 +5,8 @@ const ts = require('./typescript');
  */
 module.exports = {
 	...ts,
+	rules: {
+		...ts.rules,
+		'unicorn/prefer-top-level-await': 0,
+	},
 };
