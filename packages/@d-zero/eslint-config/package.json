@@ -25,6 +25,9 @@
 		},
 		"./base": {
 			"require": "./base.js"
+		},
+		"./node": {
+			"require": "./node.js"
 		}
 	},
 	"dependencies": {
