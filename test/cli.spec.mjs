@@ -48,6 +48,22 @@ describe('ESLint', () => {
 			'test/fixtures/eslint/sort-class-members.ts: line 48, col 2, Warning - Expected method method2 to come before method #privateMethod. (sort-class-members/sort-class-members)',
 		]);
 	});
+
+	test('prefer-top-level-await', async () => {
+		const frontend = await eslint(
+			'test/fixtures/eslint/frontend/prefer-top-level-await.ts',
+			'unicorn/prefer-top-level-await',
+		);
+		expect(frontend).toStrictEqual([]);
+
+		const node = await eslint(
+			'test/fixtures/eslint/node/prefer-top-level-await.ts',
+			'unicorn/prefer-top-level-await',
+		);
+		expect(node).toStrictEqual([
+			'test/fixtures/eslint/node/prefer-top-level-await.ts: line 5, col 6, Error - Prefer top-level await over an async function `asyncFn` call. (unicorn/prefer-top-level-await)',
+		]);
+	});
 });
 
 describe('markuplint', () => {
