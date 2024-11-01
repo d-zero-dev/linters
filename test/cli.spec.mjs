@@ -64,6 +64,16 @@ describe('ESLint', () => {
 			'test/fixtures/eslint/node/prefer-top-level-await.ts: line 5, col 6, Error - Prefer top-level await over an async function `asyncFn` call. (unicorn/prefer-top-level-await)',
 		]);
 	});
+
+	test('Disallow DOMContentLoaded', async () => {
+		const frontend = await eslint(
+			'test/fixtures/eslint/frontend/dom-content-loaded.ts',
+			'no-restricted-syntax',
+		);
+		expect(frontend).toStrictEqual([
+			"test/fixtures/eslint/frontend/dom-content-loaded.ts: line 1, col 1, Error - Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead. (no-restricted-syntax)",
+		]);
+	});
 });
 
 describe('markuplint', () => {
