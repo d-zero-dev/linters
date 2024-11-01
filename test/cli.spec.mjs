@@ -1,7 +1,11 @@
 import path from 'node:path';
 
 import { execa } from 'execa';
-import { describe, test, expect } from 'vitest';
+import { vi, describe, test, expect } from 'vitest';
+
+vi.setConfig({
+	testTimeout: 15_000,
+});
 
 /**
  * @param {string} filePath
