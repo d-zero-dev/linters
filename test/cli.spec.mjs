@@ -12,21 +12,24 @@ function n(filePath) {
 }
 
 describe('ESLint', () => {
-	test('sort-class-members', async () => {
-		const { stdout } = await execa(
-			'npx',
-			['eslint', 'test/fixtures/eslint/sort-class-members.ts', '-f', 'compact'],
-			{
-				reject: false,
-			},
-		);
+	const eslint = async (filepath, rule) => {
+		const { stdout } = await execa('npx', ['eslint', filepath, '-f', 'compact'], {
+			reject: false,
+		});
 		const lines = stdout.split('\n');
 		const result = lines
-			.filter((line) => line.includes('sort-class-members/sort-class-members'))
+			.filter((line) => line.includes(rule))
 			.map((line) =>
 				line.replace(process.cwd() + path.sep, '').replaceAll(path.sep, '/'),
 			);
+		return result;
+	};
 
+	test('sort-class-members', async () => {
+		const result = await eslint(
+			'test/fixtures/eslint/sort-class-members.ts',
+			'sort-class-members/sort-class-members',
+		);
 		expect(result).toStrictEqual([
 			'test/fixtures/eslint/sort-class-members.ts: line 3, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
 			'test/fixtures/eslint/sort-class-members.ts: line 8, col 2, Warning - Expected getter getter to come before constructor. (sort-class-members/sort-class-members)',
