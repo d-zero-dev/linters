@@ -13,14 +13,15 @@
 		"node": ">=22.0.0"
 	},
 	"files": [
-		"index.js",
-		"base.js"
+		"base.js",
+		"frontend.js",
+		"typescript.js"
 	],
 	"type": "commonjs",
-	"main": "index.js",
+	"main": "frontend.js",
 	"exports": {
 		".": {
-			"require": "./index.js"
+			"require": "./frontend.js"
 		},
 		"./base": {
 			"require": "./base.js"
