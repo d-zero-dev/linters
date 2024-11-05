@@ -26,6 +26,6 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"css-tree": "3.0.0"
+		"css-tree": "3.0.1"
 	}
 }
