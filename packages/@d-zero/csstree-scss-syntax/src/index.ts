@@ -10,14 +10,17 @@ const DOLLAR_SIGN = 0x00_24; // U+0024 DOLLAR SIGN ($)
 
 const forked = CSSTree.fork(
 	// @ts-ignore
-	function (syntax: typeof CSSTree, assign: typeof Object.assign) {
+	function (syntax: typeof CSSTree) {
 		// @ts-ignore
 		const scope = syntax.scope;
 		const getNode = scope.Value.getNode;
 
-		return assign(syntax, {
-			scope: assign(scope, {
-				Value: assign(scope.Value, {
+		return {
+			...syntax,
+			scope: {
+				...scope,
+				Value: {
+					...scope.Value,
 					// @ts-ignore
 					getNode: function (context) {
 						// @ts-ignore
@@ -36,13 +39,14 @@ const forked = CSSTree.fork(
 
 						return getNode.call(this, context);
 					},
-				}),
-			}),
-			// @ts-ignore
-			node: assign(syntax.node, {
+				},
+			},
+			node: {
+				// @ts-ignore
+				...syntax.node,
 				SassVariable,
-			}),
-		});
+			},
+		};
 	},
 );
 
