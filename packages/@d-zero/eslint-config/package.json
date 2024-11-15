@@ -37,7 +37,7 @@
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-import": "2.31.0",
 		"eslint-plugin-jsdoc": "50.5.0",
-		"eslint-plugin-regexp": "2.6.0",
+		"eslint-plugin-regexp": "2.7.0",
 		"eslint-plugin-sort-class-members": "1.21.0",
 		"eslint-plugin-unicorn": "56.0.0"
 	}
