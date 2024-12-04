@@ -1,7 +1,7 @@
 /**
  * @type {import('@markuplint/ml-config').Config}
  */
-export default {
+const nameBase = {
 	rules: {
 		'class-naming': {
 			severity: 'error',
@@ -44,3 +44,8 @@ export default {
 		},
 	],
 };
+
+/**
+ * @type {import('@markuplint/ml-config').Config}
+ */
+export default nameBase;
