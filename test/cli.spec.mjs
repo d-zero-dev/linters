@@ -148,6 +148,12 @@ describe('markuplint', () => {
 			'test/fixtures/markuplint/extended-naming.config.js',
 		);
 		expect(addedClassName).toStrictEqual([]);
+
+		const addedClassName2 = await markuplint(
+			'test/fixtures/markuplint/extended-naming.*',
+			'test/fixtures/markuplint/extended.config.js',
+		);
+		expect(addedClassName2).toStrictEqual([]);
 	});
 });
 
