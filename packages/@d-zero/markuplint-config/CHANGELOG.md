@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.13 ([92ef873](https://github.com/d-zero-dev/linters/commit/92ef87339b1cb3ec6ba18e6bbc1a3da6e3ee077f))
+- **deps:** update dependency @markuplint/pug-parser to v4.6.14 ([7bb1b76](https://github.com/d-zero-dev/linters/commit/7bb1b76ccc6be1a5e13a3b194fc214d5bee33cc2))
+- **deps:** update dependency markuplint to v4.11.3 ([81d2a04](https://github.com/d-zero-dev/linters/commit/81d2a047fbc9ccf4803d47fc895ef4ffb083cd9d))
+- **deps:** update dependency markuplint to v4.11.4 ([8019ac7](https://github.com/d-zero-dev/linters/commit/8019ac74f89802224e00c2f94241729f5f849842))
+
+### Features
+
+- **markuplint:** add `extendsConfig` function ([e10df26](https://github.com/d-zero-dev/linters/commit/e10df266ffdb87e1d0424a7db8be72e29bf7ebac))
+- **markuplint:** add `nameWith` function ([20cdbd3](https://github.com/d-zero-dev/linters/commit/20cdbd3bc958b273d310956e5f195a45f7dcd4ae))
+
 # [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
 
 **Note:** Version bump only for package @d-zero/markuplint-config

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
+
+### Bug Fixes
+
+- **deps:** update dependency css-tree to v3.0.1 ([8e472d3](https://github.com/d-zero-dev/linters/commit/8e472d3bb6776146b0ca1812cd66318f4217187c))
+
 # [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
 
 **Note:** Version bump only for package @d-zero/csstree-scss-syntax

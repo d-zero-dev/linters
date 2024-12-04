@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-jsdoc to v50.5.0 ([a0e6547](https://github.com/d-zero-dev/linters/commit/a0e6547d0dc320ac82c86e55a8fa7f3af231c755))
+- **deps:** update dependency eslint-plugin-regexp to v2.7.0 ([e46a858](https://github.com/d-zero-dev/linters/commit/e46a858ebe96570d9ec4ea0cdd707163697309ae))
+- **deps:** update dependency eslint-plugin-unicorn to v56.0.1 ([8df6f31](https://github.com/d-zero-dev/linters/commit/8df6f318b4d6ddb20c69e654aad9f6179982c8ad))
+- **deps:** update typescript-eslint monorepo to v8.13.0 ([d3ef0b9](https://github.com/d-zero-dev/linters/commit/d3ef0b95ffae0883e8423b3a49d21f10812746ef))
+- **deps:** update typescript-eslint monorepo to v8.14.0 ([44167e1](https://github.com/d-zero-dev/linters/commit/44167e140800ae2878701e7284640998bf6b4dbd))
+- **deps:** update typescript-eslint monorepo to v8.17.0 ([bf42f69](https://github.com/d-zero-dev/linters/commit/bf42f6904b51a6f0b8497b91be67211b2888eb47))
+
+### Features
+
+- **eslint:** add to disallow `DOMContentLoaded` event ([09484fb](https://github.com/d-zero-dev/linters/commit/09484fbd2825c977f56a13edc305aa08bda62cf6))
+- **eslint:** disable `unicorn/prefer-top-level-await` on frontend ([3f25481](https://github.com/d-zero-dev/linters/commit/3f25481aac9effa3ac1b8774efe096939eeebdf2))
+- **eslint:** expose `@d-zero/eslint-config/node` ([c7c1fce](https://github.com/d-zero-dev/linters/commit/c7c1fcee53a489e8847eca83bc27af9baaaf7ec6))
+
 # [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
 
 **Note:** Version bump only for package @d-zero/eslint-config

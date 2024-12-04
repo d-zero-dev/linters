@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.6.0 ([fff5277](https://github.com/d-zero-dev/linters/commit/fff5277b1761b6dadef596c70a1c63475b5f0680))
+- **deps:** update dependency @markuplint/pug-parser to v4.6.13 ([92ef873](https://github.com/d-zero-dev/linters/commit/92ef87339b1cb3ec6ba18e6bbc1a3da6e3ee077f))
+- **deps:** update dependency @markuplint/pug-parser to v4.6.14 ([7bb1b76](https://github.com/d-zero-dev/linters/commit/7bb1b76ccc6be1a5e13a3b194fc214d5bee33cc2))
+- **deps:** update dependency cspell to v8.15.7 ([dc3f99f](https://github.com/d-zero-dev/linters/commit/dc3f99f1544eac274ab1d47ea668257c5277aba0))
+- **deps:** update dependency cspell to v8.16.0 ([c39ad79](https://github.com/d-zero-dev/linters/commit/c39ad79aa94b14a2107e23b3954dad2bd0ca369b))
+- **deps:** update dependency cspell to v8.16.1 ([d72b88f](https://github.com/d-zero-dev/linters/commit/d72b88f4d410cd73216fbf749f3c74b968353aa6))
+- **deps:** update dependency css-tree to v3.0.1 ([f026374](https://github.com/d-zero-dev/linters/commit/f0263745e8b7dd2840eb5ee05df35a844fca94b6))
+- **deps:** update dependency css-tree to v3.0.1 ([8e472d3](https://github.com/d-zero-dev/linters/commit/8e472d3bb6776146b0ca1812cd66318f4217187c))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.5.0 ([a0e6547](https://github.com/d-zero-dev/linters/commit/a0e6547d0dc320ac82c86e55a8fa7f3af231c755))
+- **deps:** update dependency eslint-plugin-regexp to v2.7.0 ([e46a858](https://github.com/d-zero-dev/linters/commit/e46a858ebe96570d9ec4ea0cdd707163697309ae))
+- **deps:** update dependency eslint-plugin-unicorn to v56.0.1 ([8df6f31](https://github.com/d-zero-dev/linters/commit/8df6f318b4d6ddb20c69e654aad9f6179982c8ad))
+- **deps:** update dependency markuplint to v4.11.3 ([81d2a04](https://github.com/d-zero-dev/linters/commit/81d2a047fbc9ccf4803d47fc895ef4ffb083cd9d))
+- **deps:** update dependency markuplint to v4.11.4 ([8019ac7](https://github.com/d-zero-dev/linters/commit/8019ac74f89802224e00c2f94241729f5f849842))
+- **deps:** update dependency postcss-selector-parser to v7 ([46054f2](https://github.com/d-zero-dev/linters/commit/46054f26ba4cf0b1fcab9d9809bcd7265a2f9cfe))
+- **deps:** update dependency postcss-selector-parser to v7 ([8ce60d7](https://github.com/d-zero-dev/linters/commit/8ce60d76feb91ec6d3a787fe44a3d07a4337221b))
+- **deps:** update dependency postcss-selector-parser to v7 ([9043723](https://github.com/d-zero-dev/linters/commit/90437231889c0184b12f5ea16cf2d10e84cceb5a))
+- **deps:** update dependency postcss-selector-parser to v7 ([31c6d67](https://github.com/d-zero-dev/linters/commit/31c6d67ed61218d6cdd699706bb79e0d95f1a73c))
+- **deps:** update dependency postcss-selector-parser to v7 ([12da52f](https://github.com/d-zero-dev/linters/commit/12da52f4110c98a92c31b72fb10541d1e3f1bae6))
+- **deps:** update dependency prettier to v3.4.2 ([bc6de75](https://github.com/d-zero-dev/linters/commit/bc6de755c61e6adc243a3ffc1b80163c41031a38))
+- **deps:** update dependency stylelint-scss to v6.10.0 ([1c66527](https://github.com/d-zero-dev/linters/commit/1c665273d7c4f9396f9f83a4a66ccc6ffc478205))
+- **deps:** update dependency stylelint-scss to v6.9.0 ([1cceb7c](https://github.com/d-zero-dev/linters/commit/1cceb7c968a165c5fb11374768b894c73b0dd6c4))
+- **deps:** update typescript-eslint monorepo to v8.13.0 ([d3ef0b9](https://github.com/d-zero-dev/linters/commit/d3ef0b95ffae0883e8423b3a49d21f10812746ef))
+- **deps:** update typescript-eslint monorepo to v8.14.0 ([44167e1](https://github.com/d-zero-dev/linters/commit/44167e140800ae2878701e7284640998bf6b4dbd))
+- **deps:** update typescript-eslint monorepo to v8.17.0 ([bf42f69](https://github.com/d-zero-dev/linters/commit/bf42f6904b51a6f0b8497b91be67211b2888eb47))
+- **stylelint:** allow to use `rem` unit for `calc` ([aa88075](https://github.com/d-zero-dev/linters/commit/aa880759304e80ccb386e3571fc4fed7aa016908))
+
+### Features
+
+- **eslint:** add to disallow `DOMContentLoaded` event ([09484fb](https://github.com/d-zero-dev/linters/commit/09484fbd2825c977f56a13edc305aa08bda62cf6))
+- **eslint:** disable `unicorn/prefer-top-level-await` on frontend ([3f25481](https://github.com/d-zero-dev/linters/commit/3f25481aac9effa3ac1b8774efe096939eeebdf2))
+- **eslint:** expose `@d-zero/eslint-config/node` ([c7c1fce](https://github.com/d-zero-dev/linters/commit/c7c1fcee53a489e8847eca83bc27af9baaaf7ec6))
+- **markuplint:** add `extendsConfig` function ([e10df26](https://github.com/d-zero-dev/linters/commit/e10df266ffdb87e1d0424a7db8be72e29bf7ebac))
+- **markuplint:** add `nameWith` function ([20cdbd3](https://github.com/d-zero-dev/linters/commit/20cdbd3bc958b273d310956e5f195a45f7dcd4ae))
+
 # [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
 
 ### Bug Fixes

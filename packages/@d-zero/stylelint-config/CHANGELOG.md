@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint-scss to v6.10.0 ([1c66527](https://github.com/d-zero-dev/linters/commit/1c665273d7c4f9396f9f83a4a66ccc6ffc478205))
+- **deps:** update dependency stylelint-scss to v6.9.0 ([1cceb7c](https://github.com/d-zero-dev/linters/commit/1cceb7c968a165c5fb11374768b894c73b0dd6c4))
+- **stylelint:** allow to use `rem` unit for `calc` ([aa88075](https://github.com/d-zero-dev/linters/commit/aa880759304e80ccb386e3571fc4fed7aa016908))
+
 # [5.0.0-alpha.50](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.49...v5.0.0-alpha.50) (2024-10-31)
 
 **Note:** Version bump only for package @d-zero/stylelint-config
