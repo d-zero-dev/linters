@@ -49,3 +49,35 @@ const nameBase = {
  * @type {import('@markuplint/ml-config').Config}
  */
 export default nameBase;
+
+/**
+ * @type {(addNamingRule: string[]) => import('@markuplint/ml-config').Config}
+ */
+export const nameWith = (addNamingRules) => {
+	return {
+		...nameBase,
+		rules: {
+			...nameBase.rules,
+			'class-naming': {
+				...nameBase.rules['class-naming'],
+				value: [nameBase.rules['class-naming'].value, ...addNamingRules],
+			},
+		},
+		childNodeRules: [
+			{
+				...nameBase.childNodeRules[0],
+				rules: {
+					...nameBase.childNodeRules[0].rules,
+					'class-naming': {
+						...nameBase.childNodeRules[0].rules['class-naming'],
+						value: [
+							...nameBase.childNodeRules[0].rules['class-naming'].value,
+							...addNamingRules,
+						],
+					},
+				},
+			},
+			nameBase.childNodeRules[1],
+		],
+	};
+};
