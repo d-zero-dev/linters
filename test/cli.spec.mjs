@@ -81,19 +81,40 @@ describe('ESLint', () => {
 });
 
 describe('markuplint', () => {
-	test('CLI', async () => {
+	const markuplint = async (file, config) => {
 		const { stdout } = await execa(
 			'npx',
-			['markuplint', 'test/fixtures/markuplint/*', '--format', 'json', '--locale', 'en'],
+			[
+				'markuplint',
+				file,
+				'--format',
+				'json',
+				'--locale',
+				'en',
+				config ? ['-c', config] : [],
+			].flat(),
 			{
 				reject: false,
 			},
 		);
-		const violations = JSON.parse(stdout);
-		const formatted = violations.map(
-			(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
-		);
-		expect(formatted).toStrictEqual([
+
+		try {
+			const violations = JSON.parse(stdout);
+			const formatted = violations.map(
+				(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
+			);
+			return formatted;
+		} catch (error) {
+			if (error instanceof SyntaxError) {
+				throw new TypeError(`Output is not JSON: ${stdout}`, { ...error });
+			}
+			throw error;
+		}
+	};
+
+	test('CLI', async () => {
+		const violations = await markuplint('test/fixtures/markuplint/test.*');
+		expect(violations).toStrictEqual([
 			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
