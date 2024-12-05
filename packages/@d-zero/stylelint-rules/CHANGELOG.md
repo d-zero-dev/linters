@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.52](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.51...v5.0.0-alpha.52) (2024-12-05)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.11.0 ([f0bd429](https://github.com/d-zero-dev/linters/commit/f0bd42911084d0b6555694a3cad8c579f7335ca1))
+
 # [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
 
 ### Bug Fixes

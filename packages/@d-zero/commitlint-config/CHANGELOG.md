@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.52](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.51...v5.0.0-alpha.52) (2024-12-05)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
 # [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
 
 ### Bug Fixes

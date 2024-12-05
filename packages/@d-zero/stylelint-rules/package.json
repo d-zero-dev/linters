@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/stylelint-rules",
-	"version": "5.0.0-alpha.51",
+	"version": "5.0.0-alpha.52",
 	"description": "Rules of Stylelint for D-ZERO",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -23,7 +23,7 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"@d-zero/csstree-scss-syntax": "5.0.0-alpha.51",
+		"@d-zero/csstree-scss-syntax": "5.0.0-alpha.52",
 		"css-tree": "3.0.1",
 		"postcss-selector-parser": "7.0.0",
 		"postcss-value-parser": "4.2.0",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.52](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.51...v5.0.0-alpha.52) (2024-12-05)
+
+### Bug Fixes
+
+- **deps:** update dependency cz-customizable to v7.3.0 ([42fe55a](https://github.com/d-zero-dev/linters/commit/42fe55ad02df857a4636af2a6b45ebda7b8e67da))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.0 ([9adc86d](https://github.com/d-zero-dev/linters/commit/9adc86df60c6cc71bca39eed8a1be28c38f16c6c))
+- **deps:** update dependency postcss-selector-parser to v7 ([dec4e7d](https://github.com/d-zero-dev/linters/commit/dec4e7dc8f06d79a2ec1c2b6ca85858cd1a22f15))
+- **deps:** update dependency stylelint to v16.11.0 ([f0bd429](https://github.com/d-zero-dev/linters/commit/f0bd42911084d0b6555694a3cad8c579f7335ca1))
+- **deps:** update dependency textlint to v14.4.0 ([0a8d174](https://github.com/d-zero-dev/linters/commit/0a8d17400f4c78cdbec58f303197a143e0294c97))
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3 ([f179eda](https://github.com/d-zero-dev/linters/commit/f179eda78ca0fc0985abb48298d41aa966c5f07f))
+
 # [5.0.0-alpha.51](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.50...v5.0.0-alpha.51) (2024-12-04)
 
 ### Bug Fixes
