@@ -13,8 +13,11 @@ type Messages = {
 	rejected: (...values: string[]) => string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createRule<P = any, S = any>(setting: Settings<P, S>) {
+/**
+ *
+ * @param setting
+ */
+export function createRule<P = unknown, S = unknown>(setting: Settings<P, S>) {
 	const name = setting.name;
 	const ruleName = `${NAMESPACE}/${name}`;
 	const meta = {

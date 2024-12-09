@@ -21,6 +21,11 @@ export interface DirectoryOptions {
 
 export type IgnoreMap = Partial<Record<CommandType, string | string[]>>;
 
+/**
+ *
+ * @param dirOptions
+ * @param mapping
+ */
 export default function (
 	dirOptions?: string | DirectoryOptions,
 	mapping?: CommandMappings,

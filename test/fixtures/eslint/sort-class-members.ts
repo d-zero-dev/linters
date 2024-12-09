@@ -5,9 +5,11 @@ export class Test1 {
 
 export class Test2 {
 	constructor() {}
-	get getter() { return true; }
+	get getter() {
+		return true;
+	}
 	member = true;
-	
+
 	static staticMember = true;
 	method() {}
 }

@@ -3,7 +3,6 @@ const path = require('node:path');
 
 /**
  * Get the list of packages in the monorepo
- *
  * @param {(string | RegExp)[]} removes
  * @returns {string[]}
  */

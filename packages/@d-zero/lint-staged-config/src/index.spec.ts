@@ -4,10 +4,18 @@ import { describe, test, expect } from 'vitest';
 
 import lintStagedConfigGenerator from './index.js';
 
+/**
+ *
+ * @param {...any} paths
+ */
 function resolve(...paths: string[]): string {
 	return path.resolve(...paths).replaceAll(path.sep, '/');
 }
 
+/**
+ *
+ * @param {...any} paths
+ */
 function toRelativePath(...paths: string[]): string[] {
 	const cwd = process.cwd().replaceAll(path.sep, '/');
 	return paths.map((p) => p.replaceAll(cwd, '.'));

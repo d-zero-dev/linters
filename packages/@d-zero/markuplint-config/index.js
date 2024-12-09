@@ -43,7 +43,7 @@ export default createConfig();
 
 /**
  *
- * @param {Object} options
+ * @param {object} options
  * @param {string[]?} options.classNaming
  * @returns
  */

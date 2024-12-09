@@ -5,6 +5,10 @@ import { describe, test, expect } from 'vitest';
 
 import { getValueType } from './get-value-type.js';
 
+/**
+ *
+ * @param css
+ */
 function p(css: string) {
 	const root = postcss.parse(css);
 	const rule = root.first as Rule;

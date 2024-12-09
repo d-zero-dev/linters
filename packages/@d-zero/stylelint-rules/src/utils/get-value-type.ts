@@ -9,6 +9,10 @@ import type { Declaration } from 'postcss';
 import CSSTree from '@d-zero/csstree-scss-syntax';
 import postcssValueParser from 'postcss-value-parser';
 
+/**
+ *
+ * @param decl
+ */
 export function getValueType(decl: Declaration) {
 	if (decl.prop.startsWith('$')) {
 		return null;
@@ -28,6 +32,11 @@ export function getValueType(decl: Declaration) {
 	}
 }
 
+/**
+ *
+ * @param prop
+ * @param value
+ */
 function _getValueType(
 	prop: string,
 	value: string,
@@ -79,6 +88,10 @@ function _getValueType(
 	});
 }
 
+/**
+ *
+ * @param node
+ */
 function getValueNode(
 	node: PropertyToken | TypeToken | KeywordToken,
 ): (TypeToken | KeywordToken)[] {
@@ -98,12 +111,20 @@ function getValueNode(
 	return [node];
 }
 
+/**
+ *
+ * @param node
+ */
 function isProperty(
 	node: PropertyToken | TypeToken | KeywordToken | ValueToken,
 ): node is PropertyToken {
 	return node.syntax?.type === 'Property';
 }
 
+/**
+ *
+ * @param node
+ */
 function isType(
 	node: PropertyToken | TypeToken | KeywordToken | ValueToken,
 ): node is TypeToken {
