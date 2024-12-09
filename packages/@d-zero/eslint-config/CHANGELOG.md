@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.53](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.52...v5.0.0-alpha.53) (2024-12-09)
+
+### Features
+
+- **eslint:** support for flat config ([00be9bb](https://github.com/d-zero-dev/linters/commit/00be9bb4253a7f1b1acefcc1fb2b69b7b27b4be3))
+
+### BREAKING CHANGES
+
+- **eslint:** dropped partial importing
+
 # [5.0.0-alpha.52](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.51...v5.0.0-alpha.52) (2024-12-05)
 
 ### Bug Fixes

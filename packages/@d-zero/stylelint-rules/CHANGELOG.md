@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.53](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.52...v5.0.0-alpha.53) (2024-12-09)
+
+### Bug Fixes
+
+- **deps:** update dependency css-tree to v3.1.0 ([0e5ba09](https://github.com/d-zero-dev/linters/commit/0e5ba09e24f9c786ad378b450edd0998b2e13e7d))
+
 # [5.0.0-alpha.52](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.51...v5.0.0-alpha.52) (2024-12-05)
 
 ### Bug Fixes
