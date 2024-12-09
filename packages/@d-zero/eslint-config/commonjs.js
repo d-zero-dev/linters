@@ -3,13 +3,14 @@ import globals from 'globals';
 /**
  * @type {import('eslint').Linter.Config}
  */
-export const frontend = {
+export const commonjs = {
 	rules: {
-		'unicorn/prefer-top-level-await': 0,
+		'unicorn/prefer-module': 0,
+		'@typescript-eslint/no-require-imports': 0,
 	},
 	languageOptions: {
 		globals: {
-			...globals.browser,
+			...globals.commonjs,
 		},
 	},
 };

@@ -13,22 +13,11 @@
 		"node": ">=22.0.0"
 	},
 	"files": [
-		"base.js",
-		"frontend.js",
-		"typescript.js"
+		"*.js"
 	],
-	"type": "commonjs",
-	"main": "frontend.js",
+	"type": "module",
 	"exports": {
-		".": {
-			"require": "./frontend.js"
-		},
-		"./base": {
-			"require": "./base.js"
-		},
-		"./node": {
-			"require": "./node.js"
-		}
+		".": "./index.js"
 	},
 	"dependencies": {
 		"@eslint/js": "9.16.0",
