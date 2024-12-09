@@ -17,15 +17,15 @@ function n(filePath) {
 
 describe('ESLint', () => {
 	const eslint = async (filepath, rule) => {
-		const { stdout } = await execa('npx', ['eslint', filepath, '-f', 'compact'], {
+		const dir = path.dirname(filepath);
+		const config = path.join(dir, 'eslint.config.js');
+		const { stdout } = await execa('npx', ['eslint', filepath, '--config', config], {
 			reject: false,
 		});
 		const lines = stdout.split('\n');
 		const result = lines
-			.filter((line) => line.includes(rule))
-			.map((line) =>
-				line.replace(process.cwd() + path.sep, '').replaceAll(path.sep, '/'),
-			);
+			.filter((line) => line.endsWith(rule))
+			.map((line) => line.replaceAll(/\s+/g, ' ').trim());
 		return result;
 	};
 
@@ -35,21 +35,21 @@ describe('ESLint', () => {
 			'sort-class-members/sort-class-members',
 		);
 		expect(result).toStrictEqual([
-			'test/fixtures/eslint/sort-class-members.ts: line 3, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 8, col 2, Warning - Expected getter getter to come before constructor. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 9, col 2, Warning - Expected property member to come before constructor. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 9, col 2, Warning - Expected property member to come before getter getter. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 12, col 2, Warning - Expected method method to come before static property staticMember. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 17, col 2, Warning - Expected property c1 to come before property #a. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 18, col 2, Warning - Expected property c2 to come before property #a. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 18, col 2, Warning - Expected property c2 to come before property c1. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 19, col 2, Warning - Expected property b2 to come before property #a. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 20, col 2, Warning - Expected property b1 to come before property #a. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 20, col 2, Warning - Expected property b1 to come before property b2. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 30, col 2, Warning - Expected getter b to come immediately before setter b. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 47, col 2, Warning - Expected method #privateMethod to come before method _method. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 48, col 2, Warning - Expected method method2 to come before method _method. (sort-class-members/sort-class-members)',
-			'test/fixtures/eslint/sort-class-members.ts: line 48, col 2, Warning - Expected method method2 to come before method #privateMethod. (sort-class-members/sort-class-members)',
+			'3:2 warning Expected property member to come before constructor sort-class-members/sort-class-members',
+			'8:2 warning Expected getter getter to come before constructor sort-class-members/sort-class-members',
+			'11:2 warning Expected property member to come before constructor sort-class-members/sort-class-members',
+			'11:2 warning Expected property member to come before getter getter sort-class-members/sort-class-members',
+			'14:2 warning Expected method method to come before static property staticMember sort-class-members/sort-class-members',
+			'19:2 warning Expected property c1 to come before property #a sort-class-members/sort-class-members',
+			'20:2 warning Expected property c2 to come before property #a sort-class-members/sort-class-members',
+			'20:2 warning Expected property c2 to come before property c1 sort-class-members/sort-class-members',
+			'21:2 warning Expected property b2 to come before property #a sort-class-members/sort-class-members',
+			'22:2 warning Expected property b1 to come before property #a sort-class-members/sort-class-members',
+			'22:2 warning Expected property b1 to come before property b2 sort-class-members/sort-class-members',
+			'32:2 warning Expected getter b to come immediately before setter b sort-class-members/sort-class-members',
+			'49:2 warning Expected method #privateMethod to come before method _method sort-class-members/sort-class-members',
+			'50:2 warning Expected method method2 to come before method _method sort-class-members/sort-class-members',
+			'50:2 warning Expected method method2 to come before method #privateMethod sort-class-members/sort-class-members',
 		]);
 	});
 
@@ -65,7 +65,7 @@ describe('ESLint', () => {
 			'unicorn/prefer-top-level-await',
 		);
 		expect(node).toStrictEqual([
-			'test/fixtures/eslint/node/prefer-top-level-await.ts: line 5, col 6, Error - Prefer top-level await over an async function `asyncFn` call. (unicorn/prefer-top-level-await)',
+			'5:6 error Prefer top-level await over an async function `asyncFn` call unicorn/prefer-top-level-await',
 		]);
 	});
 
@@ -75,7 +75,7 @@ describe('ESLint', () => {
 			'no-restricted-syntax',
 		);
 		expect(frontend).toStrictEqual([
-			"test/fixtures/eslint/frontend/dom-content-loaded.ts: line 1, col 1, Error - Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead. (no-restricted-syntax)",
+			"1:1 error Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead no-restricted-syntax",
 		]);
 	});
 });
@@ -158,6 +158,11 @@ describe('markuplint', () => {
 });
 
 describe('stylelint', () => {
+	/**
+	 *
+	 * @param filePath
+	 * @param configFilePath
+	 */
 	async function stylelint(filePath, configFilePath) {
 		const { stdout, stderr } = await execa(
 			'npx',

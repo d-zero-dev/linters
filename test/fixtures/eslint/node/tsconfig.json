@@ -1,0 +1,7 @@
+{
+	"extends": ["@d-zero/tsconfig"],
+	"compilerOptions": {
+		"noEmit": true
+	},
+	"include": ["**/*.ts"]
+}
