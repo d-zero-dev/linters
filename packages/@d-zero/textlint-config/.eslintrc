@@ -1,6 +1,0 @@
-{
-	"extends": "@d-zero/eslint-config/base",
-	"rules": {
-		"unicorn/prefer-module": 0
-	}
-}
