@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.54](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.53...v5.0.0-alpha.54) (2024-12-16)
+
+### Bug Fixes
+
+- **deps:** update dependency @commitlint/cli to v19.6.1 ([d1473cc](https://github.com/d-zero-dev/linters/commit/d1473cca2b855a342aa97ee16dfdf9304b15d6ad))
+- **deps:** update dependency cspell to v8.17.0 ([7d04df6](https://github.com/d-zero-dev/linters/commit/7d04df6107e8d039e119b317059493d0d77bfc7e))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.1 ([5d6e58a](https://github.com/d-zero-dev/linters/commit/5d6e58a3af7ad3a7722cf7297c5ae41c48cc4fb2))
+- **deps:** update dependency lint-staged to v15.2.11 ([c4dab0c](https://github.com/d-zero-dev/linters/commit/c4dab0c19ce59347aefc723353745536f9ffd352))
+- **deps:** update dependency stylelint to v16.12.0 ([61d3276](https://github.com/d-zero-dev/linters/commit/61d3276d2a0a475272f1650bc3634f9490310196))
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3.0.1 ([9c3ea57](https://github.com/d-zero-dev/linters/commit/9c3ea579051ef6ae176b5b5de40711996593ff6d))
+- **deps:** update dependency typescript-eslint to v8.18.0 ([2fe36f6](https://github.com/d-zero-dev/linters/commit/2fe36f6846d356d7b47986d6311a78ef9e6f2562))
+- **deps:** update eslint monorepo to v9.17.0 ([0006106](https://github.com/d-zero-dev/linters/commit/00061069c73a0c80a0102e347dd404af9b1437df))
+
 # [5.0.0-alpha.53](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.52...v5.0.0-alpha.53) (2024-12-09)
 
 ### Bug Fixes

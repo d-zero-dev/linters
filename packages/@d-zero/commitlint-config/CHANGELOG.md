@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.54](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.53...v5.0.0-alpha.54) (2024-12-16)
+
+### Bug Fixes
+
+- **deps:** update dependency @commitlint/cli to v19.6.1 ([d1473cc](https://github.com/d-zero-dev/linters/commit/d1473cca2b855a342aa97ee16dfdf9304b15d6ad))
+
 # [5.0.0-alpha.53](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.52...v5.0.0-alpha.53) (2024-12-09)
 
 **Note:** Version bump only for package @d-zero/commitlint-config
