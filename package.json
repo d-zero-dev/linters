@@ -43,7 +43,7 @@
 		"execa": "9.5.2",
 		"husky": "9.1.7",
 		"lerna": "8.1.9",
-		"npm-run-all2": "7.0.1",
+		"npm-run-all2": "7.0.2",
 		"prettier": "3.4.2",
 		"secretlint": "9.0.0",
 		"typescript": "5.7.2",
