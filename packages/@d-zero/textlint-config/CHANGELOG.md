@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.55](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.54...v5.0.0-alpha.55) (2025-01-06)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v14.4.2 ([a975b3c](https://github.com/d-zero-dev/linters/commit/a975b3c40f989a1cebffea3f8722933dc2bff260))
+- **deps:** update dependency textlint-rule-preset-japanese to v10.0.4 ([59fb506](https://github.com/d-zero-dev/linters/commit/59fb506c880a5c1e85f974ceb9c5f35b16765806))
+
 # [5.0.0-alpha.54](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.53...v5.0.0-alpha.54) (2024-12-16)
 
 ### Bug Fixes

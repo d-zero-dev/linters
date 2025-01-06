@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.55](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.54...v5.0.0-alpha.55) (2025-01-06)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.17.1 ([0c6d261](https://github.com/d-zero-dev/linters/commit/0c6d26131a98c22f3b4d7a34658ce8d000e515bf))
+- **deps:** update dependency cz-customizable to v7.4.0 ([b3236b0](https://github.com/d-zero-dev/linters/commit/b3236b09b9d4c311f3beb6aaaa20e1d55987c5fd))
+- **deps:** update dependency globals to v15.14.0 ([f062386](https://github.com/d-zero-dev/linters/commit/f062386a1ad0c8a4d0da4087e733b155dce27f70))
+- **deps:** update dependency lint-staged to v15.3.0 ([67b7f4f](https://github.com/d-zero-dev/linters/commit/67b7f4fc8e0dbffe78615e827083230be2949bfc))
+- **deps:** update dependency textlint to v14.4.2 ([a975b3c](https://github.com/d-zero-dev/linters/commit/a975b3c40f989a1cebffea3f8722933dc2bff260))
+- **deps:** update dependency textlint-rule-preset-japanese to v10.0.4 ([59fb506](https://github.com/d-zero-dev/linters/commit/59fb506c880a5c1e85f974ceb9c5f35b16765806))
+- **deps:** update dependency typescript-eslint to v8.18.2 ([691168b](https://github.com/d-zero-dev/linters/commit/691168bb04d7731e8a8fda3e8e4dec545a92119c))
+- **deps:** update dependency typescript-eslint to v8.19.0 ([e74e052](https://github.com/d-zero-dev/linters/commit/e74e052be1de189ea567b6d3a98e8f0952a05d4d))
+
 # [5.0.0-alpha.54](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.53...v5.0.0-alpha.54) (2024-12-16)
 
 ### Bug Fixes
