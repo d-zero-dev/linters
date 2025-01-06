@@ -20,7 +20,7 @@
 		"textlint": "14.4.2",
 		"textlint-plugin-html": "1.0.1",
 		"textlint-rule-preset-ja-spacing": "2.4.3",
-		"textlint-rule-preset-japanese": "10.0.3",
+		"textlint-rule-preset-japanese": "10.0.4",
 		"textlint-rule-preset-jtf-style": "3.0.1"
 	}
 }
