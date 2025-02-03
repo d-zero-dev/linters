@@ -21,7 +21,7 @@
 	},
 	"dependencies": {
 		"@commitlint/cli": "19.6.1",
-		"@commitlint/config-conventional": "19.6.0",
+		"@commitlint/config-conventional": "19.7.1",
 		"@d-zero/cz-config": "5.0.0-alpha.55"
 	}
 }
