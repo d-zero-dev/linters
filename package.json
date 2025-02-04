@@ -47,7 +47,7 @@
 		"prettier": "3.4.2",
 		"secretlint": "9.0.0",
 		"typescript": "5.7.3",
-		"vitest": "2.1.8"
+		"vitest": "2.1.9"
 	},
 	"packageManager": "npm@11.0.0",
 	"volta": {
