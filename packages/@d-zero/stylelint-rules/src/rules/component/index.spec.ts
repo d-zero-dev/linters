@@ -49,6 +49,7 @@ describe('Exact Match', () => {
 				severity: 'error',
 				text: 'クラス名がファイル名と一致しません',
 				url: undefined,
+				fix: undefined,
 			},
 			{
 				column: 1,
@@ -59,6 +60,7 @@ describe('Exact Match', () => {
 				severity: 'error',
 				text: 'セレクタの定義は1つだけです',
 				url: undefined,
+				fix: undefined,
 			},
 		]);
 	});
