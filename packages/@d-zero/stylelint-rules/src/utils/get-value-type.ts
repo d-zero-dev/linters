@@ -62,13 +62,16 @@ function _getValueType(
 		(node) => node.type === 'string' || node.type === 'function' || node.type === 'word',
 	);
 
+	// @ts-ignore
 	const props = cssTreeDecl.matched;
 	if (props === null) {
 		return null;
 	}
 
 	const valueTypes = props.match
+		// @ts-ignore
 		.flatMap((node) => getValueNode(node))
+		// @ts-ignore
 		.map((node) => node.syntax.name);
 
 	return values.map((value, i) => {
