@@ -50,7 +50,6 @@ const forked = CSSTree.fork(
 	},
 );
 
-export * as CSSTree from 'css-tree';
 export type * from './types.js';
 
 export default {
