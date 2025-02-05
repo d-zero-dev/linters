@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.13.0 ([584ab98](https://github.com/d-zero-dev/linters/commit/584ab98843e4cfe19f4d0602de9b3c3a517af882))
+- **deps:** update dependency stylelint to v16.13.2 ([eff0f9d](https://github.com/d-zero-dev/linters/commit/eff0f9d5c3fb970ef16f75749e68abc0e63a1155))
+- **deps:** update dependency stylelint-config-recess-order to v6 ([393b2f3](https://github.com/d-zero-dev/linters/commit/393b2f314e221237609d21944b13da25fcad8f32))
+- **deps:** update dependency stylelint-scss to v6.10.1 ([20302ec](https://github.com/d-zero-dev/linters/commit/20302ec2dec08faee99c6f469cee9dc31dbbb24e))
+- **deps:** update dependency stylelint-scss to v6.11.0 ([80bc2e2](https://github.com/d-zero-dev/linters/commit/80bc2e2361bb2668cc04a359d0daa95d40704edb))
+
+### Features
+
+- **stylelint:** font-sizeプロパティが許容するcalc値でSASS変数をカスタムプロパティに変更 ([ab1b588](https://github.com/d-zero-dev/linters/commit/ab1b58828d8c20593e2b2df8d53e802a800d7335))
+
+### BREAKING CHANGES
+
+- **stylelint:** font-sizeプロパティのcalc値のSASS変数不許可
+
 # [5.0.0-alpha.55](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.54...v5.0.0-alpha.55) (2025-01-06)
 
 **Note:** Version bump only for package @d-zero/stylelint-config

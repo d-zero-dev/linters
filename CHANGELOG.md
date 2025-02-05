@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.7.1 ([1b3dec5](https://github.com/d-zero-dev/linters/commit/1b3dec53c2af88cf1813e861febc69e79347fa05))
+- **deps:** update dependency cspell to v8.17.3 ([2b718b9](https://github.com/d-zero-dev/linters/commit/2b718b95caab21297c58bae471b54d5e2547ae11))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.2 ([67b8657](https://github.com/d-zero-dev/linters/commit/67b865778e20dcf9c9f615512b9008ca557f6cba))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.3 ([6facb33](https://github.com/d-zero-dev/linters/commit/6facb3378add26d3e2257c4bffeda981e7c55999))
+- **deps:** update dependency lint-staged to v15.4.1 ([a39efc8](https://github.com/d-zero-dev/linters/commit/a39efc8fec8ea6274c189ba48728d9b8aaf8d8d4))
+- **deps:** update dependency lint-staged to v15.4.3 ([6e8c3ee](https://github.com/d-zero-dev/linters/commit/6e8c3ee7bc444cc136c132a7a7290cf1b98de92f))
+- **deps:** update dependency markuplint to v4.11.5 ([711b6d0](https://github.com/d-zero-dev/linters/commit/711b6d0329d30fb27981af833b62a63a4c4f7aa1))
+- **deps:** update dependency postcss-selector-parser to v7 ([274b8f9](https://github.com/d-zero-dev/linters/commit/274b8f931468f7469fb61a0ded498ae011d48b83))
+- **deps:** update dependency stylelint to v16.13.0 ([584ab98](https://github.com/d-zero-dev/linters/commit/584ab98843e4cfe19f4d0602de9b3c3a517af882))
+- **deps:** update dependency stylelint to v16.13.2 ([eff0f9d](https://github.com/d-zero-dev/linters/commit/eff0f9d5c3fb970ef16f75749e68abc0e63a1155))
+- **deps:** update dependency stylelint-config-recess-order to v6 ([393b2f3](https://github.com/d-zero-dev/linters/commit/393b2f314e221237609d21944b13da25fcad8f32))
+- **deps:** update dependency stylelint-scss to v6.10.1 ([20302ec](https://github.com/d-zero-dev/linters/commit/20302ec2dec08faee99c6f469cee9dc31dbbb24e))
+- **deps:** update dependency stylelint-scss to v6.11.0 ([80bc2e2](https://github.com/d-zero-dev/linters/commit/80bc2e2361bb2668cc04a359d0daa95d40704edb))
+- **deps:** update dependency typescript-eslint to v8.19.1 ([a6cef12](https://github.com/d-zero-dev/linters/commit/a6cef12a7746ee01c51ab5d70fccf91d8e6e04d8))
+- **deps:** update dependency typescript-eslint to v8.21.0 ([9b763b5](https://github.com/d-zero-dev/linters/commit/9b763b50bdbd5370e4d1c61bc99bcd4dd12079f2))
+- **deps:** update dependency typescript-eslint to v8.23.0 ([3319e50](https://github.com/d-zero-dev/linters/commit/3319e5019777f87247a281060f0e209c86482b35))
+- **deps:** update eslint monorepo to v9.18.0 ([ea8b320](https://github.com/d-zero-dev/linters/commit/ea8b320f28337cc0993888fd28ebf654f91321a4))
+- **deps:** update eslint monorepo to v9.19.0 ([112eeaa](https://github.com/d-zero-dev/linters/commit/112eeaa1923d0641fafcaea00013ec55c8c65af3))
+
+### Features
+
+- **csstree-scss-syntax:** change to no expose `CSSTree` original class ([205fa7f](https://github.com/d-zero-dev/linters/commit/205fa7f154385c3748ff952ecf908ddf96d1a2a5))
+- **stylelint:** font-sizeプロパティが許容するcalc値でSASS変数をカスタムプロパティに変更 ([ab1b588](https://github.com/d-zero-dev/linters/commit/ab1b58828d8c20593e2b2df8d53e802a800d7335))
+
+### BREAKING CHANGES
+
+- **stylelint:** font-sizeプロパティのcalc値のSASS変数不許可
+- **csstree-scss-syntax:** No expose `CSSTree` class
+
 # [5.0.0-alpha.55](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.54...v5.0.0-alpha.55) (2025-01-06)
 
 ### Bug Fixes

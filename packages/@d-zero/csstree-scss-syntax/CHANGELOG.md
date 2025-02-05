@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
+
+### Features
+
+- **csstree-scss-syntax:** change to no expose `CSSTree` original class ([205fa7f](https://github.com/d-zero-dev/linters/commit/205fa7f154385c3748ff952ecf908ddf96d1a2a5))
+
+### BREAKING CHANGES
+
+- **csstree-scss-syntax:** No expose `CSSTree` class
+
 # [5.0.0-alpha.55](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.54...v5.0.0-alpha.55) (2025-01-06)
 
 **Note:** Version bump only for package @d-zero/csstree-scss-syntax
