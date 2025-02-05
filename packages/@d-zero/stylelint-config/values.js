@@ -18,7 +18,7 @@ module.exports = {
 				'inherit',
 				/^\$[a-z][a-z0-9]*-font-size(?:-[a-z0-9]+)?$/,
 				'1em',
-				/^calc\(\s*(?:\$[a-z_][a-z0-9_-]*|(?:\d*\.)?\d+)\s*\/\s*(?:\$[a-z_][a-z0-9_-]*|(?:\d*\.)?\d+)\s*\*\s*(?:1em|1rem|100vw)\s*\)$/,
+				/^calc\(\s*(?:(?:\d*\.)?\d+|var\(\s*--[a-z][a-z0-9_-]+\s*\))\s*\/\s*(?:(?:\d*\.)?\d+|var\(\s*--[a-z][a-z0-9_-]+\s*\))\s*\*\s*(?:1em|1rem|100vw)\s*\)$/,
 				/^(?:\d*\.)?\d+rem/,
 				/^clamp\(/,
 				// Custom properties
