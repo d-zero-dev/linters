@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.57](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.56...v5.0.0-alpha.57) (2025-02-10)
+
+### Bug Fixes
+
+- **deps:** update eslint monorepo to v9.20.0 ([cf802cc](https://github.com/d-zero-dev/linters/commit/cf802cc0d4078d682ecbb375a4313d4a458bdf38))
+
 # [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
 
 ### Bug Fixes

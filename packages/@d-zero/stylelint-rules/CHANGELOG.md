@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.57](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.56...v5.0.0-alpha.57) (2025-02-10)
+
+### Bug Fixes
+
+- **deps:** update dependency postcss-selector-parser to v7.1.0 ([eb96488](https://github.com/d-zero-dev/linters/commit/eb964884749026de005e6058ade4c0b19413053a))
+
 # [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
 
 ### Bug Fixes

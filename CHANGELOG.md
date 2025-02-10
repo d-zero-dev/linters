@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.57](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.56...v5.0.0-alpha.57) (2025-02-10)
+
+### Bug Fixes
+
+- **deps:** update dependency @prettier/plugin-pug to v3.2.1 ([0567714](https://github.com/d-zero-dev/linters/commit/0567714748bf8da821589e5c06f6ac0846a291bb))
+- **deps:** update dependency postcss-selector-parser to v7.1.0 ([eb96488](https://github.com/d-zero-dev/linters/commit/eb964884749026de005e6058ade4c0b19413053a))
+- **deps:** update dependency prettier to v3.5.0 ([db15b08](https://github.com/d-zero-dev/linters/commit/db15b0802f6fd560841851e27c1e234ae8f17aa8))
+- **deps:** update eslint monorepo to v9.20.0 ([cf802cc](https://github.com/d-zero-dev/linters/commit/cf802cc0d4078d682ecbb375a4313d4a458bdf38))
+
 # [5.0.0-alpha.56](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.55...v5.0.0-alpha.56) (2025-02-05)
 
 ### Bug Fixes
