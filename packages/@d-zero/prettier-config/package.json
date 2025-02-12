@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/prettier-config",
-	"version": "5.0.0-alpha.57",
+	"version": "5.0.0-alpha.58",
 	"description": "Configurations of Prettier",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
