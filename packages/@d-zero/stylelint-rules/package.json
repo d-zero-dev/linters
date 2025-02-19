@@ -30,6 +30,6 @@
 		"stylelint": "16.14.1"
 	},
 	"devDependencies": {
-		"postcss": "8.5.2"
+		"postcss": "8.5.3"
 	}
 }
