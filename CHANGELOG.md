@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.59](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.58...v5.0.0-alpha.59) (2025-02-21)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v8.17.4 ([d2f3619](https://github.com/d-zero-dev/linters/commit/d2f3619c95394aeaacd362e51b2d647fac47dfb4))
+- **deps:** update dependency eslint-plugin-unicorn to v57 ([20873a3](https://github.com/d-zero-dev/linters/commit/20873a3a3d8a3431203caba25bce146cb75c5c48))
+- **deps:** update dependency globals to v15.15.0 ([0bf948c](https://github.com/d-zero-dev/linters/commit/0bf948c3d7c0b267909bce1a5629d2786a2cac3a))
+- **deps:** update dependency globals to v16 ([3eebc34](https://github.com/d-zero-dev/linters/commit/3eebc343493ac52562c5da11ac1ab0d1e1fe010c))
+- **deps:** update dependency prettier to v3.5.1 ([e327fc8](https://github.com/d-zero-dev/linters/commit/e327fc8d0e8566df84153afc300c75ec00b92e55))
+- **deps:** update dependency typescript-eslint to v8.24.1 ([095221e](https://github.com/d-zero-dev/linters/commit/095221e30e54091cdbc74dc844ca098cc4db2998))
+
 # [5.0.0-alpha.58](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.57...v5.0.0-alpha.58) (2025-02-12)
 
 ### Bug Fixes
