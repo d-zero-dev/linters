@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.60](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.59...v5.0.0-alpha.60) (2025-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to v3.5.3 ([7061c73](https://github.com/d-zero-dev/linters/commit/7061c73f0e9aa1bec19f3a2f7745269c95039b1d))
+
 # [5.0.0-alpha.59](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.58...v5.0.0-alpha.59) (2025-02-21)
 
 ### Bug Fixes

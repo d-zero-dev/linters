@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.60](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.59...v5.0.0-alpha.60) (2025-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3.0.2 ([ed447c0](https://github.com/d-zero-dev/linters/commit/ed447c02cb86970354f0331a1e8ae3a09e9a15d0))
+
 # [5.0.0-alpha.59](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.58...v5.0.0-alpha.59) (2025-02-21)
 
 **Note:** Version bump only for package @d-zero/textlint-config

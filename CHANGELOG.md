@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.60](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.59...v5.0.0-alpha.60) (2025-03-03)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.17 ([a0814ea](https://github.com/d-zero-dev/linters/commit/a0814ea01e9c86b046030ca1c222f167cd5b06d3))
+- **deps:** update dependency cspell to v8.17.5 ([30098bb](https://github.com/d-zero-dev/linters/commit/30098bbb20b1509c74a1616603da0005bab89f48))
+- **deps:** update dependency markuplint to v4.11.7 ([33887ec](https://github.com/d-zero-dev/linters/commit/33887ec58a446bfcab64707dbc887f51b89e40be))
+- **deps:** update dependency prettier to v3.5.3 ([7061c73](https://github.com/d-zero-dev/linters/commit/7061c73f0e9aa1bec19f3a2f7745269c95039b1d))
+- **deps:** update dependency stylelint to v16.15.0 ([b4b0676](https://github.com/d-zero-dev/linters/commit/b4b067666258746813f8c2afdf59db2c26631f9f))
+- **deps:** update dependency stylelint-scss to v6.11.1 ([492e305](https://github.com/d-zero-dev/linters/commit/492e3057c9c5ca9464131a2d106dc8b31551165e))
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3.0.2 ([ed447c0](https://github.com/d-zero-dev/linters/commit/ed447c02cb86970354f0331a1e8ae3a09e9a15d0))
+- **deps:** update dependency typescript-eslint to v8.25.0 ([5219350](https://github.com/d-zero-dev/linters/commit/5219350edd90aa92c2f5ccc75c6b7c03c5fb1825))
+- **deps:** update eslint monorepo to v9.21.0 ([2b0aaa9](https://github.com/d-zero-dev/linters/commit/2b0aaa967d0f0232ab2491caae6dd235666d7407))
+
 # [5.0.0-alpha.59](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.58...v5.0.0-alpha.59) (2025-02-21)
 
 ### Bug Fixes
