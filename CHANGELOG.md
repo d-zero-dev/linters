@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.61](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.60...v5.0.0-alpha.61) (2025-03-12)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.8.0 ([84f87a0](https://github.com/d-zero-dev/linters/commit/84f87a0d843318a5d43e24ab333ca6f5ceb02cd0))
+- **deps:** update dependency @markuplint/pug-parser to v4.6.18 ([7ca74a6](https://github.com/d-zero-dev/linters/commit/7ca74a66f8d2e6af1891e6fb383772aea9f93f12))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.6 ([0fe7f5e](https://github.com/d-zero-dev/linters/commit/0fe7f5ec61f9de384d7aeefac21d96a4a0945fe6))
+- **deps:** update dependency markuplint to v4.11.8 ([3d9430c](https://github.com/d-zero-dev/linters/commit/3d9430c88c5c2be2e11ae0ac9044a55f8c135dbf))
+- **deps:** update dependency textlint to v14.5.0 ([eb99dea](https://github.com/d-zero-dev/linters/commit/eb99dea303ed4c9d1b8caf182090522ab8879723))
+- **deps:** update dependency typescript-eslint to v8.26.0 ([7550dcf](https://github.com/d-zero-dev/linters/commit/7550dcf46f079fe976eefd4332845622fc73e0f6))
+- **deps:** update dependency typescript-eslint to v8.26.1 ([6e1ae6d](https://github.com/d-zero-dev/linters/commit/6e1ae6d4fb8a8f2c8eb0ef01ca426a2f7a2c0960))
+- **deps:** update eslint monorepo to v9.22.0 ([0f865fa](https://github.com/d-zero-dev/linters/commit/0f865fa59c23e199a239467f3e072d72716d8387))
+
+### Features
+
+- add .mdc files association with markdown ([bcfa7b5](https://github.com/d-zero-dev/linters/commit/bcfa7b5fe8726dfa0c40faa53eca501618800f54))
+- add .mdc files support for prettier and textlint ([00761bc](https://github.com/d-zero-dev/linters/commit/00761bc3cb64d2d82f2760658eb43afe4e5313a9))
+
 # [5.0.0-alpha.60](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.59...v5.0.0-alpha.60) (2025-03-03)
 
 ### Bug Fixes

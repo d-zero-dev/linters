@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.61](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.60...v5.0.0-alpha.61) (2025-03-12)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.18 ([7ca74a6](https://github.com/d-zero-dev/linters/commit/7ca74a66f8d2e6af1891e6fb383772aea9f93f12))
+- **deps:** update dependency markuplint to v4.11.8 ([3d9430c](https://github.com/d-zero-dev/linters/commit/3d9430c88c5c2be2e11ae0ac9044a55f8c135dbf))
+
 # [5.0.0-alpha.60](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.59...v5.0.0-alpha.60) (2025-03-03)
 
 ### Bug Fixes
