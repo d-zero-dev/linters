@@ -31,5 +31,9 @@ export default {
 				printWidth: 100_000,
 			},
 		},
+		{
+			files: '*.mdc',
+			options: { parser: 'markdown' },
+		},
 	],
 };
