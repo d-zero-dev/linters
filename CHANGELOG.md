@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.62](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.61...v5.0.0-alpha.62) (2025-03-14)
+
+### Bug Fixes
+
+- **deps:** update dependency lint-staged to v15.5.0 ([b04c6cc](https://github.com/d-zero-dev/linters/commit/b04c6cc498ae95755dd7845d60e9ec4ae248e5cc))
+
+### Features
+
+- **prettier:** add support for .clinerules files ([ae2b7e9](https://github.com/d-zero-dev/linters/commit/ae2b7e9151559bfb701cb2ebd378d2a64088c91a))
+- **repo:** add .clinerules file ([c180d31](https://github.com/d-zero-dev/linters/commit/c180d31ac35a8156936ac572e5eac38bee7fb1e6))
+
 # [5.0.0-alpha.61](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.60...v5.0.0-alpha.61) (2025-03-12)
 
 ### Bug Fixes

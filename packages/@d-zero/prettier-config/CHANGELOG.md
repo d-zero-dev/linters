@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.62](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.61...v5.0.0-alpha.62) (2025-03-14)
+
+### Features
+
+- **prettier:** add support for .clinerules files ([ae2b7e9](https://github.com/d-zero-dev/linters/commit/ae2b7e9151559bfb701cb2ebd378d2a64088c91a))
+
 # [5.0.0-alpha.61](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.60...v5.0.0-alpha.61) (2025-03-12)
 
 ### Features
