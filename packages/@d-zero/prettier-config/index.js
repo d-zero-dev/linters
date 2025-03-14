@@ -35,5 +35,9 @@ export default {
 			files: '*.mdc',
 			options: { parser: 'markdown' },
 		},
+		{
+			files: '.clinerules',
+			options: { parser: 'markdown' },
+		},
 	],
 };
