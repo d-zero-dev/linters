@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.19 ([48fba42](https://github.com/d-zero-dev/linters/commit/48fba426cebc7d3905788b8ad5ec245f27100072))
+- **deps:** update dependency @prettier/plugin-pug to v3.3.0 ([57c842e](https://github.com/d-zero-dev/linters/commit/57c842e7848ec9d88ca2b74d1d13ae3784d6904d))
+- **deps:** update dependency cspell to v8.19.3 ([31ca2bb](https://github.com/d-zero-dev/linters/commit/31ca2bb919bf19369ef07ed38138c60f9a9c5124))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.11 ([2b0800d](https://github.com/d-zero-dev/linters/commit/2b0800d0ce62a7aa60c8afef2bf107b59630ce1b))
+- **deps:** update dependency stylelint to v16.16.0 ([dd9366f](https://github.com/d-zero-dev/linters/commit/dd9366f4957bbedf0d90234e5366fe28cd42c7fd))
+- **deps:** update dependency stylelint to v16.19.1 ([c7b2748](https://github.com/d-zero-dev/linters/commit/c7b27481e89e66498f7508261dc2980886632bdd))
+- **deps:** update dependency textlint to v14.6.0 ([a7b1e28](https://github.com/d-zero-dev/linters/commit/a7b1e288cc52fe34cd723ff2990f3a13d0ab7dd3))
+- **deps:** update dependency typescript-eslint to v8.31.0 ([aa3c963](https://github.com/d-zero-dev/linters/commit/aa3c963d7567ba57ff222ca1a5713043bc2b53d4))
+- **deps:** update eslint monorepo to v9.25.1 ([6c1677a](https://github.com/d-zero-dev/linters/commit/6c1677a96633f3923c4deb00579383d259006f46))
+- **repo:** remove .clinerules from prettier script ([06249ec](https://github.com/d-zero-dev/linters/commit/06249ec708a7978e258e2298f8e27374cc9bcb69))
+
 # [5.0.0-alpha.62](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.61...v5.0.0-alpha.62) (2025-03-14)
 
 ### Bug Fixes

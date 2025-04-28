@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
+
+### Bug Fixes
+
+- **deps:** update dependency @prettier/plugin-pug to v3.3.0 ([57c842e](https://github.com/d-zero-dev/linters/commit/57c842e7848ec9d88ca2b74d1d13ae3784d6904d))
+
 # [5.0.0-alpha.62](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.61...v5.0.0-alpha.62) (2025-03-14)
 
 ### Features
