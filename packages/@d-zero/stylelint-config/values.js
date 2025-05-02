@@ -72,15 +72,14 @@ module.exports = {
 			{
 				message: (unit) => {
 					const recommendationMap = {
-						ex: 'rem',
-						ch: 'rem',
-						mm: 'rem',
-						q: 'rem',
-						cm: 'rem',
-						in: 'rem',
-						pt: 'rem',
-						pc: 'rem',
-						vm: 'rem',
+						ex: 'em, rem',
+						ch: 'em, rem',
+						mm: 'px, rem',
+						q: 'px, rem',
+						cm: 'px, rem',
+						in: 'px, rem',
+						pt: 'px, rem',
+						pc: 'px, rem',
 						s: 'ms',
 						grad: 'deg',
 						rad: 'deg',
