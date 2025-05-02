@@ -8,11 +8,26 @@ const PERCENTATE_UNITS = `(?:%|${VIEWPORT_PERCENTAGE_LENGTHS})`;
 module.exports = {
 	plugins: ['@d-zero/stylelint-rules'],
 	rules: {
-		'declaration-property-value-disallowed-list': {
-			'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
-				[/#[0-9a-f]{3}/, /(?:rgb|hsl)a?\(.+?\)/],
-			content: [/^"\\[0-9a-f]{1,6}"$/i],
-		},
+		'declaration-property-value-disallowed-list': [
+			{
+				'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
+					[/#[0-9a-f]{3}/, /(?:rgb|hsl)a?\(.+?\)/],
+				content: [/^"\\[0-9a-f]{1,6}"$/i],
+			},
+			{
+				message: (name, value) => {
+					switch (name) {
+						case 'content': {
+							return `Unicode値 "${value}" を直接指定せず、代わりに命名されたエンティティ（例: &copy;）またはCSS変数を使用してください。`;
+						}
+						default: {
+							return `ハードコードされた値 "${value}" の代わりにCSS変数を使用してください。`;
+						}
+					}
+				},
+				severity: 'warning',
+			},
+		],
 		'declaration-property-value-allowed-list': {
 			'font-size': [
 				'inherit',
