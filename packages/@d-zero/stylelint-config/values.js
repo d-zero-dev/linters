@@ -10,6 +10,23 @@ module.exports = {
 	rules: {
 		'declaration-property-value-disallowed-list': [
 			{
+				display: [
+					/* @see https://drafts.csswg.org/css-display/#display-value-summary */
+					'block',
+					'flow-root',
+					'inline',
+					'inline-block',
+					'list-item',
+					'inline list-item',
+					'flex',
+					'inline-flex',
+					'grid',
+					'inline-grid',
+					'ruby',
+					'table',
+					'inline-table',
+				],
+				'z-index': ['/^-?\\d+$/'],
 				'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
 					[/#[0-9a-f]{3}/, /(?:rgb|hsl)a?\(.+?\)/],
 				content: [/^"\\[0-9a-f]{1,6}"$/i],
@@ -17,6 +34,67 @@ module.exports = {
 			{
 				message: (name, value) => {
 					switch (name) {
+						case 'display': {
+							let multiValue = '';
+							switch (value) {
+								case 'block': {
+									multiValue = 'block flow';
+									break;
+								}
+								case 'flow-root': {
+									multiValue = 'block flow-root';
+									break;
+								}
+								case 'inline': {
+									multiValue = 'inline flow';
+									break;
+								}
+								case 'inline-block': {
+									multiValue = 'inline flow-root';
+									break;
+								}
+								case 'list-item': {
+									multiValue = 'block flow list-item';
+									break;
+								}
+								case 'inline list-item': {
+									multiValue = 'inline flow list-item';
+									break;
+								}
+								case 'flex': {
+									multiValue = 'block flex';
+									break;
+								}
+								case 'inline-flex': {
+									multiValue = 'inline flex';
+									break;
+								}
+								case 'grid': {
+									multiValue = 'block grid';
+									break;
+								}
+								case 'inline-grid': {
+									multiValue = 'inline grid';
+									break;
+								}
+								case 'ruby': {
+									multiValue = 'inline ruby';
+									break;
+								}
+								case 'table': {
+									multiValue = 'block table';
+									break;
+								}
+								case 'inline-table': {
+									multiValue = 'inline table';
+									break;
+								}
+							}
+							return `\`${name}\`プロパティには2値構文を使用してください。 (\`${value}\` → \`${multiValue}\`)`;
+						}
+						case 'z-index': {
+							return '数値の z-index ではなくグローバルで定義されたCSS変数を使用してください。';
+						}
 						case 'content': {
 							return `Unicode値 "${value}" を直接指定せず、代わりに命名されたエンティティ（例: &copy;）またはCSS変数を使用してください。`;
 						}
