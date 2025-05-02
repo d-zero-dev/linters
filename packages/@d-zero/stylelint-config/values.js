@@ -70,6 +70,12 @@ module.exports = {
 						grad: 'deg',
 						rad: 'deg',
 						turn: 'deg',
+						vw: 'svw, dvw, lvw',
+						vh: 'svh, dvh, lvh',
+						vi: 'svi, dvi, lvi',
+						vb: 'svb, dvb, lvb',
+						vmin: 'svmin, dvmin, lvmin',
+						vmax: 'svmax, dvmax, lvmax',
 					};
 					return `\`${unit}\`は使用しないでください。代わりに\`${recommendationMap[unit]}\`を検討してください。`;
 				},
