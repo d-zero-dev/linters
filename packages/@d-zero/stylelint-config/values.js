@@ -90,16 +90,16 @@ module.exports = {
 									break;
 								}
 							}
-							return `\`${name}\`プロパティには2値構文を使用してください。 (\`${value}\` → \`${multiValue}\`)`;
+							return `\`${value}\`の代わりに複数キーワード構文\`${multiValue}\`を使用してください。`;
 						}
 						case 'z-index': {
-							return '数値の z-index ではなくグローバルで定義されたCSS変数を使用してください。';
+							return `数値の\`${name}\`ではなくグローバルで定義されたCSS変数を使用してください。`;
 						}
 						case 'content': {
-							return `Unicode値 "${value}" を直接指定せず、代わりに命名されたエンティティ（例: &copy;）またはCSS変数を使用してください。`;
+							return `Unicode値\`${value}\`を直接指定せず、代わりに命名されたエンティティ（例: &copy;）またはCSS変数を使用してください。`;
 						}
 						default: {
-							return `ハードコードされた値 "${value}" の代わりにCSS変数を使用してください。`;
+							return `ハードコードされた値\`${value}\`の代わりにCSS変数を使用してください。`;
 						}
 					}
 				},
