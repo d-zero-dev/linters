@@ -19,9 +19,18 @@ describe('ESLint', () => {
 	const eslint = async (filepath, rule) => {
 		const dir = path.dirname(filepath);
 		const config = path.join(dir, 'eslint.config.js');
-		const { stdout } = await execa('npx', ['eslint', filepath, '--config', config], {
-			reject: false,
-		});
+		const { stdout, stderr } = await execa(
+			'npx',
+			['eslint', filepath, '--config', config],
+			{
+				reject: false,
+			},
+		);
+
+		if (stderr) {
+			throw new Error(stderr);
+		}
+
 		const lines = stdout.split('\n');
 		const result = lines
 			.filter((line) => line.endsWith(rule))
