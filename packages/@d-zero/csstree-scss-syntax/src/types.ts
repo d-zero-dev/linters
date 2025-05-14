@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-duplicates
 import type * as CSSTree from 'css-tree';
-// eslint-disable-next-line import/no-duplicates
 import type { LexerMatchResult } from 'css-tree';
 
 /**
