@@ -52,9 +52,9 @@ export const base = [
 		},
 	},
 	{
-		...eslintPluginUnicorn.configs['flat/recommended'],
+		...eslintPluginUnicorn.configs.recommended,
 		rules: {
-			...eslintPluginUnicorn.configs['flat/recommended'].rules,
+			...eslintPluginUnicorn.configs.recommended.rules,
 			'unicorn/consistent-destructuring': 0,
 			'unicorn/consistent-function-scoping': 0,
 			'unicorn/no-anonymous-default-export': 0,
