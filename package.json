@@ -49,9 +49,9 @@
 		"typescript": "5.8.3",
 		"vitest": "3.1.4"
 	},
-	"packageManager": "npm@11.4.0",
+	"packageManager": "npm@11.4.1",
 	"volta": {
 		"node": "22.16.0",
-		"npm": "11.4.0"
+		"npm": "11.4.1"
 	}
 }
