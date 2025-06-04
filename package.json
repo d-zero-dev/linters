@@ -39,13 +39,13 @@
 	},
 	"devDependencies": {
 		"@d-zero/tsconfig": "0.4.1",
-		"@secretlint/secretlint-rule-preset-recommend": "9.3.3",
+		"@secretlint/secretlint-rule-preset-recommend": "9.3.4",
 		"execa": "9.6.0",
 		"husky": "9.1.7",
 		"lerna": "8.2.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.5.3",
-		"secretlint": "9.3.3",
+		"secretlint": "9.3.4",
 		"typescript": "5.8.3",
 		"vitest": "3.2.1"
 	},
