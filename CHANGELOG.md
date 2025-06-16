@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update eslint monorepo to v9.29.0 ([2685a72](https://github.com/d-zero-dev/linters/commit/2685a72c77889608248ef206686ddc13d87e21c5))
+- **stylelint-rules:** unify allowMultipleSelectors logic in component rule ([5aeaf3d](https://github.com/d-zero-dev/linters/commit/5aeaf3daf047b83500144bc5fefa55353d4a1053))
+- **stylelint-rules:** validate all rules instead of first rule only in component rule ([6741d65](https://github.com/d-zero-dev/linters/commit/6741d6513f4b61fad25f3db9e7042cf413b708ad))
+
 # [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
 
 ### Bug Fixes
