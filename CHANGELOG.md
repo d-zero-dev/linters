@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.8.1 ([60ca4a6](https://github.com/d-zero-dev/linters/commit/60ca4a68f2d17142fd6ede00d6a2b424aa13bc57))
+- **deps:** update dependency @prettier/plugin-pug to v3.4.0 ([e0ae0f1](https://github.com/d-zero-dev/linters/commit/e0ae0f13a1e71997d4c6d3c75fa8e09ef6e85b43))
+- **deps:** update dependency cspell to v8.19.4 ([c3ba205](https://github.com/d-zero-dev/linters/commit/c3ba2053f08bc7e9e220da5e5730455fcc0fdadc))
+- **deps:** update dependency cspell to v9 ([af4c3c9](https://github.com/d-zero-dev/linters/commit/af4c3c90439b5b724c2b8757a74ca38661bed11f))
+- **deps:** update dependency cspell to v9.0.1 ([b22669d](https://github.com/d-zero-dev/linters/commit/b22669dc8422e4c4da6c56ad956c2789de5b0558))
+- **deps:** update dependency cspell to v9.0.2 ([24f53fe](https://github.com/d-zero-dev/linters/commit/24f53fe70c2e9b53f9b3b217cf3184b6bd252911))
+- **deps:** update dependency cspell to v9.1.1 ([7f6b98f](https://github.com/d-zero-dev/linters/commit/7f6b98f750473c7eeff032c29ae1cc2bcb24f718))
+- **deps:** update dependency eslint-plugin-import-x to v4.12.2 ([0ddc7b2](https://github.com/d-zero-dev/linters/commit/0ddc7b2d31b4aa586aed6a6919480f180613775d))
+- **deps:** update dependency eslint-plugin-import-x to v4.15.0 ([2e1778a](https://github.com/d-zero-dev/linters/commit/2e1778a4bf853849730e120aa64bd27fd3c384ee))
+- **deps:** update dependency eslint-plugin-import-x to v4.15.2 ([eea7d5c](https://github.com/d-zero-dev/linters/commit/eea7d5cad668e1290920e29fbe679dc443348ecc))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.14 ([a2d070c](https://github.com/d-zero-dev/linters/commit/a2d070cb0fd0c1eea6ba50b79246817e6ff7f286))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.17 ([33ed486](https://github.com/d-zero-dev/linters/commit/33ed4868adbeda2bfbacef5515863e330ee737cf))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.7.1 ([8506104](https://github.com/d-zero-dev/linters/commit/850610468e5674d3d9729cf308c7173d3010eff9))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.8.0 ([13bfc14](https://github.com/d-zero-dev/linters/commit/13bfc14100d78458051f7a923a8f6a2b1e3ff643))
+- **deps:** update dependency eslint-plugin-regexp to v2.8.0 ([4eb5cb0](https://github.com/d-zero-dev/linters/commit/4eb5cb00c3dd7d435c403812cc233836606de609))
+- **deps:** update dependency eslint-plugin-regexp to v2.9.0 ([cd15900](https://github.com/d-zero-dev/linters/commit/cd15900f10035c99d4ff05f5ca01e8fed5166dde))
+- **deps:** update dependency eslint-plugin-unicorn to v59.0.1 ([c57171b](https://github.com/d-zero-dev/linters/commit/c57171b39bdedfc1cd476c6faa44d764d7d428b0))
+- **deps:** update dependency globals to v16.1.0 ([3d99ffa](https://github.com/d-zero-dev/linters/commit/3d99ffa183f460739169096f57dce3e014dc9002))
+- **deps:** update dependency globals to v16.2.0 ([27c3006](https://github.com/d-zero-dev/linters/commit/27c30067799e22023fb65cda3da43c7ede4717dd))
+- **deps:** update dependency lint-staged to v15.5.2 ([ef8727c](https://github.com/d-zero-dev/linters/commit/ef8727c68cabd59a8bcc5fb2b13ad9c619b8d81d))
+- **deps:** update dependency lint-staged to v16 ([9bbc78f](https://github.com/d-zero-dev/linters/commit/9bbc78fd403732247a5d98aa9b28b2673017d2b1))
+- **deps:** update dependency lint-staged to v16.1.0 ([bcc4463](https://github.com/d-zero-dev/linters/commit/bcc4463facc882e53f28c33e1fae2f20a9bfd0b3))
+- **deps:** update dependency lint-staged to v16.1.2 ([2de3535](https://github.com/d-zero-dev/linters/commit/2de353567569603e9fcbc1613fbac2abb8004b3b))
+- **deps:** update dependency stylelint to v16.20.0 ([67ad4e2](https://github.com/d-zero-dev/linters/commit/67ad4e2c04a2b275e1312340e7db468fb3fb168b))
+- **deps:** update dependency stylelint-config-recess-order to v6.1.0 ([66fb671](https://github.com/d-zero-dev/linters/commit/66fb671ee1408e004d649ab501daf198eb0e7c97))
+- **deps:** update dependency stylelint-order to v7 ([1ae1e5d](https://github.com/d-zero-dev/linters/commit/1ae1e5d4b66136de3ec6fd2acbc032445ccfe69a))
+- **deps:** update dependency stylelint-scss to v6.12.0 ([34da5bc](https://github.com/d-zero-dev/linters/commit/34da5bca6553b599503bf3c724c833d547d4809b))
+- **deps:** update dependency stylelint-scss to v6.12.1 ([b47dd16](https://github.com/d-zero-dev/linters/commit/b47dd16e46a95a6b79491432ef86eaefd730de80))
+- **deps:** update dependency textlint to v14.7.1 ([d10980b](https://github.com/d-zero-dev/linters/commit/d10980bdf60d45052864a4f23449bbf1051e4738))
+- **deps:** update dependency textlint to v14.7.2 ([c566db8](https://github.com/d-zero-dev/linters/commit/c566db84ac5e8e8c2a6fda5745c3b00248fdd8b5))
+- **deps:** update dependency textlint to v14.8.4 ([16e19de](https://github.com/d-zero-dev/linters/commit/16e19de34c41140e9dac15fb7efe7c3480f3c8ff))
+- **deps:** update dependency typescript-eslint to v8.32.0 ([be2a48e](https://github.com/d-zero-dev/linters/commit/be2a48ee071d5d816fac3ff661595b918df16a48))
+- **deps:** update dependency typescript-eslint to v8.32.1 ([fd8e6fc](https://github.com/d-zero-dev/linters/commit/fd8e6fc3ba94846f594d8cf52e568dcef2624771))
+- **deps:** update dependency typescript-eslint to v8.33.0 ([3ccd46f](https://github.com/d-zero-dev/linters/commit/3ccd46f72a81804df15901aad5041e548dfa9750))
+- **deps:** update dependency typescript-eslint to v8.33.1 ([ee54071](https://github.com/d-zero-dev/linters/commit/ee540711233686410f278e0833932b1fed554fa6))
+- **deps:** update dependency typescript-eslint to v8.34.0 ([79a8b1c](https://github.com/d-zero-dev/linters/commit/79a8b1cc399c23c5d7e461b0ecbfada57c6c82e1))
+- **deps:** update eslint monorepo to v9.26.0 ([cb11c1c](https://github.com/d-zero-dev/linters/commit/cb11c1cdb5881ac5f4a2926070fd2276fe20ff72))
+- **deps:** update eslint monorepo to v9.27.0 ([0b18552](https://github.com/d-zero-dev/linters/commit/0b185529a936fc51beb1773b5e873db73238eb8b))
+- **deps:** update eslint monorepo to v9.28.0 ([0e58a59](https://github.com/d-zero-dev/linters/commit/0e58a59b820a5024617609820ab5b0a6a48df610))
+- **eslint:** replace eslint-plugin-import with eslint-plugin-import-x ([bf69c2d](https://github.com/d-zero-dev/linters/commit/bf69c2d78913dbc701bc1a7baeb14cc7e11ea99a))
+- **eslint:** update deprecated unicorn plugin config ([efe1548](https://github.com/d-zero-dev/linters/commit/efe15483b9d41b45026a2af03d2385718389631f))
+- **stylelint-rules:** replace default import with named import for postcss ([8d5669e](https://github.com/d-zero-dev/linters/commit/8d5669ef2ada07f572c66af0167034ec576d4707))
+
+### Features
+
+- **stylelint-rules:** support CSS files with component element class validation ([7a3b4d8](https://github.com/d-zero-dev/linters/commit/7a3b4d872085f2f5885dd5871ea291c806987b4a))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

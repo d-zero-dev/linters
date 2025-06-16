@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-import-x to v4.12.2 ([0ddc7b2](https://github.com/d-zero-dev/linters/commit/0ddc7b2d31b4aa586aed6a6919480f180613775d))
+- **deps:** update dependency eslint-plugin-import-x to v4.15.0 ([2e1778a](https://github.com/d-zero-dev/linters/commit/2e1778a4bf853849730e120aa64bd27fd3c384ee))
+- **deps:** update dependency eslint-plugin-import-x to v4.15.2 ([eea7d5c](https://github.com/d-zero-dev/linters/commit/eea7d5cad668e1290920e29fbe679dc443348ecc))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.14 ([a2d070c](https://github.com/d-zero-dev/linters/commit/a2d070cb0fd0c1eea6ba50b79246817e6ff7f286))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.6.17 ([33ed486](https://github.com/d-zero-dev/linters/commit/33ed4868adbeda2bfbacef5515863e330ee737cf))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.7.1 ([8506104](https://github.com/d-zero-dev/linters/commit/850610468e5674d3d9729cf308c7173d3010eff9))
+- **deps:** update dependency eslint-plugin-jsdoc to v50.8.0 ([13bfc14](https://github.com/d-zero-dev/linters/commit/13bfc14100d78458051f7a923a8f6a2b1e3ff643))
+- **deps:** update dependency eslint-plugin-regexp to v2.8.0 ([4eb5cb0](https://github.com/d-zero-dev/linters/commit/4eb5cb00c3dd7d435c403812cc233836606de609))
+- **deps:** update dependency eslint-plugin-regexp to v2.9.0 ([cd15900](https://github.com/d-zero-dev/linters/commit/cd15900f10035c99d4ff05f5ca01e8fed5166dde))
+- **deps:** update dependency eslint-plugin-unicorn to v59.0.1 ([c57171b](https://github.com/d-zero-dev/linters/commit/c57171b39bdedfc1cd476c6faa44d764d7d428b0))
+- **deps:** update dependency globals to v16.1.0 ([3d99ffa](https://github.com/d-zero-dev/linters/commit/3d99ffa183f460739169096f57dce3e014dc9002))
+- **deps:** update dependency globals to v16.2.0 ([27c3006](https://github.com/d-zero-dev/linters/commit/27c30067799e22023fb65cda3da43c7ede4717dd))
+- **deps:** update dependency typescript-eslint to v8.32.0 ([be2a48e](https://github.com/d-zero-dev/linters/commit/be2a48ee071d5d816fac3ff661595b918df16a48))
+- **deps:** update dependency typescript-eslint to v8.32.1 ([fd8e6fc](https://github.com/d-zero-dev/linters/commit/fd8e6fc3ba94846f594d8cf52e568dcef2624771))
+- **deps:** update dependency typescript-eslint to v8.33.0 ([3ccd46f](https://github.com/d-zero-dev/linters/commit/3ccd46f72a81804df15901aad5041e548dfa9750))
+- **deps:** update dependency typescript-eslint to v8.33.1 ([ee54071](https://github.com/d-zero-dev/linters/commit/ee540711233686410f278e0833932b1fed554fa6))
+- **deps:** update dependency typescript-eslint to v8.34.0 ([79a8b1c](https://github.com/d-zero-dev/linters/commit/79a8b1cc399c23c5d7e461b0ecbfada57c6c82e1))
+- **deps:** update eslint monorepo to v9.26.0 ([cb11c1c](https://github.com/d-zero-dev/linters/commit/cb11c1cdb5881ac5f4a2926070fd2276fe20ff72))
+- **deps:** update eslint monorepo to v9.27.0 ([0b18552](https://github.com/d-zero-dev/linters/commit/0b185529a936fc51beb1773b5e873db73238eb8b))
+- **deps:** update eslint monorepo to v9.28.0 ([0e58a59](https://github.com/d-zero-dev/linters/commit/0e58a59b820a5024617609820ab5b0a6a48df610))
+- **eslint:** replace eslint-plugin-import with eslint-plugin-import-x ([bf69c2d](https://github.com/d-zero-dev/linters/commit/bf69c2d78913dbc701bc1a7baeb14cc7e11ea99a))
+- **eslint:** update deprecated unicorn plugin config ([efe1548](https://github.com/d-zero-dev/linters/commit/efe15483b9d41b45026a2af03d2385718389631f))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

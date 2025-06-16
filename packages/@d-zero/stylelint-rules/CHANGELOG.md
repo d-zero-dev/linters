@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.20.0 ([67ad4e2](https://github.com/d-zero-dev/linters/commit/67ad4e2c04a2b275e1312340e7db468fb3fb168b))
+- **stylelint-rules:** replace default import with named import for postcss ([8d5669e](https://github.com/d-zero-dev/linters/commit/8d5669ef2ada07f572c66af0167034ec576d4707))
+
+### Features
+
+- **stylelint-rules:** support CSS files with component element class validation ([7a3b4d8](https://github.com/d-zero-dev/linters/commit/7a3b4d872085f2f5885dd5871ea291c806987b4a))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

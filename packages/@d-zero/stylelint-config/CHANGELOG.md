@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.20.0 ([67ad4e2](https://github.com/d-zero-dev/linters/commit/67ad4e2c04a2b275e1312340e7db468fb3fb168b))
+- **deps:** update dependency stylelint-config-recess-order to v6.1.0 ([66fb671](https://github.com/d-zero-dev/linters/commit/66fb671ee1408e004d649ab501daf198eb0e7c97))
+- **deps:** update dependency stylelint-scss to v6.12.0 ([34da5bc](https://github.com/d-zero-dev/linters/commit/34da5bca6553b599503bf3c724c833d547d4809b))
+- **deps:** update dependency stylelint-scss to v6.12.1 ([b47dd16](https://github.com/d-zero-dev/linters/commit/b47dd16e46a95a6b79491432ef86eaefd730de80))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **eslint:** replace eslint-plugin-import with eslint-plugin-import-x ([bf69c2d](https://github.com/d-zero-dev/linters/commit/bf69c2d78913dbc701bc1a7baeb14cc7e11ea99a))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 **Note:** Version bump only for package @d-zero/csstree-scss-syntax
