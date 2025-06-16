@@ -38,13 +38,16 @@ export default createRule<Options>({
 			const rules = root.nodes.filter((node): node is Rule => node.type === 'rule');
 			const [firstRule, ...overleftRules] = rules;
 
-			for (const rule of overleftRules) {
-				stylelint.utils.report({
-					result,
-					ruleName,
-					message: '1つのファイルに定義できるコンポーネントクラスは1つだけです',
-					node: rule,
-				});
+			// allowMultipleSelectorsに基づいて複数ルール制約をチェック
+			if (!effectiveAllowMultipleSelectors && overleftRules.length > 0) {
+				for (const rule of overleftRules) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: '1つのファイルに定義できるコンポーネントクラスは1つだけです',
+						node: rule,
+					});
+				}
 			}
 
 			if (!firstRule) {

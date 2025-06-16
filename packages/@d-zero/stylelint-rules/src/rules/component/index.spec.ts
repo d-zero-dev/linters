@@ -227,4 +227,20 @@ describe('Options', () => {
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toHaveLength(0);
 	});
+
+	test('CSS files allow multiple rules', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: `.button { color: currentColor; }
+.button__text { font-size: 14px; }
+.button__icon { width: 16px; }`,
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
 });
