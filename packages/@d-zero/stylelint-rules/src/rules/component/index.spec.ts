@@ -47,18 +47,117 @@ describe('Exact Match', () => {
 				line: 1,
 				rule: '@d-zero/component',
 				severity: 'error',
-				text: 'クラス名がファイル名と一致しません',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（test__）で始まっていません',
 				url: undefined,
 				fix: undefined,
 			},
+		]);
+	});
+});
+
+describe('Component Naming Convention for CSS', () => {
+	test('exact match in CSS', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.button { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	test('component element match in CSS', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.button__text { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	test('multiple component elements in CSS (auto-allow)', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.button__text, .button__icon { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	test('mixed component and component elements in CSS', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.button, .button__text, .button__icon { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	test('invalid component naming convention in CSS', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.card__text { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toStrictEqual([
 			{
 				column: 1,
-				endColumn: 70,
+				endColumn: 37,
 				endLine: 1,
 				line: 1,
 				rule: '@d-zero/component',
 				severity: 'error',
-				text: 'セレクタの定義は1つだけです',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません',
+				url: undefined,
+				fix: undefined,
+			},
+		]);
+	});
+
+	test('CSS with wrong component name', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.card { color: currentColor; }',
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toStrictEqual([
+			{
+				column: 1,
+				endColumn: 31,
+				endLine: 1,
+				line: 1,
+				rule: '@d-zero/component',
+				severity: 'error',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません',
 				url: undefined,
 				fix: undefined,
 			},
@@ -83,7 +182,7 @@ describe('Partial Name', () => {
 });
 
 describe('Options', () => {
-	test('allowMultipleSelectors: false', async () => {
+	test('allowMultipleSelectors: false in SCSS', async () => {
 		const {
 			// @ts-ignore
 			results: [{ warnings, parseErrors }],
@@ -97,7 +196,7 @@ describe('Options', () => {
 		expect(warnings).toHaveLength(1);
 	});
 
-	test('allowMultipleSelectors: true', async () => {
+	test('allowMultipleSelectors: true in SCSS', async () => {
 		const {
 			// @ts-ignore
 			results: [{ warnings, parseErrors }],
@@ -106,6 +205,22 @@ describe('Options', () => {
 			code: '.c-component, .x-specific-class-name { color: currentColor; }',
 			config: config({
 				allowMultipleSelectors: true,
+			}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(0);
+	});
+
+	test('CSS files automatically allow multiple selectors', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'button.css',
+			code: '.button, .button__text, .button__icon { color: currentColor; }',
+			config: config({
+				allowMultipleSelectors: false, // この設定は CSS では無視される
 			}),
 		});
 
