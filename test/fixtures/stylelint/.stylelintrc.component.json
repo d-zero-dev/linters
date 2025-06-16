@@ -3,6 +3,14 @@
 	"plugins": ["@d-zero/stylelint-rules"],
 	"overrides": [
 		{
+			"files": ["c-component.css"],
+			"rules": {
+				"@d-zero/component": {
+					"allowMultipleSelectors": false
+				}
+			}
+		},
+		{
 			"files": ["_c-component.scss"],
 			"rules": {
 				"@d-zero/component": {

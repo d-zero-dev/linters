@@ -291,12 +291,24 @@ describe('stylelint', () => {
 
 	test('Component', async () => {
 		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/c-component.css'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/c-component.css:9:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+			'test/fixtures/stylelint/c-component.css:13:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+		]);
+	});
+
+	test('Component (SCSS)', async () => {
+		const violations = await stylelint(
 			path.normalize('test/fixtures/stylelint/_c-component.scss'),
 			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/_c-component.scss:8:1 1つのファイルに定義できるコンポーネントクラスは1つだけです',
+			'test/fixtures/stylelint/_c-component.scss:8:1 クラス名がファイル名と一致しません',
 		]);
 	});
 });
