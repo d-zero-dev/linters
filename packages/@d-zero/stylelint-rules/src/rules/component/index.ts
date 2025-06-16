@@ -9,6 +9,9 @@ import stylelint from 'stylelint';
 import { createRule } from '../../utils/create-rule.js';
 
 type Options = {
+	/**
+	 * @deprecated
+	 */
 	allowMultipleSelectors?: boolean;
 };
 
