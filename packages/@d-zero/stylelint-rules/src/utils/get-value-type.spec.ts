@@ -1,6 +1,6 @@
 import type { Rule, Declaration } from 'postcss';
 
-import postcss from 'postcss';
+import { parse } from 'postcss';
 import { describe, test, expect } from 'vitest';
 
 import { getValueType } from './get-value-type.js';
@@ -10,7 +10,7 @@ import { getValueType } from './get-value-type.js';
  * @param css
  */
 function p(css: string) {
-	const root = postcss.parse(css);
+	const root = parse(css);
 	const rule = root.first as Rule;
 	const decl = rule.first as Declaration;
 	const nodeWithType = getValueType(decl);
