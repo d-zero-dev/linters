@@ -243,4 +243,27 @@ describe('Options', () => {
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toHaveLength(0);
 	});
+
+	test('CSS files reject multiple components', async () => {
+		const {
+			// @ts-ignore
+			results: [{ warnings, parseErrors }],
+		} = await lint({
+			codeFilename: 'c-component.css',
+			code: `.c-component { --prop: value; }
+.c-component__element { --prop: value; }
+.c-component2 { --prop: value; }
+.c-specific { --prop: value; }`,
+			config: config({}),
+		});
+
+		expect(parseErrors).toHaveLength(0);
+		expect(warnings).toHaveLength(2);
+		expect(warnings[0].text).toBe(
+			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+		);
+		expect(warnings[1].text).toBe(
+			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+		);
+	});
 });

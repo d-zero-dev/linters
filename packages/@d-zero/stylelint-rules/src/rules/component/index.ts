@@ -63,56 +63,55 @@ export default createRule<Options>({
 				return;
 			}
 
-			const selectors: Selector[] = [];
+			// 全ルールのコンポーネントクラスを検証
+			for (const rule of rules) {
+				const ruleSelectors: Selector[] = [];
+				selectorParser((parsedRoot) => {
+					for (const node of parsedRoot.nodes) {
+						ruleSelectors.push(node);
+					}
+				}).processSync(rule.selector);
 
-			selectorParser((parsedRoot) => {
-				for (const node of parsedRoot.nodes) {
-					selectors.push(node);
-				}
-			}).processSync(firstRule.selector);
+				const [ruleFirstSelector, ...ruleMultipleSelectors] = ruleSelectors;
+				if (!ruleFirstSelector) continue;
 
-			const [firstSelector, ...multipleSelectors] = selectors;
+				let hasValidComponentClass = false;
 
-			if (!firstSelector) {
-				throw new Error('Do not have a selector');
-			}
+				for (const node of ruleFirstSelector.nodes) {
+					if (node.type === 'class') {
+						const className = node.value;
 
-			// コンポーネントクラスの検証
-			let hasValidComponentClass = false;
-
-			for (const node of firstSelector.nodes) {
-				if (node.type === 'class') {
-					const className = node.value;
-
-					// 完全一致またはBEM形式（__で始まる）のチェック
-					if (
-						className === basename ||
-						(isCssFile && className.startsWith(`${basename}__`))
-					) {
-						hasValidComponentClass = true;
-						break;
+						// 完全一致またはコンポーネント命名規則（__で始まる）のチェック
+						if (
+							className === basename ||
+							(isCssFile && className.startsWith(`${basename}__`))
+						) {
+							hasValidComponentClass = true;
+							break;
+						}
 					}
 				}
-			}
 
-			if (!hasValidComponentClass) {
-				stylelint.utils.report({
-					result,
-					ruleName,
-					message: isCssFile
-						? `クラス名がファイル名と一致しないか、コンポーネント命名規則（${basename}__）で始まっていません`
-						: 'クラス名がファイル名と一致しません',
-					node: firstRule,
-				});
-			}
+				if (!hasValidComponentClass) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: isCssFile
+							? `クラス名がファイル名と一致しないか、コンポーネント命名規則（${basename}__）で始まっていません`
+							: 'クラス名がファイル名と一致しません',
+						node: rule,
+					});
+				}
 
-			if (!effectiveAllowMultipleSelectors && multipleSelectors.length > 0) {
-				stylelint.utils.report({
-					result,
-					ruleName,
-					message: 'セレクタの定義は1つだけです',
-					node: firstRule,
-				});
+				// 複数セレクタのチェック
+				if (!effectiveAllowMultipleSelectors && ruleMultipleSelectors.length > 0) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: 'セレクタの定義は1つだけです',
+						node: rule,
+					});
+				}
 			}
 		};
 	},
