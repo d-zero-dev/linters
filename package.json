@@ -14,19 +14,19 @@
 		"build": "lerna run build",
 		"lint": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
 		"lint:ci": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
-		"lint:cspell": "cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
-		"lint:eslint": "eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
-		"lint:prettier": "prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
-		"lint:textlint": "textlint \"./{*,packages/@d-zero/*/{*,src/**/*}}.{md,mdc}\"",
-		"lint:tsc": "tsc",
-		"lint:secretlint": "secretlint \"**/*\"",
+		"lint:cspell": "npx cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
+		"lint:eslint": "npx eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:prettier": "npx prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:textlint": "npx textlint \"./{*,packages/@d-zero/*/{*,src/**/*}}.{md,mdc}\"",
+		"lint:tsc": "npx tsc",
+		"lint:secretlint": "npx secretlint \"**/*\"",
 		"lint:actionlint": "actionlint .github/workflows/*.yml",
 		"release": "lerna publish --exact --conventional-commits --conventional-graduate",
 		"release:alpha:latest": "lerna publish --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:next": "lerna publish --dist-tag next --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
-		"commit": "cz",
-		"co": "cz",
+		"commit": "npx cz",
+		"co": "npx cz",
 		"up": "npx npm-check-updates --interactive --workspaces --format group"
 	},
 	"config": {
@@ -49,9 +49,9 @@
 		"typescript": "5.8.3",
 		"vitest": "3.2.4"
 	},
-	"packageManager": "npm@11.4.2",
+	"packageManager": "yarn@4.9.2",
 	"volta": {
 		"node": "22.16.0",
-		"npm": "11.4.2"
+		"yarn": "4.9.2"
 	}
 }
