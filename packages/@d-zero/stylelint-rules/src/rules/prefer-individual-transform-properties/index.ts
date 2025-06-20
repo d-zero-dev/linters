@@ -1,5 +1,5 @@
-import stylelint from 'stylelint';
 import postcssValueParser from 'postcss-value-parser';
+import stylelint from 'stylelint';
 
 import { createRule } from '../../utils/create-rule.js';
 
@@ -21,6 +21,7 @@ const REPLACEABLE_TRANSFORM_FUNCTIONS = {
 
 /**
  * Check if a transform value contains only functions that can be replaced
+ * @param value
  */
 function canBeReplacedWithIndividualProperties(value: string): {
 	canReplace: boolean;
@@ -78,7 +79,7 @@ export default createRule<Options>({
 	name: 'prefer-individual-transform-properties',
 	rejected: (value: string, suggestions: string) =>
 		`Use individual transform properties instead of "transform: ${value}". Consider: ${suggestions}`,
-	rule: (ruleName, messages) => (_primary) => {
+	rule: (ruleName, messages) => () => {
 		return (root, result) => {
 			root.walkDecls((decl) => {
 				// Only check transform property

@@ -1,5 +1,5 @@
-import { describe, test, expect } from 'vitest';
 import stylelint from 'stylelint';
+import { describe, test, expect } from 'vitest';
 
 import plugin from './index.js';
 
@@ -7,6 +7,8 @@ const ruleName = '@d-zero/prefer-individual-transform-properties';
 
 /**
  * Helper function to run stylelint with the plugin
+ * @param code
+ * @param options
  */
 async function lint(code: string, options?: unknown) {
 	const result = await stylelint.lint({
