@@ -1,9 +1,9 @@
+import postcssValueParser from 'postcss-value-parser';
 import stylelint from 'stylelint';
 // @ts-ignore
 import validateOptions from 'stylelint/lib/utils/validateOptions.mjs';
 // @ts-ignore
 import { isString, isPlainObject } from 'stylelint/lib/utils/validateTypes.mjs';
-import postcssValueParser from 'postcss-value-parser';
 
 import { createRule } from '../../utils/create-rule.js';
 
@@ -21,20 +21,29 @@ const SHORTHAND_PROPERTIES_WITH_LOGICAL = [
 
 // Mapping from physical shorthand to logical equivalents
 const LOGICAL_PROPERTY_MAP: Record<string, string[]> = {
-	'padding': ['padding-block', 'padding-inline'],
-	'margin': ['margin-block', 'margin-inline'],
+	padding: ['padding-block', 'padding-inline'],
+	margin: ['margin-block', 'margin-inline'],
 	'border-width': ['border-block-width', 'border-inline-width'],
 	'border-style': ['border-block-style', 'border-inline-style'],
 	'border-color': ['border-block-color', 'border-inline-color'],
 	'scroll-padding': ['scroll-padding-block', 'scroll-padding-inline'],
 	'scroll-margin': ['scroll-margin-block', 'scroll-margin-inline'],
-	'border-radius': ['border-start-start-radius', 'border-start-end-radius', 'border-end-start-radius', 'border-end-end-radius'],
+	'border-radius': [
+		'border-start-start-radius',
+		'border-start-end-radius',
+		'border-end-start-radius',
+		'border-end-end-radius',
+	],
 };
 
+/**
+ *
+ * @param value
+ */
 function hasMultipleValues(value: string): boolean {
 	const parsed = postcssValueParser(value);
-	const values = parsed.nodes.filter(node => 
-		node.type === 'word' || node.type === 'function'
+	const values = parsed.nodes.filter(
+		(node) => node.type === 'word' || node.type === 'function',
 	);
 	return values.length > 1;
 }
@@ -54,9 +63,10 @@ export default createRule<boolean | Options>({
 				possible: [
 					true,
 					false,
-					(value: unknown) => 
-						isPlainObject(value) && 
-						(!('properties' in (value as any)) || (Array.isArray((value as any).properties) && (value as any).properties.every(isString)))
+					(value: unknown) =>
+						isPlainObject(value) &&
+						(!('properties' in value) ||
+							(Array.isArray(value.properties) && value.properties.every(isString))),
 				],
 			});
 
@@ -64,9 +74,10 @@ export default createRule<boolean | Options>({
 				return;
 			}
 
-			const enabledProperties = typeof primary === 'object' && primary.properties
-				? primary.properties
-				: SHORTHAND_PROPERTIES_WITH_LOGICAL.slice();
+			const enabledProperties =
+				typeof primary === 'object' && primary.properties
+					? primary.properties
+					: [...SHORTHAND_PROPERTIES_WITH_LOGICAL];
 
 			root.walkDecls((decl) => {
 				// Only check properties that are in our enabled list
