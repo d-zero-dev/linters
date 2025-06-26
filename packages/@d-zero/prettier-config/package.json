@@ -24,7 +24,7 @@
 		}
 	},
 	"files": [
-		"index.js"
+		"*.js"
 	],
 	"dependencies": {
 		"@prettier/plugin-pug": "3.4.0",
