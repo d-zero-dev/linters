@@ -15,6 +15,12 @@
 	"exports": {
 		".": {
 			"import": "./index.js"
+		},
+		"./base": {
+			"import": "./base.js"
+		},
+		"./pug": {
+			"import": "./pug.js"
 		}
 	},
 	"files": [
