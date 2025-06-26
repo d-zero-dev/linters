@@ -27,3 +27,26 @@ export default {
 	useTabs: false,
 };
 ```
+
+## 種類別プリセット
+
+| パッケージパス                 | 用途                       |
+| ------------------------------ | -------------------------- |
+| `@d-zero/prettier-config`      | フルセット（ベース + Pug） |
+| `@d-zero/prettier-config/base` | 基本セット（Pugなし）      |
+| `@d-zero/prettier-config/pug`  | Pug関連設定のみ            |
+
+`@d-zero/prettier-config`はすべての設定を含んでいるので、一部の設定のみを利用する場合は、それぞれ種類別のものを利用します。
+
+```js
+import baseConfig from '@d-zero/prettier-config/base';
+import pugConfig from '@d-zero/prettier-config/pug';
+
+export default {
+	...baseConfig,
+	// 既存の設定を上書き
+	printWidth: 120,
+	// Pug設定を追加
+	...pugConfig,
+};
+```
