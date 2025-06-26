@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+### Bug Fixes
+
+- **prettier:** update files pattern to include all JS files ([5249894](https://github.com/d-zero-dev/linters/commit/5249894b5e3406192f0575956ea2078c415e0075))
+
 # [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
 
 ### Bug Fixes
