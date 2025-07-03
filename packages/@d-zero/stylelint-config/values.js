@@ -96,7 +96,7 @@ module.exports = {
 							return `数値の\`${name}\`ではなくグローバルで定義されたCSS変数を使用してください。`;
 						}
 						case 'content': {
-							return `Unicode値\`${value}\`を直接指定せず、代わりに命名されたエンティティ（例: &copy;）またはCSS変数を使用してください。`;
+							return `Unicode値 "${value}" を指定せず、表示したいテキストをそのまま指定してください。`;
 						}
 						default: {
 							return `ハードコードされた値\`${value}\`の代わりにCSS変数を使用してください。`;
