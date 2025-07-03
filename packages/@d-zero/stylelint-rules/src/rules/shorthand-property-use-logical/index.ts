@@ -63,10 +63,12 @@ export default createRule<boolean | Options>({
 				possible: [
 					true,
 					false,
-					(value: unknown) =>
-						isPlainObject(value) &&
-						(!('properties' in value) ||
-							(Array.isArray(value.properties) && value.properties.every(isString))),
+					(value: unknown) => {
+						if (!isPlainObject(value)) return false;
+						const obj = value as Record<string, unknown>;
+						return !('properties' in obj) ||
+							(Array.isArray(obj.properties) && obj.properties.every(isString));
+					},
 				],
 			});
 
