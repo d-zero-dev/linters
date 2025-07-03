@@ -1,5 +1,5 @@
 module.exports = {
-	plugins: ['stylelint-use-logical'],
+	plugins: ['stylelint-use-logical', '@d-zero/stylelint-rules'],
 	extends: ['stylelint-config-standard'],
 	rules: {
 		'at-rule-disallowed-list': null,
@@ -93,6 +93,9 @@ module.exports = {
 
 		// Plugin stylelint-use-logical
 		'csstools/use-logical': 'always',
+
+		// Plugin @d-zero/stylelint-rules
+		'@d-zero/prefer-individual-transform-properties': true,
 
 		// Overwrite stylelint-config-standard
 		'custom-media-pattern': null,
