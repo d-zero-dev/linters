@@ -48,12 +48,33 @@ export default {
 						disallowAttrs: [
 							{
 								name: 'src',
-								value: { pattern: '/[A-Z\\s@#$%^&*()+=\\[\\]{}|;\':",<>?]/' },
+								value: { pattern: '/[A-Z\\s_]/' },
 							},
 						],
 					},
 					reason:
-						'画像ファイル名は命名規則に従って小文字、数字、ハイフン、アンダースコア、ドット、スラッシュのみを使用してください。（D-ZERO独自ルール）',
+						'画像ファイル名は小文字のケバブケース（ハイフン区切り）で命名してください。大文字、スペース、アンダースコアは使用できません。（D-ZERO独自ルール）',
+				},
+			},
+		},
+		{
+			selector: 'video, audio, source',
+			rules: {
+				'invalid-attr': {
+					options: {
+						disallowAttrs: [
+							{
+								name: 'src',
+								value: { pattern: '/[A-Z\\s_]/' },
+							},
+							{
+								name: 'poster',
+								value: { pattern: '/[A-Z\\s_]/' },
+							},
+						],
+					},
+					reason:
+						'メディアファイル名は小文字のケバブケース（ハイフン区切り）で命名してください。大文字、スペース、アンダースコアは使用できません。（D-ZERO独自ルール）',
 				},
 			},
 		},
