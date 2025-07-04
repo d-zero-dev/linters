@@ -14,8 +14,11 @@ type Options = {
  * Transform functions that can be replaced with individual properties
  */
 const REPLACEABLE_TRANSFORM_FUNCTIONS = {
+	// cspell:disable-next-line
 	translate: ['translate', 'translatex', 'translatey', 'translate3d'],
+	// cspell:disable-next-line
 	rotate: ['rotate', 'rotatex', 'rotatey', 'rotatez', 'rotate3d'],
+	// cspell:disable-next-line
 	scale: ['scale', 'scalex', 'scaley', 'scale3d'],
 };
 
