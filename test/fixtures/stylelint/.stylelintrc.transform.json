@@ -1,0 +1,6 @@
+{
+	"plugins": ["@d-zero/stylelint-rules"],
+	"rules": {
+		"@d-zero/prefer-individual-transform-properties": true
+	}
+}

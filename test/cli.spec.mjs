@@ -330,4 +330,23 @@ describe('stylelint', () => {
 			'test/fixtures/stylelint/_c-component.scss:8:1 クラス名がファイル名と一致しません',
 		]);
 	});
+
+	test('Transform Properties', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/transform.scss'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.transform.json'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/transform.scss:3:2 Use individual transform properties instead of "transform: translate(10px, 20px)". Consider: translate: 10px, 20px (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:4:2 Use individual transform properties instead of "transform: rotate(45deg)". Consider: rotate: 45deg (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:5:2 Use individual transform properties instead of "transform: scale(1.5)". Consider: scale: 1.5 (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:6:2 Use individual transform properties instead of "transform: translateX(100px)". Consider: translate: 100px (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:7:2 Use individual transform properties instead of "transform: rotateY(90deg)". Consider: rotate: 90deg (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:8:2 Use individual transform properties instead of "transform: scaleX(2)". Consider: scale: 2 (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:29:2 Use individual transform properties instead of "transform: translate(var(--x), var(--y))". Consider: translate: var(--x), var(--y) (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:30:2 Use individual transform properties instead of "transform: rotate(calc(45deg + 10deg))". Consider: rotate: calc(45deg + 10deg) (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:31:2 Use individual transform properties instead of "transform: scale(calc(1 + 0.5))". Consider: scale: calc(1 + 0.5) (@d-zero/prefer-individual-transform-properties)',
+		]);
+	});
 });
