@@ -38,20 +38,20 @@
 		}
 	},
 	"devDependencies": {
-		"@d-zero/tsconfig": "0.4.1",
-		"@secretlint/secretlint-rule-preset-recommend": "10.1.0",
+		"@d-zero/tsconfig": "0.5.0",
+		"@secretlint/secretlint-rule-preset-recommend": "10.1.1",
 		"execa": "9.6.0",
 		"husky": "9.1.7",
-		"lerna": "8.2.2",
+		"lerna": "8.2.3",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.5.3",
-		"secretlint": "10.1.0",
+		"prettier": "3.6.2",
+		"secretlint": "10.1.1",
 		"typescript": "5.8.3",
 		"vitest": "3.2.4"
 	},
 	"packageManager": "yarn@4.9.2",
 	"volta": {
-		"node": "22.16.0",
+		"node": "22.17.0",
 		"yarn": "4.9.2"
 	}
 }

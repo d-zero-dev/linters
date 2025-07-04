@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+### Bug Fixes
+
+- **prettier:** update files pattern to include all JS files ([5249894](https://github.com/d-zero-dev/linters/commit/5249894b5e3406192f0575956ea2078c415e0075))
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v9.1.2 ([940cdcb](https://github.com/d-zero-dev/linters/commit/940cdcb595bf96a74691db5e02bf49dc824d3b55))
+- **deps:** update dependency eslint-plugin-import-x to v4.16.0 ([634038f](https://github.com/d-zero-dev/linters/commit/634038f936ff850936224667d4b6cb327fcfbe49))
+- **deps:** update dependency eslint-plugin-jsdoc to v51 ([0cdc65c](https://github.com/d-zero-dev/linters/commit/0cdc65c84c79c0e6d0e333e594249d737d5483fa))
+- **deps:** update dependency eslint-plugin-jsdoc to v51.0.3 ([f085e61](https://github.com/d-zero-dev/linters/commit/f085e6183f4ba823eccbd9ab1e137f7b90592aeb))
+- **deps:** update dependency eslint-plugin-jsdoc to v51.2.3 ([b81a80f](https://github.com/d-zero-dev/linters/commit/b81a80f0df07a1feb790ab84fc458ca3b20d8f7a))
+- **deps:** update dependency prettier to v3.6.1 ([9b7dc9d](https://github.com/d-zero-dev/linters/commit/9b7dc9d6ed58bb096d4ecdefe50a7e77cd14f5a1))
+- **deps:** update dependency stylelint to v16.21.0 ([6f391fd](https://github.com/d-zero-dev/linters/commit/6f391fddf1b18ce72e544366c8b791b7c8dc05f6))
+- **deps:** update dependency stylelint-config-recess-order to v7 ([7e8e87b](https://github.com/d-zero-dev/linters/commit/7e8e87bee2458ba918e63972c943a5bfa72f13ba))
+- **deps:** update dependency textlint to v15 ([d3b03cf](https://github.com/d-zero-dev/linters/commit/d3b03cffd3e29f19ede75dd81a1d3429eb729879))
+- **deps:** update dependency typescript-eslint to v8.34.1 ([4a0bd13](https://github.com/d-zero-dev/linters/commit/4a0bd13b9d78c147cfa69f06eab7cd36bd86c632))
+- **deps:** update dependency typescript-eslint to v8.35.0 ([ac57229](https://github.com/d-zero-dev/linters/commit/ac57229433d00f03adf7acc359301806af452b33))
+
 # [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
 
 ### Bug Fixes

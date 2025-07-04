@@ -1,0 +1,32 @@
+.element1 {
+	/* These should trigger the rule */
+	transform: translate(10px, 20px);
+	transform: rotate(45deg);
+	transform: scale(1.5);
+	transform: translateX(100px);
+	transform: rotateY(90deg);
+	transform: scaleX(2);
+}
+
+.element2 {
+	/* These should NOT trigger the rule - complex transforms */
+	transform: translate(10px, 20px) rotate(45deg);
+	transform: translate(10px) scale(1.5);
+	transform: matrix(1, 0, 0, 1, 10, 20);
+	transform: skew(20deg, 10deg);
+	transform: translate(10px) skew(20deg);
+}
+
+.element3 {
+	/* These should be allowed - individual properties */
+	translate: 10px 20px;
+	rotate: 45deg;
+	scale: 1.5;
+}
+
+.element4 {
+	/* These should trigger the rule - with CSS variables and calc() */
+	transform: translate(var(--x), var(--y));
+	transform: rotate(calc(45deg + 10deg));
+	transform: scale(calc(1 + 0.5));
+}

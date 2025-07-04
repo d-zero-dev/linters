@@ -95,6 +95,7 @@ module.exports = {
 		'csstools/use-logical': 'always',
 
 		// Plugin @d-zero/stylelint-rules
+		'@d-zero/prefer-individual-transform-properties': true,
 		'@d-zero/shorthand-property-use-logical': true,
 
 		// Overwrite stylelint-config-standard
