@@ -43,6 +43,39 @@ export default {
 					reason:
 						'省略可能なケースがほとんど想定されないため、原則禁止としています。省略する場合は明確な理由が必要です。（D-ZERO独自ルール）',
 				},
+				'invalid-attr': {
+					options: {
+						disallowAttrs: [
+							{
+								name: 'src',
+								value: { pattern: '/[A-Z\\s_]/' },
+							},
+						],
+					},
+					reason:
+						'画像ファイル名は小文字のケバブケース（ハイフン区切り）で命名してください。大文字、スペース、アンダースコアは使用できません。（D-ZERO独自ルール）',
+				},
+			},
+		},
+		{
+			selector: 'video, audio, source',
+			rules: {
+				'invalid-attr': {
+					options: {
+						disallowAttrs: [
+							{
+								name: 'src',
+								value: { pattern: '/[A-Z\\s_]/' },
+							},
+							{
+								name: 'poster',
+								value: { pattern: '/[A-Z\\s_]/' },
+							},
+						],
+					},
+					reason:
+						'メディアファイル名は小文字のケバブケース（ハイフン区切り）で命名してください。大文字、スペース、アンダースコアは使用できません。（D-ZERO独自ルール）',
+				},
 			},
 		},
 		{
