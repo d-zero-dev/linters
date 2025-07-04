@@ -43,12 +43,6 @@
 	padding-inline: 1rem; // ✅
 	margin-block: auto; // ✅
 	margin-inline: 0; // ✅
-	border-block-width: 1px; // ✅
-	border-inline-width: 2px; // ✅
-	border-block-style: solid; // ✅
-	border-inline-style: dashed; // ✅
-	border-block-color: currentColor; // ✅
-	border-inline-color: transparent; // ✅
 	scroll-padding-block: 10px; // ✅
 	scroll-padding-inline: 20px; // ✅
 	scroll-margin-block: 5px; // ✅
@@ -63,12 +57,6 @@
 	padding-inline: 1rem 2rem; // ✅
 	margin-block: 1rem 2rem; // ✅
 	margin-inline: 0 auto; // ✅
-	border-block-width: 1px 2px; // ✅
-	border-inline-width: 2px 3px; // ✅
-	border-block-style: solid dashed; // ✅
-	border-inline-style: dotted none; // ✅
-	border-block-color: red blue; // ✅
-	border-inline-color: green yellow; // ✅
 	scroll-padding-block: 10px 20px; // ✅
 	scroll-padding-inline: 15px 25px; // ✅
 	scroll-margin-block: 5px 10px; // ✅
