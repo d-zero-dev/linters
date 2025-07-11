@@ -1,0 +1,66 @@
+// stylelint-disable declaration-block-no-duplicate-properties, selector-class-pattern, order/properties-order, declaration-empty-line-before, color-named, declaration-property-value-disallowed-list, value-keyword-case
+
+[rule='@d-zero/shorthand-property-use-logical'] {
+	// Single values should not warn
+	padding: 2rem; // ✅
+	margin: auto; // ✅
+	border-width: 1px; // ✅
+	border-style: solid; // ✅
+	border-color: currentColor; // ✅
+	scroll-padding: 10px; // ✅
+	scroll-margin: 5px; // ✅
+	border-radius: 4px; // ✅
+
+	// Multiple values should warn
+	padding: 2rem 1rem; // ❌
+	padding: 2rem 0 0; // ❌
+	padding: 1rem 2rem 3rem 4rem; // ❌
+	
+	margin: 1rem 2rem; // ❌
+	margin: 1rem 0 2rem; // ❌
+	margin: 1rem 2rem 3rem 4rem; // ❌
+	
+	border-width: 1px 2px; // ❌
+	border-width: 1px 2px 3px; // ❌
+	border-width: 1px 2px 3px 4px; // ❌
+	
+	border-style: solid dashed; // ❌
+	border-color: currentColor transparent; // ❌
+	
+	scroll-padding: 10px 20px; // ❌
+	scroll-margin: 5px 10px; // ❌
+	
+	border-radius: 4px 8px; // ❌
+	border-radius: 4px 8px 12px; // ❌
+	border-radius: 4px 8px 12px 16px; // ❌
+
+	// Complex values should also warn when multiple
+	padding: calc(1rem + 2px) 1rem; // ❌
+	margin: var(--spacing) 2rem; // ❌
+
+	// Valid logical properties should NOT warn (single values)
+	padding-block: 2rem; // ✅
+	padding-inline: 1rem; // ✅
+	margin-block: auto; // ✅
+	margin-inline: 0; // ✅
+	scroll-padding-block: 10px; // ✅
+	scroll-padding-inline: 20px; // ✅
+	scroll-margin-block: 5px; // ✅
+	scroll-margin-inline: 10px; // ✅
+	border-start-start-radius: 4px; // ✅
+	border-start-end-radius: 8px; // ✅
+	border-end-start-radius: 12px; // ✅
+	border-end-end-radius: 16px; // ✅
+
+	// Valid logical properties should NOT warn (multiple values)
+	padding-block: 2rem 1rem; // ✅
+	padding-inline: 1rem 2rem; // ✅
+	margin-block: 1rem 2rem; // ✅
+	margin-inline: 0 auto; // ✅
+	scroll-padding-block: 10px 20px; // ✅
+	scroll-padding-inline: 15px 25px; // ✅
+	scroll-margin-block: 5px 10px; // ✅
+	scroll-margin-inline: 8px 12px; // ✅
+}
+
+// stylelint-enable declaration-block-no-duplicate-properties, selector-class-pattern, order/properties-order, declaration-empty-line-before, color-named, declaration-property-value-disallowed-list, value-keyword-case

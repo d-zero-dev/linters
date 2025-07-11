@@ -349,4 +349,31 @@ describe('stylelint', () => {
 			'test/fixtures/stylelint/transform.scss:31:2 Use individual transform properties instead of "transform: scale(calc(1 + 0.5))". Consider: scale: calc(1 + 0.5) (@d-zero/prefer-individual-transform-properties)',
 		]);
 	});
+
+	test('Shorthand Logical Properties', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/shorthand-logical.scss'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/shorthand-logical.scss:15:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:16:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:17:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:19:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:20:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:21:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:23:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:24:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:25:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:27:2 Unexpected shorthand property "border-style" with multiple values. Consider using logical properties: border-block-style, border-inline-style (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:28:2 Unexpected shorthand property "border-color" with multiple values. Consider using logical properties: border-block-color, border-inline-color (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:30:2 Unexpected shorthand property "scroll-padding" with multiple values. Consider using logical properties: scroll-padding-block, scroll-padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:31:2 Unexpected shorthand property "scroll-margin" with multiple values. Consider using logical properties: scroll-margin-block, scroll-margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:33:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:34:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:35:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:38:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:39:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+		]);
+	});
 });
