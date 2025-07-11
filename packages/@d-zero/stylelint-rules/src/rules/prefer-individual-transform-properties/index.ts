@@ -42,16 +42,18 @@ function canBeReplacedWithIndividualProperties(value: string): {
 			let isReplaceable = false;
 
 			// Check each category of replaceable functions
-			for (const [property, functions] of Object.entries(REPLACEABLE_TRANSFORM_FUNCTIONS)) {
+			for (const [property, functions] of Object.entries(
+				REPLACEABLE_TRANSFORM_FUNCTIONS,
+			)) {
 				if (functions.includes(functionName)) {
 					isReplaceable = true;
 					hasReplaceableFunction = true;
 					foundTransformTypes.add(property);
-					
+
 					// Generate suggestion based on function type
 					const args = postcssValueParser.stringify(node.nodes);
 					suggestions.push(`${property}: ${args}`);
-					
+
 					// Don't walk into the arguments of transform functions
 					return false;
 				}
@@ -68,9 +70,10 @@ function canBeReplacedWithIndividualProperties(value: string): {
 	// 1. We found replaceable functions
 	// 2. We found no non-replaceable functions
 	// 3. We only found ONE type of transform (translate, rotate, or scale)
-	const canReplace = hasReplaceableFunction && 
-					   !hasNonReplaceableFunction && 
-					   foundTransformTypes.size === 1;
+	const canReplace =
+		hasReplaceableFunction &&
+		!hasNonReplaceableFunction &&
+		foundTransformTypes.size === 1;
 
 	return {
 		canReplace,
@@ -90,7 +93,9 @@ export default createRule<Options>({
 					return;
 				}
 
-				const { canReplace, suggestions } = canBeReplacedWithIndividualProperties(decl.value);
+				const { canReplace, suggestions } = canBeReplacedWithIndividualProperties(
+					decl.value,
+				);
 
 				// If we can replace and have suggestions, report the issue
 				if (canReplace && suggestions.length > 0) {
