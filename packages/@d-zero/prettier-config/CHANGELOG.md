@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to v3.6.2 ([a8ef456](https://github.com/d-zero-dev/linters/commit/a8ef456a853b4332bca101af69159bb96edb7063))
+- **prettier:** resolve plugin loading in deep node_modules ([8e0a91f](https://github.com/d-zero-dev/linters/commit/8e0a91f02fd912a3c1e27f99e5230e4d1f0f9685))
+
 # [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
 
 ### Bug Fixes
