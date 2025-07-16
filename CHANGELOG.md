@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v9.1.5 ([c5d5c4b](https://github.com/d-zero-dev/linters/commit/c5d5c4be0d3e2fed11ff36c53facb5d7e275de03))
+- **deps:** update dependency eslint-plugin-jsdoc to v51.4.0 ([2a74ded](https://github.com/d-zero-dev/linters/commit/2a74ded0b0fac6b8eaff52dcdf08a940a6dee844))
+- **deps:** update dependency typescript-eslint to v8.37.0 ([4a12a76](https://github.com/d-zero-dev/linters/commit/4a12a7601712faa273750acf3cf8359f4650b98f))
+- **deps:** update eslint monorepo to v9.31.0 ([5750fc3](https://github.com/d-zero-dev/linters/commit/5750fc3cd1d69f2b5f2a7a2300a43ae9f6d26efb))
+- **markuplint:** add exclusions for image src naming rules ([ae266d7](https://github.com/d-zero-dev/linters/commit/ae266d796e82b6ad459bd4954cadfb2c23c8708a))
+
 # [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v9.1.5 ([c5d5c4b](https://github.com/d-zero-dev/linters/commit/c5d5c4be0d3e2fed11ff36c53facb5d7e275de03))
+
 # [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
 
 ### Bug Fixes
