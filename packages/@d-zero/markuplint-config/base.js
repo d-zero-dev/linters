@@ -43,6 +43,12 @@ export default {
 					reason:
 						'省略可能なケースがほとんど想定されないため、原則禁止としています。省略する場合は明確な理由が必要です。（D-ZERO独自ルール）',
 				},
+			},
+		},
+		{
+			selector:
+				'img:not([src^="data:"], [src^="blob:"], [src^="https://"], [src^="http://"], [src^="//"])',
+			rules: {
 				'invalid-attr': {
 					options: {
 						disallowAttrs: [

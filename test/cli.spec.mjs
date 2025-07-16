@@ -171,10 +171,10 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
-			'test/fixtures/markuplint/image-naming-test.html:16:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:17:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:18:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:19:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
 		]);
 
 		const validNaming = await markuplint(
