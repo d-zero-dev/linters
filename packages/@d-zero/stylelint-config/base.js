@@ -1,15 +1,9 @@
 module.exports = {
 	plugins: ['stylelint-use-logical', '@d-zero/stylelint-rules'],
-	extends: ['stylelint-config-standard'],
+	extends: ['stylelint-config-recommended'],
 	rules: {
 		'at-rule-disallowed-list': null,
-		'at-rule-empty-line-before': [
-			'always',
-			{
-				except: ['blockless-after-same-name-blockless', 'first-nested'],
-				ignore: ['after-comment'],
-			},
-		],
+
 		'at-rule-no-vendor-prefix': true,
 		'at-rule-no-unknown': true,
 		'color-hex-length': 'short',
@@ -22,14 +16,11 @@ module.exports = {
 			},
 		],
 		'comment-no-empty': true,
-		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': ['/^TODO:/'],
-		'custom-property-empty-line-before': 'never',
 		'declaration-block-no-duplicate-properties': true,
 		'declaration-block-no-redundant-longhand-properties': true,
 		'declaration-block-no-shorthand-property-overrides': true,
 		'declaration-block-single-line-max-declarations': 80,
-		'declaration-empty-line-before': 'never',
 		'declaration-no-important': true,
 		'declaration-property-value-disallowed-list': null,
 		'declaration-property-value-allowed-list': null,
