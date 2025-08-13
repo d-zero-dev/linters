@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.20 ([1f27fd2](https://github.com/d-zero-dev/linters/commit/1f27fd28b3600f26b0e63bf28a9cf7e57e8323e0))
+- **deps:** update dependency @prettier/plugin-pug to v3.4.2 ([bd6c940](https://github.com/d-zero-dev/linters/commit/bd6c9408c726e5fe2a374f94e5fcfb610be790ab))
+- **deps:** update dependency cspell to v9.2.0 ([7f50820](https://github.com/d-zero-dev/linters/commit/7f508205f92b26c6c1df0aa3968be51a87ff1ffd))
+- **deps:** update dependency eslint-plugin-jsdoc to v51.4.1 ([47e1a05](https://github.com/d-zero-dev/linters/commit/47e1a051ba6733d647164bfc612e2f850e901d60))
+- **deps:** update dependency eslint-plugin-regexp to v2.10.0 ([2b4167d](https://github.com/d-zero-dev/linters/commit/2b4167d1c445f2fdfadb325c551ef53806ea672d))
+- **deps:** update dependency eslint-plugin-unicorn to v60 ([67f1edd](https://github.com/d-zero-dev/linters/commit/67f1edd7dba54e888bce369a8c2807f619b1d93b))
+- **deps:** update dependency lint-staged to v16.1.5 ([0aac941](https://github.com/d-zero-dev/linters/commit/0aac94144d6ef1475e5c2b9a2491cef21f21db36))
+- **deps:** update dependency stylelint to v16.23.1 ([b11b76c](https://github.com/d-zero-dev/linters/commit/b11b76cfab4ec4d73541b23152ebba20ee4d0345))
+- **deps:** update dependency stylelint-config-standard to v39 ([4a3e7f2](https://github.com/d-zero-dev/linters/commit/4a3e7f249a9719870c6daa806e89b142c55b6fc9))
+- **deps:** update dependency textlint to v15.2.1 ([fdfebcc](https://github.com/d-zero-dev/linters/commit/fdfebccedf2172a76209afd2bd5f2c799104e667))
+- **deps:** update dependency typescript-eslint to v8.39.1 ([3f4ca1f](https://github.com/d-zero-dev/linters/commit/3f4ca1ffc67af99fc460d9bafc9dfb3ce9bc7a60))
+- **deps:** update eslint monorepo to v9.33.0 ([a81dddb](https://github.com/d-zero-dev/linters/commit/a81dddbbfa713f4f0c3ebc8494d3f8ac47542d6e))
+
+### Features
+
+- **stylelint:** add consistent comment and rule spacing rules ([d5d7d39](https://github.com/d-zero-dev/linters/commit/d5d7d39c574e00cbca37077ed2e1aad9e99d37ca))
+- **stylelint:** migrate to recommended config and improve comment spacing ([9263f2d](https://github.com/d-zero-dev/linters/commit/9263f2d23250391d097d183d2a0612ab83a5f09f))
+
 # [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
 
 ### Bug Fixes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.23.1 ([b11b76c](https://github.com/d-zero-dev/linters/commit/b11b76cfab4ec4d73541b23152ebba20ee4d0345))
+- **deps:** update dependency stylelint-config-standard to v39 ([4a3e7f2](https://github.com/d-zero-dev/linters/commit/4a3e7f249a9719870c6daa806e89b142c55b6fc9))
+
+### Features
+
+- **stylelint:** add consistent comment and rule spacing rules ([d5d7d39](https://github.com/d-zero-dev/linters/commit/d5d7d39c574e00cbca37077ed2e1aad9e99d37ca))
+- **stylelint:** migrate to recommended config and improve comment spacing ([9263f2d](https://github.com/d-zero-dev/linters/commit/9263f2d23250391d097d183d2a0612ab83a5f09f))
+
 # [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
 
 **Note:** Version bump only for package @d-zero/stylelint-config
