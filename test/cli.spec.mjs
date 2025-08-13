@@ -376,4 +376,15 @@ describe('stylelint', () => {
 			'test/fixtures/stylelint/shorthand-logical.scss:39:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
 		]);
 	});
+
+	test('Comment and Rule Spacing', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/comment-spacing.css'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/comment-spacing.css:5:1 Expected empty line before comment (comment-empty-line-before)',
+			'test/fixtures/stylelint/comment-spacing.css:9:1 Expected empty line before rule (rule-empty-line-before)',
+		]);
+	});
 });

@@ -12,7 +12,7 @@ module.exports = {
 		'comment-empty-line-before': [
 			'always',
 			{
-				ignore: ['stylelint-commands'],
+				except: ['first-nested'],
 			},
 		],
 		'comment-no-empty': true,
@@ -57,9 +57,9 @@ module.exports = {
 			},
 		],
 		'rule-empty-line-before': [
-			'always-multi-line',
+			'always',
 			{
-				except: ['after-single-line-comment', 'first-nested'],
+				except: ['first-nested'],
 				ignore: ['after-comment'],
 			},
 		],
