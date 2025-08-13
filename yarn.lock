@@ -2556,10 +2556,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@secretlint/secretlint-rule-preset-recommend@npm:10.2.2":
-  version: 10.2.2
-  resolution: "@secretlint/secretlint-rule-preset-recommend@npm:10.2.2"
-  checksum: 10c0/41f0e471bc906aade6c188d728cf18e64a70eb21cd0432299532111da4a9187e3fa6e70b1abb7f9845ef6aa7927e82e72f4bbc47306734c4911f2170a22e888e
+"@secretlint/secretlint-rule-preset-recommend@npm:11.0.2":
+  version: 11.0.2
+  resolution: "@secretlint/secretlint-rule-preset-recommend@npm:11.0.2"
+  checksum: 10c0/08adad6a8aaf8ab46cba832537853417444b6b0ecfc9a9a2fbb09124b6d13e80708f4bce190a9da714acc37ed83f052add230b0f92335247158a6a13df32733e
   languageName: node
   linkType: hard
 
@@ -8651,7 +8651,7 @@ __metadata:
   resolution: "linters@workspace:."
   dependencies:
     "@d-zero/tsconfig": "npm:0.5.0"
-    "@secretlint/secretlint-rule-preset-recommend": "npm:10.2.2"
+    "@secretlint/secretlint-rule-preset-recommend": "npm:11.0.2"
     execa: "npm:9.6.0"
     husky: "npm:9.1.7"
     lerna: "npm:8.2.3"
