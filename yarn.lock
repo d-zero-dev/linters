@@ -875,7 +875,7 @@ __metadata:
   resolution: "@d-zero/cz-config@workspace:packages/@d-zero/cz-config"
   dependencies:
     commitizen: "npm:4.3.1"
-    cz-customizable: "npm:7.4.0"
+    cz-customizable: "npm:7.5.1"
   languageName: unknown
   linkType: soft
 
@@ -5169,9 +5169,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cz-customizable@npm:7.4.0":
-  version: 7.4.0
-  resolution: "cz-customizable@npm:7.4.0"
+"cz-customizable@npm:7.5.1":
+  version: 7.5.1
+  resolution: "cz-customizable@npm:7.5.1"
   dependencies:
     editor: "npm:1.0.0"
     find-config: "npm:^1.0.0"
@@ -5182,7 +5182,7 @@ __metadata:
   bin:
     cz-cust: standalone.js
     cz-customizable: standalone.js
-  checksum: 10c0/0bb7a05426f194aea69859cee6d58cc318687b21f4e27e9225e9abb440d5c66c012cb48e3cd4cab96bd2ffce7a6961c97f26741798d2ec3edf0e1395266bd3b6
+  checksum: 10c0/7fbe2ad299a412e4f00f3afa254959b4c98ff9bbf171293b949ac86fc3bff8e32d8e621e753bd71bdfa9c50f9aa3d5a6871506c98f5ffe6be71995dfc785fe93
   languageName: node
   linkType: hard
 
