@@ -925,7 +925,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@d-zero/markuplint-config@workspace:packages/@d-zero/markuplint-config"
   dependencies:
-    "@markuplint/pug-parser": "npm:4.6.20"
+    "@markuplint/pug-parser": "npm:4.6.21"
     markuplint: "npm:4.13.0"
   languageName: unknown
   linkType: soft
@@ -1601,6 +1601,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@markuplint/html-parser@npm:4.6.21":
+  version: 4.6.21
+  resolution: "@markuplint/html-parser@npm:4.6.21"
+  dependencies:
+    "@markuplint/ml-ast": "npm:4.4.10"
+    "@markuplint/parser-utils": "npm:4.8.9"
+    parse5: "npm:8.0.0"
+    type-fest: "npm:4.41.0"
+  checksum: 10c0/90445bda68dc0e08eade90a2a0525e10b20a93be082e9580db590643506cc533f59beccd429664228c762271a8ede61397c165c31b2949c67691edacd07a3773
+  languageName: node
+  linkType: hard
+
 "@markuplint/html-spec@npm:4.15.0":
   version: 4.15.0
   resolution: "@markuplint/html-spec@npm:4.15.0"
@@ -1663,6 +1675,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@markuplint/ml-spec@npm:4.10.0":
+  version: 4.10.0
+  resolution: "@markuplint/ml-spec@npm:4.10.0"
+  dependencies:
+    "@markuplint/ml-ast": "npm:4.4.10"
+    "@markuplint/types": "npm:4.8.0"
+    dom-accessibility-api: "npm:0.7.0"
+    is-plain-object: "npm:5.0.0"
+    type-fest: "npm:4.41.0"
+  checksum: 10c0/fe9b8743ec320ec77e067ba8a253f4d2d266e9445c588460e2ba3fd33e1277f47670537c7e8a5611b4c5d5a8d1ddeebc13618f6697d6eb4c689b198bc29122d1
+  languageName: node
+  linkType: hard
+
 "@markuplint/ml-spec@npm:4.9.7":
   version: 4.9.7
   resolution: "@markuplint/ml-spec@npm:4.9.7"
@@ -1692,16 +1717,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@markuplint/pug-parser@npm:4.6.20":
-  version: 4.6.20
-  resolution: "@markuplint/pug-parser@npm:4.6.20"
+"@markuplint/parser-utils@npm:4.8.9":
+  version: 4.8.9
+  resolution: "@markuplint/parser-utils@npm:4.8.9"
   dependencies:
-    "@markuplint/html-parser": "npm:4.6.20"
     "@markuplint/ml-ast": "npm:4.4.10"
-    "@markuplint/parser-utils": "npm:4.8.8"
+    "@markuplint/ml-spec": "npm:4.10.0"
+    "@markuplint/types": "npm:4.8.0"
+    "@types/uuid": "npm:10.0.0"
+    debug: "npm:4.4.1"
+    espree: "npm:10.4.0"
+    type-fest: "npm:4.41.0"
+    uuid: "npm:11.1.0"
+  checksum: 10c0/e4af00294ba02ddf0acdd70d81bdd1c64f263f7f7c37488a0a9228011c19071b51c11067da2862fb49ab737e4aa9e5125aacb57df46b3ddb9fd8a94c17e6c904
+  languageName: node
+  linkType: hard
+
+"@markuplint/pug-parser@npm:4.6.21":
+  version: 4.6.21
+  resolution: "@markuplint/pug-parser@npm:4.6.21"
+  dependencies:
+    "@markuplint/html-parser": "npm:4.6.21"
+    "@markuplint/ml-ast": "npm:4.4.10"
+    "@markuplint/parser-utils": "npm:4.8.9"
     pug-lexer: "npm:5.0.1"
     pug-parser: "npm:6.0.0"
-  checksum: 10c0/94fde002be7664a6e088298c22085a70f83069740cde51b9c9f08f05424b96d974d8195d9d977741445071736ea7dba34365bd08ea7bad6d08498564601a4cfa
+  checksum: 10c0/c8f2778a598d20801a7dd5afd0d3b6fb5a334964fbebaa562e4d466538df3b2636ea5151d642cdf270c1f407f102105b4fe97082dc12a04faa0381a4f0e181b8
   languageName: node
   linkType: hard
 
@@ -1762,6 +1803,24 @@ __metadata:
     type-fest: "npm:4.41.0"
     whatwg-mimetype: "npm:4.0.0"
   checksum: 10c0/d2b4bf329d93439cf1c32817f1b52f54571126a63c39598a4ebb155b7d271d845e61816511f0f385f03c143a1e85ae8b62c7cad4bcc09ea6b87c5a8ee733c03f
+  languageName: node
+  linkType: hard
+
+"@markuplint/types@npm:4.8.0":
+  version: 4.8.0
+  resolution: "@markuplint/types@npm:4.8.0"
+  dependencies:
+    "@markuplint/shared": "npm:4.4.12"
+    "@types/css-tree": "npm:2.3.10"
+    "@types/debug": "npm:4.1.12"
+    "@types/whatwg-mimetype": "npm:3.0.2"
+    bcp-47: "npm:2.1.0"
+    css-tree: "npm:3.1.0"
+    debug: "npm:4.4.1"
+    leven: "npm:4.0.0"
+    type-fest: "npm:4.41.0"
+    whatwg-mimetype: "npm:4.0.0"
+  checksum: 10c0/a5b1970bcb11eb304cc2a489501760bd3d0683965da69fa97e987951deced178e0c95c4832aa3b60ca225e7323ea9397e626a11ff148eac9917b6b510939c0a5
   languageName: node
   linkType: hard
 
@@ -3211,7 +3270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.40.0, @typescript-eslint/types@npm:^8.40.0":
+"@typescript-eslint/types@npm:8.40.0, @typescript-eslint/types@npm:^8.39.1, @typescript-eslint/types@npm:^8.40.0":
   version: 8.40.0
   resolution: "@typescript-eslint/types@npm:8.40.0"
   checksum: 10c0/225374fff36d59288a5780667a7a1316c75090d5d60b70a8035ac18786120333ccd08dfdf0e05e30d5a82217e44c57b8708b769dd1eed89f12f2ac4d3a769f76
