@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.21 ([39349e1](https://github.com/d-zero-dev/linters/commit/39349e18253a10edb26934a514b411c8b046b9ac))
+- **deps:** update dependency cz-customizable to v7.5.1 ([b1161c7](https://github.com/d-zero-dev/linters/commit/b1161c77b9dfc467a12328e9248ede168e5cf2c0))
+- **deps:** update dependency eslint-plugin-jsdoc to v54.1.1 ([7fcea5c](https://github.com/d-zero-dev/linters/commit/7fcea5c95fd3af1fbfc21f8fa63f3d4c209f756c))
+- **deps:** update dependency markuplint to v4.13.1 ([21c8c02](https://github.com/d-zero-dev/linters/commit/21c8c02874da896a53b255b16c4d77837903f4a2))
+- **deps:** update dependency textlint to v15.2.2 ([3d4b9f8](https://github.com/d-zero-dev/linters/commit/3d4b9f81b0537a69441867cc1ca73d87b6ed29b9))
+- **deps:** update dependency typescript-eslint to v8.40.0 ([5952ffb](https://github.com/d-zero-dev/linters/commit/5952ffb411e81599d6c2b08e8910db91bdc9b3f9))
+- **deps:** update eslint monorepo to v9.34.0 ([3b02422](https://github.com/d-zero-dev/linters/commit/3b024222d721d711e571187cc889ea1522b4f910))
+
 # [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
 
 ### Bug Fixes

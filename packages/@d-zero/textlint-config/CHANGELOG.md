@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.2.2 ([3d4b9f8](https://github.com/d-zero-dev/linters/commit/3d4b9f81b0537a69441867cc1ca73d87b6ed29b9))
+
 # [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
 
 ### Bug Fixes
