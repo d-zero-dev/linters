@@ -23,7 +23,7 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"lint-staged": "16.1.5",
+		"lint-staged": "16.2.4",
 		"micromatch": "4.0.8"
 	},
 	"devDependencies": {
