@@ -952,6 +952,9 @@ __metadata:
   dependencies:
     "@prettier/plugin-pug": "npm:3.4.2"
     prettier: "npm:3.6.2"
+  dependenciesMeta:
+    "@prettier/plugin-pug":
+      optional: true
   languageName: unknown
   linkType: soft
 

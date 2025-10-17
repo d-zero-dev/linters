@@ -1,7 +1,5 @@
-import * as pug from '@prettier/plugin-pug';
-
 export default {
-	plugins: [pug],
+	plugins: ['@prettier/plugin-pug'],
 	pugAttributeSeparator: 'as-needed',
 	pugCommentPreserveSpaces: 'trim-all',
 	pugEmptyAttributes: 'none',

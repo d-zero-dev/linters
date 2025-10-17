@@ -3,8 +3,10 @@
 ## 個別インストール
 
 ```sh
-npm install -D @d-zero/prettier-config
+npm install -D @d-zero/prettier-config @prettier/plugin-pug
 ```
+
+`@d-zero/prettier-config/base`を利用する場合は、`@prettier/plugin-pug`をインストールする必要はありません。
 
 ## 使い方
 
