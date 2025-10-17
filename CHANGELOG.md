@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+### Bug Fixes
+
+- **deps:** update dependency cspell to v9.2.1 ([4962b1b](https://github.com/d-zero-dev/linters/commit/4962b1b7c76c57cb1307bc217ccb71ea2107dc64))
+- **deps:** update dependency eslint-plugin-jsdoc to v54.7.0 ([02583ea](https://github.com/d-zero-dev/linters/commit/02583ea03212efc9ee687cdf102cef6391bf71f0))
+- **deps:** update dependency lint-staged to v16.2.4 ([67c574e](https://github.com/d-zero-dev/linters/commit/67c574ed74641751c66478eea8cf2d9768486766))
+- **deps:** update dependency stylelint-config-recess-order to v7.4.0 ([f4453cb](https://github.com/d-zero-dev/linters/commit/f4453cb1feb5132c452aa65826e49d6c7c28f8ea))
+- **deps:** update dependency stylelint-config-standard to v39.0.1 ([b477824](https://github.com/d-zero-dev/linters/commit/b4778240232e0f9d6f4f47d4458999157425369e))
+- **deps:** update dependency typescript-eslint to v8.46.1 ([fae66c1](https://github.com/d-zero-dev/linters/commit/fae66c15173be1fbb273c449f35ca3133a48e04c))
+- **deps:** update eslint monorepo to v9.37.0 ([bbd7a38](https://github.com/d-zero-dev/linters/commit/bbd7a385fbeab88e9b886e86fd8fc76def050913))
+
 # [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
 
 ### Bug Fixes
