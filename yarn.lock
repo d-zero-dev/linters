@@ -1014,7 +1014,7 @@ __metadata:
     textlint-plugin-html: "npm:1.0.1"
     textlint-rule-preset-ja-spacing: "npm:2.4.3"
     textlint-rule-preset-japanese: "npm:10.0.4"
-    textlint-rule-preset-jtf-style: "npm:3.0.2"
+    textlint-rule-preset-jtf-style: "npm:3.0.3"
   languageName: unknown
   linkType: soft
 
@@ -13092,9 +13092,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"textlint-rule-preset-jtf-style@npm:3.0.2":
-  version: 3.0.2
-  resolution: "textlint-rule-preset-jtf-style@npm:3.0.2"
+"textlint-rule-preset-jtf-style@npm:3.0.3":
+  version: 3.0.3
+  resolution: "textlint-rule-preset-jtf-style@npm:3.0.3"
   dependencies:
     analyze-desumasu-dearu: "npm:^2.1.2"
     japanese-numerals-to-number: "npm:^1.0.2"
@@ -13104,7 +13104,7 @@ __metadata:
     regx: "npm:^1.0.4"
     textlint-rule-helper: "npm:^2.3.1"
     textlint-rule-prh: "npm:^6.0.0"
-  checksum: 10c0/f1cf08f9d31fc467ecc86154ad40c2d48fb8a0910b4c93254f9a20af68eef007f4d9cd2b8b48001ffcffdb67cd9a4899f51da951b364857cb0df33e206e368fc
+  checksum: 10c0/102ae6bc146f02feb3e63879cf5b9b3c0d64b9b878b074ff733adf308b5a090a980188b03a5c0e81b382b347b58090885c06532e1c01c4714e34ffa42935f864
   languageName: node
   linkType: hard
 
