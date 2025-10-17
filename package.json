@@ -27,6 +27,7 @@
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
 		"commit": "npx cz",
 		"co": "npx cz",
+		"prepare": "husky",
 		"up": "npx npm-check-updates --interactive --workspaces --format group"
 	},
 	"config": {
