@@ -850,11 +850,11 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:19.8.1"
     "@commitlint/config-conventional": "npm:19.8.1"
-    "@d-zero/cz-config": "npm:5.0.0-alpha.71"
+    "@d-zero/cz-config": "npm:5.0.0-alpha.72"
   languageName: unknown
   linkType: soft
 
-"@d-zero/cspell-config@npm:5.0.0-alpha.71, @d-zero/cspell-config@workspace:packages/@d-zero/cspell-config":
+"@d-zero/cspell-config@npm:5.0.0-alpha.72, @d-zero/cspell-config@workspace:packages/@d-zero/cspell-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/cspell-config@workspace:packages/@d-zero/cspell-config"
   dependencies:
@@ -862,7 +862,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/csstree-scss-syntax@npm:5.0.0-alpha.71, @d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax":
+"@d-zero/csstree-scss-syntax@npm:5.0.0-alpha.72, @d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax":
   version: 0.0.0-use.local
   resolution: "@d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax"
   dependencies:
@@ -870,7 +870,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/cz-config@npm:5.0.0-alpha.71, @d-zero/cz-config@workspace:packages/@d-zero/cz-config":
+"@d-zero/cz-config@npm:5.0.0-alpha.72, @d-zero/cz-config@workspace:packages/@d-zero/cz-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/cz-config@workspace:packages/@d-zero/cz-config"
   dependencies:
@@ -879,7 +879,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/eslint-config@npm:5.0.0-alpha.71, @d-zero/eslint-config@workspace:packages/@d-zero/eslint-config":
+"@d-zero/eslint-config@npm:5.0.0-alpha.72, @d-zero/eslint-config@workspace:packages/@d-zero/eslint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/eslint-config@workspace:packages/@d-zero/eslint-config"
   dependencies:
@@ -896,7 +896,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/lint-staged-config@npm:5.0.0-alpha.71, @d-zero/lint-staged-config@workspace:packages/@d-zero/lint-staged-config":
+"@d-zero/lint-staged-config@npm:5.0.0-alpha.72, @d-zero/lint-staged-config@workspace:packages/@d-zero/lint-staged-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/lint-staged-config@workspace:packages/@d-zero/lint-staged-config"
   dependencies:
@@ -910,18 +910,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@d-zero/linters@workspace:packages/@d-zero/linters"
   dependencies:
-    "@d-zero/cspell-config": "npm:5.0.0-alpha.71"
-    "@d-zero/eslint-config": "npm:5.0.0-alpha.71"
-    "@d-zero/lint-staged-config": "npm:5.0.0-alpha.71"
-    "@d-zero/markuplint-config": "npm:5.0.0-alpha.71"
-    "@d-zero/prettier-config": "npm:5.0.0-alpha.71"
-    "@d-zero/pug-lint-config": "npm:5.0.0-alpha.71"
-    "@d-zero/stylelint-config": "npm:5.0.0-alpha.71"
-    "@d-zero/textlint-config": "npm:5.0.0-alpha.71"
+    "@d-zero/cspell-config": "npm:5.0.0-alpha.72"
+    "@d-zero/eslint-config": "npm:5.0.0-alpha.72"
+    "@d-zero/lint-staged-config": "npm:5.0.0-alpha.72"
+    "@d-zero/markuplint-config": "npm:5.0.0-alpha.72"
+    "@d-zero/prettier-config": "npm:5.0.0-alpha.72"
+    "@d-zero/pug-lint-config": "npm:5.0.0-alpha.72"
+    "@d-zero/stylelint-config": "npm:5.0.0-alpha.72"
+    "@d-zero/textlint-config": "npm:5.0.0-alpha.72"
   languageName: unknown
   linkType: soft
 
-"@d-zero/markuplint-config@npm:5.0.0-alpha.71, @d-zero/markuplint-config@workspace:packages/@d-zero/markuplint-config":
+"@d-zero/markuplint-config@npm:5.0.0-alpha.72, @d-zero/markuplint-config@workspace:packages/@d-zero/markuplint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/markuplint-config@workspace:packages/@d-zero/markuplint-config"
   dependencies:
@@ -930,7 +930,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/prettier-config@npm:5.0.0-alpha.71, @d-zero/prettier-config@workspace:packages/@d-zero/prettier-config":
+"@d-zero/prettier-config@npm:5.0.0-alpha.72, @d-zero/prettier-config@workspace:packages/@d-zero/prettier-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/prettier-config@workspace:packages/@d-zero/prettier-config"
   dependencies:
@@ -939,7 +939,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/pug-lint-config@npm:5.0.0-alpha.71, @d-zero/pug-lint-config@workspace:packages/@d-zero/pug-lint-config":
+"@d-zero/pug-lint-config@npm:5.0.0-alpha.72, @d-zero/pug-lint-config@workspace:packages/@d-zero/pug-lint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/pug-lint-config@workspace:packages/@d-zero/pug-lint-config"
   dependencies:
@@ -947,11 +947,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/stylelint-config@npm:5.0.0-alpha.71, @d-zero/stylelint-config@workspace:packages/@d-zero/stylelint-config":
+"@d-zero/stylelint-config@npm:5.0.0-alpha.72, @d-zero/stylelint-config@workspace:packages/@d-zero/stylelint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/stylelint-config@workspace:packages/@d-zero/stylelint-config"
   dependencies:
-    "@d-zero/stylelint-rules": "npm:5.0.0-alpha.71"
+    "@d-zero/stylelint-rules": "npm:5.0.0-alpha.72"
     postcss-scss: "npm:4.0.9"
     stylelint: "npm:16.23.1"
     stylelint-config-recess-order: "npm:7.4.0"
@@ -962,11 +962,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/stylelint-rules@npm:5.0.0-alpha.71, @d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules":
+"@d-zero/stylelint-rules@npm:5.0.0-alpha.72, @d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules":
   version: 0.0.0-use.local
   resolution: "@d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules"
   dependencies:
-    "@d-zero/csstree-scss-syntax": "npm:5.0.0-alpha.71"
+    "@d-zero/csstree-scss-syntax": "npm:5.0.0-alpha.72"
     css-tree: "npm:3.1.0"
     postcss: "npm:8.5.6"
     postcss-selector-parser: "npm:7.1.0"
@@ -975,7 +975,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/textlint-config@npm:5.0.0-alpha.71, @d-zero/textlint-config@workspace:packages/@d-zero/textlint-config":
+"@d-zero/textlint-config@npm:5.0.0-alpha.72, @d-zero/textlint-config@workspace:packages/@d-zero/textlint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/textlint-config@workspace:packages/@d-zero/textlint-config"
   dependencies:
@@ -983,7 +983,7 @@ __metadata:
     textlint-plugin-html: "npm:1.0.1"
     textlint-rule-preset-ja-spacing: "npm:2.4.3"
     textlint-rule-preset-japanese: "npm:10.0.4"
-    textlint-rule-preset-jtf-style: "npm:3.0.2"
+    textlint-rule-preset-jtf-style: "npm:3.0.3"
   languageName: unknown
   linkType: soft
 
@@ -12934,9 +12934,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"textlint-rule-preset-jtf-style@npm:3.0.2":
-  version: 3.0.2
-  resolution: "textlint-rule-preset-jtf-style@npm:3.0.2"
+"textlint-rule-preset-jtf-style@npm:3.0.3":
+  version: 3.0.3
+  resolution: "textlint-rule-preset-jtf-style@npm:3.0.3"
   dependencies:
     analyze-desumasu-dearu: "npm:^2.1.2"
     japanese-numerals-to-number: "npm:^1.0.2"
@@ -12946,7 +12946,7 @@ __metadata:
     regx: "npm:^1.0.4"
     textlint-rule-helper: "npm:^2.3.1"
     textlint-rule-prh: "npm:^6.0.0"
-  checksum: 10c0/f1cf08f9d31fc467ecc86154ad40c2d48fb8a0910b4c93254f9a20af68eef007f4d9cd2b8b48001ffcffdb67cd9a4899f51da951b364857cb0df33e206e368fc
+  checksum: 10c0/102ae6bc146f02feb3e63879cf5b9b3c0d64b9b878b074ff733adf308b5a090a980188b03a5c0e81b382b347b58090885c06532e1c01c4714e34ffa42935f864
   languageName: node
   linkType: hard
 
