@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+### Bug Fixes
+
+- **deps:** update dependency globals to v16.4.0 ([ffe4726](https://github.com/d-zero-dev/linters/commit/ffe4726a883fb38b70d1484982800b64fc380082))
+- **deps:** update dependency textlint to v15.2.3 ([102a968](https://github.com/d-zero-dev/linters/commit/102a968ac297ff9b8bc169b08b6cbbc27fd7cfee))
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3.0.3 ([3505d47](https://github.com/d-zero-dev/linters/commit/3505d473f911ba96d8a89efa9b6b65c4498455a0))
+
+### Features
+
+- **linters:** remove @d-zero/linters package ([6084e34](https://github.com/d-zero-dev/linters/commit/6084e34ff9044378b10c355501bb9d8b4d123127))
+- **prettier-config:** make @prettier/plugin-pug optional ([b22af19](https://github.com/d-zero-dev/linters/commit/b22af190ddf071575d78fdb42e49d4ddbea7e091))
+
 # [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
 
 ### Bug Fixes

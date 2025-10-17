@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/cz-config
+
 # [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
 
 **Note:** Version bump only for package @d-zero/cz-config

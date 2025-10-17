@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+### Bug Fixes
+
+- **deps:** update dependency globals to v16.4.0 ([ffe4726](https://github.com/d-zero-dev/linters/commit/ffe4726a883fb38b70d1484982800b64fc380082))
+
 # [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
 
 ### Bug Fixes
