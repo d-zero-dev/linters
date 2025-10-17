@@ -2,28 +2,32 @@
 
 ## パッケージ
 
-### メインパッケージ
+### Linter & Formatter 設定
 
-| パッケージ名                                                             | 内容                                                                 |
-| ------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| [`@d-zero/linters`](./packages/%40d-zero/linters/)                       | 以下の設定などをまとめたパッケージ                                   |
-| [`@d-zero/cspell-config`](./packages/%40d-zero/cspell-config/)           | [_CSpell_](https://cspell.org/)の設定ファイル                        |
-| [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)           | [_ESLint_](https://eslint.org/)の設定ファイル                        |
-| [`@d-zero/lint-staged-config`](./packages/%40d-zero/lint-staged-config/) | [_lint-staged_](https://github.com/okonet/lint-staged)の設定ファイル |
-| [`@d-zero/markuplint-config`](./packages/%40d-zero/markuplint-config/)   | [_Markuplint_](https://markuplint.dev/)の設定ファイル                |
-| [`@d-zero/prettier-config`](./packages/%40d-zero/prettier-config/)       | [_Prettier_](https://prettier.io/)の設定ファイル                     |
-| [`@d-zero/pug-lint-config`](./packages/%40d-zero/pug-lint-config/)       | [_pug-lint_](https://github.com/pugjs/pug-lint)の設定ファイル        |
-| [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)     | [_Stylelint_](https://stylelint.io/)の設定ファイル                   |
-| [`@d-zero/textlint-config`](./packages/%40d-zero/textlint-config/)       | [_textlint_](https://textlint.github.io/)の設定ファイル              |
+| パッケージ名                                                           | 内容                                                          |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------- |
+| [`@d-zero/cspell-config`](./packages/%40d-zero/cspell-config/)         | [_CSpell_](https://cspell.org/)の設定ファイル                 |
+| [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)         | [_ESLint_](https://eslint.org/)の設定ファイル                 |
+| [`@d-zero/markuplint-config`](./packages/%40d-zero/markuplint-config/) | [_Markuplint_](https://markuplint.dev/)の設定ファイル         |
+| [`@d-zero/prettier-config`](./packages/%40d-zero/prettier-config/)     | [_Prettier_](https://prettier.io/)の設定ファイル              |
+| [`@d-zero/pug-lint-config`](./packages/%40d-zero/pug-lint-config/)     | [_pug-lint_](https://github.com/pugjs/pug-lint)の設定ファイル |
+| [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)   | [_Stylelint_](https://stylelint.io/)の設定ファイル            |
+| [`@d-zero/textlint-config`](./packages/%40d-zero/textlint-config/)     | [_textlint_](https://textlint.github.io/)の設定ファイル       |
 
-### サブパッケージ
+### ツール & ユーティリティ
+
+| パッケージ名                                                             | 内容                                                                             |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| [`@d-zero/lint-staged-config`](./packages/%40d-zero/lint-staged-config/) | [_lint-staged_](https://github.com/okonet/lint-staged)の設定ファイル             |
+| [`@d-zero/commitlint-config`](./packages/%40d-zero/commitlint-config/)   | [_commitlint_](https://commitlint.js.org/)の設定ファイル                         |
+| [`@d-zero/cz-config`](./packages/%40d-zero/cz-config/)                   | [_cz-customizable_](https://github.com/leoforfree/cz-customizable)の設定ファイル |
+
+### カスタムルール & プラグイン
 
 | パッケージ名                                                               | 内容                                                                                                                                                                                                            |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@d-zero/commitlint-config`](./packages/%40d-zero/commitlint-config/)     | [_commitlint_](https://commitlint.js.org/)の設定ファイル（[`@d-zero/linters`](./packages/%40d-zero/linters/)には含まれません）                                                                                  |
-| [`@d-zero/cz-config`](./packages/%40d-zero/cz-config/)                     | [_cz-customizable_](https://github.com/leoforfree/cz-customizable)の設定ファイル（[`@d-zero/linters`](./packages/%40d-zero/linters/)には含まれません）                                                          |
-| [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
 | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)         | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)に設定されているディーゼロ独自のStylelintルール                                                                                             |
+| [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
 
 ---
 
