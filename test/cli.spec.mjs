@@ -242,11 +242,11 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component',
-			'test/fixtures/stylelint/class-name.scss:10:2 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: .c-component__invalid__element-name',
-			'test/fixtures/stylelint/class-name.scss:14:2 クラス名に命名規則にない文字が含まれています: .c-component__foo😁bar',
-			'test/fixtures/stylelint/class-name.scss:18:2 コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: .c-component2',
-			'test/fixtures/stylelint/class-name.scss:23:1 スタイル定義でIDセレクタは使わないでください',
+			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:10:2 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: .c-component__invalid__element-name (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:14:2 クラス名に命名規則にない文字が含まれています: .c-component__foo😁bar (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:18:2 コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: .c-component2 (selector-nested-pattern)',
+			'test/fixtures/stylelint/class-name.scss:23:1 スタイル定義でIDセレクタは使わないでください (selector-max-id)',
 		]);
 	});
 
@@ -315,8 +315,8 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/c-component.css:9:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
-			'test/fixtures/stylelint/c-component.css:13:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+			'test/fixtures/stylelint/c-component.css:9:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
+			'test/fixtures/stylelint/c-component.css:13:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
 		]);
 	});
 
@@ -327,7 +327,7 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/_c-component.scss:8:1 クラス名がファイル名と一致しません',
+			'test/fixtures/stylelint/_c-component.scss:8:1 クラス名がファイル名と一致しません (@d-zero/component)',
 		]);
 	});
 
