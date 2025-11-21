@@ -2,8 +2,6 @@ import type { CommandMappings, CommandType, LintStagedCommandMapper } from './ty
 
 import path from 'node:path';
 
-import micromatch from 'micromatch';
-
 import { commands } from './commands.js';
 import { defaultMapping } from './default-mapping.js';
 
@@ -63,7 +61,7 @@ export default function (
 
 				const files = allStagedFiles.map((f) => f.replaceAll(path.sep, '/'));
 
-				let targetFiles = micromatch(files, pattern);
+				let targetFiles = files.filter((file) => path.matchesGlob(file, pattern));
 
 				if (ignore) {
 					for (const ignoreMap of ignore) {
@@ -81,7 +79,10 @@ export default function (
 							}
 							return path.isAbsolute(p) ? p : path.resolve(baseDir, p);
 						});
-						targetFiles = micromatch.not(targetFiles, absIgnorePatterns);
+						targetFiles = targetFiles.filter(
+							(file) =>
+								!absIgnorePatterns.some((pattern) => path.matchesGlob(file, pattern)),
+						);
 					}
 				}
 
