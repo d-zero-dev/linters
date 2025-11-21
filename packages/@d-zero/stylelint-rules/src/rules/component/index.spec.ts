@@ -47,7 +47,7 @@ describe('Exact Match', () => {
 				line: 1,
 				rule: '@d-zero/component',
 				severity: 'error',
-				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（test__）で始まっていません',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（test__）で始まっていません (@d-zero/component)',
 				url: undefined,
 				fix: undefined,
 			},
@@ -131,7 +131,7 @@ describe('Component Naming Convention for CSS', () => {
 				line: 1,
 				rule: '@d-zero/component',
 				severity: 'error',
-				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません (@d-zero/component)',
 				url: undefined,
 				fix: undefined,
 			},
@@ -157,7 +157,7 @@ describe('Component Naming Convention for CSS', () => {
 				line: 1,
 				rule: '@d-zero/component',
 				severity: 'error',
-				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません',
+				text: 'クラス名がファイル名と一致しないか、コンポーネント命名規則（button__）で始まっていません (@d-zero/component)',
 				url: undefined,
 				fix: undefined,
 			},
@@ -260,10 +260,10 @@ describe('Options', () => {
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toHaveLength(2);
 		expect(warnings[0].text).toBe(
-			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
 		);
 		expect(warnings[1].text).toBe(
-			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません',
+			'クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
 		);
 	});
 });
