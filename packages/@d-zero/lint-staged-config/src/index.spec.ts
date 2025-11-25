@@ -6,7 +6,7 @@ import lintStagedConfigGenerator from './index.js';
 
 /**
  *
- * @param {...any} paths
+ * @param {...string} paths
  */
 function resolve(...paths: string[]): string {
 	return path.resolve(...paths).replaceAll(path.sep, '/');
@@ -14,7 +14,7 @@ function resolve(...paths: string[]): string {
 
 /**
  *
- * @param {...any} paths
+ * @param {...string} paths
  */
 function toRelativePath(...paths: string[]): string[] {
 	const cwd = process.cwd().replaceAll(path.sep, '/');
