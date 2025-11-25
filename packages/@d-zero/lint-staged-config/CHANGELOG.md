@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+### Bug Fixes
+
+- **deps:** update dependency lint-staged to v16.2.7 ([1f69502](https://github.com/d-zero-dev/linters/commit/1f69502b7a798e569a63b5dae014294d5268fa80))
+- **lint-staged:** change JSDoc param type from any to string ([ec977b7](https://github.com/d-zero-dev/linters/commit/ec977b786c550b606ae2167f9e70953967ac7417))
+
 # [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
 
 **Note:** Version bump only for package @d-zero/lint-staged-config
