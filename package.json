@@ -43,7 +43,7 @@
 		"@secretlint/secretlint-rule-preset-recommend": "11.2.5",
 		"execa": "9.6.0",
 		"husky": "9.1.7",
-		"lerna": "9.0.1",
+		"lerna": "9.0.3",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.6.2",
 		"secretlint": "11.2.5",
