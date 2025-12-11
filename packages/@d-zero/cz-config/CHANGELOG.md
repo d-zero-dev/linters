@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **cz:** handle missing package.json files in monorepo-scopes ([ae44ba0](https://github.com/d-zero-dev/linters/commit/ae44ba01994021158f7d832ed553f1998aea56ae))
+
 # [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
 
 **Note:** Version bump only for package @d-zero/cz-config

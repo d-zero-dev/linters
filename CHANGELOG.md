@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **cz:** handle missing package.json files in monorepo-scopes ([ae44ba0](https://github.com/d-zero-dev/linters/commit/ae44ba01994021158f7d832ed553f1998aea56ae))
+- **deps:** update commitlint monorepo to v20.2.0 ([d35a651](https://github.com/d-zero-dev/linters/commit/d35a651a25369c7844f987399f00409684a79b6c))
+- **deps:** update dependency cspell to v9.4.0 ([3d57101](https://github.com/d-zero-dev/linters/commit/3d57101e5b984f859c798ad306706fd8e937ad58))
+- **deps:** update dependency postcss-selector-parser to v7.1.1 ([72cf58e](https://github.com/d-zero-dev/linters/commit/72cf58ef7eb8d05b68e2738e4aefcbd4f7874e0f))
+- **deps:** update dependency prettier to v3.7.4 ([9e5c5ed](https://github.com/d-zero-dev/linters/commit/9e5c5ed9bb2bb020ecefd1473dee5cab848ec2d2))
+- **deps:** update dependency stylelint to v16.26.1 ([c98e71c](https://github.com/d-zero-dev/linters/commit/c98e71c89675256d891fb1037f8ba28b78e4589e))
+- **deps:** update dependency stylelint-scss to v6.13.0 ([a15c58c](https://github.com/d-zero-dev/linters/commit/a15c58cf3b905528dc405cbb9953cde98f576d0c))
+- **deps:** update dependency textlint to v15.5.0 ([85344b7](https://github.com/d-zero-dev/linters/commit/85344b70ab56a54a5ca228a1ef65d14bc45c74b3))
+- **deps:** update dependency typescript-eslint to v8.49.0 ([1eb1c96](https://github.com/d-zero-dev/linters/commit/1eb1c965fc75a551c81c7094d5da01c41168ef08))
+
 # [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
 
 ### Bug Fixes
