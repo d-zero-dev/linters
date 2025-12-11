@@ -14,14 +14,26 @@ module.exports = function (removes) {
 	}
 	const lerna = JSON.parse(fs.readFileSync(lernaPath, 'utf8'));
 	const packages = fs.globSync(lerna.packages);
-	return packages.map((packagePath) => {
-		const pkg = JSON.parse(
-			fs.readFileSync(path.resolve(cwd, packagePath, 'package.json'), 'utf8'),
-		);
-		let name = pkg.name;
-		for (const remove of removes) {
-			name = name.replace(remove, '');
-		}
-		return name;
-	});
+	return packages
+		.map((packagePath) => {
+			let packageJson = null;
+			try {
+				packageJson = fs.readFileSync(
+					path.resolve(cwd, packagePath, 'package.json'),
+					'utf8',
+				);
+			} catch {
+				//
+			}
+			if (!packageJson) {
+				return null;
+			}
+			const pkg = JSON.parse(packageJson);
+			let name = pkg.name;
+			for (const remove of removes) {
+				name = name.replace(remove, '');
+			}
+			return name;
+		})
+		.filter((name) => name !== null);
 };
