@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/csstree-scss-syntax
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **eslint:** replace eslint-plugin-import with eslint-plugin-import-x ([bf69c2d](https://github.com/d-zero-dev/linters/commit/bf69c2d78913dbc701bc1a7baeb14cc7e11ea99a))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 **Note:** Version bump only for package @d-zero/csstree-scss-syntax

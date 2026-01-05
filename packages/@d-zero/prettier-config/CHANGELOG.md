@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to v3.7.4 ([9e5c5ed](https://github.com/d-zero-dev/linters/commit/9e5c5ed9bb2bb020ecefd1473dee5cab848ec2d2))
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+### Features
+
+- **prettier-config:** make @prettier/plugin-pug optional ([b22af19](https://github.com/d-zero-dev/linters/commit/b22af190ddf071575d78fdb42e49d4ddbea7e091))
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency @prettier/plugin-pug to v3.4.2 ([bd6c940](https://github.com/d-zero-dev/linters/commit/bd6c9408c726e5fe2a374f94e5fcfb610be790ab))
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to v3.6.2 ([a8ef456](https://github.com/d-zero-dev/linters/commit/a8ef456a853b4332bca101af69159bb96edb7063))
+- **prettier:** resolve plugin loading in deep node_modules ([8e0a91f](https://github.com/d-zero-dev/linters/commit/8e0a91f02fd912a3c1e27f99e5230e4d1f0f9685))
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+### Bug Fixes
+
+- **prettier:** update files pattern to include all JS files ([5249894](https://github.com/d-zero-dev/linters/commit/5249894b5e3406192f0575956ea2078c415e0075))
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+### Bug Fixes
+
+- **deps:** update dependency prettier to v3.6.1 ([9b7dc9d](https://github.com/d-zero-dev/linters/commit/9b7dc9d6ed58bb096d4ecdefe50a7e77cd14f5a1))
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency @prettier/plugin-pug to v3.4.0 ([e0ae0f1](https://github.com/d-zero-dev/linters/commit/e0ae0f13a1e71997d4c6d3c75fa8e09ef6e85b43))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

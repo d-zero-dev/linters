@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v20.2.0 ([d35a651](https://github.com/d-zero-dev/linters/commit/d35a651a25369c7844f987399f00409684a79b6c))
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v20 ([43dcbf0](https://github.com/d-zero-dev/linters/commit/43dcbf0c827c5df9468959bb0e5f1d8a90672b3e))
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/commitlint-config
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v19.8.1 ([60ca4a6](https://github.com/d-zero-dev/linters/commit/60ca4a68f2d17142fd6ede00d6a2b424aa13bc57))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 **Note:** Version bump only for package @d-zero/commitlint-config

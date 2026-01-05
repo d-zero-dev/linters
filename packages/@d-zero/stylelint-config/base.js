@@ -1,15 +1,9 @@
 module.exports = {
-	plugins: ['stylelint-use-logical'],
-	extends: ['stylelint-config-standard'],
+	plugins: ['stylelint-use-logical', '@d-zero/stylelint-rules'],
+	extends: ['stylelint-config-recommended'],
 	rules: {
 		'at-rule-disallowed-list': null,
-		'at-rule-empty-line-before': [
-			'always',
-			{
-				except: ['blockless-after-same-name-blockless', 'first-nested'],
-				ignore: ['after-comment'],
-			},
-		],
+
 		'at-rule-no-vendor-prefix': true,
 		'at-rule-no-unknown': true,
 		'color-hex-length': 'short',
@@ -18,18 +12,15 @@ module.exports = {
 		'comment-empty-line-before': [
 			'always',
 			{
-				ignore: ['stylelint-commands'],
+				except: ['first-nested'],
 			},
 		],
 		'comment-no-empty': true,
-		'comment-whitespace-inside': 'always',
 		'comment-word-disallowed-list': ['/^TODO:/'],
-		'custom-property-empty-line-before': 'never',
 		'declaration-block-no-duplicate-properties': true,
 		'declaration-block-no-redundant-longhand-properties': true,
 		'declaration-block-no-shorthand-property-overrides': true,
 		'declaration-block-single-line-max-declarations': 80,
-		'declaration-empty-line-before': 'never',
 		'declaration-no-important': true,
 		'declaration-property-value-disallowed-list': null,
 		'declaration-property-value-allowed-list': null,
@@ -66,9 +57,9 @@ module.exports = {
 			},
 		],
 		'rule-empty-line-before': [
-			'always-multi-line',
+			'always',
 			{
-				except: ['after-single-line-comment', 'first-nested'],
+				except: ['first-nested'],
 				ignore: ['after-comment'],
 			},
 		],
@@ -93,6 +84,10 @@ module.exports = {
 
 		// Plugin stylelint-use-logical
 		'csstools/use-logical': 'always',
+
+		// Plugin @d-zero/stylelint-rules
+		'@d-zero/prefer-individual-transform-properties': true,
+		'@d-zero/shorthand-property-use-logical': true,
 
 		// Overwrite stylelint-config-standard
 		'custom-media-pattern': null,

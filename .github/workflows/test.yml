@@ -14,32 +14,37 @@ jobs:
     strategy:
       matrix:
         os: [macOS-latest, windows-latest]
-        node: [22]
+        node: [24]
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
 
+      - name: Enable Corepack and setup Yarn v4
+        run: |
+          corepack enable
+          yarn --version
+
       - name: Install dependencies for Renovate/Dependabot
         if: github.actor == 'renovate[bot]' || github.actor == 'dependabot[bot]'
-        run: npm install --no-package-lock --legacy-peer-deps
+        run: yarn install --no-immutable
 
       - name: Install dependencies for normal PRs
         if: github.actor != 'renovate[bot]' && github.actor != 'dependabot[bot]'
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Lint
-        run: npm run lint:ci
+        run: yarn lint:ci
 
       - name: Test
-        run: npm run test
+        run: yarn test

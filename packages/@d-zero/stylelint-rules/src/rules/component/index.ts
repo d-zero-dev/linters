@@ -9,6 +9,9 @@ import stylelint from 'stylelint';
 import { createRule } from '../../utils/create-rule.js';
 
 type Options = {
+	/**
+	 * @deprecated
+	 */
 	allowMultipleSelectors?: boolean;
 };
 
@@ -31,16 +34,23 @@ export default createRule<Options>({
 				? originalBasename.replace(/^_/, '')
 				: originalBasename;
 
+			// CSSファイルの場合は自動的にallowMultipleSelectorsをtrueにする
+			const isCssFile = ext === '.css';
+			const effectiveAllowMultipleSelectors = isCssFile || allowMultipleSelectors;
+
 			const rules = root.nodes.filter((node): node is Rule => node.type === 'rule');
 			const [firstRule, ...overleftRules] = rules;
 
-			for (const rule of overleftRules) {
-				stylelint.utils.report({
-					result,
-					ruleName,
-					message: '1つのファイルに定義できるコンポーネントクラスは1つだけです',
-					node: rule,
-				});
+			// allowMultipleSelectorsに基づいて複数ルール制約をチェック
+			if (!effectiveAllowMultipleSelectors && overleftRules.length > 0) {
+				for (const rule of overleftRules) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: '1つのファイルに定義できるコンポーネントクラスは1つだけです',
+						node: rule,
+					});
+				}
 			}
 
 			if (!firstRule) {
@@ -53,42 +63,55 @@ export default createRule<Options>({
 				return;
 			}
 
-			const selectors: Selector[] = [];
+			// 全ルールのコンポーネントクラスを検証
+			for (const rule of rules) {
+				const ruleSelectors: Selector[] = [];
+				selectorParser((parsedRoot) => {
+					for (const node of parsedRoot.nodes) {
+						ruleSelectors.push(node);
+					}
+				}).processSync(rule.selector);
 
-			selectorParser((parsedRoot) => {
-				for (const node of parsedRoot.nodes) {
-					selectors.push(node);
-				}
-			}).processSync(firstRule.selector);
+				const [ruleFirstSelector, ...ruleMultipleSelectors] = ruleSelectors;
+				if (!ruleFirstSelector) continue;
 
-			const [firstSelector, ...multipleSelectors] = selectors;
+				let hasValidComponentClass = false;
 
-			if (!firstSelector) {
-				throw new Error('Do not have a selector');
-			}
+				for (const node of ruleFirstSelector.nodes) {
+					if (node.type === 'class') {
+						const className = node.value;
 
-			for (const node of firstSelector.nodes) {
-				if (node.type === 'class') {
-					const className = node.value;
-
-					if (className !== basename) {
-						stylelint.utils.report({
-							result,
-							ruleName,
-							message: 'クラス名がファイル名と一致しません',
-							node: firstRule,
-						});
+						// 完全一致またはコンポーネント命名規則（__で始まる）のチェック
+						if (
+							className === basename ||
+							(isCssFile && className.startsWith(`${basename}__`))
+						) {
+							hasValidComponentClass = true;
+							break;
+						}
 					}
 				}
-			}
 
-			if (!allowMultipleSelectors && multipleSelectors.length > 0) {
-				stylelint.utils.report({
-					result,
-					ruleName,
-					message: 'セレクタの定義は1つだけです',
-					node: firstRule,
-				});
+				if (!hasValidComponentClass) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: isCssFile
+							? `クラス名がファイル名と一致しないか、コンポーネント命名規則（${basename}__）で始まっていません`
+							: 'クラス名がファイル名と一致しません',
+						node: rule,
+					});
+				}
+
+				// 複数セレクタのチェック
+				if (!effectiveAllowMultipleSelectors && ruleMultipleSelectors.length > 0) {
+					stylelint.utils.report({
+						result,
+						ruleName,
+						message: 'セレクタの定義は1つだけです',
+						node: rule,
+					});
+				}
 			}
 		};
 	},

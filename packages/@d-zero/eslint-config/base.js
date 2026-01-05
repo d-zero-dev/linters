@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import comments from 'eslint-plugin-eslint-comments';
-import importPlugin from 'eslint-plugin-import';
+import { flatConfigs as importX } from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import * as regexpPlugin from 'eslint-plugin-regexp';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
@@ -52,9 +52,9 @@ export const base = [
 		},
 	},
 	{
-		...eslintPluginUnicorn.configs['flat/recommended'],
+		...eslintPluginUnicorn.configs.recommended,
 		rules: {
-			...eslintPluginUnicorn.configs['flat/recommended'].rules,
+			...eslintPluginUnicorn.configs.recommended.rules,
 			'unicorn/consistent-destructuring': 0,
 			'unicorn/consistent-function-scoping': 0,
 			'unicorn/no-anonymous-default-export': 0,
@@ -71,13 +71,13 @@ export const base = [
 	},
 	regexpPlugin.configs['flat/recommended'],
 	{
-		...importPlugin.flatConfigs.recommended,
+		...importX.recommended,
 		rules: {
-			...importPlugin.flatConfigs.recommended.rules,
-			'import/no-extraneous-dependencies': 2,
-			'import/no-named-as-default': 0,
-			'import/no-unresolved': 0,
-			'import/order': [
+			...importX.recommended.rules,
+			'import-x/no-extraneous-dependencies': 2,
+			'import-x/no-named-as-default': 0,
+			'import-x/no-unresolved': 0,
+			'import-x/order': [
 				2,
 				{
 					groups: ['type', 'builtin', 'external', 'parent', 'sibling', 'index', 'object'],
@@ -103,7 +103,7 @@ export const base = [
 			'.*rc.{js,mjs,json}',
 		],
 		rules: {
-			'import/no-extraneous-dependencies': 0,
+			'import-x/no-extraneous-dependencies': 0,
 		},
 	},
 	{

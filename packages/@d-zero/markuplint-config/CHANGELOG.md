@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.22 ([03df4cf](https://github.com/d-zero-dev/linters/commit/03df4cf81d7756ee9e4b342308e85e937ae0c791))
+- **deps:** update dependency markuplint to v4.14.0 ([01e40dc](https://github.com/d-zero-dev/linters/commit/01e40dcfbcc816e31950884177169d9dbfd61521))
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.21 ([39349e1](https://github.com/d-zero-dev/linters/commit/39349e18253a10edb26934a514b411c8b046b9ac))
+- **deps:** update dependency markuplint to v4.13.1 ([21c8c02](https://github.com/d-zero-dev/linters/commit/21c8c02874da896a53b255b16c4d77837903f4a2))
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.20 ([1f27fd2](https://github.com/d-zero-dev/linters/commit/1f27fd28b3600f26b0e63bf28a9cf7e57e8323e0))
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+### Bug Fixes
+
+- **markuplint:** add exclusions for image src naming rules ([ae266d7](https://github.com/d-zero-dev/linters/commit/ae266d796e82b6ad459bd4954cadfb2c23c8708a))
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/markuplint-config
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

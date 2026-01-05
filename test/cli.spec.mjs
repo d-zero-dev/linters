@@ -19,9 +19,18 @@ describe('ESLint', () => {
 	const eslint = async (filepath, rule) => {
 		const dir = path.dirname(filepath);
 		const config = path.join(dir, 'eslint.config.js');
-		const { stdout } = await execa('npx', ['eslint', filepath, '--config', config], {
-			reject: false,
-		});
+		const { stdout, stderr } = await execa(
+			'npx',
+			['eslint', filepath, '--config', config],
+			{
+				reject: false,
+			},
+		);
+
+		if (stderr) {
+			throw new Error(stderr);
+		}
+
 		const lines = stdout.split('\n');
 		const result = lines
 			.filter((line) => line.endsWith(rule))
@@ -155,6 +164,25 @@ describe('markuplint', () => {
 		);
 		expect(addedClassName2).toStrictEqual([]);
 	});
+
+	test('Image Naming Convention', async () => {
+		const invalidNaming = await markuplint(
+			'test/fixtures/markuplint/image-naming-test.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(invalidNaming).toStrictEqual([
+			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+		]);
+
+		const validNaming = await markuplint(
+			'test/fixtures/markuplint/valid-image-naming.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(validNaming).toStrictEqual([]);
+	});
 });
 
 describe('stylelint', () => {
@@ -214,11 +242,11 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component',
-			'test/fixtures/stylelint/class-name.scss:10:2 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: .c-component__invalid__element-name',
-			'test/fixtures/stylelint/class-name.scss:14:2 クラス名に命名規則にない文字が含まれています: .c-component__foo😁bar',
-			'test/fixtures/stylelint/class-name.scss:18:2 コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: .c-component2',
-			'test/fixtures/stylelint/class-name.scss:23:1 スタイル定義でIDセレクタは使わないでください',
+			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:10:2 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: .c-component__invalid__element-name (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:14:2 クラス名に命名規則にない文字が含まれています: .c-component__foo😁bar (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:18:2 コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: .c-component2 (selector-nested-pattern)',
+			'test/fixtures/stylelint/class-name.scss:23:1 スタイル定義でIDセレクタは使わないでください (selector-max-id)',
 		]);
 	});
 
@@ -294,12 +322,81 @@ describe('stylelint', () => {
 
 	test('Component', async () => {
 		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/c-component.css'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/c-component.css:9:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
+			'test/fixtures/stylelint/c-component.css:13:1 クラス名がファイル名と一致しないか、コンポーネント命名規則（c-component__）で始まっていません (@d-zero/component)',
+		]);
+	});
+
+	test('Component (SCSS)', async () => {
+		const violations = await stylelint(
 			path.normalize('test/fixtures/stylelint/_c-component.scss'),
 			path.normalize('test/fixtures/stylelint/.stylelintrc.component.json'),
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/_c-component.scss:8:1 1つのファイルに定義できるコンポーネントクラスは1つだけです',
+			'test/fixtures/stylelint/_c-component.scss:8:1 クラス名がファイル名と一致しません (@d-zero/component)',
+		]);
+	});
+
+	test('Transform Properties', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/transform.scss'),
+			path.normalize('test/fixtures/stylelint/.stylelintrc.transform.json'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/transform.scss:3:2 Use individual transform properties instead of "transform: translate(10px, 20px)". Consider: translate: 10px, 20px (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:4:2 Use individual transform properties instead of "transform: rotate(45deg)". Consider: rotate: 45deg (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:5:2 Use individual transform properties instead of "transform: scale(1.5)". Consider: scale: 1.5 (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:6:2 Use individual transform properties instead of "transform: translateX(100px)". Consider: translate: 100px (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:7:2 Use individual transform properties instead of "transform: rotateY(90deg)". Consider: rotate: 90deg (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:8:2 Use individual transform properties instead of "transform: scaleX(2)". Consider: scale: 2 (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:29:2 Use individual transform properties instead of "transform: translate(var(--x), var(--y))". Consider: translate: var(--x), var(--y) (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:30:2 Use individual transform properties instead of "transform: rotate(calc(45deg + 10deg))". Consider: rotate: calc(45deg + 10deg) (@d-zero/prefer-individual-transform-properties)',
+			'test/fixtures/stylelint/transform.scss:31:2 Use individual transform properties instead of "transform: scale(calc(1 + 0.5))". Consider: scale: calc(1 + 0.5) (@d-zero/prefer-individual-transform-properties)',
+		]);
+	});
+
+	test('Shorthand Logical Properties', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/shorthand-logical.scss'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/shorthand-logical.scss:15:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:16:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:17:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:19:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:20:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:21:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:23:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:24:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:25:2 Unexpected shorthand property "border-width" with multiple values. Consider using logical properties: border-block-width, border-inline-width (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:27:2 Unexpected shorthand property "border-style" with multiple values. Consider using logical properties: border-block-style, border-inline-style (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:28:2 Unexpected shorthand property "border-color" with multiple values. Consider using logical properties: border-block-color, border-inline-color (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:30:2 Unexpected shorthand property "scroll-padding" with multiple values. Consider using logical properties: scroll-padding-block, scroll-padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:31:2 Unexpected shorthand property "scroll-margin" with multiple values. Consider using logical properties: scroll-margin-block, scroll-margin-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:33:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:34:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:35:2 Unexpected shorthand property "border-radius" with multiple values. Consider using logical properties: border-start-start-radius, border-start-end-radius, border-end-start-radius, border-end-end-radius (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:38:2 Unexpected shorthand property "padding" with multiple values. Consider using logical properties: padding-block, padding-inline (@d-zero/shorthand-property-use-logical)',
+			'test/fixtures/stylelint/shorthand-logical.scss:39:2 Unexpected shorthand property "margin" with multiple values. Consider using logical properties: margin-block, margin-inline (@d-zero/shorthand-property-use-logical)',
+		]);
+	});
+
+	test('Comment and Rule Spacing', async () => {
+		const violations = await stylelint(
+			path.normalize('test/fixtures/stylelint/comment-spacing.css'),
+		);
+
+		expect(violations).toStrictEqual([
+			'test/fixtures/stylelint/comment-spacing.css:5:1 Expected empty line before comment (comment-empty-line-before)',
+			'test/fixtures/stylelint/comment-spacing.css:9:1 Expected empty line before rule (rule-empty-line-before)',
 		]);
 	});
 });

@@ -14,20 +14,21 @@
 		"build": "lerna run build",
 		"lint": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
 		"lint:ci": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
-		"lint:cspell": "cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
-		"lint:eslint": "eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
-		"lint:prettier": "prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
-		"lint:textlint": "textlint \"./{*,packages/@d-zero/*/{*,src/**/*}}.{md,mdc}\"",
-		"lint:tsc": "tsc",
-		"lint:secretlint": "secretlint \"**/*\"",
+		"lint:cspell": "npx cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
+		"lint:eslint": "npx eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:prettier": "npx prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
+		"lint:textlint": "npx textlint \"./{*,packages/@d-zero/*/{*,src/**/*}}.{md,mdc}\"",
+		"lint:tsc": "npx tsc",
+		"lint:secretlint": "npx secretlint \"**/*\"",
 		"lint:actionlint": "actionlint .github/workflows/*.yml",
 		"release": "lerna publish --exact --conventional-commits --conventional-graduate",
 		"release:alpha:latest": "lerna publish --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:next": "lerna publish --dist-tag next --exact --force-publish --conventional-commits --conventional-prerelease --preid alpha",
 		"release:canary": "lerna publish --preid dev --canary --exact --force-publish",
-		"commit": "cz",
-		"co": "cz",
-		"up": "npx npm-check-updates --interactive --workspaces --format group"
+		"commit": "npx cz",
+		"co": "npx cz",
+		"prepare": "husky",
+		"upgrade": "yarn upgrade-interactive"
 	},
 	"config": {
 		"commitizen": {
@@ -38,20 +39,20 @@
 		}
 	},
 	"devDependencies": {
-		"@d-zero/tsconfig": "0.4.1",
-		"@secretlint/secretlint-rule-preset-recommend": "9.3.1",
-		"execa": "9.5.2",
+		"@d-zero/tsconfig": "1.0.0",
+		"@secretlint/secretlint-rule-preset-recommend": "11.2.5",
+		"execa": "9.6.1",
 		"husky": "9.1.7",
-		"lerna": "8.2.2",
-		"npm-run-all2": "7.0.2",
-		"prettier": "3.5.3",
-		"secretlint": "9.3.1",
-		"typescript": "5.8.3",
-		"vitest": "3.1.2"
+		"lerna": "9.0.3",
+		"npm-run-all2": "8.0.4",
+		"prettier": "3.7.4",
+		"secretlint": "11.2.5",
+		"typescript": "5.9.3",
+		"vitest": "4.0.16"
 	},
-	"packageManager": "npm@11.3.0",
+	"packageManager": "yarn@4.12.0",
 	"volta": {
-		"node": "22.15.0",
-		"npm": "11.3.0"
+		"node": "24.12.0",
+		"yarn": "4.12.0"
 	}
 }

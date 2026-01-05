@@ -1,0 +1,15 @@
+.c-component {
+	--prop: value;
+}
+
+.c-component__element {
+	--prop: value;
+}
+
+.c-component2 {
+	--prop: value;
+}
+
+.c-specific {
+	--prop: value;
+}

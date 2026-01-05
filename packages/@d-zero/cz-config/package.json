@@ -1,11 +1,10 @@
 {
 	"name": "@d-zero/cz-config",
-	"version": "5.0.0-alpha.63",
+	"version": "5.0.0-alpha.76",
 	"description": "Configurations of cz-customizable",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
@@ -23,6 +22,6 @@
 	],
 	"dependencies": {
 		"commitizen": "4.3.1",
-		"cz-customizable": "7.4.0"
+		"cz-customizable": "7.5.1"
 	}
 }

@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **deps:** update dependency postcss-selector-parser to v7.1.1 ([72cf58e](https://github.com/d-zero-dev/linters/commit/72cf58ef7eb8d05b68e2738e4aefcbd4f7874e0f))
+- **deps:** update dependency stylelint to v16.26.1 ([c98e71c](https://github.com/d-zero-dev/linters/commit/c98e71c89675256d891fb1037f8ba28b78e4589e))
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.26.0 ([801487c](https://github.com/d-zero-dev/linters/commit/801487c87ce23ace175547a7d5e0c96501997f4d))
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.23.1 ([b11b76c](https://github.com/d-zero-dev/linters/commit/b11b76cfab4ec4d73541b23152ebba20ee4d0345))
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.21.1 ([d56b2ca](https://github.com/d-zero-dev/linters/commit/d56b2ca65807481f5b623d1bdad2122cbc5d4cb1))
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/stylelint-rules
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.21.0 ([6f391fd](https://github.com/d-zero-dev/linters/commit/6f391fddf1b18ce72e544366c8b791b7c8dc05f6))
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+### Bug Fixes
+
+- **stylelint-rules:** unify allowMultipleSelectors logic in component rule ([5aeaf3d](https://github.com/d-zero-dev/linters/commit/5aeaf3daf047b83500144bc5fefa55353d4a1053))
+- **stylelint-rules:** validate all rules instead of first rule only in component rule ([6741d65](https://github.com/d-zero-dev/linters/commit/6741d6513f4b61fad25f3db9e7042cf413b708ad))
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v16.20.0 ([67ad4e2](https://github.com/d-zero-dev/linters/commit/67ad4e2c04a2b275e1312340e7db468fb3fb168b))
+- **stylelint-rules:** replace default import with named import for postcss ([8d5669e](https://github.com/d-zero-dev/linters/commit/8d5669ef2ada07f572c66af0167034ec576d4707))
+
+### Features
+
+- **stylelint-rules:** support CSS files with component element class validation ([7a3b4d8](https://github.com/d-zero-dev/linters/commit/7a3b4d872085f2f5885dd5871ea291c806987b4a))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

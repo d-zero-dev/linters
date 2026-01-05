@@ -14,7 +14,7 @@ export const ts = tsESLint.config(
 			},
 		},
 		settings: {
-			'import/parsers': {
+			'import-x/parsers': {
 				'@typescript-eslint/parser': ['.ts'],
 			},
 		},

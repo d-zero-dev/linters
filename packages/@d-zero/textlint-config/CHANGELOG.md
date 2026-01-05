@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
+# [5.0.0-alpha.75](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.74...v5.0.0-alpha.75) (2025-12-11)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.5.0 ([85344b7](https://github.com/d-zero-dev/linters/commit/85344b70ab56a54a5ca228a1ef65d14bc45c74b3))
+
+# [5.0.0-alpha.74](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.73...v5.0.0-alpha.74) (2025-11-25)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.4.0 ([6bf174c](https://github.com/d-zero-dev/linters/commit/6bf174c2b4acbee256a3e0abf4d61a13f2374c9f))
+
+# [5.0.0-alpha.73](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.72...v5.0.0-alpha.73) (2025-10-17)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.2.3 ([102a968](https://github.com/d-zero-dev/linters/commit/102a968ac297ff9b8bc169b08b6cbbc27fd7cfee))
+- **deps:** update dependency textlint-rule-preset-jtf-style to v3.0.3 ([3505d47](https://github.com/d-zero-dev/linters/commit/3505d473f911ba96d8a89efa9b6b65c4498455a0))
+
+# [5.0.0-alpha.72](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.71...v5.0.0-alpha.72) (2025-10-17)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
+# [5.0.0-alpha.71](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.70...v5.0.0-alpha.71) (2025-08-25)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.2.2 ([3d4b9f8](https://github.com/d-zero-dev/linters/commit/3d4b9f81b0537a69441867cc1ca73d87b6ed29b9))
+
+# [5.0.0-alpha.70](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.69...v5.0.0-alpha.70) (2025-08-13)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.2.1 ([fdfebcc](https://github.com/d-zero-dev/linters/commit/fdfebccedf2172a76209afd2bd5f2c799104e667))
+
+# [5.0.0-alpha.69](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.68...v5.0.0-alpha.69) (2025-07-16)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
+# [5.0.0-alpha.68](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.67...v5.0.0-alpha.68) (2025-07-11)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15.1.0 ([02aa453](https://github.com/d-zero-dev/linters/commit/02aa4535a0e7a876e702d320dd0610e3968945d0))
+- **deps:** update dependency textlint to v15.1.1 ([f33da60](https://github.com/d-zero-dev/linters/commit/f33da60ccfc4cc996ce5061dfe1714d55ecaf258))
+- **deps:** update dependency textlint to v15.2.0 ([55df05b](https://github.com/d-zero-dev/linters/commit/55df05b59cc9a4ec46e5e2a8d00d80140f107081))
+
+# [5.0.0-alpha.67](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.66...v5.0.0-alpha.67) (2025-06-26)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
+# [5.0.0-alpha.66](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.65...v5.0.0-alpha.66) (2025-06-26)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v15 ([d3b03cf](https://github.com/d-zero-dev/linters/commit/d3b03cffd3e29f19ede75dd81a1d3429eb729879))
+
+# [5.0.0-alpha.65](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.64...v5.0.0-alpha.65) (2025-06-16)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
+# [5.0.0-alpha.64](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.63...v5.0.0-alpha.64) (2025-06-16)
+
+### Bug Fixes
+
+- **deps:** update dependency textlint to v14.7.1 ([d10980b](https://github.com/d-zero-dev/linters/commit/d10980bdf60d45052864a4f23449bbf1051e4738))
+- **deps:** update dependency textlint to v14.7.2 ([c566db8](https://github.com/d-zero-dev/linters/commit/c566db84ac5e8e8c2a6fda5745c3b00248fdd8b5))
+- **deps:** update dependency textlint to v14.8.4 ([16e19de](https://github.com/d-zero-dev/linters/commit/16e19de34c41140e9dac15fb7efe7c3480f3c8ff))
+
 # [5.0.0-alpha.63](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.62...v5.0.0-alpha.63) (2025-04-28)
 
 ### Bug Fixes

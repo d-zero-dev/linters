@@ -1,11 +1,10 @@
 {
 	"name": "@d-zero/lint-staged-config",
-	"version": "5.0.0-alpha.63",
+	"version": "5.0.0-alpha.76",
 	"description": "Configurations of lint-staged",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
@@ -24,10 +23,6 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"lint-staged": "15.5.1",
-		"micromatch": "4.0.8"
-	},
-	"devDependencies": {
-		"@types/micromatch": "4.0.9"
+		"lint-staged": "16.2.7"
 	}
 }
