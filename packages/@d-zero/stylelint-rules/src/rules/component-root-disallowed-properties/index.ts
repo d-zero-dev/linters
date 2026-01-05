@@ -49,9 +49,6 @@ const DISALLOWED_PROPERTIES: (string | { [propName: string]: string })[] = [
 	{ position: 'sticky' },
 ];
 
-// min-* と max-* が許可されるプロパティ
-const ALLOW_MIN_MAX_PREFIX = ['width', 'inline-size', 'height', 'block-size'] as const;
-
 /**
  * プロパティが禁止されているかチェック
  * @param prop
@@ -82,30 +79,6 @@ function isDisallowedPropertyValue(prop: string, value: string): boolean {
 		}
 		return false;
 	});
-}
-
-/**
- * min-* または max-* プレフィックスが許可されているかチェック
- * @param prop
- */
-function isAllowedMinMaxProperty(prop: string): boolean {
-	const normalizedProp = prop.toLowerCase();
-	return ALLOW_MIN_MAX_PREFIX.some(
-		(allowedProp) =>
-			normalizedProp === `min-${allowedProp}` || normalizedProp === `max-${allowedProp}`,
-	);
-}
-
-/**
- * プロパティが禁止されているかチェック（min-* / max-* の許可を考慮）
- * @param prop
- */
-function shouldReportProperty(prop: string): boolean {
-	// min-* または max-* が許可されている場合は報告しない
-	if (isAllowedMinMaxProperty(prop)) {
-		return false;
-	}
-	return isDisallowedProperty(prop);
 }
 
 /**
@@ -221,7 +194,7 @@ export default createRule<Options>({
 						}
 
 						// その他の禁止プロパティのチェック
-						if (shouldReportProperty(prop)) {
+						if (isDisallowedProperty(prop)) {
 							stylelint.utils.report({
 								result,
 								ruleName,
