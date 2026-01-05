@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint-order to v7.0.1 ([3e2009c](https://github.com/d-zero-dev/linters/commit/3e2009c1f2495cd6d54e33180071e6826c672896))
+- **deps:** update dependency stylelint-scss to v6.14.0 ([d069d21](https://github.com/d-zero-dev/linters/commit/d069d21187f29868f88e0b554fa1027ed1839a23))
+
 # [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
 
 **Note:** Version bump only for package @d-zero/stylelint-config

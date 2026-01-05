@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
+
+### Features
+
+- **stylelint-rules:** position: fixed/sticky を禁止対象に追加し、禁止プロパティの管理方法を改善 ([1ddfd1c](https://github.com/d-zero-dev/linters/commit/1ddfd1cc39243a286af3d33ee172b72777d97688))
+- **stylelint-rules:** コンポーネントルート禁止プロパティルールを追加 ([74670f3](https://github.com/d-zero-dev/linters/commit/74670f3fc576b398cfb298203ca5b6833623edf0)), closes [#614](https://github.com/d-zero-dev/linters/issues/614)
+
 # [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
 
 **Note:** Version bump only for package @d-zero/stylelint-rules

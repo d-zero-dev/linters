@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v20.3.0 ([fb1ff30](https://github.com/d-zero-dev/linters/commit/fb1ff30d9d84de5ad5e0324b3b077a28bd44da87))
+- **deps:** update dependency globals to v17 ([949a2c0](https://github.com/d-zero-dev/linters/commit/949a2c06ecb9d2d94fc35ab48612aacf25173c5a))
+- **deps:** update dependency stylelint-order to v7.0.1 ([3e2009c](https://github.com/d-zero-dev/linters/commit/3e2009c1f2495cd6d54e33180071e6826c672896))
+- **deps:** update dependency stylelint-scss to v6.14.0 ([d069d21](https://github.com/d-zero-dev/linters/commit/d069d21187f29868f88e0b554fa1027ed1839a23))
+- **deps:** update dependency typescript-eslint to v8.51.0 ([0a2c092](https://github.com/d-zero-dev/linters/commit/0a2c092a27d1d1c2e21ac99097d650cdabcfe025))
+
+### Features
+
+- **stylelint-rules:** position: fixed/sticky を禁止対象に追加し、禁止プロパティの管理方法を改善 ([1ddfd1c](https://github.com/d-zero-dev/linters/commit/1ddfd1cc39243a286af3d33ee172b72777d97688))
+- **stylelint-rules:** コンポーネントルート禁止プロパティルールを追加 ([74670f3](https://github.com/d-zero-dev/linters/commit/74670f3fc576b398cfb298203ca5b6833623edf0)), closes [#614](https://github.com/d-zero-dev/linters/issues/614)
+
 # [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
 
 ### Bug Fixes

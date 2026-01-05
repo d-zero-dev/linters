@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
+
+**Note:** Version bump only for package @d-zero/prettier-config
+
 # [5.0.0-alpha.76](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.75...v5.0.0-alpha.76) (2025-12-18)
 
 **Note:** Version bump only for package @d-zero/prettier-config
