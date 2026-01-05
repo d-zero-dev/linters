@@ -270,7 +270,7 @@ describe('component-root-disallowed-properties', () => {
 			});
 		});
 
-		describe('position: absolute', () => {
+		describe('position', () => {
 			test('position: absolute が禁止されている', async () => {
 				const {
 					// @ts-ignore
@@ -286,6 +286,36 @@ describe('component-root-disallowed-properties', () => {
 				expect(warnings[0].text).toContain('position: absolute');
 			});
 
+			test('position: fixed が禁止されている', async () => {
+				const {
+					// @ts-ignore
+					results: [{ warnings, parseErrors }],
+				} = await lint({
+					codeFilename: 'button.css',
+					code: '.button { position: fixed; }',
+					config: config({}),
+				});
+
+				expect(parseErrors).toHaveLength(0);
+				expect(warnings).toHaveLength(1);
+				expect(warnings[0].text).toContain('position: fixed');
+			});
+
+			test('position: sticky が禁止されている', async () => {
+				const {
+					// @ts-ignore
+					results: [{ warnings, parseErrors }],
+				} = await lint({
+					codeFilename: 'button.css',
+					code: '.button { position: sticky; }',
+					config: config({}),
+				});
+
+				expect(parseErrors).toHaveLength(0);
+				expect(warnings).toHaveLength(1);
+				expect(warnings[0].text).toContain('position: sticky');
+			});
+
 			test('position: relative は許可されている', async () => {
 				const {
 					// @ts-ignore
@@ -293,6 +323,20 @@ describe('component-root-disallowed-properties', () => {
 				} = await lint({
 					codeFilename: 'button.css',
 					code: '.button { position: relative; }',
+					config: config({}),
+				});
+
+				expect(parseErrors).toHaveLength(0);
+				expect(warnings).toHaveLength(0);
+			});
+
+			test('position: static は許可されている', async () => {
+				const {
+					// @ts-ignore
+					results: [{ warnings, parseErrors }],
+				} = await lint({
+					codeFilename: 'button.css',
+					code: '.button { position: static; }',
 					config: config({}),
 				});
 

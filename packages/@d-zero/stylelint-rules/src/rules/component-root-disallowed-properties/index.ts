@@ -9,7 +9,9 @@ import stylelint from 'stylelint';
 import { createRule } from '../../utils/create-rule.js';
 
 // 禁止プロパティのリスト
-const DISALLOWED_PROPERTIES = [
+// string: プロパティ名のみ（例: 'width', 'margin'）
+// { [propName: string]: string }: プロパティ名と値のペア（例: { position: 'absolute' }）
+const DISALLOWED_PROPERTIES: (string | { [propName: string]: string })[] = [
 	'width',
 	'inline-size',
 	'margin',
@@ -42,7 +44,10 @@ const DISALLOWED_PROPERTIES = [
 	'grid-area',
 	'float',
 	'clear',
-] as const;
+	{ position: 'absolute' },
+	{ position: 'fixed' },
+	{ position: 'sticky' },
+];
 
 // min-* と max-* が許可されるプロパティ
 const ALLOW_MIN_MAX_PREFIX = ['width', 'inline-size', 'height', 'block-size'] as const;
@@ -53,9 +58,30 @@ const ALLOW_MIN_MAX_PREFIX = ['width', 'inline-size', 'height', 'block-size'] as
  */
 function isDisallowedProperty(prop: string): boolean {
 	const normalizedProp = prop.toLowerCase();
-	return DISALLOWED_PROPERTIES.includes(
-		normalizedProp as (typeof DISALLOWED_PROPERTIES)[number],
-	);
+	return DISALLOWED_PROPERTIES.some((item) => {
+		if (typeof item === 'string') {
+			return item === normalizedProp;
+		}
+		return false;
+	});
+}
+
+/**
+ * プロパティと値の組み合わせが禁止されているかチェック
+ * @param prop
+ * @param value
+ */
+function isDisallowedPropertyValue(prop: string, value: string): boolean {
+	const normalizedProp = prop.toLowerCase();
+	const normalizedValue = value.toLowerCase().trim();
+	return DISALLOWED_PROPERTIES.some((item) => {
+		if (typeof item === 'object') {
+			return (
+				normalizedProp in item && item[normalizedProp]?.toLowerCase() === normalizedValue
+			);
+		}
+		return false;
+	});
 }
 
 /**
@@ -180,18 +206,17 @@ export default createRule<Options>({
 				for (const node of rule.nodes) {
 					if (node.type === 'decl') {
 						const prop = node.prop;
+						const value = node.value;
 
-						// position: absolute のチェック
-						if (prop.toLowerCase() === 'position') {
-							const value = node.value.toLowerCase().trim();
-							if (value === 'absolute') {
-								stylelint.utils.report({
-									result,
-									ruleName,
-									message: messages.rejected('position: absolute'),
-									node,
-								});
-							}
+						// プロパティと値の組み合わせが禁止されているかチェック
+						if (isDisallowedPropertyValue(prop, value)) {
+							const normalizedValue = value.toLowerCase().trim();
+							stylelint.utils.report({
+								result,
+								ruleName,
+								message: messages.rejected(`${prop}: ${normalizedValue}`),
+								node,
+							});
 							continue;
 						}
 
