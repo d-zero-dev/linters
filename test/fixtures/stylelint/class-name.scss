@@ -4,15 +4,15 @@
 
 .c-component {
 	&__element {
-		//
+		//　Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します
 	}
 
 	&__invalid__element-name {
-		// 「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います
+		// Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します
 	}
 
 	&__foo😁bar {
-		// クラス名に命名規則にない文字が含まれています
+		// Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します
 	}
 
 	.c-component2 {
@@ -23,3 +23,26 @@
 #id {
 	// スタイル定義でIDセレクタは使わないでください
 }
+
+// stylelint-disable selector-type-no-unknown, selector-class-pattern, selector-max-id
+
+.c-component3 {
+	& type,
+	&[attr],
+	&.class,
+	&:hover,
+	&::before,
+	&#id {
+		// 連結ではない
+	}
+
+	type & {
+		// 連結ではない
+	}
+
+	& &__element {
+		// 小賢しいけど、検出困難のため、禁止化を諦める
+	}
+}
+
+// stylelint-enable selector-type-no-unknown, selector-class-pattern, selector-max-id
