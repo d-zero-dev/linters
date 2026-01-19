@@ -28,7 +28,7 @@
 		"commit": "npx cz",
 		"co": "npx cz",
 		"prepare": "husky",
-		"upgrade": "yarn upgrade-interactive"
+		"update": "yarn upgrade-interactive"
 	},
 	"config": {
 		"commitizen": {
