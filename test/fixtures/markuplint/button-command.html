@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Button Command Test</title>
+</head>
+<body>
+	<h1>Button Command Attribute Tests</h1>
+
+	<!-- ========================================
+	     Should ERROR: Buttons without command
+	     ======================================== -->
+
+	<!-- Basic button without any attributes -->
+	<button>No attributes</button>
+
+	<!-- Explicit type="button" without command -->
+	<button type="button">Explicit type button</button>
+
+	<!-- Button with disabled (still needs command) -->
+	<button disabled>Disabled button</button>
+
+	<!-- Button with aria attributes but no command -->
+	<button aria-label="Action">With aria-label</button>
+
+	<!-- Button with class/id but no command -->
+	<button class="btn" id="my-button">With class and id</button>
+
+	<!-- Form buttons OUTSIDE of form element -->
+	<button type="submit">Submit outside form</button>
+	<button type="reset">Reset outside form</button>
+
+	<!-- ========================================
+	     Should PASS: Buttons with command
+	     ======================================== -->
+
+	<!-- Basic command usage -->
+	<button commandfor="dialog" command="show-modal">Open Dialog</button>
+	<button commandfor="dialog" command="close">Close Dialog</button>
+	<button commandfor="popover" command="show-popover">Show Popover</button>
+	<button commandfor="popover" command="hide-popover">Hide Popover</button>
+	<button commandfor="details" command="toggle">Toggle Details</button>
+
+	<!-- Command with other attributes -->
+	<button commandfor="dialog" command="show-modal" class="btn">With class</button>
+	<button commandfor="dialog" command="show-modal" disabled>Disabled with command</button>
+	<button commandfor="dialog" command="show-modal" aria-label="Open">With aria</button>
+
+	<!-- ========================================
+	     Should PASS: Role exceptions
+	     ======================================== -->
+
+	<!-- ARIA roles that require custom handlers -->
+	<button role="tab">Tab</button>
+	<button role="tab" aria-selected="true">Selected Tab</button>
+	<button role="switch" aria-checked="false">Switch</button>
+	<button role="menuitem">Menu Item</button>
+	<button role="option">Option</button>
+	<button role="checkbox" aria-checked="false">Checkbox</button>
+	<button role="radio" aria-checked="false">Radio</button>
+
+	<!-- Explicit role="button" (should also be exception) -->
+	<button role="button">Explicit button role</button>
+
+	<!-- Role with type attribute -->
+	<button role="tab" type="button">Tab with type</button>
+
+	<!-- ========================================
+	     Should PASS: Form buttons (type=submit/reset)
+	     ======================================== -->
+
+	<!-- Inside form element -->
+	<form>
+		<button type="submit">Submit in form</button>
+		<button type="reset">Reset in form</button>
+		<button>Default submit (no type)</button>
+	</form>
+
+	<!-- With form attribute referencing external form -->
+	<button type="submit" form="external-form">Submit for external form</button>
+	<button type="reset" form="external-form">Reset for external form</button>
+
+	<!-- ========================================
+	     Edge cases: Multiple attributes
+	     ======================================== -->
+
+	<!-- Role takes precedence (should pass) -->
+	<button role="tab" commandfor="dialog" command="show-modal">Role + Command</button>
+
+	<!-- Submit type takes precedence (should pass) -->
+	<button type="submit" commandfor="dialog" command="show-modal">Submit + Command</button>
+
+	<!-- Reset type takes precedence (should pass) -->
+	<button type="reset" commandfor="dialog" command="show-modal">Reset + Command</button>
+
+	<!-- ========================================
+	     Popovertarget attribute (Modern HTML)
+	     ======================================== -->
+
+	<!-- popovertarget is similar to commandfor (should these need command too?) -->
+	<button popovertarget="my-popover">With popovertarget</button>
+	<button popovertarget="my-popover" popovertargetaction="show">With popovertargetaction</button>
+
+	<!-- ========================================
+	     Referenced elements
+	     ======================================== -->
+
+	<dialog id="dialog">
+		<p>Dialog content</p>
+		<button commandfor="dialog" command="close">Close</button>
+	</dialog>
+
+	<div id="popover" popover>
+		<p>Popover content</p>
+	</div>
+
+	<details id="details">
+		<summary>Summary</summary>
+		<p>Details content</p>
+	</details>
+
+	<div id="my-popover" popover>
+		<p>Popover for popovertarget</p>
+	</div>
+
+	<form id="external-form">
+		<input type="text" name="name">
+	</form>
+</body>
+</html>
