@@ -106,5 +106,26 @@ export default {
 				},
 			},
 		},
+		{
+			selector: 'button[type=button]:not([role]):not([popovertarget])',
+			rules: {
+				'required-attr': {
+					value: 'command',
+					reason:
+						'button要素には原則としてcommand属性が必要です。Invoker Commands APIを使用してアクセシブルなUIを実装してください。role属性を持つボタン（role="tab"など）やtype="submit"/type="reset"/typeなしのボタンは例外として許可されます。（D-ZERO独自ルール）',
+				},
+			},
+		},
+		{
+			selector:
+				'button[popovertarget]:not([command]):not([role]):not([type=submit]):not([type=reset])',
+			rules: {
+				'required-attr': {
+					value: 'command',
+					reason:
+						'popovertarget属性の代わりにInvoker Commands API（commandfor/command属性）の使用を推奨します。commandfor属性とshow-popover/hide-popover/toggle-popoverコマンドを使用してください。popovertargetは将来的に非推奨となる予定です。（D-ZERO独自ルール）',
+				},
+			},
+		},
 	],
 };
