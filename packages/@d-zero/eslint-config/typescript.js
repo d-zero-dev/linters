@@ -29,7 +29,6 @@ export const ts = tsESLint.config(
 			'@typescript-eslint/no-namespace': [2, { allowDeclarations: true }],
 			'@typescript-eslint/no-unnecessary-type-assertion': 2,
 			'@typescript-eslint/no-unused-vars': 2,
-			'@typescript-eslint/no-var-requires': 2,
 			'@typescript-eslint/prefer-namespace-keyword': 2,
 			'@typescript-eslint/require-await': 2,
 			'@typescript-eslint/restrict-plus-operands': 0,

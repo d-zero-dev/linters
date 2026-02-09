@@ -1,6 +1,7 @@
 import dzeroPlugin from '@d-zero/eslint-plugin';
+import { fixupPluginRules } from '@eslint/compat';
 import js from '@eslint/js';
-import comments from 'eslint-plugin-eslint-comments';
+import comments from '@eslint-community/eslint-plugin-eslint-comments';
 import { flatConfigs as importX } from 'eslint-plugin-import-x';
 import jsdoc from 'eslint-plugin-jsdoc';
 import * as regexpPlugin from 'eslint-plugin-regexp';
@@ -73,6 +74,10 @@ export const base = [
 	regexpPlugin.configs['flat/recommended'],
 	{
 		...importX.recommended,
+		plugins: {
+			...importX.recommended.plugins,
+			'import-x': fixupPluginRules(importX.recommended.plugins['import-x']),
+		},
 		rules: {
 			...importX.recommended.rules,
 			'import-x/no-extraneous-dependencies': 2,
@@ -109,6 +114,10 @@ export const base = [
 	},
 	{
 		...jsdoc.configs['flat/recommended'],
+		plugins: {
+			...jsdoc.configs['flat/recommended'].plugins,
+			jsdoc: fixupPluginRules(jsdoc.configs['flat/recommended'].plugins.jsdoc),
+		},
 		rules: {
 			...jsdoc.configs['flat/recommended'].rules,
 			'jsdoc/require-param-type': 0,
@@ -120,13 +129,13 @@ export const base = [
 	},
 	{
 		plugins: {
-			comments,
+			comments: fixupPluginRules(comments),
 		},
 	},
 	{
 		plugins: {
-			comments,
-			'sort-class-members': sortClassMembers,
+			comments: fixupPluginRules(comments),
+			'sort-class-members': fixupPluginRules(sortClassMembers),
 		},
 		rules: {
 			'sort-class-members/sort-class-members': [
