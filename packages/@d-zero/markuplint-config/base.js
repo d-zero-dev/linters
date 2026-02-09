@@ -117,13 +117,22 @@ export default {
 			},
 		},
 		{
-			selector:
-				'button[popovertarget]:not([command]):not([role]):not([type=submit]):not([type=reset])',
+			selector: 'button[popovertarget]',
+			rules: {
+				'required-attr': {
+					value: 'commandfor',
+					reason:
+						'popovertarget属性の代わりにcommandfor属性を使用してください。popovertarget属性は将来的に非推奨となる予定です。（D-ZERO独自ルール）',
+				},
+			},
+		},
+		{
+			selector: 'button[popovertargetaction]',
 			rules: {
 				'required-attr': {
 					value: 'command',
 					reason:
-						'popovertarget属性の代わりにInvoker Commands API（commandfor/command属性）の使用を推奨します。commandfor属性とshow-popover/hide-popover/toggle-popoverコマンドを使用してください。popovertargetは将来的に非推奨となる予定です。（D-ZERO独自ルール）',
+						'popovertargetaction属性（show/hide/toggle）の代わりにcommand属性（show-popover/hide-popover/toggle-popover）を使用してください。（D-ZERO独自ルール）',
 				},
 			},
 		},
