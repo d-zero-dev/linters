@@ -22,13 +22,16 @@ module.exports = {
 			},
 		],
 		'selector-nested-pattern': [
-			'^[^.]+.*',
+			'^[^.&]+.*|^&(?:\\s|\\.|\\[|:|#)',
 			{
 				/**
 				 * @param {string} selector
 				 * @returns {string}
 				 */
 				message: (selector) => {
+					if (selector.startsWith('&')) {
+						return `Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: ${selector}`;
+					}
 					return `コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: ${selector}`;
 				},
 			},
