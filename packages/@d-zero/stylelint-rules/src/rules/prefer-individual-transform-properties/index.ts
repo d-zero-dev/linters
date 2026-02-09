@@ -53,14 +53,17 @@ function canBeReplacedWithIndividualProperties(value: string): {
 					// Generate suggestion based on function type
 					const args = postcssValueParser.stringify(node.nodes);
 					suggestions.push(`${property}: ${args}`);
-
-					// Don't walk into the arguments of transform functions
-					return false;
+					break;
 				}
 			}
 
 			if (!isReplaceable) {
 				hasNonReplaceableFunction = true;
+			}
+
+			// Don't walk into the arguments of transform functions
+			if (isReplaceable) {
+				return false;
 			}
 		}
 		return true;
