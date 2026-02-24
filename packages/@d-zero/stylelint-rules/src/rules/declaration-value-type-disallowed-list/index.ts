@@ -87,16 +87,12 @@ export default createRule<Record<string, string[] | Options>>({
 
 					if (matched) {
 						const word = matched.substring;
-						const index = raw.indexOf(word);
-						const endIndex = index + word.length;
 
 						stylelint.utils.report({
 							result,
 							ruleName,
 							message: messages.rejected(word, node.valueType),
 							node: decl,
-							index,
-							endIndex,
 							word,
 						});
 					}
