@@ -29,6 +29,11 @@ ruleTester.run('no-click-event', rule, {
 		'<button type="button">Click me</button>',
 		'<button onFocus={handler}>Focus me</button>',
 
+		// Valid: non-jQuery .click() (programmatic click execution)
+		'document.body.click()',
+		'element.click()',
+		'document.getElementById("btn").click()',
+
 		// Valid: using Invoker Commands API (future-proof examples)
 		'button.commandfor = "target-id"',
 		'button.command = "show-modal"',

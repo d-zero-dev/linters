@@ -42,27 +42,12 @@ export default createRule({
 				});
 			},
 
-			// Pattern 3: jQuery .on('click', ...) and .click()
-			'CallExpression[callee.type="MemberExpression"]'(node: TSESTree.CallExpression) {
-				const callee = node.callee as TSESTree.MemberExpression;
-
-				// .click()
-				if (callee.property.type === 'Identifier' && callee.property.name === 'click') {
-					context.report({
-						node,
-						messageId: 'noClickEvent',
-					});
-				}
-
-				// .on('click', ...)
+			// Pattern 3: jQuery .on('click', ...)
+			'CallExpression[callee.type="MemberExpression"][callee.property.name="on"]'(
+				node: TSESTree.CallExpression,
+			) {
 				const firstArg = node.arguments[0];
-				if (
-					callee.property.type === 'Identifier' &&
-					callee.property.name === 'on' &&
-					firstArg &&
-					firstArg.type === 'Literal' &&
-					firstArg.value === 'click'
-				) {
+				if (firstArg && firstArg.type === 'Literal' && firstArg.value === 'click') {
 					context.report({
 						node,
 						messageId: 'noClickEvent',
@@ -70,7 +55,36 @@ export default createRule({
 				}
 			},
 
-			// Pattern 4: React onClick={...}
+			// Pattern 4: jQuery .click() - only for jQuery objects ($(...) or jQuery(...))
+			'CallExpression[callee.type="MemberExpression"][callee.property.name="click"]'(
+				node: TSESTree.CallExpression,
+			) {
+				const callee = node.callee as TSESTree.MemberExpression;
+				const object = callee.object;
+
+				// $(...).click() or jQuery(...).click()
+				if (
+					object.type === 'CallExpression' &&
+					object.callee.type === 'Identifier' &&
+					(object.callee.name === '$' || object.callee.name === 'jQuery')
+				) {
+					context.report({
+						node,
+						messageId: 'noClickEvent',
+					});
+					return;
+				}
+
+				// $element.click()
+				if (object.type === 'Identifier' && object.name.startsWith('$')) {
+					context.report({
+						node,
+						messageId: 'noClickEvent',
+					});
+				}
+			},
+
+			// Pattern 5: React onClick={...}
 			'JSXAttribute[name.name="onClick"]'(node: TSESTree.JSXAttribute) {
 				context.report({
 					node,
@@ -78,7 +92,7 @@ export default createRule({
 				});
 			},
 
-			// Pattern 5: Vue @click or v-on:click
+			// Pattern 6: Vue @click or v-on:click
 			// Note: This requires vue-eslint-parser
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			'VAttribute[key.name.name="click"]'(node: any) {
