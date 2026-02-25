@@ -183,6 +183,30 @@ describe('markuplint', () => {
 		);
 		expect(validNaming).toStrictEqual([]);
 	});
+
+	test('Button Command Attribute', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/button-command.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
+			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
+			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
+			'test/fixtures/markuplint/button-command.html:111:6 Detected perceptible nodes between the trigger and corresponding target',
+			'test/fixtures/markuplint/button-command.html:110:2 Require accessible name',
+			'test/fixtures/markuplint/button-command.html:129:3 Require accessible name',
+			'test/fixtures/markuplint/button-command.html:18:2 The "button" element expects the "command" attribute',
+			'test/fixtures/markuplint/button-command.html:101:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute',
+			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute',
+			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute',
+			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
+			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
+		]);
+	});
 });
 
 describe('stylelint', () => {
