@@ -27,7 +27,7 @@
 	"dependencies": {
 		"@d-zero/stylelint-rules": "5.0.0",
 		"postcss-scss": "4.0.9",
-		"stylelint": "17.1.1",
+		"stylelint": "17.4.0",
 		"stylelint-config-recess-order": "7.6.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "7.0.1",
