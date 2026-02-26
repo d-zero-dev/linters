@@ -55,14 +55,19 @@ export default createRule({
 				}
 			},
 
-			// Pattern 4: jQuery .click() - only for jQuery objects ($(...) or jQuery(...))
+			// Pattern 4: jQuery .click(handler) - only for jQuery objects with arguments (event handler registration)
 			'CallExpression[callee.type="MemberExpression"][callee.property.name="click"]'(
 				node: TSESTree.CallExpression,
 			) {
+				// Allow .click() without arguments (click execution, not event handler registration)
+				if (node.arguments.length === 0) {
+					return;
+				}
+
 				const callee = node.callee as TSESTree.MemberExpression;
 				const object = callee.object;
 
-				// $(...).click() or jQuery(...).click()
+				// $(...).click(handler) or jQuery(...).click(handler)
 				if (
 					object.type === 'CallExpression' &&
 					object.callee.type === 'Identifier' &&
@@ -75,7 +80,7 @@ export default createRule({
 					return;
 				}
 
-				// $element.click()
+				// $element.click(handler)
 				if (object.type === 'Identifier' && object.name.startsWith('$')) {
 					context.report({
 						node,

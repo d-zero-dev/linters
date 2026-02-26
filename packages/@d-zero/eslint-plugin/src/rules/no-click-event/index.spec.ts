@@ -34,6 +34,11 @@ ruleTester.run('no-click-event', rule, {
 		'element.click()',
 		'document.getElementById("btn").click()',
 
+		// Valid: jQuery .click() without arguments (programmatic click execution)
+		'$element.click()',
+		'$(".button").click()',
+		'jQuery("#btn").click()',
+
 		// Valid: using Invoker Commands API (future-proof examples)
 		'button.commandfor = "target-id"',
 		'button.command = "show-modal"',
@@ -69,13 +74,17 @@ ruleTester.run('no-click-event', rule, {
 			errors: [{ messageId: 'noClickEvent' }],
 		},
 
-		// Pattern 4: jQuery .click()
+		// Pattern 4: jQuery .click(handler)
 		{
 			code: '$element.click(handler)',
 			errors: [{ messageId: 'noClickEvent' }],
 		},
 		{
-			code: '$(".button").click()',
+			code: '$(".button").click(function() {})',
+			errors: [{ messageId: 'noClickEvent' }],
+		},
+		{
+			code: 'jQuery("#btn").click(handler)',
 			errors: [{ messageId: 'noClickEvent' }],
 		},
 

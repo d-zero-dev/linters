@@ -11,8 +11,8 @@ if (button) {
 declare const $: any;
 $('#element').on('click', () => {});
 
-// Pattern 4: jQuery .click()
-$('.button').click();
+// Pattern 4: jQuery .click(handler)
+$('.button').click(() => {});
 
 // Valid: not click events
 document.addEventListener('focus', () => {});
