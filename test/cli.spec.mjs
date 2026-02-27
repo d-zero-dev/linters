@@ -172,10 +172,10 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
-			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
-			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
-			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
-			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:21:45 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:22:39 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:23:44 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:24:41 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
 		]);
 
 		const validNaming = await markuplint(
@@ -217,6 +217,25 @@ describe('markuplint', () => {
 			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
 			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
 			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
+		]);
+	});
+
+	test('Attr Order', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/attr-order-test.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/attr-order-test.html:17:36 "id" should be before "type" (attr-order)',
+			'test/fixtures/markuplint/attr-order-test.html:18:23 "class" should be before "src" (attr-order)',
+			'test/fixtures/markuplint/attr-order-test.html:19:41 "class" should be before "name" (attr-order)',
+			'test/fixtures/markuplint/attr-order-test.html:20:26 "id" should be before "href" (attr-order)',
+			'test/fixtures/markuplint/attr-order-test.html:21:53 "id" should be before "data-value" (attr-order)',
+			'test/fixtures/markuplint/attr-order-test.html:11:38 The "tab" role requires an accessibility parent with the "tablist" role (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/attr-order-test.html:11:43 The "aria-selected" ARIA state is not global state (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/attr-order-test.html:14:33 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group" (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/attr-order-test.html:20:43 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group" (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/attr-order-test.html:17:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-require-command]',
 		]);
 	});
 });

@@ -24,7 +24,7 @@
 	<button aria-label="Action">With aria-label</button>
 
 	<!-- Button with class/id but no command -->
-	<button class="btn" id="my-button">With class and id</button>
+	<button id="my-button" class="btn">With class and id</button>
 
 	<!-- Form buttons OUTSIDE of form element -->
 	<button type="submit">Submit outside form</button>
@@ -35,16 +35,16 @@
 	     ======================================== -->
 
 	<!-- Basic command usage -->
-	<button commandfor="dialog" command="show-modal">Open Dialog</button>
-	<button commandfor="dialog" command="close">Close Dialog</button>
-	<button commandfor="popover" command="show-popover">Show Popover</button>
-	<button commandfor="popover" command="hide-popover">Hide Popover</button>
-	<button commandfor="details" command="toggle-popover">Toggle Details</button>
+	<button command="show-modal" commandfor="dialog">Open Dialog</button>
+	<button command="close" commandfor="dialog">Close Dialog</button>
+	<button command="show-popover" commandfor="popover">Show Popover</button>
+	<button command="hide-popover" commandfor="popover">Hide Popover</button>
+	<button command="toggle-popover" commandfor="details">Toggle Details</button>
 
 	<!-- Command with other attributes -->
-	<button commandfor="dialog" command="show-modal" class="btn">With class</button>
-	<button commandfor="dialog" command="show-modal" disabled>Disabled with command</button>
-	<button commandfor="dialog" command="show-modal" aria-label="Open">With aria</button>
+	<button class="btn" command="show-modal" commandfor="dialog">With class</button>
+	<button command="show-modal" commandfor="dialog" disabled>Disabled with command</button>
+	<button aria-label="Open" command="show-modal" commandfor="dialog">With aria</button>
 
 	<!-- ========================================
 	     Should PASS: Role exceptions
@@ -77,21 +77,21 @@
 	</form>
 
 	<!-- With form attribute referencing external form -->
-	<button type="submit" form="external-form">Submit for external form</button>
-	<button type="reset" form="external-form">Reset for external form</button>
+	<button form="external-form" type="submit">Submit for external form</button>
+	<button form="external-form" type="reset">Reset for external form</button>
 
 	<!-- ========================================
 	     Edge cases: Multiple attributes
 	     ======================================== -->
 
 	<!-- Role takes precedence (should pass) -->
-	<button role="tab" commandfor="dialog" command="show-modal">Role + Command</button>
+	<button role="tab" command="show-modal" commandfor="dialog">Role + Command</button>
 
 	<!-- Submit type takes precedence (should pass) -->
-	<button type="submit" commandfor="dialog" command="show-modal">Submit + Command</button>
+	<button command="show-modal" commandfor="dialog" type="submit">Submit + Command</button>
 
 	<!-- Reset type takes precedence (should pass) -->
-	<button type="reset" commandfor="dialog" command="show-modal">Reset + Command</button>
+	<button command="show-modal" commandfor="dialog" type="reset">Reset + Command</button>
 
 	<!-- ========================================
 	     Popovertarget attribute (Modern HTML)
@@ -109,7 +109,7 @@
 
 	<dialog id="dialog">
 		<p>Dialog content</p>
-		<button commandfor="dialog" command="close">Close</button>
+		<button command="close" commandfor="dialog">Close</button>
 	</dialog>
 
 	<div id="popover" popover>
@@ -126,7 +126,7 @@
 	</div>
 
 	<form id="external-form">
-		<input type="text" name="name">
+		<input name="name">
 	</form>
 </body>
 </html>
