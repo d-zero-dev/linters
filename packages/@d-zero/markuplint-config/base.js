@@ -8,6 +8,14 @@ export default {
 		// img[src] に対する width, height 必須ルールを無効化
 		// width, height はビルド時に自動的に付与されるため問題なしとする
 		'performance/img-aspect-ratio': false,
+		'attr-order': ['id', 'class', 'role', { group: 'aria' }, { group: 'data' }],
+		'head-element-order': true,
+		'no-boolean-attr-value': true,
+		'no-default-value': true,
+		'no-use-event-handler-attr': true,
+		// browserslist設定がある場合にブラウザ未サポート要素・属性を検出
+		// @see https://github.com/markuplint/markuplint/issues/3328
+		'no-unsupported-features': true,
 		'd-zero/no-br': {
 			rules: {
 				'disallowed-element': {
