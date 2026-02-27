@@ -4,6 +4,10 @@
 export default {
 	extends: ['markuplint:recommended-static-html'],
 	rules: {
+		// markuplint:recommended-static-html (performance preset) の
+		// img[src] に対する width, height 必須ルールを無効化
+		// width, height はビルド時に自動的に付与されるため問題なしとする
+		'performance/img-aspect-ratio': false,
 		'disallowed-element': {
 			value: ['br'],
 			reason:
@@ -36,8 +40,6 @@ export default {
 		{
 			selector: 'img',
 			rules: {
-				// https://github.com/markuplint/markuplint/blob/c35e0beb5e14093a41cee7634221dbe7f7d577f9/packages/%40markuplint/config-presets/src/preset.performance.json#L25-L35 の設定を上書き
-				// width, height の指定は上書きされるため、省略可能になるが、ビルド時に自動的に付与されるため問題なしとする
 				'required-attr': {
 					value: 'alt',
 					reason:
