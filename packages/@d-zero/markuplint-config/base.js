@@ -8,10 +8,14 @@ export default {
 		// img[src] に対する width, height 必須ルールを無効化
 		// width, height はビルド時に自動的に付与されるため問題なしとする
 		'performance/img-aspect-ratio': false,
-		'disallowed-element': {
-			value: ['br'],
-			reason:
-				'br要素は原則使用しません。代わりにCSSでスタイルを調整してください。使用する場合は理由が必要です。（D-ZERO独自ルール）',
+		'd-zero/no-br': {
+			rules: {
+				'disallowed-element': {
+					value: ['br'],
+					reason:
+						'br要素は原則使用しません。代わりにCSSでスタイルを調整してください。使用する場合は理由が必要です。（D-ZERO独自ルール）',
+				},
+			},
 		},
 	},
 	nodeRules: [
@@ -22,6 +26,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/html-allow-prefix-attr',
 			selector: 'html',
 			rules: {
 				// <html prefix="og: http://ogp.me/ns#">
@@ -38,6 +43,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/img-require-alt',
 			selector: 'img',
 			rules: {
 				'required-attr': {
@@ -48,6 +54,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/img-src-kebab-case',
 			selector:
 				'img:not([src^="data:"], [src^="blob:"], [src^="https://"], [src^="http://"], [src^="//"])',
 			rules: {
@@ -66,6 +73,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/media-src-kebab-case',
 			selector: 'video, audio, source',
 			rules: {
 				'invalid-attr': {
@@ -87,6 +95,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/a-href-convention',
 			selector: 'a',
 			rules: {
 				'required-attr': {
@@ -109,6 +118,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-require-command',
 			selector: 'button[type=button]:not([role]):not([popovertarget])',
 			rules: {
 				'required-attr': {
@@ -119,6 +129,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-prefer-commandfor',
 			selector: 'button[popovertarget]',
 			rules: {
 				'required-attr': {
@@ -129,6 +140,7 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-prefer-command-action',
 			selector: 'button[popovertargetaction]',
 			rules: {
 				'required-attr': {
