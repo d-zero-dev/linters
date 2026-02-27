@@ -110,7 +110,8 @@ describe('markuplint', () => {
 		try {
 			const violations = JSON.parse(stdout);
 			const formatted = violations.map(
-				(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
+				(v) =>
+					`${n(v.filePath)}:${v.line}:${v.col} ${v.message} (${v.ruleId})${v.name ? ` [${v.name}]` : ''}`,
 			);
 			return formatted;
 		} catch (error) {
@@ -124,32 +125,32 @@ describe('markuplint', () => {
 	test('CLI', async () => {
 		const violations = await markuplint('test/fixtures/markuplint/test.*');
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
-			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
-			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
-			'test/fixtures/markuplint/test.html:23:3 The "img" element expects the "alt" attribute',
-			'test/fixtures/markuplint/test.html:24:3 The "a" element expects the "href" attribute',
-			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
-			'test/fixtures/markuplint/test.html:23:3 Require accessible name',
-			'test/fixtures/markuplint/test.html:25:3 Require accessible name',
-			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
-			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
+			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context (permitted-contents) [html-standard/permitted-contents]',
+			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context (permitted-contents) [html-standard/permitted-contents]',
+			'test/fixtures/markuplint/test.html:23:3 Require accessible name (require-accessible-name) [a11y/require-accessible-name]',
+			'test/fixtures/markuplint/test.html:25:3 Require accessible name (require-accessible-name) [a11y/require-accessible-name]',
+			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element (required-h1) [a11y/required-h1]',
+			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference (character-reference) [static-html/character-reference]',
+			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed (disallowed-element) [d-zero/no-br]',
+			'test/fixtures/markuplint/test.html:23:3 The "img" element expects the "alt" attribute (required-attr) [d-zero/img-require-alt]',
+			'test/fixtures/markuplint/test.html:24:3 The "a" element expects the "href" attribute (required-attr) [d-zero/a-href-convention/required-attr]',
+			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i (invalid-attr) [d-zero/a-href-convention/invalid-attr]',
 		]);
 	});
 
 	test('Extended Naming', async () => {
 		const normalConfig = await markuplint('test/fixtures/markuplint/extended-naming.*');
 		expect(normalConfig).toStrictEqual([
-			'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
+			'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/" (class-naming)',
 		]);
 
 		const addedClassName = await markuplint(
@@ -171,10 +172,10 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
-			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
+			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/ (invalid-attr) [d-zero/img-src-kebab-case]',
 		]);
 
 		const validNaming = await markuplint(
@@ -190,29 +191,32 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/button-command.html:18:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:101:2 The "button" element expects the "commandfor" attribute',
-			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:41:2 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:42:2 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:111:6 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:24:2 The accessible name from "aria-label" overrides "content"',
-			'test/fixtures/markuplint/button-command.html:47:2 The accessible name from "aria-label" overrides "content"',
-			'test/fixtures/markuplint/button-command.html:129:3 Require accessible name',
-			'test/fixtures/markuplint/button-command.html:110:2 The "dialog" element referenced by a "show-modal" command requires an element with the "autofocus" attribute',
-			'test/fixtures/markuplint/button-command.html:54:16 The "tab" role requires an accessibility parent with the "tablist" role',
-			'test/fixtures/markuplint/button-command.html:55:16 The "tab" role requires an accessibility parent with the "tablist" role',
-			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
-			'test/fixtures/markuplint/button-command.html:57:16 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group"',
-			'test/fixtures/markuplint/button-command.html:58:16 The "option" role requires an accessibility parent with one of the roles: "listbox", "listbox > group"',
-			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
-			'test/fixtures/markuplint/button-command.html:66:16 The "tab" role requires an accessibility parent with the "tablist" role',
-			'test/fixtures/markuplint/button-command.html:88:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:41:2 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:42:2 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:111:6 Detected perceptible nodes between the trigger and corresponding target (neighbor-popovers) [a11y/neighbor-popovers]',
+			'test/fixtures/markuplint/button-command.html:24:2 The accessible name from "aria-label" overrides "content" (redundant-accessible-name) [a11y/redundant-accessible-name]',
+			'test/fixtures/markuplint/button-command.html:47:2 The accessible name from "aria-label" overrides "content" (redundant-accessible-name) [a11y/redundant-accessible-name]',
+			'test/fixtures/markuplint/button-command.html:129:3 Require accessible name (require-accessible-name) [a11y/require-accessible-name]',
+			'test/fixtures/markuplint/button-command.html:110:2 The "dialog" element referenced by a "show-modal" command requires an element with the "autofocus" attribute (require-dialog-autofocus) [a11y/require-dialog-autofocus]',
+			'test/fixtures/markuplint/button-command.html:54:16 The "tab" role requires an accessibility parent with the "tablist" role (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:55:16 The "tab" role requires an accessibility parent with the "tablist" role (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:57:16 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group" (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:58:16 The "option" role requires an accessibility parent with one of the roles: "listbox", "listbox > group" (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:66:16 The "tab" role requires an accessibility parent with the "tablist" role (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:88:16 The "tab" role requires an accessibility parent with the "tablist" role (wai-aria) [a11y/wai-aria]',
+			'test/fixtures/markuplint/button-command.html:18:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-require-command]',
+			'test/fixtures/markuplint/button-command.html:101:2 The "button" element expects the "commandfor" attribute (required-attr) [d-zero/button-prefer-commandfor]',
+			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "commandfor" attribute (required-attr) [d-zero/button-prefer-commandfor]',
+			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "commandfor" attribute (required-attr) [d-zero/button-prefer-commandfor]',
+			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "commandfor" attribute (required-attr) [d-zero/button-prefer-commandfor]',
+			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
+			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
+			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute (required-attr) [d-zero/button-prefer-command-action]',
 		]);
 	});
 });
