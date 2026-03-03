@@ -20,7 +20,7 @@
 	},
 	"dependencies": {
 		"@d-zero/eslint-plugin": "5.0.0",
-		"@eslint/js": "9.39.3",
+		"@eslint/js": "10.0.1",
 		"eslint": "9.39.3",
 		"eslint-plugin-eslint-comments": "3.2.0",
 		"eslint-plugin-import-x": "4.16.1",
