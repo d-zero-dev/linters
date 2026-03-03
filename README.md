@@ -26,6 +26,7 @@
 
 | パッケージ名                                                               | 内容                                                                                                                                                                                                            |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@d-zero/eslint-plugin`](./packages/%40d-zero/eslint-plugin/)             | [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)に設定されているディーゼロ独自のESLintルール                                                                                                      |
 | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)         | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)に設定されているディーゼロ独自のStylelintルール                                                                                             |
 | [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
 

@@ -6,7 +6,11 @@
 		"unspaced",
 
 		//
-		"splide"
+		"splide",
+
+		// ESLint plugin
+		"dzero",
+		"TSES"
 	],
 	"overrides": [
 		{

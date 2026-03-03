@@ -87,6 +87,19 @@ describe('ESLint', () => {
 			"1:1 error Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead no-restricted-syntax",
 		]);
 	});
+
+	test('no-click-event', async () => {
+		const result = await eslint(
+			'test/fixtures/eslint/no-click-event.ts',
+			'@d-zero/no-click-event',
+		);
+		expect(result).toStrictEqual([
+			'2:1 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
+			'7:2 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
+			'12:1 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
+			'15:1 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
+		]);
+	});
 });
 
 describe('markuplint', () => {

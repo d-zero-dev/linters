@@ -1,3 +1,4 @@
+import dzeroPlugin from '@d-zero/eslint-plugin';
 import js from '@eslint/js';
 import comments from 'eslint-plugin-eslint-comments';
 import { flatConfigs as importX } from 'eslint-plugin-import-x';
@@ -247,6 +248,14 @@ export const base = [
 				...globals.builtin,
 				...globals.nodeBuiltin,
 			},
+		},
+	},
+	{
+		plugins: {
+			'@d-zero': dzeroPlugin,
+		},
+		rules: {
+			'@d-zero/no-click-event': 'warn',
 		},
 	},
 ];

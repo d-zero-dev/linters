@@ -1,0 +1,36 @@
+{
+	"name": "@d-zero/eslint-plugin",
+	"version": "5.0.0",
+	"description": "Custom ESLint rules for D-ZERO",
+	"repository": "https://github.com/d-zero-dev/linters.git",
+	"author": "D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"type": "module",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc"
+	},
+	"peerDependencies": {
+		"eslint": ">=9.0.0"
+	},
+	"dependencies": {
+		"@typescript-eslint/utils": "8.53.1"
+	},
+	"devDependencies": {
+		"@typescript-eslint/parser": "8.53.1",
+		"@typescript-eslint/rule-tester": "8.53.1",
+		"eslint": "9.39.2",
+		"vue-eslint-parser": "9.4.3"
+	}
+}
