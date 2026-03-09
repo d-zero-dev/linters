@@ -3,7 +3,7 @@ module.exports = {
 		'custom-media-pattern': '[a-z][a-z-]*',
 		'custom-property-pattern': '[a-z][a-z-]*',
 		'selector-class-pattern': [
-			'^c-[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?$',
+			'^[lpc]-[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?$',
 			{
 				resolveNestedSelectors: true,
 				/**
@@ -11,8 +11,12 @@ module.exports = {
 				 * @returns {string}
 				 */
 				message: (selector) => {
-					if (!selector.startsWith('.c-')) {
-						return `クラス名は「c-」から始めてください: ${selector}`;
+					if (
+						!selector.startsWith('.c-') &&
+						!selector.startsWith('.l-') &&
+						!selector.startsWith('.p-')
+					) {
+						return `クラス名は「l-」「p-」「c-」のいずれかで始めてください: ${selector}`;
 					}
 					if (selector.split('__').length > 2) {
 						return `「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: ${selector}`;
