@@ -137,10 +137,10 @@ describe('markuplint', () => {
 	test('CLI', async () => {
 		const violations = await markuplint('test/fixtures/markuplint/test.*');
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
-			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
 			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
 			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
@@ -155,14 +155,14 @@ describe('markuplint', () => {
 	test('Extended Naming', async () => {
 		const normalConfig = await markuplint('test/fixtures/markuplint/extended-naming.*');
 		expect(normalConfig).toStrictEqual([
-			'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 		]);
 
 		const addedClassName = await markuplint(
@@ -203,8 +203,8 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
-			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
 			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
@@ -279,7 +279,7 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「c-」から始めてください: .component (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「l-」「p-」「c-」のいずれかで始めてください: .component (selector-class-pattern)',
 			'test/fixtures/stylelint/class-name.scss:6:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__element (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:10:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__invalid__element-name (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:14:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__foo😁bar (selector-nested-pattern)',
