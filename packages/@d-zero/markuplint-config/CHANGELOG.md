@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
+### Bug Fixes
+
+- **deps:** update dependency @markuplint/pug-parser to v4.6.23 ([05cf701](https://github.com/d-zero-dev/linters/commit/05cf701c578232742b0e7b4f6fdc62243b365b88))
+- **markuplint:** simplify popovertarget rule and add popovertargetaction rule ([ffab813](https://github.com/d-zero-dev/linters/commit/ffab813fefafc4f6352cbfdb0976861f580b4dd0))
+
+### Features
+
+- **markuplint:** require command attribute on button elements ([bf12f7d](https://github.com/d-zero-dev/linters/commit/bf12f7d4ab0bffef3e07a230dd8c63adb70e60aa))
+
 # [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
 
 **Note:** Version bump only for package @d-zero/markuplint-config

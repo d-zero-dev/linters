@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
+### Bug Fixes
+
+- **deps:** update commitlint monorepo to v20.3.1 ([ee76333](https://github.com/d-zero-dev/linters/commit/ee7633346e152242751e95e45a10820ee624206c))
+- **deps:** update commitlint monorepo to v20.4.1 ([23b7f7c](https://github.com/d-zero-dev/linters/commit/23b7f7c83fb140a019e663d3c58ebebc5d02248f))
+- **deps:** update commitlint monorepo to v20.4.2 ([5a542b1](https://github.com/d-zero-dev/linters/commit/5a542b1b9d909189f0b2cd3c3f044af2c8d9725e))
+
 # [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
 
 ### Bug Fixes

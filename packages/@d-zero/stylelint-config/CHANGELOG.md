@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
+### Bug Fixes
+
+- **deps:** update dependency stylelint to v17.1.1 ([fd14203](https://github.com/d-zero-dev/linters/commit/fd1420384b30c789703dfcf6ae3f3b38b53781e4))
+- **deps:** update dependency stylelint to v17.4.0 ([ef4ac21](https://github.com/d-zero-dev/linters/commit/ef4ac216ca965879a5846bf3f3d632d547aa972f))
+- **deps:** update dependency stylelint-config-recess-order to v7.5.0 ([12db617](https://github.com/d-zero-dev/linters/commit/12db617954322b990a628a8dd99292099175c13f))
+- **deps:** update dependency stylelint-config-recess-order to v7.6.1 ([a23c131](https://github.com/d-zero-dev/linters/commit/a23c131ba0a4df238a3356378023a445bcca8ba1))
+- **deps:** update dependency stylelint-config-standard to v40 ([641339e](https://github.com/d-zero-dev/linters/commit/641339edc75719700afa10e5779e46b68a057e76))
+- **deps:** update dependency stylelint-scss to v7 ([db97c87](https://github.com/d-zero-dev/linters/commit/db97c876b691cee89bc22121f1596b52e82fc9c3))
+- **deps:** update dependency stylelint-use-logical to v2.1.3 ([8689c15](https://github.com/d-zero-dev/linters/commit/8689c1525ca652d36162da86b62ae2e8367e9845))
+
+### Features
+
+- **stylelint:** stylelint v17アップデートに伴うSASS構文の`&`連結の禁止 ([6cdcc87](https://github.com/d-zero-dev/linters/commit/6cdcc87b080a9be55520b06cd3d72e01f798977d))
+
 # [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
 
 ### Bug Fixes

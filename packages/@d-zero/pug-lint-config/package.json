@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/pug-lint-config",
-	"version": "5.0.0",
+	"version": "5.1.0",
 	"description": "Configurations of pug-lint",
 	"repository": {
 		"type": "git",
