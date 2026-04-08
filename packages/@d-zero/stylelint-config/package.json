@@ -2,7 +2,11 @@
 	"name": "@d-zero/stylelint-config",
 	"version": "5.0.0",
 	"description": "Configurations of Stylelint",
-	"repository": "https://github.com/d-zero-dev/linters.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/stylelint-config"
+	},
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"publishConfig": {

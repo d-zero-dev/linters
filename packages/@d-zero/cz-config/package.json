@@ -2,7 +2,11 @@
 	"name": "@d-zero/cz-config",
 	"version": "5.0.0",
 	"description": "Configurations of cz-customizable",
-	"repository": "https://github.com/d-zero-dev/linters.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/cz-config"
+	},
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"publishConfig": {
