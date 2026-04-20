@@ -279,7 +279,7 @@ describe('stylelint', () => {
 		);
 
 		expect(violations).toStrictEqual([
-			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「l-」「p-」「c-」のいずれかで始めてください: .component (selector-class-pattern)',
+			'test/fixtures/stylelint/class-name.scss:1:1 クラス名は「l-」「p-」「c-」のいずれかから始めてください: .component (selector-class-pattern)',
 			'test/fixtures/stylelint/class-name.scss:6:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__element (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:10:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__invalid__element-name (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:14:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__foo😁bar (selector-nested-pattern)',
