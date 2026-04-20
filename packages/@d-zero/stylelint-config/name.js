@@ -16,7 +16,7 @@ module.exports = {
 						!selector.startsWith('.l-') &&
 						!selector.startsWith('.p-')
 					) {
-						return `クラス名は「l-」「p-」「c-」のいずれかで始めてください: ${selector}`;
+						return `クラス名は「l-」「p-」「c-」のいずれかから始めてください: ${selector}`;
 					}
 					if (selector.split('__').length > 2) {
 						return `「__」はコンポーネント名とエレメント名の区切りを表します。エレメント名の文字区切りは「-」を使います: ${selector}`;
