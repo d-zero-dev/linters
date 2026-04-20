@@ -65,7 +65,7 @@ npm install -D @d-zero/markuplint-config
 	"rules": {
 		// 例: クラス名の命名規則を変更する
 		"class-naming": {
-			"value": "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"
+			"value": "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"
 		}
 	}
 }
