@@ -17,7 +17,7 @@ description: Git 操作ルール
      - `git status` で差分を確認
      - 以下のコミット粒度に基づいてファイルを順次ステージングしてからコミット:
        - パッケージ単位でコミットを分割
-       - 依存元を先にコミット（依存順序が不明な場合は `npx lerna list --graph` で確認）
+       - 依存元を先にコミット（依存順序が不明な場合は `yarn lerna list --graph` で確認）
 - **各コミット後:**
   - **重要: 自動的に次のコミットに進まない**
   - **重要: 次に何をすべきか推測しない**
@@ -32,6 +32,22 @@ description: Git 操作ルール
 - `git commit` を実行する前に、必ず `git diff --staged` をスキャンし、プロジェクト固有の名称、企業名、顧客情報など、リポジトリに含めるべきでない情報がないか確認する。
 - 該当するものがあれば、コミット前にステージングから除外する。
 
+# パッケージのコミット順序（依存元優先）
+
+複数パッケージにまたがる変更をコミットする場合、必ず**リーフからルートへ**（依存元を依存先より先に）コミットする。
+
+| ティア | パッケージ                                                                                                                                            |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0      | `csstree-scss-syntax`                                                                                                                                 |
+| 1      | `stylelint-rules`, `eslint-plugin`                                                                                                                    |
+| 2      | `stylelint-config`, `eslint-config`                                                                                                                   |
+| 3      | `cspell-config`, `markuplint-config`, `prettier-config`, `pug-lint-config`, `textlint-config`, `lint-staged-config`, `commitlint-config`, `cz-config` |
+
+- 同一ティア内では順序不問
+- ルート設定の変更（`tsconfig.json`, CI 等）はパッケージの変更より先にコミット
+- 単一パッケージの変更は順序付け不要 — そのパッケージだけをコミット
+- 不明な場合は `yarn lerna list --graph` で確認
+
 # コミットメッセージの形式
 
 - 英語で記述すること
@@ -39,7 +55,7 @@ description: Git 操作ルール
 - Conventional Commits を使用すること
   - 使用するタイプ: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
   - 使用するスコープ:
-    - 各パッケージ名（ネームスペースなし）
+    - 各パッケージ名（ネームスペースなし）: `cspell-config`, `eslint-config`, `eslint-plugin`, `markuplint-config`, `prettier-config`, `pug-lint-config`, `stylelint-config`, `stylelint-rules`, `csstree-scss-syntax`, `textlint-config`, `lint-staged-config`, `commitlint-config`, `cz-config`
     - `repo`, `deps`, `github`
 - メッセージ本文の各行は100文字以下
 - 件名は sentence-case, start-case, pascal-case, upper-case にしない
