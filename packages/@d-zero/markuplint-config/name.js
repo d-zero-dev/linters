@@ -5,7 +5,7 @@ const nameBase = {
 	rules: {
 		'class-naming': {
 			severity: 'error',
-			value: '/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/',
+			value: '/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/',
 			reason:
 				'クラス名の形式はディーゼロのコーディングガイドラインに則って命名する必要があります。 http://tmpl.d-zero.com/__guideline/coding-guideline/html.html#%F0%9F%92%8E-%E3%82%B3%E3%83%B3%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88',
 		},
@@ -14,16 +14,16 @@ const nameBase = {
 		{
 			regexSelector: {
 				attrName: 'class',
-				attrValue: '/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/',
+				attrValue: '/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/',
 			},
 			inheritance: true,
 			rules: {
 				'class-naming': {
 					severity: 'error',
 					value: [
-						'/^c-{{ ComponentName }}__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/',
-						'/^c-(?!{{ ComponentName }})[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/',
-						'/^c-{{ ComponentName }}[a-z0-9]*(?:-[a-z0-9]+)*$/',
+						'/^{{ Prefix }}-{{ ComponentName }}__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/',
+						'/^[lpc]-(?!{{ ComponentName }})[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/',
+						'/^{{ Prefix }}-{{ ComponentName }}[a-z0-9]*(?:-[a-z0-9]+)*$/',
 					],
 					reason:
 						'ディーゼロのコーディングガイドラインではコンポーネントの中はそのコンポーネントのエレメントか、他のコンポーネントである必要があります。 http://tmpl.d-zero.com/__guideline/coding-guideline/html.html#%E3%82%B3%E3%83%B3%E3%83%9B%E3%82%9A%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%B9%E5%91%BD%E5%90%8D%E8%A6%8F%E5%89%87',
