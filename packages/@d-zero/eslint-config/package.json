@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/eslint-config",
-	"version": "6.0.0-alpha.0",
+	"version": "6.0.0-alpha.1",
 	"description": "Configurations of ESLint",
 	"repository": {
 		"type": "git",
@@ -23,7 +23,7 @@
 		".": "./index.js"
 	},
 	"dependencies": {
-		"@d-zero/eslint-plugin": "6.0.0-alpha.0",
+		"@d-zero/eslint-plugin": "6.0.0-alpha.1",
 		"@eslint/js": "9.39.3",
 		"eslint": "9.39.3",
 		"eslint-plugin-eslint-comments": "3.2.0",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.1](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.0...v6.0.0-alpha.1) (2026-06-24)
+
+### Bug Fixes
+
+- **github:** add dist-tag detection to publish workflow ([8ed2504](https://github.com/d-zero-dev/linters/commit/8ed25041e4d0ad56b0010d1ad5251f1000245a28))
+
+### Features
+
+- **repo:** add 7-day cooldown period for npm package releases ([fcbb62b](https://github.com/d-zero-dev/linters/commit/fcbb62bcec49eabd1ad9a48a10c0074250ee95ca))
+
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
 # [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
 
 ### Bug Fixes
