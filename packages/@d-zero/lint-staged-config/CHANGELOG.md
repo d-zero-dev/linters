@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
+### Bug Fixes
+
+- **deps:** update dependency lint-staged to v16.3.1 ([4cfe16b](https://github.com/d-zero-dev/linters/commit/4cfe16b18cffe3a4db93ee0e998d6491bf0eadd2))
+
 # [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
 
 **Note:** Version bump only for package @d-zero/lint-staged-config

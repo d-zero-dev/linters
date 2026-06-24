@@ -2,7 +2,11 @@
 	"name": "@d-zero/prettier-config",
 	"version": "6.0.0-alpha.0",
 	"description": "Configurations of Prettier",
-	"repository": "https://github.com/d-zero-dev/linters.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/prettier-config"
+	},
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"publishConfig": {

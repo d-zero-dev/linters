@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
+
+### Bug Fixes
+
+- **deps:** update dependency eslint-plugin-jsdoc to v61.7.1 ([c6acbf3](https://github.com/d-zero-dev/linters/commit/c6acbf325ec6843d9a54ed966c51152f026e1d4d))
+- **deps:** update dependency eslint-plugin-jsdoc to v62 ([8d45825](https://github.com/d-zero-dev/linters/commit/8d45825034154134afd802147c7507533f50cc20))
+- **deps:** update dependency eslint-plugin-jsdoc to v62.2.0 ([eb39452](https://github.com/d-zero-dev/linters/commit/eb3945257137bd23d85f6b132af01cfa235beb9c))
+- **deps:** update dependency eslint-plugin-jsdoc to v62.7.1 ([6a4d1a5](https://github.com/d-zero-dev/linters/commit/6a4d1a53454a4da52c74981671db7da3fc530ada))
+- **deps:** update dependency eslint-plugin-regexp to v3 ([e3fa315](https://github.com/d-zero-dev/linters/commit/e3fa31542968f77022dc446be80463b93546278e))
+- **deps:** update dependency eslint-plugin-unicorn to v63 ([e745810](https://github.com/d-zero-dev/linters/commit/e745810e20f51683ad646e4e5cc5cac69291b0b3))
+- **deps:** update dependency globals to v17.3.0 ([347154a](https://github.com/d-zero-dev/linters/commit/347154af85bc89cba52f26489fca7e3331ebd89b))
+- **deps:** update dependency typescript-eslint to v8.53.0 ([328c029](https://github.com/d-zero-dev/linters/commit/328c0296094d7a57fbe802428069fbc9d40cc6a2))
+- **deps:** update dependency typescript-eslint to v8.53.1 ([7c00190](https://github.com/d-zero-dev/linters/commit/7c0019058e7976bb1c0963018b4a0db7030e43dc))
+- **deps:** update dependency typescript-eslint to v8.54.0 ([dce3323](https://github.com/d-zero-dev/linters/commit/dce3323dbed2cd9e6e19af6c0ace6ea92df127dc))
+- **deps:** update dependency typescript-eslint to v8.56.1 ([b5ef9a3](https://github.com/d-zero-dev/linters/commit/b5ef9a3e69aa298b93bb034a278c48721114b449))
+- **deps:** update eslint monorepo to v9.39.3 ([9ed8727](https://github.com/d-zero-dev/linters/commit/9ed8727b3f82696dfb64ece91f8faa8ab296e045))
+
+### Features
+
+- **eslint:** integrate no-click-event rule from @d-zero/eslint-plugin ([ec97518](https://github.com/d-zero-dev/linters/commit/ec9751895b0086265bee0e418f67ffc3becd94e1))
+
 # [5.0.0](https://github.com/d-zero-dev/linters/compare/v5.0.0-alpha.76...v5.0.0) (2026-01-05)
 
 ### Bug Fixes
