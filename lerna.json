@@ -1,6 +1,6 @@
 {
 	"lerna": "8.0.1",
-	"version": "6.0.0-alpha.1",
+	"version": "6.0.0-alpha.2",
 	"packages": ["packages/@d-zero/*"],
 	"command": {
 		"version": {
