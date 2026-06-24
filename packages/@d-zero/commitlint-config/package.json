@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/commitlint-config",
-	"version": "5.0.0",
+	"version": "6.0.0-alpha.0",
 	"description": "Configurations of commitlint",
 	"repository": "https://github.com/d-zero-dev/linters.git",
 	"author": "D-ZERO Co., Ltd.",
@@ -21,6 +21,6 @@
 	"dependencies": {
 		"@commitlint/cli": "20.4.2",
 		"@commitlint/config-conventional": "20.4.2",
-		"@d-zero/cz-config": "5.0.0"
+		"@d-zero/cz-config": "6.0.0-alpha.0"
 	}
 }
