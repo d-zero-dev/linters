@@ -1050,7 +1050,7 @@ __metadata:
   resolution: "@d-zero/cz-config@workspace:packages/@d-zero/cz-config"
   dependencies:
     commitizen: "npm:4.3.2"
-    cz-customizable: "npm:7.5.1"
+    cz-customizable: "npm:7.5.4"
   languageName: unknown
   linkType: soft
 
@@ -5887,20 +5887,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cz-customizable@npm:7.5.1":
-  version: 7.5.1
-  resolution: "cz-customizable@npm:7.5.1"
+"cz-customizable@npm:7.5.4":
+  version: 7.5.4
+  resolution: "cz-customizable@npm:7.5.4"
   dependencies:
     editor: "npm:1.0.0"
     find-config: "npm:^1.0.0"
     inquirer: "npm:^6.3.1"
-    lodash: "npm:^4.17.19"
-    temp: "npm:^0.9.0"
-    word-wrap: "npm:^1.2.3"
+    lodash: "npm:^4.17.23"
+    temp: "npm:^0.9.4"
+    word-wrap: "npm:^1.2.5"
   bin:
     cz-cust: standalone.js
     cz-customizable: standalone.js
-  checksum: 10c0/7fbe2ad299a412e4f00f3afa254959b4c98ff9bbf171293b949ac86fc3bff8e32d8e621e753bd71bdfa9c50f9aa3d5a6871506c98f5ffe6be71995dfc785fe93
+  checksum: 10c0/28a242fd7b233ddb841f51c46903fcb638280fc5dac387c535dfe5a615654a122cecab5d34343d67da7aad5fb36319474d098247d2f66b635a2a7a0e6b5682cf
   languageName: node
   linkType: hard
 
@@ -9686,7 +9686,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:4.17.21, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -13780,7 +13780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"temp@npm:^0.9.0":
+"temp@npm:^0.9.4":
   version: 0.9.4
   resolution: "temp@npm:0.9.4"
   dependencies:
@@ -15138,7 +15138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"word-wrap@npm:^1.0.3, word-wrap@npm:^1.2.3, word-wrap@npm:^1.2.5":
+"word-wrap@npm:^1.0.3, word-wrap@npm:^1.2.5":
   version: 1.2.5
   resolution: "word-wrap@npm:1.2.5"
   checksum: 10c0/e0e4a1ca27599c92a6ca4c32260e8a92e8a44f4ef6ef93f803f8ed823f486e0889fc0b93be4db59c8d51b3064951d25e43d434e95dc8c960cc3a63d65d00ba20
