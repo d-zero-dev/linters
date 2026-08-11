@@ -27,7 +27,7 @@
 		"*.js"
 	],
 	"dependencies": {
-		"prettier": "3.8.1"
+		"prettier": "3.9.6"
 	},
 	"optionalDependencies": {
 		"@prettier/plugin-pug": ">=3.0.0"
