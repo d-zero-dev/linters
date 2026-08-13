@@ -19,8 +19,8 @@
 		".": "./index.js"
 	},
 	"dependencies": {
-		"@commitlint/cli": "20.5.3",
-		"@commitlint/config-conventional": "20.5.3",
+		"@commitlint/cli": "21.2.1",
+		"@commitlint/config-conventional": "21.2.0",
 		"@d-zero/cz-config": "5.0.0"
 	}
 }
