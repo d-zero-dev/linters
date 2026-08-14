@@ -30,6 +30,7 @@ jobs:
 
       - name: Enable Corepack and setup Yarn v4
         run: |
+          npm install -g corepack --force
           corepack enable
           yarn --version
 
