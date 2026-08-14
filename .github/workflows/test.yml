@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [macOS-latest, windows-latest]
-        node: [24]
+        node: [26]
 
     runs-on: ${{ matrix.os }}
 
