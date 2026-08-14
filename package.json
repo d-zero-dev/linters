@@ -1,19 +1,20 @@
 {
 	"name": "linters",
-	"description": "Linters and their configurations of D-ZERO Co., Ltd.",
-	"repository": "https://github.com/d-zero-dev/linters.git",
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
 	"private": true,
-	"type": "module",
+	"description": "Linters and their configurations of D-ZERO Co., Ltd.",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
+	"repository": "https://github.com/d-zero-dev/linters.git",
 	"workspaces": [
 		"packages/@d-zero/*"
 	],
+	"type": "module",
 	"scripts": {
 		"test": "vitest run",
 		"build": "lerna run build",
-		"lint": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
-		"lint:ci": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
+		"lint:ci": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint:dedupe": "yarn dedupe --check",
 		"lint:cspell": "npx cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
 		"lint:eslint": "npx eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
 		"lint:prettier": "npx prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
@@ -30,6 +31,22 @@
 		"prepare": "husky",
 		"update": "yarn upgrade-interactive"
 	},
+	"devDependencies": {
+		"@d-zero/tsconfig": "2.0.0",
+		"@secretlint/secretlint-rule-preset-recommend": "13.0.4",
+		"@types/node": "24.13.3",
+		"execa": "10.0.1",
+		"husky": "9.1.7",
+		"lerna": "10.0.0",
+		"npm-run-all2": "9.0.3",
+		"prettier": "3.9.6",
+		"secretlint": "13.0.4",
+		"typescript": "5.9.3",
+		"vitest": "4.1.10"
+	},
+	"resolutions": {
+		"baseline-browser-mapping": "^2"
+	},
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/cz-customizable"
@@ -38,24 +55,9 @@
 			"config": "./node_modules/@d-zero/cz-config"
 		}
 	},
-	"devDependencies": {
-		"@d-zero/tsconfig": "2.0.0",
-		"@secretlint/secretlint-rule-preset-recommend": "11.7.1",
-		"execa": "10.0.1",
-		"husky": "9.1.7",
-		"lerna": "10.0.0",
-		"npm-run-all2": "9.0.3",
-		"prettier": "3.9.6",
-		"secretlint": "11.7.1",
-		"typescript": "5.9.3",
-		"vitest": "4.1.10"
-	},
-	"resolutions": {
-		"baseline-browser-mapping": "^2"
-	},
-	"packageManager": "yarn@4.18.0",
 	"volta": {
 		"node": "26.6.0",
 		"yarn": "4.18.0"
-	}
+	},
+	"packageManager": "yarn@4.18.0"
 }

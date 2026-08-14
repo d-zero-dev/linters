@@ -2,28 +2,28 @@
 	"name": "@d-zero/textlint-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of textlint",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/textlint-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
 	"files": [
 		"index.js"
 	],
 	"main": "index.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"textlint": "15.8.0",
 		"textlint-plugin-html": "1.0.1",
-		"textlint-rule-preset-ja-spacing": "2.4.3",
+		"textlint-rule-preset-ja-spacing": "3.0.3",
 		"textlint-rule-preset-japanese": "10.0.4",
 		"textlint-rule-preset-jtf-style": "3.0.3"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

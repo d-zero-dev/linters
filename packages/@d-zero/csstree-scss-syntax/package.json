@@ -2,19 +2,16 @@
 	"name": "@d-zero/csstree-scss-syntax",
 	"version": "6.0.0-alpha.2",
 	"description": "SCSS syntax processor based on csstree",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/csstree-scss-syntax"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
+	"files": [
+		"dist"
+	],
 	"type": "module",
 	"exports": {
 		".": {
@@ -22,13 +19,16 @@
 			"types": "./dist/index.d.ts"
 		}
 	},
-	"files": [
-		"dist"
-	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "tsc"
 	},
 	"dependencies": {
-		"css-tree": "3.1.0"
+		"css-tree": "3.2.1"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

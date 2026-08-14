@@ -2,29 +2,29 @@
 	"name": "@d-zero/commitlint-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of commitlint",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/commitlint-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"type": "module",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
 	"files": [
 		"*.js"
 	],
+	"type": "module",
 	"exports": {
 		".": "./index.js"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
-		"@commitlint/cli": "21.2.1",
+		"@commitlint/cli": "21.2.0",
 		"@commitlint/config-conventional": "21.2.0",
 		"@d-zero/cz-config": "6.0.0-alpha.2"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

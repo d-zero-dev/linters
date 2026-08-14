@@ -2,20 +2,18 @@
 	"name": "@d-zero/stylelint-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of Stylelint",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/stylelint-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
+	"files": [
+		"*.js"
+	],
 	"type": "commonjs",
+	"main": "index.js",
 	"exports": {
 		".": "./index.js",
 		"./base": "./base.js",
@@ -24,18 +22,20 @@
 		"./scss": "./scss.js",
 		"./values": "./values.js"
 	},
-	"files": [
-		"*.js"
-	],
-	"main": "index.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@d-zero/stylelint-rules": "6.0.0-alpha.2",
 		"postcss-scss": "4.0.9",
-		"stylelint": "17.4.0",
+		"stylelint": "17.14.1",
 		"stylelint-config-recess-order": "7.8.0",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
 		"stylelint-scss": "7.2.0",
 		"stylelint-use-logical": "2.1.3"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

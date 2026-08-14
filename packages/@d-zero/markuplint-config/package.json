@@ -2,19 +2,16 @@
 	"name": "@d-zero/markuplint-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of Markuplint",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/markuplint-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
+	"files": [
+		"*.js"
+	],
 	"type": "module",
 	"exports": {
 		".": "./index.js",
@@ -22,11 +19,14 @@
 		"./name": "./name.js",
 		"./pug": "./pug.js"
 	},
-	"files": [
-		"*.js"
-	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"@markuplint/pug-parser": "4.18.3",
-		"markuplint": "4.14.0"
+		"markuplint": "4.18.3"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }

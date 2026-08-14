@@ -21,6 +21,7 @@
 	},
 	"autoApprove": true,
 	"labels": ["Dependencies", "Renovate"],
+	"postUpdateOptions": ["yarnDedupeHighest"],
 	"packageRules": [
 		{
 			"matchDepTypes": ["optionalDependencies"],
@@ -39,6 +40,11 @@
 			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
 			"matchCurrentVersion": "!/^0/",
 			"automerge": true
+		},
+		{
+			"description": "Group postcss with stylelint to avoid lockfile split across their shared postcss dependency",
+			"matchPackageNames": ["postcss", "stylelint"],
+			"groupName": "postcss and stylelint"
 		}
 	]
 }
