@@ -7,7 +7,7 @@
 **コンポーネントルートで禁止されているプロパティの使用をチェックします**
 
 - ファイル名と完全一致するクラス名を持つルール（コンポーネントルート）のみをチェック対象とします
-- コンポーネントの子要素（`__element` など）や、その他のルールではチェックしません
+- コンポーネントの子要素（`__element`など）や、その他のルールではチェックしません
 - 疑似クラス（`:hover`など）を含むルール内の禁止プロパティもチェック対象とします
 - 疑似要素（`::before`など）を含むルール内の禁止プロパティはチェック対象外です
 
@@ -17,8 +17,8 @@
 
 ### 幅・高さ関連
 
-- `width`, `inline-size`（`min-width`, `max-width`, `min-inline-size`, `max-inline-size` は許可）
-- `height`, `block-size`（`min-height`, `max-height`, `min-block-size`, `max-block-size` は許可）
+- `width`, `inline-size`（`min-width`, `max-width`, `min-inline-size`, `max-inline-size`は許可）
+- `height`, `block-size`（`min-height`, `max-height`, `min-block-size`, `max-block-size`は許可）
 
 ### マージン関連
 
@@ -127,4 +127,4 @@
 
 ### c-content-main
 
-`c-content-main` クラスについては、特に `width` と `inline-size` の使用が絶対に禁止されています。幅はコンポーネントをラップする親のエレメントに指定する必要があります。
+`c-content-main`クラスについては、特に`width`と`inline-size`の使用が絶対に禁止されています。幅はコンポーネントをラップする親のエレメントに指定する必要があります。

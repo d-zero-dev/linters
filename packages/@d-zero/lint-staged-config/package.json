@@ -23,6 +23,6 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"lint-staged": "16.3.1"
+		"lint-staged": "17.3.0"
 	}
 }
