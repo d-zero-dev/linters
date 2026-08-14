@@ -1109,9 +1109,9 @@ __metadata:
   resolution: "@d-zero/eslint-config@workspace:packages/@d-zero/eslint-config"
   dependencies:
     "@d-zero/eslint-plugin": "npm:5.0.0"
+    "@eslint-community/eslint-plugin-eslint-comments": "npm:3.2.0"
     "@eslint/js": "npm:9.39.5"
     eslint: "npm:9.39.5"
-    eslint-plugin-eslint-comments: "npm:3.2.0"
     eslint-plugin-import-x: "npm:4.17.1"
     eslint-plugin-jsdoc: "npm:64.1.0"
     eslint-plugin-regexp: "npm:3.2.0"
@@ -1297,6 +1297,18 @@ __metadata:
   version: 1.2.0
   resolution: "@es-joy/resolve.exports@npm:1.2.0"
   checksum: 10c0/7e4713471f5eccb17a925a12415a2d9e372a42376813a19f6abd9c35e8d01ab1403777265817da67c6150cffd4f558d9ad51e26a8de6911dad89d9cb7eedacd8
+  languageName: node
+  linkType: hard
+
+"@eslint-community/eslint-plugin-eslint-comments@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@eslint-community/eslint-plugin-eslint-comments@npm:3.2.0"
+  dependencies:
+    escape-string-regexp: "npm:^1.0.5"
+    ignore: "npm:^5.0.5"
+  peerDependencies:
+    eslint: ">=4.19.1"
+  checksum: 10c0/58790138692a852f22f2f8fd9fd60bee7bc1fc659f61491441c470c7767347f47c5f70c8e75e60c3e64db2c01ef53f0b9497a8846b353cf9c1151e143e960404
   languageName: node
   linkType: hard
 
@@ -6026,18 +6038,6 @@ __metadata:
     unrs-resolver:
       optional: true
   checksum: 10c0/07851103443b70af681c5988e2702e681ff9b956e055e11d4bd9b2322847fa0d9e8da50c18fc7cb1165106b043f34fbd0384d7011c239465c4645c52132e56f3
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-eslint-comments@npm:3.2.0":
-  version: 3.2.0
-  resolution: "eslint-plugin-eslint-comments@npm:3.2.0"
-  dependencies:
-    escape-string-regexp: "npm:^1.0.5"
-    ignore: "npm:^5.0.5"
-  peerDependencies:
-    eslint: ">=4.19.1"
-  checksum: 10c0/c71db824592dc8ea498021572a0bd33d763ef26126bdb3b84a027ca75a1adbe0894ec95024f7de39ef12308560e62cbf8af0d06ffe472be5ba8bd9169c928e96
   languageName: node
   linkType: hard
 
