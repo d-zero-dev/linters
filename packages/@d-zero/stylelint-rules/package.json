@@ -23,12 +23,12 @@
 	},
 	"dependencies": {
 		"@d-zero/csstree-scss-syntax": "5.0.0",
-		"css-tree": "3.1.0",
+		"css-tree": "3.2.1",
 		"postcss-selector-parser": "7.1.5",
 		"postcss-value-parser": "4.2.0",
-		"stylelint": "17.4.0"
+		"stylelint": "17.14.1"
 	},
 	"devDependencies": {
-		"postcss": "8.5.6"
+		"postcss": "8.5.26"
 	}
 }
