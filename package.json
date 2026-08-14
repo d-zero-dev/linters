@@ -12,8 +12,9 @@
 	"scripts": {
 		"test": "vitest run",
 		"build": "lerna run build",
-		"lint": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
-		"lint:ci": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
+		"lint:ci": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint:dedupe": "yarn dedupe --check",
 		"lint:cspell": "npx cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
 		"lint:eslint": "npx eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
 		"lint:prettier": "npx prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
