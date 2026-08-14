@@ -8,13 +8,14 @@ on:
     branches:
       - main
       - dev
+      - 'v*'
 
 jobs:
   test:
     strategy:
       matrix:
         os: [macOS-latest, windows-latest]
-        node: [24]
+        node: [26]
 
     runs-on: ${{ matrix.os }}
 
@@ -29,6 +30,7 @@ jobs:
 
       - name: Enable Corepack and setup Yarn v4
         run: |
+          npm install -g corepack --force
           corepack enable
           yarn --version
 
