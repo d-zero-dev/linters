@@ -205,6 +205,8 @@ describe('markuplint', () => {
 		expect(violations).toStrictEqual([
 			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
 			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			'test/fixtures/markuplint/button-command.html:41:2 Detected perceptible nodes between the trigger and corresponding target',
+			'test/fixtures/markuplint/button-command.html:42:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
