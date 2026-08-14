@@ -1091,7 +1091,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax"
   dependencies:
-    css-tree: "npm:3.1.0"
+    css-tree: "npm:3.2.1"
   languageName: unknown
   linkType: soft
 
@@ -1193,7 +1193,7 @@ __metadata:
   resolution: "@d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules"
   dependencies:
     "@d-zero/csstree-scss-syntax": "npm:5.0.0"
-    css-tree: "npm:3.1.0"
+    css-tree: "npm:3.2.1"
     postcss: "npm:8.5.6"
     postcss-selector-parser: "npm:7.1.5"
     postcss-value-parser: "npm:4.2.0"
