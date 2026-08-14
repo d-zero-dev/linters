@@ -32,10 +32,10 @@
 		"@d-zero/stylelint-rules": "6.0.0-alpha.2",
 		"postcss-scss": "4.0.9",
 		"stylelint": "17.4.0",
-		"stylelint-config-recess-order": "7.6.1",
+		"stylelint-config-recess-order": "7.8.0",
 		"stylelint-config-standard": "40.0.0",
-		"stylelint-order": "7.0.1",
-		"stylelint-scss": "7.0.0",
+		"stylelint-order": "8.1.1",
+		"stylelint-scss": "7.2.0",
 		"stylelint-use-logical": "2.1.3"
 	}
 }
