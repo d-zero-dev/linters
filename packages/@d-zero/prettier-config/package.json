@@ -2,19 +2,16 @@
 	"name": "@d-zero/prettier-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of Prettier",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/prettier-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
+	"files": [
+		"*.js"
+	],
 	"type": "module",
 	"exports": {
 		".": {
@@ -23,20 +20,28 @@
 		"./base": {
 			"import": "./base.js"
 		},
+		"./astro": {
+			"import": "./astro.js"
+		},
 		"./pug": {
 			"import": "./pug.js"
 		}
 	},
-	"files": [
-		"*.js"
-	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"prettier": "3.9.6"
 	},
-	"optionalDependencies": {
-		"@prettier/plugin-pug": ">=3.0.0"
-	},
 	"devDependencies": {
-		"@prettier/plugin-pug": "3.4.2"
+		"@prettier/plugin-pug": "3.4.2",
+		"prettier-plugin-astro": "0.14.1"
+	},
+	"optionalDependencies": {
+		"@prettier/plugin-pug": ">=3.0.0",
+		"prettier-plugin-astro": ">=0.14.1"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }
