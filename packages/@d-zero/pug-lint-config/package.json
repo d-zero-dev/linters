@@ -2,24 +2,24 @@
 	"name": "@d-zero/pug-lint-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of pug-lint",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/pug-lint-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
 	"files": [
 		"index.js"
 	],
 	"main": "index.js",
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
 		"pug-lint": "2.7.0"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }
