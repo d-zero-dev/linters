@@ -4,14 +4,9 @@ import dz from '@d-zero/eslint-config';
  * @type {import('eslint').ESLint.ConfigData[]}
  */
 export default [
-	...dz.configs.standard,
+	...dz.configs.base,
 	{
-		rules: {
-			'@typescript-eslint/ban-ts-comment': 0,
-		},
-	},
-	{
-		files: ['*.mjs', '**/*.spec.{js,mjs,ts}'],
+		files: ['*.mjs', '**/*.spec.{js,mjs}'],
 		rules: {
 			'import-x/no-extraneous-dependencies': 0,
 		},
@@ -19,14 +14,14 @@ export default [
 	{
 		files: [
 			'.textlintrc.js',
-			'**/cz-config/**/*',
-			'**/pug-lint-config/**/*',
-			'**/stylelint-config/**/*',
-			'**/textlint-config/**/*',
+			'**/cz-config/**',
+			'**/pug-lint-config/**',
+			'**/stylelint-config/**',
+			'**/textlint-config/**',
 		],
 		...dz.configs.commonjs,
 	},
 	{
-		ignores: ['**/lib/**/*'],
+		ignores: ['**/lib/**/*', '**/dist/**', 'test/fixtures/**', '**/*.json'],
 	},
 ];
