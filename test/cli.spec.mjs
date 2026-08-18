@@ -1,7 +1,10 @@
 import path from 'node:path';
 
+import oxlintPlugin from '@d-zero/oxlint-plugin';
 import { execa } from 'execa';
 import { vi, describe, test, expect } from 'vitest';
+
+import oxlintPluginPackage from '../packages/@d-zero/oxlint-plugin/package.json' with { type: 'json' };
 
 vi.setConfig({
 	testTimeout: 15_000,
@@ -14,6 +17,92 @@ vi.setConfig({
 function n(filePath) {
 	return path.relative(process.cwd(), filePath).replaceAll(path.sep, '/');
 }
+
+describe('Oxlint', () => {
+	test('plugin metadata uses the published package version', () => {
+		expect(oxlintPlugin.meta.version).toBe(oxlintPluginPackage.version);
+	});
+
+	const oxlint = async (filepath) => {
+		const { stdout, exitCode } = await execa(
+			'yarn',
+			['oxlint', filepath, '--format', 'unix'],
+			{
+				reject: false,
+			},
+		);
+
+		return {
+			exitCode,
+			lines: stdout.split('\n').filter((line) => line.includes(':')),
+		};
+	};
+
+	test('no-click-event', async () => {
+		const { exitCode, lines } = await oxlint('test/fixtures/oxlint/no-click-event.tsx');
+		// Warning-level rule violations do not make oxlint exit with a failure code.
+		expect(exitCode).toBe(0);
+		expect(lines).toStrictEqual([
+			'test/fixtures/oxlint/no-click-event.tsx:1:1: Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API [Warning/@d-zero(no-click-event)]',
+			'test/fixtures/oxlint/no-click-event.tsx:2:9: Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API [Warning/@d-zero(no-click-event)]',
+			'test/fixtures/oxlint/no-click-event.tsx:4:1: Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API [Warning/@d-zero(no-click-event)]',
+			'test/fixtures/oxlint/no-click-event.tsx:5:1: Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API [Warning/@d-zero(no-click-event)]',
+			'test/fixtures/oxlint/no-click-event.tsx:6:1: Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API [Warning/@d-zero(no-click-event)]',
+		]);
+	});
+
+	test('no-click-event does not detect Vue @click / v-on:click (unsupported in v6)', async () => {
+		const { exitCode, lines } = await oxlint('test/fixtures/oxlint/no-click-event.vue');
+		expect(exitCode).toBe(0);
+		expect(lines).toStrictEqual([]);
+	});
+
+	describe('oxlint-config', () => {
+		const printConfig = async () => {
+			const { stdout } = await execa(
+				'yarn',
+				['oxlint', '--print-config', 'oxlint.config.mts'],
+				{ reject: false },
+			);
+			return JSON.parse(stdout);
+		};
+
+		test('promotes the correctness category to error (deny)', async () => {
+			const config = await printConfig();
+			expect(config.categories.correctness).toBe('deny');
+		});
+
+		test('keeps rules that were error-level before the oxlint migration at deny', async () => {
+			const config = await printConfig();
+			expect(config.rules['no-var']).toBe('deny');
+			expect(config.rules['prefer-const']).toBe('deny');
+			expect(config.rules['prefer-rest-params']).toBe('deny');
+			expect(config.rules['prefer-spread']).toBe('deny');
+			expect(config.rules['unicorn/prefer-code-point']).toBe('deny');
+			expect(config.rules['typescript/no-namespace']).toBe('deny');
+		});
+
+		test('keeps rules that were warn-level before the oxlint migration at warn', async () => {
+			const config = await printConfig();
+			expect(config.rules['no-console']).toBe('warn');
+			expect(config.rules['typescript/no-explicit-any']).toBe('warn');
+			expect(config.rules['jsdoc/require-param']).toBe('warn');
+		});
+	});
+});
+
+describe('Prettier', () => {
+	test('Astro', async () => {
+		const { exitCode, stderr } = await execa(
+			'yarn',
+			['prettier', '--check', 'test/fixtures/prettier/astro.astro'],
+			{ reject: false },
+		);
+
+		expect(stderr).toBe('');
+		expect(exitCode).toBe(0);
+	});
+});
 
 describe('ESLint', () => {
 	const eslint = async (filepath, rule) => {
@@ -40,57 +129,49 @@ describe('ESLint', () => {
 
 	test('sort-class-members', async () => {
 		const result = await eslint(
-			'test/fixtures/eslint/sort-class-members.ts',
+			'test/fixtures/eslint/sort-class-members.js',
 			'sort-class-members/sort-class-members',
 		);
 		expect(result).toStrictEqual([
-			'3:2 warning Expected property member to come before constructor sort-class-members/sort-class-members',
 			'8:2 warning Expected getter getter to come before constructor sort-class-members/sort-class-members',
-			'11:2 warning Expected property member to come before constructor sort-class-members/sort-class-members',
-			'11:2 warning Expected property member to come before getter getter sort-class-members/sort-class-members',
-			'14:2 warning Expected method method to come before static property staticMember sort-class-members/sort-class-members',
-			'19:2 warning Expected property c1 to come before property #a sort-class-members/sort-class-members',
-			'20:2 warning Expected property c2 to come before property #a sort-class-members/sort-class-members',
-			'20:2 warning Expected property c2 to come before property c1 sort-class-members/sort-class-members',
-			'21:2 warning Expected property b2 to come before property #a sort-class-members/sort-class-members',
-			'22:2 warning Expected property b1 to come before property #a sort-class-members/sort-class-members',
-			'22:2 warning Expected property b1 to come before property b2 sort-class-members/sort-class-members',
+			'13:2 warning Expected static property staticMember to come before property member sort-class-members/sort-class-members',
+			'24:2 warning Expected accessor pair b to come before property #a sort-class-members/sort-class-members',
+			'24:2 warning Expected accessor pair b to come before property c1 sort-class-members/sort-class-members',
+			'24:2 warning Expected accessor pair b to come before property c2 sort-class-members/sort-class-members',
+			'24:2 warning Expected accessor pair b to come before property b2 sort-class-members/sort-class-members',
+			'24:2 warning Expected accessor pair b to come before property b1 sort-class-members/sort-class-members',
+			'28:2 warning Expected getter a to come before property #a sort-class-members/sort-class-members',
+			'28:2 warning Expected getter a to come before property c1 sort-class-members/sort-class-members',
+			'28:2 warning Expected getter a to come before property c2 sort-class-members/sort-class-members',
+			'28:2 warning Expected getter a to come before property b2 sort-class-members/sort-class-members',
+			'28:2 warning Expected getter a to come before property b1 sort-class-members/sort-class-members',
 			'32:2 warning Expected getter b to come immediately before setter b sort-class-members/sort-class-members',
-			'49:2 warning Expected method #privateMethod to come before method _method sort-class-members/sort-class-members',
-			'50:2 warning Expected method method2 to come before method _method sort-class-members/sort-class-members',
-			'50:2 warning Expected method method2 to come before method #privateMethod sort-class-members/sort-class-members',
-		]);
-	});
-
-	test('prefer-top-level-await', async () => {
-		const frontend = await eslint(
-			'test/fixtures/eslint/frontend/prefer-top-level-await.ts',
-			'unicorn/prefer-top-level-await',
-		);
-		expect(frontend).toStrictEqual([]);
-
-		const node = await eslint(
-			'test/fixtures/eslint/node/prefer-top-level-await.ts',
-			'unicorn/prefer-top-level-await',
-		);
-		expect(node).toStrictEqual([
-			'5:6 error Prefer top-level await over an async function `asyncFn` call unicorn/prefer-top-level-await',
+			'36:2 warning Expected constructor to come before property #a sort-class-members/sort-class-members',
+			'36:2 warning Expected constructor to come before property c1 sort-class-members/sort-class-members',
+			'36:2 warning Expected constructor to come before property c2 sort-class-members/sort-class-members',
+			'36:2 warning Expected constructor to come before property b2 sort-class-members/sort-class-members',
+			'36:2 warning Expected constructor to come before property b1 sort-class-members/sort-class-members',
+			'37:2 warning Expected method _method to come before property #a sort-class-members/sort-class-members',
+			'37:2 warning Expected method _method to come before property c1 sort-class-members/sort-class-members',
+			'37:2 warning Expected method _method to come before property c2 sort-class-members/sort-class-members',
+			'37:2 warning Expected method _method to come before property b2 sort-class-members/sort-class-members',
+			'37:2 warning Expected method _method to come before property b1 sort-class-members/sort-class-members',
 		]);
 	});
 
 	test('Disallow DOMContentLoaded', async () => {
-		const frontend = await eslint(
-			'test/fixtures/eslint/frontend/dom-content-loaded.ts',
+		const result = await eslint(
+			'test/fixtures/eslint/frontend/dom-content-loaded.js',
 			'no-restricted-syntax',
 		);
-		expect(frontend).toStrictEqual([
+		expect(result).toStrictEqual([
 			"1:1 error Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead no-restricted-syntax",
 		]);
 	});
 
 	test('no-click-event', async () => {
 		const result = await eslint(
-			'test/fixtures/eslint/no-click-event.ts',
+			'test/fixtures/eslint/frontend/no-click-event.js',
 			'@d-zero/no-click-event',
 		);
 		expect(result).toStrictEqual([
@@ -98,6 +179,33 @@ describe('ESLint', () => {
 			'7:2 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
 			'12:1 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
 			'15:1 warning Avoid using click events. Consider using the Invoker Commands API instead. See: https://developer.mozilla.org/docs/Web/API/Invoker_Commands_API @d-zero/no-click-event',
+		]);
+	});
+
+	test('regexp', async () => {
+		const result = await eslint(
+			'test/fixtures/eslint/regexp.js',
+			'regexp/no-useless-escape',
+		);
+		expect(result).toStrictEqual([
+			'1:18 error Unnecessary escape character: \\a regexp/no-useless-escape',
+		]);
+	});
+
+	test('jsdoc', async () => {
+		const result = await eslint('test/fixtures/eslint/jsdoc.js', 'jsdoc/require-jsdoc');
+		expect(result).toStrictEqual([
+			'1:8 warning Missing JSDoc comment jsdoc/require-jsdoc',
+		]);
+	});
+
+	test('no-extraneous-dependencies', async () => {
+		const result = await eslint(
+			'test/fixtures/eslint/no-extraneous-dependencies.js',
+			'import-x/no-extraneous-dependencies',
+		);
+		expect(result).toStrictEqual([
+			"1:1 error 'lodash' should be listed in the project's dependencies. Run 'yarn add lodash' to add it import-x/no-extraneous-dependencies",
 		]);
 	});
 });

@@ -16,7 +16,7 @@ export class Test2 {
 
 export class Test3 {
 	#a = true;
-	readonly c1 = true;
+	c1 = true;
 	c2 = true;
 	b2 = () => {};
 	b1 = () => {};
@@ -34,7 +34,7 @@ export class Test3 {
 	}
 
 	constructor() {}
-	protected _method() {}
+	_method() {}
 }
 
 export class Test4 extends Test3 {
@@ -43,7 +43,7 @@ export class Test4 extends Test3 {
 		this.#privateMethod();
 	}
 
-	protected override _method() {
+	_method() {
 		super._method();
 	}
 	#privateMethod() {}
