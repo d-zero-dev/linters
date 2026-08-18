@@ -1,4 +1,6 @@
-import type { TSESTree } from '@typescript-eslint/utils';
+import type { Rule } from 'eslint';
+import type { AssignmentExpression, CallExpression, MemberExpression } from 'estree';
+import type { AST } from 'vue-eslint-parser';
 
 import { createRule } from '../../utils/create-rule.js';
 
@@ -15,18 +17,15 @@ export default createRule({
 		},
 		schema: [], // No options
 	},
-	defaultOptions: [],
-	create(context) {
+	create(context): Rule.RuleListener {
 		return {
 			// Pattern 1: addEventListener('click', ...)
-			'CallExpression[callee.property.name="addEventListener"]'(
-				node: TSESTree.CallExpression,
-			) {
+			'CallExpression[callee.property.name="addEventListener"]'(node: CallExpression) {
 				const args = node.arguments;
 				const firstArg = args[0];
 				if (firstArg && firstArg.type === 'Literal' && firstArg.value === 'click') {
 					context.report({
-						node,
+						node: node as unknown as Rule.Node,
 						messageId: 'noClickEvent',
 					});
 				}
@@ -34,22 +33,22 @@ export default createRule({
 
 			// Pattern 2: element.onclick = ...
 			'AssignmentExpression[left.type="MemberExpression"][left.property.name="onclick"]'(
-				node: TSESTree.AssignmentExpression,
+				node: AssignmentExpression,
 			) {
 				context.report({
-					node,
+					node: node as unknown as Rule.Node,
 					messageId: 'noClickEvent',
 				});
 			},
 
 			// Pattern 3: jQuery .on('click', ...)
 			'CallExpression[callee.type="MemberExpression"][callee.property.name="on"]'(
-				node: TSESTree.CallExpression,
+				node: CallExpression,
 			) {
 				const firstArg = node.arguments[0];
 				if (firstArg && firstArg.type === 'Literal' && firstArg.value === 'click') {
 					context.report({
-						node,
+						node: node as unknown as Rule.Node,
 						messageId: 'noClickEvent',
 					});
 				}
@@ -57,14 +56,14 @@ export default createRule({
 
 			// Pattern 4: jQuery .click(handler) - only for jQuery objects with arguments (event handler registration)
 			'CallExpression[callee.type="MemberExpression"][callee.property.name="click"]'(
-				node: TSESTree.CallExpression,
+				node: CallExpression,
 			) {
 				// Allow .click() without arguments (click execution, not event handler registration)
 				if (node.arguments.length === 0) {
 					return;
 				}
 
-				const callee = node.callee as TSESTree.MemberExpression;
+				const callee = node.callee as MemberExpression;
 				const object = callee.object;
 
 				// $(...).click(handler) or jQuery(...).click(handler)
@@ -74,7 +73,7 @@ export default createRule({
 					(object.callee.name === '$' || object.callee.name === 'jQuery')
 				) {
 					context.report({
-						node,
+						node: node as unknown as Rule.Node,
 						messageId: 'noClickEvent',
 					});
 					return;
@@ -83,34 +82,35 @@ export default createRule({
 				// $element.click(handler)
 				if (object.type === 'Identifier' && object.name.startsWith('$')) {
 					context.report({
-						node,
+						node: node as unknown as Rule.Node,
 						messageId: 'noClickEvent',
 					});
 				}
 			},
 
 			// Pattern 5: React onClick={...}
-			'JSXAttribute[name.name="onClick"]'(node: TSESTree.JSXAttribute) {
+			// JSXAttribute isn't part of ESTree; espree with jsx enabled produces it, but no type package covers it.
+			'JSXAttribute[name.name="onClick"]'(node: unknown) {
 				context.report({
-					node,
+					node: node as Rule.Node,
 					messageId: 'noClickEvent',
 				});
 			},
 
 			// Pattern 6: Vue @click or v-on:click
 			// Note: This requires vue-eslint-parser
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			'VAttribute[key.name.name="click"]'(node: any) {
+			'VAttribute[key.name.name="click"]'(node: AST.VAttribute) {
+				// vue-eslint-parser nodes aren't part of the Rule.Node union context.report expects.
 				context.report({
-					node,
+					node: node as unknown as Rule.Node,
 					messageId: 'noClickEvent',
 				});
 			},
 
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			'VAttribute[key.name="on"][key.argument.name="click"]'(node: any) {
+			'VAttribute[key.name="on"][key.argument.name="click"]'(node: AST.VAttribute) {
+				// vue-eslint-parser nodes aren't part of the Rule.Node union context.report expects.
 				context.report({
-					node,
+					node: node as unknown as Rule.Node,
 					messageId: 'noClickEvent',
 				});
 			},
