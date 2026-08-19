@@ -18,7 +18,7 @@ export default createRule({
 		schema: [], // No options
 	},
 	create(context): Rule.RuleListener {
-		return {
+		const scriptVisitor: Rule.RuleListener = {
 			// Pattern 1: addEventListener('click', ...)
 			'CallExpression[callee.property.name="addEventListener"]'(node: CallExpression) {
 				const args = node.arguments;
@@ -96,24 +96,37 @@ export default createRule({
 					messageId: 'noClickEvent',
 				});
 			},
-
-			// Pattern 6: Vue @click or v-on:click
-			// Note: This requires vue-eslint-parser
-			'VAttribute[key.name.name="click"]'(node: AST.VAttribute) {
-				// vue-eslint-parser nodes aren't part of the Rule.Node union context.report expects.
-				context.report({
-					node: node as unknown as Rule.Node,
-					messageId: 'noClickEvent',
-				});
-			},
-
-			'VAttribute[key.name="on"][key.argument.name="click"]'(node: AST.VAttribute) {
-				// vue-eslint-parser nodes aren't part of the Rule.Node union context.report expects.
-				context.report({
-					node: node as unknown as Rule.Node,
-					messageId: 'noClickEvent',
-				});
-			},
 		};
+
+		// Vue's <template> block lives in a separate AST (`templateBody`) that vue-eslint-parser
+		// exposes only through this parser service; a plain visitor on `create()` never sees it.
+		const defineTemplateBodyVisitor = context.sourceCode.parserServices
+			?.defineTemplateBodyVisitor as
+			| ((
+					templateVisitor: Rule.RuleListener,
+					scriptVisitor?: Rule.RuleListener,
+			  ) => Rule.RuleListener)
+			| undefined;
+
+		if (!defineTemplateBodyVisitor) {
+			return scriptVisitor;
+		}
+
+		return defineTemplateBodyVisitor(
+			{
+				// Pattern 6: Vue @click or v-on:click. `@click` is shorthand for `v-on:click`,
+				// so both parse to the same VDirectiveKey shape: name.name === 'on', argument.name === 'click'.
+				'VAttribute[key.name.name="on"][key.argument.name="click"]'(
+					node: AST.VAttribute,
+				) {
+					// vue-eslint-parser nodes aren't part of the Rule.Node union context.report expects.
+					context.report({
+						node: node as unknown as Rule.Node,
+						messageId: 'noClickEvent',
+					});
+				},
+			},
+			scriptVisitor,
+		);
 	},
 });

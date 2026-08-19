@@ -1,4 +1,5 @@
 import { RuleTester } from 'eslint';
+import vueParser from 'vue-eslint-parser';
 import { describe, it } from 'vitest';
 
 import rule from './index.js';
@@ -94,6 +95,33 @@ ruleTester.run('no-click-event', rule, {
 		},
 		{
 			code: '<div onClick={() => console.log("clicked")}>Click</div>',
+			errors: [{ messageId: 'noClickEvent' }],
+		},
+	],
+});
+
+const vueRuleTester = new RuleTester({
+	languageOptions: {
+		parser: vueParser,
+		ecmaVersion: 2023,
+		sourceType: 'module',
+	},
+});
+
+vueRuleTester.run('no-click-event (Vue)', rule, {
+	valid: [
+		'<template><button v-click="handler">Click</button></template>',
+		'<template><button @focus="handler">Focus me</button></template>',
+	],
+	invalid: [
+		// Pattern 6: Vue @click shorthand
+		{
+			code: '<template><button @click="handler">Click</button></template>',
+			errors: [{ messageId: 'noClickEvent' }],
+		},
+		// Pattern 6: Vue v-on:click
+		{
+			code: '<template><button v-on:click="handler">Click</button></template>',
 			errors: [{ messageId: 'noClickEvent' }],
 		},
 	],
