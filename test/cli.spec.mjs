@@ -72,7 +72,7 @@ describe('Oxlint', () => {
 			expect(config.categories.correctness).toBe('deny');
 		});
 
-		test('keeps rules that were error-level before the oxlint migration at deny', async () => {
+		test('sets severity-sensitive rules to deny', async () => {
 			const config = await printConfig();
 			expect(config.rules['no-var']).toBe('deny');
 			expect(config.rules['prefer-const']).toBe('deny');
@@ -82,7 +82,7 @@ describe('Oxlint', () => {
 			expect(config.rules['typescript/no-namespace']).toBe('deny');
 		});
 
-		test('keeps rules that were warn-level before the oxlint migration at warn', async () => {
+		test('sets severity-sensitive rules to warn', async () => {
 			const config = await printConfig();
 			expect(config.rules['no-console']).toBe('warn');
 			expect(config.rules['typescript/no-explicit-any']).toBe('warn');
