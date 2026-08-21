@@ -50,7 +50,7 @@
 		"prettier": "3.9.6",
 		"secretlint": "13.0.4",
 		"typescript": "5.9.3",
-		"vitest": "4.1.10"
+		"vitest": "4.1.11"
 	},
 	"resolutions": {
 		"baseline-browser-mapping": "^2"
