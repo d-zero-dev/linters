@@ -26,7 +26,7 @@ module.exports = {
 			},
 		],
 		'selector-nested-pattern': [
-			'^[^.&]+.*|^&(?:\\s|\\.|\\[|:|#)',
+			String.raw`^[^.&]+.*|^&(?:\s|\.|\[|:|#)`,
 			{
 				/**
 				 * @param {string} selector
