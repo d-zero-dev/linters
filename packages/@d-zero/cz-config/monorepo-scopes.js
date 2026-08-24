@@ -3,10 +3,10 @@ const path = require('node:path');
 
 /**
  * Get the list of packages in the monorepo
- * @param {(string | RegExp)[]} removes
- * @returns {string[]}
+ * @param {(string | RegExp)[]} removes - Patterns to strip from each package name
+ * @returns {string[]} The list of package names
  */
-module.exports = function (removes) {
+module.exports = function getMonorepoScopes(removes) {
 	const cwd = process.cwd();
 	const lernaPath = path.resolve(cwd, 'lerna.json');
 	if (!fs.existsSync(lernaPath)) {
@@ -16,7 +16,7 @@ module.exports = function (removes) {
 	const packages = fs.globSync(lerna.packages);
 	return packages
 		.map((packagePath) => {
-			let packageJson = null;
+			let packageJson;
 			try {
 				packageJson = fs.readFileSync(
 					path.resolve(cwd, packagePath, 'package.json'),
@@ -26,14 +26,14 @@ module.exports = function (removes) {
 				//
 			}
 			if (!packageJson) {
-				return null;
+				return;
 			}
-			const pkg = JSON.parse(packageJson);
-			let name = pkg.name;
+			const package_ = JSON.parse(packageJson);
+			let name = package_.name;
 			for (const remove of removes) {
 				name = name.replace(remove, '');
 			}
 			return name;
 		})
-		.filter((name) => name !== null);
+		.filter((name) => name !== undefined);
 };
