@@ -18,25 +18,66 @@ function n(filePath) {
 	return path.relative(process.cwd(), filePath).replaceAll(path.sep, '/');
 }
 
+/**
+ * @param {string} filepath
+ * @returns {Promise<{ exitCode: number, lines: string[] }>}
+ */
+async function oxlint(filepath) {
+	const { stdout, exitCode } = await execa(
+		'yarn',
+		['oxlint', filepath, '--format', 'unix'],
+		{
+			reject: false,
+		},
+	);
+
+	return {
+		exitCode,
+		lines: stdout.split('\n').filter((line) => line.includes(':')),
+	};
+}
+
+/**
+ * @param {string} configFilePath
+ * @returns {Promise<Record<string, unknown>>}
+ */
+async function printOxlintConfig(configFilePath) {
+	const { stdout } = await execa('yarn', ['oxlint', '--print-config', configFilePath], {
+		reject: false,
+	});
+	return JSON.parse(stdout);
+}
+
+/**
+ * @param {string} filepath
+ * @param {string} rule
+ * @returns {Promise<string[]>}
+ */
+async function eslint(filepath, rule) {
+	const directory = path.dirname(filepath);
+	const configFilePath = path.join(directory, 'eslint.config.js');
+	const { stdout, stderr } = await execa(
+		'npx',
+		['eslint', filepath, '--config', configFilePath],
+		{
+			reject: false,
+		},
+	);
+
+	if (stderr) {
+		throw new Error(stderr);
+	}
+
+	const lines = stdout.split('\n');
+	return lines
+		.filter((line) => line.endsWith(rule))
+		.map((line) => line.replaceAll(/\s+/g, ' ').trim());
+}
+
 describe('Oxlint', () => {
 	test('plugin metadata uses the published package version', () => {
 		expect(oxlintPlugin.meta.version).toBe(oxlintPluginPackage.version);
 	});
-
-	const oxlint = async (filepath) => {
-		const { stdout, exitCode } = await execa(
-			'yarn',
-			['oxlint', filepath, '--format', 'unix'],
-			{
-				reject: false,
-			},
-		);
-
-		return {
-			exitCode,
-			lines: stdout.split('\n').filter((line) => line.includes(':')),
-		};
-	};
 
 	test('no-click-event', async () => {
 		const { exitCode, lines } = await oxlint('test/fixtures/oxlint/no-click-event.tsx');
@@ -58,22 +99,13 @@ describe('Oxlint', () => {
 	});
 
 	describe('oxlint-config', () => {
-		const printConfig = async () => {
-			const { stdout } = await execa(
-				'yarn',
-				['oxlint', '--print-config', 'oxlint.config.mts'],
-				{ reject: false },
-			);
-			return JSON.parse(stdout);
-		};
-
 		test('promotes the correctness category to error (deny)', async () => {
-			const config = await printConfig();
+			const config = await printOxlintConfig('oxlint.config.mts');
 			expect(config.categories.correctness).toBe('deny');
 		});
 
 		test('sets severity-sensitive rules to deny', async () => {
-			const config = await printConfig();
+			const config = await printOxlintConfig('oxlint.config.mts');
 			expect(config.rules['no-var']).toBe('deny');
 			expect(config.rules['prefer-const']).toBe('deny');
 			expect(config.rules['prefer-rest-params']).toBe('deny');
@@ -83,7 +115,7 @@ describe('Oxlint', () => {
 		});
 
 		test('sets severity-sensitive rules to warn', async () => {
-			const config = await printConfig();
+			const config = await printOxlintConfig('oxlint.config.mts');
 			expect(config.rules['no-console']).toBe('warn');
 			expect(config.rules['typescript/no-explicit-any']).toBe('warn');
 			expect(config.rules['jsdoc/require-param']).toBe('warn');
@@ -105,28 +137,6 @@ describe('Prettier', () => {
 });
 
 describe('ESLint', () => {
-	const eslint = async (filepath, rule) => {
-		const dir = path.dirname(filepath);
-		const config = path.join(dir, 'eslint.config.js');
-		const { stdout, stderr } = await execa(
-			'npx',
-			['eslint', filepath, '--config', config],
-			{
-				reject: false,
-			},
-		);
-
-		if (stderr) {
-			throw new Error(stderr);
-		}
-
-		const lines = stdout.split('\n');
-		const result = lines
-			.filter((line) => line.endsWith(rule))
-			.map((line) => line.replaceAll(/\s+/g, ' ').trim());
-		return result;
-	};
-
 	test('sort-class-members', async () => {
 		const result = await eslint(
 			'test/fixtures/eslint/sort-class-members.js',
@@ -188,7 +198,7 @@ describe('ESLint', () => {
 			'regexp/no-useless-escape',
 		);
 		expect(result).toStrictEqual([
-			'1:18 error Unnecessary escape character: \\a regexp/no-useless-escape',
+			String.raw`1:18 error Unnecessary escape character: \a regexp/no-useless-escape`,
 		]);
 	});
 
@@ -292,10 +302,10 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
-			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			String.raw`test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
+			String.raw`test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
+			String.raw`test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
+			String.raw`test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
 		]);
 
 		const validNaming = await markuplint(
