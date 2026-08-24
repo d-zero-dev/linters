@@ -14,7 +14,7 @@ function p(css: string) {
 	const rule = root.first as Rule;
 	const decl = rule.first as Declaration;
 	const nodeWithType = getValueType(decl);
-	return nodeWithType?.map((node) => node.valueType) ?? null;
+	return nodeWithType?.map((node) => node.valueType);
 }
 
 describe('getValueType', () => {
@@ -49,6 +49,6 @@ describe('getValueType', () => {
 	});
 
 	test('SASS Variable Definition', () => {
-		expect(p('a { $var: value }')).toEqual(null);
+		expect(p('a { $var: value }')).toEqual(undefined);
 	});
 });
