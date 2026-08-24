@@ -995,11 +995,13 @@ __metadata:
   resolution: "@d-zero/eslint-config@workspace:packages/@d-zero/eslint-config"
   dependencies:
     "@d-zero/eslint-plugin": "npm:6.0.0-alpha.2"
+    "@d-zero/oxlint-config": "npm:6.0.0-alpha.2"
     "@eslint/js": "npm:9.39.5"
     eslint: "npm:9.39.5"
     eslint-plugin-eslint-comments: "npm:3.2.0"
     eslint-plugin-import-x: "npm:4.17.1"
     eslint-plugin-jsdoc: "npm:64.1.0"
+    eslint-plugin-oxlint: "npm:1.77.0"
     eslint-plugin-regexp: "npm:3.1.1"
     eslint-plugin-sort-class-members: "npm:1.22.1"
     eslint-plugin-unicorn: "npm:63.0.0"
@@ -1036,7 +1038,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config":
+"@d-zero/oxlint-config@npm:6.0.0-alpha.2, @d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config"
   languageName: unknown
@@ -5868,6 +5870,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-oxlint@npm:1.77.0":
+  version: 1.77.0
+  resolution: "eslint-plugin-oxlint@npm:1.77.0"
+  dependencies:
+    jsonc-parser: "npm:^3.3.1"
+  peerDependencies:
+    oxlint: ~1.77.0
+  checksum: 10c0/e88a244116de20fd532e16edba1476ef35f2d84c6c29b8ac82f990ba925e2947d744b8f2299d79b5479a04c6cea5564c2ca5619bc0ae3386e9ad9904f139bc32
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-regexp@npm:3.1.1":
   version: 3.1.1
   resolution: "eslint-plugin-regexp@npm:3.1.1"
@@ -7941,7 +7954,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:3.3.1":
+"jsonc-parser@npm:3.3.1, jsonc-parser@npm:^3.3.1":
   version: 3.3.1
   resolution: "jsonc-parser@npm:3.3.1"
   checksum: 10c0/269c3ae0a0e4f907a914bf334306c384aabb9929bd8c99f909275ebd5c2d3bc70b9bcd119ad794f339dec9f24b6a4ee9cd5a8ab2e6435e730ad4075388fc2ab6

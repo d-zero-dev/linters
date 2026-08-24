@@ -22,5 +22,13 @@ export default {
 				'unicorn/prefer-module': 'off',
 			},
 		},
+		{
+			// `null` is Stylelint's own API for explicitly disabling a rule; it isn't a stray
+			// literal to clean up.
+			files: ['**/stylelint-config/**'],
+			rules: {
+				'unicorn/no-null': 'off',
+			},
+		},
 	],
 };
