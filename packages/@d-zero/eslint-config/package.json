@@ -29,6 +29,6 @@
 		"eslint-plugin-sort-class-members": "1.22.1",
 		"eslint-plugin-unicorn": "63.0.0",
 		"globals": "17.11.0",
-		"typescript-eslint": "8.67.0"
+		"typescript-eslint": "8.68.0"
 	}
 }
