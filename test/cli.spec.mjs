@@ -139,16 +139,15 @@ describe('markuplint', () => {
 		expect(violations).toStrictEqual([
 			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
-			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
 			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
-			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
 			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:23:3 Require accessible name',
 			'test/fixtures/markuplint/test.html:25:3 Require accessible name',
+			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
+			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
 			'test/fixtures/markuplint/test.html:23:3 The "img" element expects the "alt" attribute',
 			'test/fixtures/markuplint/test.html:24:3 The "a" element expects the "href" attribute',
-			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
+			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
 		]);
 	});
 
@@ -184,10 +183,11 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
-			'test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
-			'test/fixtures/markuplint/image-naming-test.html:24:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:21:45 It includes unexpected characters (https://html.spec.whatwg.org/multipage/urls-and-fetching.html#valid-non-empty-url-potentially-surrounded-by-spaces)',
+			'test/fixtures/markuplint/image-naming-test.html:21:45 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:22:39 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:23:44 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
+			'test/fixtures/markuplint/image-naming-test.html:24:41 The "src" attribute is matched with the below disallowed patterns: /[A-Z\\s_]/',
 		]);
 
 		const validNaming = await markuplint(
@@ -203,23 +203,69 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
-			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^c-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
 			'test/fixtures/markuplint/button-command.html:41:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:42:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:111:6 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:110:2 Require accessible name',
+			'test/fixtures/markuplint/button-command.html:24:2 The accessible name from "aria-label" overrides "content"',
+			'test/fixtures/markuplint/button-command.html:47:2 The accessible name from "aria-label" overrides "content"',
 			'test/fixtures/markuplint/button-command.html:129:3 Require accessible name',
+			'test/fixtures/markuplint/button-command.html:110:2 The "dialog" element referenced by a "show-modal" command requires an element with the "autofocus" attribute',
+			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
+			'test/fixtures/markuplint/button-command.html:54:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:55:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:57:16 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group"',
+			'test/fixtures/markuplint/button-command.html:58:16 The "option" role requires an accessibility parent with one of the roles: "listbox", "listbox > group"',
+			'test/fixtures/markuplint/button-command.html:66:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:88:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
 			'test/fixtures/markuplint/button-command.html:18:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:101:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "commandfor" attribute',
 			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
-			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
+		]);
+	});
+
+	test('Attr Order', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/attr-order-test.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/attr-order-test.html:17:36 "id" should be before "type"',
+			'test/fixtures/markuplint/attr-order-test.html:18:23 "class" should be before "src"',
+			'test/fixtures/markuplint/attr-order-test.html:19:41 "class" should be before "name"',
+			'test/fixtures/markuplint/attr-order-test.html:20:26 "id" should be before "href"',
+			'test/fixtures/markuplint/attr-order-test.html:21:53 "id" should be before "data-value"',
+			'test/fixtures/markuplint/attr-order-test.html:11:38 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/attr-order-test.html:14:33 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group"',
+			'test/fixtures/markuplint/attr-order-test.html:20:43 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group"',
+			'test/fixtures/markuplint/attr-order-test.html:11:43 The "aria-selected" ARIA state is not global state',
+			'test/fixtures/markuplint/attr-order-test.html:17:2 The "button" element expects the "command" attribute',
+		]);
+	});
+
+	test('V5 New Rules (head-element-order, no-boolean-attr-value, no-default-value, no-event-handler-attr)', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/v5-rules-test.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/v5-rules-test.html:10:31 "onclick" should be before "type"',
+			'test/fixtures/markuplint/v5-rules-test.html:9:24 The "disabled" attribute is a boolean attribute. It doesn\'t need the value',
+			'test/fixtures/markuplint/v5-rules-test.html:11:22 It is the default value',
+			'test/fixtures/markuplint/v5-rules-test.html:9:2 Require accessible name',
+			'test/fixtures/markuplint/v5-rules-test.html:11:2 Require accessible name',
+			'test/fixtures/markuplint/v5-rules-test.html:4:2 The "meta" element should be before the "title" element',
+			'test/fixtures/markuplint/v5-rules-test.html:5:2 The "title" element should be before the "meta" element',
+			'test/fixtures/markuplint/v5-rules-test.html:10:31 The "onclick" attribute is disallowed',
+			'test/fixtures/markuplint/v5-rules-test.html:10:2 The "button" element expects the "command" attribute',
 		]);
 	});
 });
