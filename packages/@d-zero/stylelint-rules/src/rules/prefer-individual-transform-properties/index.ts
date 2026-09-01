@@ -26,7 +26,7 @@ const REPLACEABLE_TRANSFORM_FUNCTIONS = {
  * Check if a transform value contains only functions that can be replaced
  * @param value
  */
-function canBeReplacedWithIndividualProperties(value: string): {
+function analyzeReplaceableTransform(value: string): {
 	canReplace: boolean;
 	suggestions: string[];
 } {
@@ -51,17 +51,17 @@ function canBeReplacedWithIndividualProperties(value: string): {
 					foundTransformTypes.add(property);
 
 					// Generate suggestion based on function type
-					const args = postcssValueParser.stringify(node.nodes);
-					suggestions.push(`${property}: ${args}`);
-
-					// Don't walk into the arguments of transform functions
-					return false;
+					const arguments_ = postcssValueParser.stringify(node.nodes);
+					suggestions.push(`${property}: ${arguments_}`);
+					break;
 				}
 			}
 
-			if (!isReplaceable) {
-				hasNonReplaceableFunction = true;
+			if (isReplaceable) {
+				// Don't walk into the arguments of transform functions
+				return false;
 			}
+			hasNonReplaceableFunction = true;
 		}
 		return true;
 	});
@@ -87,14 +87,14 @@ export default createRule<Options>({
 		`Use individual transform properties instead of "transform: ${value}". Consider: ${suggestions}`,
 	rule: (ruleName, messages) => () => {
 		return (root, result) => {
-			root.walkDecls((decl) => {
+			root.walkDecls((declaration) => {
 				// Only check transform property
-				if (decl.prop.toLowerCase() !== 'transform') {
+				if (declaration.prop.toLowerCase() !== 'transform') {
 					return;
 				}
 
-				const { canReplace, suggestions } = canBeReplacedWithIndividualProperties(
-					decl.value,
+				const { canReplace, suggestions } = analyzeReplaceableTransform(
+					declaration.value,
 				);
 
 				// If we can replace and have suggestions, report the issue
@@ -102,8 +102,8 @@ export default createRule<Options>({
 					stylelint.utils.report({
 						result,
 						ruleName,
-						message: messages.rejected(decl.value, suggestions.join(', ')),
-						node: decl,
+						message: messages.rejected(declaration.value, suggestions.join(', ')),
+						node: declaration,
 					});
 				}
 			});

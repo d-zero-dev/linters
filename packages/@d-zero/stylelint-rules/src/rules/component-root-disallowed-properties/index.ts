@@ -51,13 +51,13 @@ const DISALLOWED_PROPERTIES: (string | { [propName: string]: string })[] = [
 
 /**
  * プロパティが禁止されているかチェック
- * @param prop
+ * @param property
  */
-function isDisallowedProperty(prop: string): boolean {
-	const normalizedProp = prop.toLowerCase();
+function isDisallowedProperty(property: string): boolean {
+	const normalizedProperty = property.toLowerCase();
 	return DISALLOWED_PROPERTIES.some((item) => {
 		if (typeof item === 'string') {
-			return item === normalizedProp;
+			return item === normalizedProperty;
 		}
 		return false;
 	});
@@ -65,19 +65,20 @@ function isDisallowedProperty(prop: string): boolean {
 
 /**
  * プロパティと値の組み合わせが禁止されているかチェック
- * @param prop
+ * @param property
  * @param value
  */
-function isDisallowedPropertyValue(prop: string, value: string): boolean {
-	const normalizedProp = prop.toLowerCase();
+function isDisallowedPropertyValue(property: string, value: string): boolean {
+	const normalizedProperty = property.toLowerCase();
 	const normalizedValue = value.toLowerCase().trim();
 	return DISALLOWED_PROPERTIES.some((item) => {
-		if (typeof item === 'object') {
-			return (
-				normalizedProp in item && item[normalizedProp]?.toLowerCase() === normalizedValue
-			);
+		if (typeof item !== 'object') {
+			return false;
 		}
-		return false;
+		const disallowedValue = Object.hasOwn(item, normalizedProperty)
+			? item[normalizedProperty]
+			: undefined;
+		return disallowedValue?.toLowerCase() === normalizedValue;
 	});
 }
 
@@ -100,14 +101,16 @@ function isComponentRoot(rule: Rule, basename: string): boolean {
 	}
 
 	for (const node of ruleFirstSelector.nodes) {
-		if (node.type === 'class') {
-			const className = node.value;
+		if (node.type !== 'class') {
+			continue;
+		}
 
-			// ファイル名と完全一致するクラス名のみがコンポーネントルート
-			// CSSファイルの場合は __ で始まるクラスは子要素なので除外
-			if (className === basename) {
-				return true;
-			}
+		const className = node.value;
+
+		// ファイル名と完全一致するクラス名のみがコンポーネントルート
+		// CSSファイルの場合は __ で始まるクラスは子要素なので除外
+		if (className === basename) {
+			return true;
 		}
 	}
 
@@ -162,10 +165,10 @@ export default createRule<Options>({
 				return;
 			}
 
-			const ext = path.extname(fileName);
-			const originalBasename = path.basename(fileName, ext);
+			const extension = path.extname(fileName);
+			const originalBasename = path.basename(fileName, extension);
 
-			const basename = ['.scss', '.sass'].includes(ext)
+			const basename = ['.scss', '.sass'].includes(extension)
 				? originalBasename.replace(/^_/, '')
 				: originalBasename;
 
@@ -178,27 +181,27 @@ export default createRule<Options>({
 			const checkDeclarations = (rule: Rule) => {
 				for (const node of rule.nodes) {
 					if (node.type === 'decl') {
-						const prop = node.prop;
+						const property = node.prop;
 						const value = node.value;
 
 						// プロパティと値の組み合わせが禁止されているかチェック
-						if (isDisallowedPropertyValue(prop, value)) {
+						if (isDisallowedPropertyValue(property, value)) {
 							const normalizedValue = value.toLowerCase().trim();
 							stylelint.utils.report({
 								result,
 								ruleName,
-								message: messages.rejected(`${prop}: ${normalizedValue}`),
+								message: messages.rejected(`${property}: ${normalizedValue}`),
 								node,
 							});
 							continue;
 						}
 
 						// その他の禁止プロパティのチェック
-						if (isDisallowedProperty(prop)) {
+						if (isDisallowedProperty(property)) {
 							stylelint.utils.report({
 								result,
 								ruleName,
-								message: messages.rejected(prop),
+								message: messages.rejected(property),
 								node,
 							});
 						}

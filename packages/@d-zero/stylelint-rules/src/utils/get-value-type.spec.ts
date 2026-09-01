@@ -12,8 +12,8 @@ import { getValueType } from './get-value-type.js';
 function p(css: string) {
 	const root = parse(css);
 	const rule = root.first as Rule;
-	const decl = rule.first as Declaration;
-	const nodeWithType = getValueType(decl);
+	const declaration = rule.first as Declaration;
+	const nodeWithType = getValueType(declaration);
 	return nodeWithType?.map((node) => node.valueType) ?? null;
 }
 

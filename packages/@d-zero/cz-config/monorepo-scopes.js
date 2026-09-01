@@ -28,8 +28,8 @@ module.exports = function (removes) {
 			if (!packageJson) {
 				return null;
 			}
-			const pkg = JSON.parse(packageJson);
-			let name = pkg.name;
+			const package_ = JSON.parse(packageJson);
+			let name = package_.name;
 			for (const remove of removes) {
 				name = name.replace(remove, '');
 			}

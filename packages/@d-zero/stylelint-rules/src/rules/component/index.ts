@@ -15,10 +15,30 @@ type Options = {
 	allowMultipleSelectors?: boolean;
 };
 
+/**
+ * セレクタノードがコンポーネントクラス（完全一致または __ で始まる子要素）かどうか判定
+ * @param node
+ * @param basename
+ * @param isCssFile
+ */
+function isComponentClassNode(
+	node: Selector['nodes'][number],
+	basename: string,
+	isCssFile: boolean,
+): boolean {
+	if (node.type !== 'class') {
+		return false;
+	}
+
+	const className = node.value;
+
+	return className === basename || (isCssFile && className.startsWith(`${basename}__`));
+}
+
 export default createRule<Options>({
 	name: 'component',
 	rule: (ruleName) => (primary) => {
-		const allowMultipleSelectors = primary.allowMultipleSelectors ?? false;
+		const isAllowMultipleSelectors = primary.allowMultipleSelectors ?? false;
 
 		return (root, result) => {
 			const fileName = root.source?.input.file;
@@ -27,22 +47,22 @@ export default createRule<Options>({
 				return;
 			}
 
-			const ext = path.extname(fileName);
-			const originalBasename = path.basename(fileName, ext);
+			const extension = path.extname(fileName);
+			const originalBasename = path.basename(fileName, extension);
 
-			const basename = ['.scss', '.sass'].includes(ext)
+			const basename = ['.scss', '.sass'].includes(extension)
 				? originalBasename.replace(/^_/, '')
 				: originalBasename;
 
 			// CSSファイルの場合は自動的にallowMultipleSelectorsをtrueにする
-			const isCssFile = ext === '.css';
-			const effectiveAllowMultipleSelectors = isCssFile || allowMultipleSelectors;
+			const isCssFile = extension === '.css';
+			const isEffectiveAllowMultipleSelectors = isCssFile || isAllowMultipleSelectors;
 
 			const rules = root.nodes.filter((node): node is Rule => node.type === 'rule');
 			const [firstRule, ...overleftRules] = rules;
 
 			// allowMultipleSelectorsに基づいて複数ルール制約をチェック
-			if (!effectiveAllowMultipleSelectors && overleftRules.length > 0) {
+			if (!isEffectiveAllowMultipleSelectors && overleftRules.length > 0) {
 				for (const rule of overleftRules) {
 					stylelint.utils.report({
 						result,
@@ -75,22 +95,10 @@ export default createRule<Options>({
 				const [ruleFirstSelector, ...ruleMultipleSelectors] = ruleSelectors;
 				if (!ruleFirstSelector) continue;
 
-				let hasValidComponentClass = false;
-
-				for (const node of ruleFirstSelector.nodes) {
-					if (node.type === 'class') {
-						const className = node.value;
-
-						// 完全一致またはコンポーネント命名規則（__で始まる）のチェック
-						if (
-							className === basename ||
-							(isCssFile && className.startsWith(`${basename}__`))
-						) {
-							hasValidComponentClass = true;
-							break;
-						}
-					}
-				}
+				// 完全一致またはコンポーネント命名規則（__で始まる）のチェック
+				const hasValidComponentClass = ruleFirstSelector.nodes.some((node) =>
+					isComponentClassNode(node, basename, isCssFile),
+				);
 
 				if (!hasValidComponentClass) {
 					stylelint.utils.report({
@@ -104,7 +112,7 @@ export default createRule<Options>({
 				}
 
 				// 複数セレクタのチェック
-				if (!effectiveAllowMultipleSelectors && ruleMultipleSelectors.length > 0) {
+				if (!isEffectiveAllowMultipleSelectors && ruleMultipleSelectors.length > 0) {
 					stylelint.utils.report({
 						result,
 						ruleName,

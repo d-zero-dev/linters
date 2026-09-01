@@ -15,9 +15,15 @@ export async function getCZConfig() {
 		return null;
 	}
 
-	const modPath = czConfigPath.replace(/^(?:\.\/)?node_modules\//, '');
+	const modulePath = czConfigPath.replace(/^(?:\.\/)?node_modules\//, '');
 
-	const czConfig = await import(modPath).catch(() => null);
+	let czConfig;
+
+	try {
+		czConfig = await import(modulePath);
+	} catch {
+		return null;
+	}
 
 	return czConfig?.default ?? czConfig ?? null;
 }

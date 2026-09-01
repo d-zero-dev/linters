@@ -17,8 +17,8 @@ function n(filePath) {
 
 describe('ESLint', () => {
 	const eslint = async (filepath, rule) => {
-		const dir = path.dirname(filepath);
-		const config = path.join(dir, 'eslint.config.js');
+		const directory = path.dirname(filepath);
+		const config = path.join(directory, 'eslint.config.js');
 		const { stdout, stderr } = await execa(
 			'npx',
 			['eslint', filepath, '--config', config],
@@ -74,7 +74,7 @@ describe('ESLint', () => {
 			'unicorn/prefer-top-level-await',
 		);
 		expect(node).toStrictEqual([
-			'5:6 error Prefer top-level await over an async function `asyncFn` call unicorn/prefer-top-level-await',
+			'5:1 error Prefer top-level await over an async function `asyncFn` call unicorn/prefer-top-level-await',
 		]);
 	});
 
@@ -249,7 +249,7 @@ describe('stylelint', () => {
 			},
 		);
 
-		const json = stderr.split('error Command failed')[0] ?? stdout;
+		const json = stderr.split('error Command failed', 1)[0] ?? stdout;
 		let violations;
 		try {
 			violations = JSON.parse(json);

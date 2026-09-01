@@ -22,9 +22,13 @@ export default createRule({
 			'CallExpression[callee.property.name="addEventListener"]'(
 				node: TSESTree.CallExpression,
 			) {
-				const args = node.arguments;
-				const firstArg = args[0];
-				if (firstArg && firstArg.type === 'Literal' && firstArg.value === 'click') {
+				const arguments_ = node.arguments;
+				const firstArgument = arguments_[0];
+				if (
+					firstArgument &&
+					firstArgument.type === 'Literal' &&
+					firstArgument.value === 'click'
+				) {
 					context.report({
 						node,
 						messageId: 'noClickEvent',
@@ -46,8 +50,12 @@ export default createRule({
 			'CallExpression[callee.type="MemberExpression"][callee.property.name="on"]'(
 				node: TSESTree.CallExpression,
 			) {
-				const firstArg = node.arguments[0];
-				if (firstArg && firstArg.type === 'Literal' && firstArg.value === 'click') {
+				const firstArgument = node.arguments[0];
+				if (
+					firstArgument &&
+					firstArgument.type === 'Literal' &&
+					firstArgument.value === 'click'
+				) {
 					context.report({
 						node,
 						messageId: 'noClickEvent',

@@ -11,19 +11,19 @@ import postcssValueParser from 'postcss-value-parser';
 
 /**
  *
- * @param decl
+ * @param declaration
  */
-export function getValueType(decl: Declaration) {
-	if (decl.prop.startsWith('$')) {
+export function getValueType(declaration: Declaration) {
+	if (declaration.prop.startsWith('$')) {
 		return null;
 	}
 	try {
-		return _getValueType(decl.prop, decl.value);
+		return _getValueType(declaration.prop, declaration.value);
 	} catch (error) {
 		if (
 			error instanceof SyntaxError &&
 			'source' in error &&
-			error.source === decl.value
+			error.source === declaration.value
 		) {
 			// Unsupported SCSS syntax by CSSTree
 			return null;
@@ -34,11 +34,11 @@ export function getValueType(decl: Declaration) {
 
 /**
  *
- * @param prop
+ * @param property
  * @param value
  */
 function _getValueType(
-	prop: string,
+	property: string,
 	value: string,
 ):
 	| {
@@ -48,34 +48,40 @@ function _getValueType(
 	| null {
 	const valueAst = postcssValueParser(value);
 	const valueAstFromCssTree = CSSTree.parse(value, { context: 'value' });
-	let cssTreeDecl = CSSTree.lexer.matchProperty(prop, valueAstFromCssTree);
+	let cssTreeDeclaration = CSSTree.lexer.matchProperty(property, valueAstFromCssTree);
 
-	if (cssTreeDecl.error?.message === 'Matching for a tree with var() is not supported') {
+	if (
+		cssTreeDeclaration.error?.message ===
+		'Matching for a tree with var() is not supported'
+	) {
 		value = value.replaceAll(
 			/(var\([^)]+\))/g,
 			(_, $1) => ' '.repeat($1.length - 1) + '1',
 		);
-		cssTreeDecl = CSSTree.lexer.matchProperty(prop, value);
+		cssTreeDeclaration = CSSTree.lexer.matchProperty(property, value);
 	}
 
-	const values = valueAst.nodes.filter(
-		(node) => node.type === 'string' || node.type === 'function' || node.type === 'word',
-	);
+	const replaceableNodeTypes: ReadonlySet<string> = new Set([
+		'string',
+		'function',
+		'word',
+	]);
+	const values = valueAst.nodes.filter((node) => replaceableNodeTypes.has(node.type));
 
 	// @ts-ignore
-	const props = cssTreeDecl.matched;
-	if (props === null) {
+	const properties = cssTreeDeclaration.matched;
+	if (properties === null) {
 		return null;
 	}
 
-	const valueTypes = props.match
+	const valueTypes = properties.match
 		// @ts-ignore
 		.flatMap((node) => getValueNode(node))
 		// @ts-ignore
 		.map((node) => node.syntax.name);
 
-	return values.map((value, i) => {
-		const valueType = valueTypes[i] ?? null;
+	return values.map((value, index) => {
+		const valueType = valueTypes[index] ?? null;
 
 		if (valueType === null && value.type === 'word' && value.value.startsWith('$')) {
 			return {

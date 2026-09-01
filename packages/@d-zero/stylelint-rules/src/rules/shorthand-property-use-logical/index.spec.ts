@@ -16,26 +16,24 @@ const config = (settings: boolean | { properties?: string[] } = true) => ({
 describe('shorthand-property-use-logical', () => {
 	describe('padding', () => {
 		test('single value - should not warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: 2rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(0);
 		});
 
 		test('two values - should warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: 2rem 1rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toStrictEqual([
@@ -54,13 +52,12 @@ describe('shorthand-property-use-logical', () => {
 		});
 
 		test('three values - should warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: 2rem 0 0 }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
@@ -68,13 +65,12 @@ describe('shorthand-property-use-logical', () => {
 		});
 
 		test('four values - should warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: 1rem 2rem 3rem 4rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
@@ -84,26 +80,24 @@ describe('shorthand-property-use-logical', () => {
 
 	describe('margin', () => {
 		test('single value - should not warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { margin: auto }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(0);
 		});
 
 		test('two values - should warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { margin: 1rem 2rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
@@ -113,26 +107,24 @@ describe('shorthand-property-use-logical', () => {
 
 	describe('border-width', () => {
 		test('single value - should not warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { border-width: 1px }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(0);
 		});
 
 		test('multiple values - should warn', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { border-width: 1px 2px }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
@@ -142,13 +134,12 @@ describe('shorthand-property-use-logical', () => {
 
 	describe('limited properties configuration', () => {
 		test('only check specified properties', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: 1rem 2rem; margin: 1rem 2rem; }',
 				config: config({ properties: ['padding'] }),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
@@ -158,13 +149,12 @@ describe('shorthand-property-use-logical', () => {
 
 	describe('unsupported properties', () => {
 		test('should not check properties not in the list', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { background: url(a.png) no-repeat }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(0);
@@ -173,26 +163,24 @@ describe('shorthand-property-use-logical', () => {
 
 	describe('complex values', () => {
 		test('calc() function with multiple values', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { padding: calc(1rem + 2px) 1rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);
 		});
 
 		test('var() function with multiple values', async () => {
-			const {
-				// @ts-ignore
-				results: [{ warnings, parseErrors }],
-			} = await lint({
+			const { results } = await lint({
 				code: '* { margin: var(--spacing) 2rem }',
 				config: config(),
 			});
+			// @ts-ignore
+			const [{ warnings, parseErrors }] = results;
 
 			expect(parseErrors).toHaveLength(0);
 			expect(warnings).toHaveLength(1);

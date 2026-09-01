@@ -20,7 +20,7 @@ export default {
 		{
 			selector: 'html',
 			rules: {
-				// <html prefix="og: http://ogp.me/ns#">
+				// <html prefix="og: https://ogp.me/ns#">
 				'invalid-attr': {
 					options: {
 						allowAttrs: [
