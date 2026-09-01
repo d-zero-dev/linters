@@ -27,6 +27,7 @@
 // stylelint-disable selector-type-no-unknown, selector-class-pattern, selector-max-id
 
 .c-component3 {
+	&,
 	& type,
 	&[attr],
 	&.class,
@@ -46,3 +47,23 @@
 }
 
 // stylelint-enable selector-type-no-unknown, selector-class-pattern, selector-max-id
+
+.c-component4 {
+	&,
+	&::before,
+	&::after {
+		// 適合
+	}
+
+	&::before,
+	&__element {
+		// 1番目は適合、splitList: true により2番目のみが検出
+		// Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します
+	}
+
+	&__foo,
+	&::before {
+		// splitList: true により1番目のみが検出、2番目は適合
+		// Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します
+	}
+}
