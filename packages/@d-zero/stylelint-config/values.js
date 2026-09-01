@@ -11,7 +11,9 @@ module.exports = {
 		'declaration-property-value-disallowed-list': [
 			{
 				display: [
-					/* @see https://drafts.csswg.org/css-display/#display-value-summary */
+					/*
+					@see https://drafts.csswg.org/css-display/#display-value-summary
+					*/
 					'block',
 					'flow-root',
 					'inline',
