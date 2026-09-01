@@ -21,76 +21,93 @@ export type IgnoreMap = Partial<Record<CommandType, string | string[]>>;
 
 /**
  *
- * @param dirOptions
+ * @param directoryOptions
  * @param mapping
  */
 export default function (
-	dirOptions?: string | DirectoryOptions,
+	directoryOptions?: string | DirectoryOptions,
 	mapping?: CommandMappings,
 ): LintStagedCommandMapper {
 	return (allStagedFiles) => {
-		const commandList: string[] = [];
 		const cwd = process.cwd();
 
-		const dir = typeof dirOptions === 'string' ? dirOptions : dirOptions?.dir;
-		const ignore = typeof dirOptions === 'string' ? null : dirOptions?.ignore;
+		const directory =
+			typeof directoryOptions === 'string' ? directoryOptions : directoryOptions?.dir;
+		const ignore = typeof directoryOptions === 'string' ? null : directoryOptions?.ignore;
 
-		const baseDir = dir
+		const baseDirectory = directory
 			? // 絶対パスかどうか
-				path.isAbsolute(dir)
+				path.isAbsolute(directory)
 				? // 絶対パスならそのまま
-					dir
+					directory
 				: // 相対パスなら絶対パスに変換
-					path.resolve(cwd, dir)
+					path.resolve(cwd, directory)
 			: // 引数がないならカレントディレクトリ
 				cwd;
 
-		mapping = mapping ?? defaultMapping;
+		mapping ??= defaultMapping;
 
-		for (const [ext, commandTypes] of Object.entries(mapping)) {
-			for (const commandType of commandTypes) {
-				const shell = commands[commandType];
+		/**
+		 *
+		 * @param extension
+		 * @param commandType
+		 */
+		function buildCommand(
+			extension: string,
+			commandType: CommandType,
+		): string | undefined {
+			const shell = commands[commandType];
 
-				if (!shell) {
-					continue;
-				}
+			if (!shell) {
+				return undefined;
+			}
 
-				const pattern = path
-					.resolve(baseDir, '**', `{*.${ext},.*.${ext}}`)
-					.replaceAll(path.sep, '/');
+			const pattern = path
+				.resolve(baseDirectory, '**', `{*.${extension},.*.${extension}}`)
+				.replaceAll(path.sep, '/');
 
-				const files = allStagedFiles.map((f) => f.replaceAll(path.sep, '/'));
+			const files = allStagedFiles.map((f) => f.replaceAll(path.sep, '/'));
 
-				let targetFiles = files.filter((file) => path.matchesGlob(file, pattern));
+			let targetFiles = files.filter((file) => path.matchesGlob(file, pattern));
 
-				if (ignore) {
-					for (const ignoreMap of ignore) {
-						const ignorePattern =
-							typeof ignoreMap === 'string' ? ignoreMap : ignoreMap[commandType];
-						if (!ignorePattern) {
-							continue;
-						}
-						const ignorePatterns = Array.isArray(ignorePattern)
-							? ignorePattern
-							: [ignorePattern];
-						const absIgnorePatterns = ignorePatterns.map((p) => {
-							if (p === path.basename(p)) {
-								return path.resolve('**', p).replaceAll(path.sep, '/');
-							}
-							return path.isAbsolute(p) ? p : path.resolve(baseDir, p);
-						});
-						targetFiles = targetFiles.filter(
-							(file) =>
-								!absIgnorePatterns.some((pattern) => path.matchesGlob(file, pattern)),
-						);
+			if (ignore) {
+				for (const ignoreMap of ignore) {
+					const ignorePattern =
+						typeof ignoreMap === 'string' ? ignoreMap : ignoreMap[commandType];
+					if (!ignorePattern) {
+						continue;
 					}
+					const ignorePatterns = Array.isArray(ignorePattern)
+						? ignorePattern
+						: [ignorePattern];
+					const absIgnorePatterns = ignorePatterns.map((p) => {
+						if (p === path.basename(p)) {
+							return path.resolve('**', p).replaceAll(path.sep, '/');
+						}
+						return path.isAbsolute(p) ? p : path.resolve(baseDirectory, p);
+					});
+					targetFiles = targetFiles.filter((file) =>
+						absIgnorePatterns.every((pattern) => !path.matchesGlob(file, pattern)),
+					);
 				}
+			}
 
-				if (targetFiles.length <= 0) {
-					continue;
+			if (targetFiles.length === 0) {
+				return undefined;
+			}
+
+			return shell + ' ' + targetFiles.map((f) => `"${f}"`).join(' ');
+		}
+
+		const commandList: string[] = [];
+
+		for (const [extension, commandTypes] of Object.entries(mapping)) {
+			for (const commandType of commandTypes) {
+				const command = buildCommand(extension, commandType);
+
+				if (command) {
+					commandList.push(command);
 				}
-
-				commandList.push(shell + ' ' + targetFiles.map((f) => `"${f}"`).join(' '));
 			}
 		}
 
