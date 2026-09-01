@@ -4,24 +4,40 @@
 export default {
 	extends: ['markuplint:recommended-static-html'],
 	rules: {
-		'disallowed-element': {
-			value: ['br'],
-			reason:
-				'br要素は原則使用しません。代わりにCSSでスタイルを調整してください。使用する場合は理由が必要です。（D-ZERO独自ルール）',
+		// markuplint:recommended-static-html (performance preset) の
+		// img[src] に対する width, height 必須ルールを無効化
+		// width, height はビルド時に自動的に付与されるため問題なしとする
+		'performance/img-aspect-ratio': false,
+		'attr-order': ['id', 'class', 'role', { group: 'aria' }, { group: 'data' }],
+		// head-element-order, no-event-handler-attr は
+		// markuplint:recommended-static-html (performance/security preset) で既定有効のため指定しない
+		'no-boolean-attr-value': true,
+		'no-default-value': true,
+		// browserslist設定がある場合にブラウザ未サポート要素・属性を検出
+		'no-unsupported-browser-features': true,
+		'd-zero/no-br': {
+			rules: {
+				'no-restricted-element': {
+					value: ['br'],
+					reason:
+						'br要素は原則使用しません。代わりにCSSでスタイルを調整してください。使用する場合は理由が必要です。（D-ZERO独自ルール）',
+				},
+			},
 		},
 	},
 	nodeRules: [
 		{
-			selector: "script[src^='https://'], script[src^='https://']",
+			selector: "script[src^='http://'], script[src^='https://']",
 			rules: {
-				'required-attr': false,
+				'require-attr': false,
 			},
 		},
 		{
+			name: 'd-zero/html-allow-prefix-attr',
 			selector: 'html',
 			rules: {
 				// <html prefix="og: http://ogp.me/ns#">
-				'invalid-attr': {
+				'no-unknown-attr': {
 					options: {
 						allowAttrs: [
 							{
@@ -34,11 +50,10 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/img-require-alt',
 			selector: 'img',
 			rules: {
-				// https://github.com/markuplint/markuplint/blob/c35e0beb5e14093a41cee7634221dbe7f7d577f9/packages/%40markuplint/config-presets/src/preset.performance.json#L25-L35 の設定を上書き
-				// width, height の指定は上書きされるため、省略可能になるが、ビルド時に自動的に付与されるため問題なしとする
-				'required-attr': {
+				'require-attr': {
 					value: 'alt',
 					reason:
 						'省略可能なケースがほとんど想定されないため、原則禁止としています。省略する場合は明確な理由が必要です。（D-ZERO独自ルール）',
@@ -46,10 +61,11 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/img-src-kebab-case',
 			selector:
 				'img:not([src^="data:"], [src^="blob:"], [src^="https://"], [src^="http://"], [src^="//"])',
 			rules: {
-				'invalid-attr': {
+				'no-restricted-attr': {
 					options: {
 						disallowAttrs: [
 							{
@@ -64,9 +80,10 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/media-src-kebab-case',
 			selector: 'video, audio, source',
 			rules: {
-				'invalid-attr': {
+				'no-restricted-attr': {
 					options: {
 						disallowAttrs: [
 							{
@@ -85,14 +102,15 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/a-href-convention',
 			selector: 'a',
 			rules: {
-				'required-attr': {
+				'require-attr': {
 					value: 'href',
 					reason:
 						'省略可能なケースがほとんど想定されないため、原則禁止としています。省略する場合は明確な理由が必要です。（D-ZERO独自ルール）',
 				},
-				'invalid-attr': {
+				'no-restricted-attr': {
 					options: {
 						disallowAttrs: [
 							{
@@ -107,9 +125,10 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-require-command',
 			selector: 'button[type=button]:not([role]):not([popovertarget])',
 			rules: {
-				'required-attr': {
+				'require-attr': {
 					value: 'command',
 					reason:
 						'button要素には原則としてcommand属性が必要です。Invoker Commands APIを使用してアクセシブルなUIを実装してください。role属性を持つボタン（role="tab"など）やtype="submit"/type="reset"/typeなしのボタンは例外として許可されます。（D-ZERO独自ルール）',
@@ -117,9 +136,10 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-prefer-commandfor',
 			selector: 'button[popovertarget]',
 			rules: {
-				'required-attr': {
+				'require-attr': {
 					value: 'commandfor',
 					reason:
 						'popovertarget属性の代わりにcommandfor属性を使用してください。popovertarget属性は将来的に非推奨となる予定です。（D-ZERO独自ルール）',
@@ -127,9 +147,10 @@ export default {
 			},
 		},
 		{
+			name: 'd-zero/button-prefer-command-action',
 			selector: 'button[popovertargetaction]',
 			rules: {
-				'required-attr': {
+				'require-attr': {
 					value: 'command',
 					reason:
 						'popovertargetaction属性（show/hide/toggle）の代わりにcommand属性（show-popover/hide-popover/toggle-popover）を使用してください。（D-ZERO独自ルール）',

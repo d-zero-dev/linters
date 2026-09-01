@@ -11,7 +11,8 @@ export default {
 	overrides: {
 		[path.resolve(process.cwd(), '**', '*.pug')]: {
 			rules: {
-				'character-reference': false,
+				'no-malformed-character-reference': false,
+				'no-unescaped-char': false,
 			},
 		},
 	},

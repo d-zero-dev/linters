@@ -55,6 +55,18 @@ npm install -D @d-zero/markuplint-config
 
 - **`html`要素の`prefix`属性**: Open Graph Protocolのため許可
 
+### 6. Markuplint標準ルールの追加有効化
+
+recommendedプリセットに含まれない以下の標準ルールを有効化しています：
+
+- **`attr-order`**: 属性順序を`id > class > role > aria-* > data-* > 要素固有属性`に統一
+- **`no-boolean-attr-value`**: boolean属性の冗長な値を禁止（例: `disabled="disabled"`）
+- **`no-default-value`**: デフォルト値と同一の属性値指定を禁止（例: `type="text"`）
+- **`no-unsupported-browser-features`**: `browserslist`設定に基づくブラウザ未サポート要素・属性の検出（`browserslist`設定がないプロジェクトでは影響なし）
+- **`performance/img-aspect-ratio`**: 無効化。`img[src]`の`width`/`height`必須ルールはビルド時に自動付与されるため不要
+
+なお`head-element-order`（`<head>`内要素の順序）・`no-event-handler-attr`（インラインイベントハンドラ属性の禁止）は`markuplint:recommended-static-html`が拡張する`performance`/`security`プリセットで既定有効のため、このconfigでは重複指定していません。
+
 ### 拡張
 
 プロジェクトに合わせて設定を追加します。
@@ -90,7 +102,8 @@ export default {
 	}),
 	// 他の設定
 	rules: {
-		'character-reference': false,
+		'no-malformed-character-reference': false,
+		'no-unescaped-char': false,
 	},
 };
 ```

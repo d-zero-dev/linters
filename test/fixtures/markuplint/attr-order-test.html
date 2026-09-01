@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Attr Order Test</title>
+</head>
+<body>
+	<h1>Attribute Order Tests</h1>
+
+	<!-- Should PASS: correct order (id > class > role > aria > data > specific) -->
+	<button id="btn1" class="btn" role="tab" aria-selected="true" data-index="0" type="button">Correct</button>
+	<img id="hero" class="img" alt="Hero" src="hero.jpg" />
+	<input id="search" class="input" aria-label="Search" data-type="search" name="q" type="search">
+	<a id="link" class="nav" role="menuitem" aria-current="page" href="/">Home</a>
+
+	<!-- Should ERROR: wrong order -->
+	<button type="button" class="btn" id="btn2">type before class and id</button>
+	<img src="photo.jpg" class="img" alt="Photo" />
+	<input name="email" aria-label="Email" class="input" type="email">
+	<a href="/" class="nav" id="link2" role="menuitem">href before class and id</a>
+	<div data-value="1" aria-hidden="true" class="box" id="box1">data before aria, class, id</div>
+</body>
+</html>
