@@ -6,6 +6,8 @@ export default {
 	structure: {
 		name: String,
 	},
+	// `this` is the css-tree parser context bound at call time, not a class instance.
+	/* eslint-disable unicorn/no-this-outside-of-class */
 	// @ts-ignore
 	parse: function SassVariable() {
 		// @ts-ignore
@@ -22,6 +24,7 @@ export default {
 			name: this.consume(IDENTIFIER),
 		};
 	},
+	/* eslint-enable unicorn/no-this-outside-of-class */
 	// @ts-ignore
 	generate: function (node) {
 		return '$' + node.name;

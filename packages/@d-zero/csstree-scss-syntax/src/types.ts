@@ -16,15 +16,15 @@ export type CSSTreeModule = typeof CSSTree & {
 	findAll: typeof CSSTree.findAll;
 	fromPlainObject: typeof CSSTree.fromPlainObject;
 	toPlainObject: typeof CSSTree.toPlainObject;
-	fork(...args: Parameters<typeof CSSTree.fork>): CSSTreeModule;
+	fork(...arguments_: Parameters<typeof CSSTree.fork>): CSSTreeModule;
 	fork(
-		fn: (syntax: CSSTreeModule, assign: typeof Object.assign) => CSSTreeModule,
+		function_: (syntax: CSSTreeModule, assign: typeof Object.assign) => CSSTreeModule,
 	): CSSTreeModule;
 };
 
 interface LexerEx extends CSSTree.Lexer {
 	matchProperty(
-		...args: Parameters<CSSTree.Lexer['matchProperty']>
+		...arguments_: Parameters<CSSTree.Lexer['matchProperty']>
 	): LexerMatchResultMatched | LexerMatchResultMismatch;
 }
 

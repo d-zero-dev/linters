@@ -21,6 +21,8 @@ const forked = CSSTree.fork(
 				...scope,
 				Value: {
 					...scope.Value,
+					// `this` is the css-tree parser context bound at call time, not a class instance.
+					/* eslint-disable unicorn/no-this-outside-of-class */
 					// @ts-ignore
 					getNode: function (context) {
 						// @ts-ignore
@@ -39,6 +41,7 @@ const forked = CSSTree.fork(
 
 						return getNode.call(this, context);
 					},
+					/* eslint-enable unicorn/no-this-outside-of-class */
 				},
 			},
 			node: {
