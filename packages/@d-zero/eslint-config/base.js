@@ -30,6 +30,23 @@ export const base = [
 		...eslintPluginUnicorn.configs.recommended,
 	},
 	{
+		rules: {
+			// Repo style choices predating the Oxlint migration — not oxlint-overlap
+			// suppressions, so keep these off even though both linters enable them by default.
+			'unicorn/no-null': 0,
+			'unicorn/prefer-ternary': 0,
+			'unicorn/prevent-abbreviations': 0,
+			'unicorn/no-nested-ternary': 0,
+			'unicorn/consistent-destructuring': 0,
+			'unicorn/no-array-callback-reference': 0,
+			'unicorn/prefer-global-this': 0,
+			'unicorn/prefer-query-selector': 0,
+			'unicorn/consistent-function-scoping': 0,
+			'unicorn/no-anonymous-default-export': 0,
+			'unicorn/prefer-string-raw': 0,
+		},
+	},
+	{
 		...regexpPlugin.configs['flat/recommended'],
 	},
 	{
