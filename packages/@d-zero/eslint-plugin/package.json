@@ -25,11 +25,11 @@
 		"eslint": ">=9.0.0"
 	},
 	"dependencies": {
-		"@typescript-eslint/utils": "8.68.0"
+		"@typescript-eslint/utils": "8.69.0"
 	},
 	"devDependencies": {
-		"@typescript-eslint/parser": "8.68.0",
-		"@typescript-eslint/rule-tester": "8.68.0",
+		"@typescript-eslint/parser": "8.69.0",
+		"@typescript-eslint/rule-tester": "8.69.0",
 		"eslint": "9.39.5",
 		"vue-eslint-parser": "10.4.1"
 	}
