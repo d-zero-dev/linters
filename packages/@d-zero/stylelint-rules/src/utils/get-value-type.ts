@@ -15,7 +15,7 @@ import postcssValueParser from 'postcss-value-parser';
  */
 export function getValueType(decl: Declaration) {
 	if (decl.prop.startsWith('$')) {
-		return null;
+		return;
 	}
 	try {
 		return _getValueType(decl.prop, decl.value);
@@ -26,7 +26,7 @@ export function getValueType(decl: Declaration) {
 			error.source === decl.value
 		) {
 			// Unsupported SCSS syntax by CSSTree
-			return null;
+			return;
 		}
 		throw error;
 	}
@@ -43,9 +43,9 @@ function _getValueType(
 ):
 	| {
 			value: postcssValueParser.Node;
-			valueType: string | null;
+			valueType: string | undefined;
 	  }[]
-	| null {
+	| undefined {
 	const valueAst = postcssValueParser(value);
 	const valueAstFromCssTree = CSSTree.parse(value, { context: 'value' });
 	let cssTreeDecl = CSSTree.lexer.matchProperty(prop, valueAstFromCssTree);
@@ -62,10 +62,10 @@ function _getValueType(
 		(node) => node.type === 'string' || node.type === 'function' || node.type === 'word',
 	);
 
-	// @ts-ignore
+	// @ts-ignore -- CSSTree's `matched` is typed loosely; it can be `null` per its own API
 	const props = cssTreeDecl.matched;
 	if (props === null) {
-		return null;
+		return undefined;
 	}
 
 	const valueTypes = props.match
@@ -75,9 +75,9 @@ function _getValueType(
 		.map((node) => node.syntax.name);
 
 	return values.map((value, i) => {
-		const valueType = valueTypes[i] ?? null;
+		const valueType = valueTypes[i];
 
-		if (valueType === null && value.type === 'word' && value.value.startsWith('$')) {
+		if (valueType === undefined && value.type === 'word' && value.value.startsWith('$')) {
 			return {
 				value: value,
 				valueType: '$SASS_VARIABLE',

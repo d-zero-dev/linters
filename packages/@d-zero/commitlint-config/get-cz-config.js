@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 /**
- * @returns {Promise<import('cz-customizable').Options | null>}
+ * @returns {Promise<import('cz-customizable').Options | undefined>}
  */
 export async function getCZConfig() {
 	const cwd = process.cwd();
@@ -12,12 +12,12 @@ export async function getCZConfig() {
 	const czConfigPath = packageJson?.config?.['cz-customizable']?.config;
 
 	if (!czConfigPath) {
-		return null;
+		return;
 	}
 
-	const modPath = czConfigPath.replace(/^(?:\.\/)?node_modules\//, '');
+	const modulePath = czConfigPath.replace(/^(?:\.\/)?node_modules\//, '');
 
-	const czConfig = await import(modPath).catch(() => null);
+	const czConfig = await import(modulePath).catch(() => {});
 
-	return czConfig?.default ?? czConfig ?? null;
+	return czConfig?.default ?? czConfig;
 }

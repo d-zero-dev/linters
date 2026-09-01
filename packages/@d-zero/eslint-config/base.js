@@ -1,82 +1,67 @@
-import dzeroPlugin from '@d-zero/eslint-plugin';
+import oxlintConfig from '@d-zero/oxlint-config';
 import js from '@eslint/js';
 import comments from 'eslint-plugin-eslint-comments';
 import { flatConfigs as importX } from 'eslint-plugin-import-x';
-import jsdoc from 'eslint-plugin-jsdoc';
+import { configs as jsdocConfigs } from 'eslint-plugin-jsdoc';
+import oxlintPlugin from 'eslint-plugin-oxlint';
 import * as regexpPlugin from 'eslint-plugin-regexp';
 import sortClassMembers from 'eslint-plugin-sort-class-members';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
+
+import { restrictedSyntax } from './restricted-syntax.js';
 
 /**
  * @type {import('eslint').Linter.Config[]}
  */
 export const base = [
 	{
+		ignores: ['**/*.{ts,mts,cts,tsx}'],
+	},
+	{
 		...js.configs.recommended,
 		rules: {
 			...js.configs.recommended.rules,
-			'no-console': 'warn',
 			'no-mixed-spaces-and-tabs': 0,
-			'no-restricted-syntax': [
-				2,
-				{
-					selector:
-						':matches(PropertyDefinition, MethodDefinition)[accessibility="private"]',
-					message: 'Use #private instead',
-				},
-				{
-					selector:
-						':matches(PropertyDefinition, MethodDefinition)[accessibility="public"]',
-					message: 'Remove public keyword',
-				},
-				{
-					selector: 'MethodDefinition[key.name=/^_/]:not([accessibility="protected"])',
-					message: 'Add protected keyword',
-				},
-				{
-					selector: 'MethodDefinition:not([key.name=/^_/])[accessibility="protected"]',
-					message: 'Start with `_` if you want to use protected',
-				},
-				{
-					selector:
-						"CallExpression[callee.property.name='addEventListener'][arguments.0.value='DOMContentLoaded']",
-					message:
-						"Avoid using 'DOMContentLoaded'. Use 'defer' or 'type=module' attribute instead.",
-				},
-			],
-			'no-unused-vars': 0,
-			'no-var': 2,
-			'prefer-const': 2,
-			'prefer-rest-params': 2,
-			'prefer-spread': 2,
+			'no-restricted-syntax': [2, ...restrictedSyntax],
 		},
 	},
 	{
 		...eslintPluginUnicorn.configs.recommended,
+	},
+	{
 		rules: {
-			...eslintPluginUnicorn.configs.recommended.rules,
-			'unicorn/consistent-destructuring': 0,
-			'unicorn/consistent-function-scoping': 0,
-			'unicorn/no-anonymous-default-export': 0,
-			'unicorn/no-array-callback-reference': 0,
-			'unicorn/no-nested-ternary': 0,
+			// Repo style choices predating the Oxlint migration — not oxlint-overlap
+			// suppressions, so keep these off even though both linters enable them by default.
 			'unicorn/no-null': 0,
-			'unicorn/no-process-exit': 0,
-			'unicorn/prefer-global-this': 0,
-			'unicorn/prefer-query-selector': 0,
-			'unicorn/prefer-string-raw': 0,
 			'unicorn/prefer-ternary': 0,
 			'unicorn/prevent-abbreviations': 0,
+			'unicorn/no-nested-ternary': 0,
+			'unicorn/consistent-destructuring': 0,
+			'unicorn/no-array-callback-reference': 0,
+			'unicorn/prefer-global-this': 0,
+			'unicorn/prefer-query-selector': 0,
+			'unicorn/consistent-function-scoping': 0,
+			'unicorn/no-anonymous-default-export': 0,
+			'unicorn/prefer-string-raw': 0,
 		},
 	},
-	regexpPlugin.configs['flat/recommended'],
+	{
+		...regexpPlugin.configs['flat/recommended'],
+	},
 	{
 		...importX.recommended,
 		rules: {
 			...importX.recommended.rules,
+			// `import-x` isn't recognized by `eslint-plugin-oxlint`'s `buildFromOxlintConfig`
+			// (it maps oxlint's `import` scope to the `import/` prefix, not `import-x/`), so
+			// these overlaps with `@d-zero/oxlint-config` stay disabled manually.
+			'import-x/default': 0,
+			'import-x/namespace': 0,
+			'import-x/no-duplicates': 0,
 			'import-x/no-extraneous-dependencies': 2,
 			'import-x/no-named-as-default': 0,
+			'import-x/no-named-as-default-member': 0,
 			'import-x/no-unresolved': 0,
 			'import-x/order': [
 				2,
@@ -108,15 +93,7 @@ export const base = [
 		},
 	},
 	{
-		...jsdoc.configs['flat/recommended'],
-		rules: {
-			...jsdoc.configs['flat/recommended'].rules,
-			'jsdoc/require-param-type': 0,
-			'jsdoc/require-param-description': 0,
-			'jsdoc/require-returns': 0,
-			'jsdoc/require-returns-type': 0,
-			'jsdoc/require-returns-description': 0,
-		},
+		...jsdocConfigs['flat/recommended'],
 	},
 	{
 		plugins: {
@@ -243,19 +220,15 @@ export const base = [
 	},
 	{
 		languageOptions: {
-			ecmaVersion: 2023,
+			ecmaVersion: 'latest',
 			globals: {
 				...globals.builtin,
 				...globals.nodeBuiltin,
 			},
 		},
 	},
-	{
-		plugins: {
-			'@d-zero': dzeroPlugin,
-		},
-		rules: {
-			'@d-zero/no-click-event': 'warn',
-		},
-	},
+	// Turns off every rule that `@d-zero/oxlint-config` already covers, generated straight from
+	// its config object so the two configs can't drift out of sync. `import-x/*` overlaps are
+	// handled manually above (see the comment there).
+	...oxlintPlugin.buildFromOxlintConfig(oxlintConfig),
 ];

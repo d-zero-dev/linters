@@ -1,0 +1,31 @@
+{
+	"name": "@d-zero/oxlint-plugin",
+	"version": "6.0.0-alpha.2",
+	"description": "Custom Oxlint rules for D-ZERO",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/oxlint-plugin"
+	},
+	"files": [
+		"index.js"
+	],
+	"type": "module",
+	"exports": {
+		".": "./index.js"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"eslint": "9.39.5"
+	},
+	"peerDependencies": {
+		"oxlint": ">=1.0.0"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	}
+}

@@ -8,7 +8,7 @@ if (button) {
 }
 
 // Pattern 3: jQuery .on('click')
-declare const $: any;
+/* global $ */
 $('#element').on('click', () => {});
 
 // Pattern 4: jQuery .click(handler)

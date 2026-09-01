@@ -2,31 +2,31 @@
 	"name": "@d-zero/lint-staged-config",
 	"version": "6.0.0-alpha.2",
 	"description": "Configurations of lint-staged",
+	"license": "MIT",
+	"author": "D-ZERO Co., Ltd.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/d-zero-dev/linters.git",
 		"directory": "packages/@d-zero/lint-staged-config"
 	},
-	"author": "D-ZERO Co., Ltd.",
-	"license": "MIT",
-	"publishConfig": {
-		"access": "public"
-	},
-	"engines": {
-		"node": ">=22.0.0"
-	},
+	"files": [
+		"dist"
+	],
 	"type": "module",
 	"exports": {
 		"import": "./dist/index.js",
 		"types": "./dist/index.d.ts"
 	},
-	"files": [
-		"dist"
-	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "tsc"
 	},
 	"dependencies": {
 		"lint-staged": "17.3.0"
+	},
+	"engines": {
+		"node": ">=22.0.0"
 	}
 }
