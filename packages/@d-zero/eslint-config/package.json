@@ -21,14 +21,14 @@
 	"dependencies": {
 		"@d-zero/eslint-plugin": "5.0.0",
 		"@eslint-community/eslint-plugin-eslint-comments": "4.7.2",
-		"@eslint/compat": "2.0.2",
+		"@eslint/compat": "2.1.0",
 		"@eslint/js": "10.0.1",
-		"eslint": "10.8.0",
+		"eslint": "10.9.1",
 		"eslint-plugin-import-x": "4.17.1",
-		"eslint-plugin-jsdoc": "64.2.1",
+		"eslint-plugin-jsdoc": "64.3.2",
 		"eslint-plugin-regexp": "3.2.0",
 		"eslint-plugin-sort-class-members": "1.22.1",
-		"eslint-plugin-unicorn": "63.0.0",
+		"eslint-plugin-unicorn": "74.0.0",
 		"globals": "17.11.0",
 		"typescript-eslint": "8.68.0"
 	}
