@@ -15,15 +15,14 @@ const config = (settings: Record<string, unknown> | boolean = true) => ({
 
 describe('Parse Error', () => {
 	test('SCSS Syntax', async () => {
-		const {
-			// @ts-ignore
-			results: [{ warnings, parseErrors }],
-		} = await lint({
+		const { results } = await lint({
 			code: '* { background: url("a" + $b + "c") }',
 			config: config({
 				length: ['px'],
 			}),
 		});
+		// @ts-ignore
+		const [{ warnings, parseErrors }] = results;
 
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toHaveLength(0);
@@ -32,15 +31,14 @@ describe('Parse Error', () => {
 
 describe('length-pattern', () => {
 	test('length in flex', async () => {
-		const {
-			// @ts-ignore
-			results: [{ warnings, parseErrors }],
-		} = await lint({
+		const { results } = await lint({
 			code: '* { flex: 1 1 10px }',
 			config: config({
 				'/^length/': ['/[0-9]{2,}px/'],
 			}),
 		});
+		// @ts-ignore
+		const [{ warnings, parseErrors }] = results;
 
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toStrictEqual([
@@ -59,10 +57,7 @@ describe('length-pattern', () => {
 	});
 
 	test('ignoreProperties options', async () => {
-		const {
-			// @ts-ignore
-			results: [{ warnings, parseErrors }],
-		} = await lint({
+		const { results } = await lint({
 			code: '* { flex: 1 1 10px }',
 			config: config({
 				'/^length/': {
@@ -71,6 +66,8 @@ describe('length-pattern', () => {
 				},
 			}),
 		});
+		// @ts-ignore
+		const [{ warnings, parseErrors }] = results;
 
 		expect(parseErrors).toHaveLength(0);
 		expect(warnings).toHaveLength(0);

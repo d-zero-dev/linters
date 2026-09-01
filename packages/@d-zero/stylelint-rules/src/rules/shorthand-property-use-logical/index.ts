@@ -65,10 +65,10 @@ export default createRule<boolean | Options>({
 					false,
 					(value: unknown) => {
 						if (!isPlainObject(value)) return false;
-						const obj = value as Record<string, unknown>;
+						const object = value as Record<string, unknown>;
 						return (
-							!('properties' in obj) ||
-							(Array.isArray(obj.properties) && obj.properties.every(isString))
+							!('properties' in object) ||
+							(Array.isArray(object.properties) && object.properties.every(isString))
 						);
 					},
 				],
@@ -83,19 +83,19 @@ export default createRule<boolean | Options>({
 					? primary.properties
 					: [...SHORTHAND_PROPERTIES_WITH_LOGICAL];
 
-			root.walkDecls((decl) => {
+			root.walkDecls((declaration) => {
 				// Only check properties that are in our enabled list
-				if (!enabledProperties.includes(decl.prop)) {
+				if (!enabledProperties.includes(declaration.prop)) {
 					return;
 				}
 
 				// Check if the property has multiple values
-				if (!hasMultipleValues(decl.value)) {
+				if (!hasMultipleValues(declaration.value)) {
 					return;
 				}
 
 				// Get logical property suggestions
-				const logicalProperties = LOGICAL_PROPERTY_MAP[decl.prop];
+				const logicalProperties = LOGICAL_PROPERTY_MAP[declaration.prop];
 				if (!logicalProperties) {
 					return;
 				}
@@ -103,8 +103,8 @@ export default createRule<boolean | Options>({
 				stylelint.utils.report({
 					result,
 					ruleName,
-					message: messages.rejected(decl.prop, logicalProperties.join(', ')),
-					node: decl,
+					message: messages.rejected(declaration.prop, logicalProperties.join(', ')),
+					node: declaration,
 				});
 			});
 		};

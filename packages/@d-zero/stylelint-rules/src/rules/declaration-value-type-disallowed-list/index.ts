@@ -42,8 +42,8 @@ export default createRule<Record<string, string[] | Options>>({
 				return;
 			}
 
-			root.walkDecls((decl) => {
-				const nodes = getValueType(decl);
+			root.walkDecls((declaration) => {
+				const nodes = getValueType(declaration);
 
 				if (nodes === null) {
 					return;
@@ -66,7 +66,7 @@ export default createRule<Record<string, string[] | Options>>({
 
 						if (
 							value.ignoreProperties &&
-							matchesStringOrRegExp(decl.prop, value.ignoreProperties)
+							matchesStringOrRegExp(declaration.prop, value.ignoreProperties)
 						) {
 							return [];
 						}
@@ -78,7 +78,7 @@ export default createRule<Record<string, string[] | Options>>({
 						continue;
 					}
 
-					const raw = decl.value.slice(
+					const raw = declaration.value.slice(
 						node.value.sourceIndex,
 						node.value.sourceIndex + node.value.sourceEndIndex,
 					);
@@ -92,7 +92,7 @@ export default createRule<Record<string, string[] | Options>>({
 							result,
 							ruleName,
 							message: messages.rejected(word, node.valueType),
-							node: decl,
+							node: declaration,
 							word,
 						});
 					}
