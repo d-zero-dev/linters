@@ -287,6 +287,8 @@ describe('stylelint', () => {
 			'test/fixtures/stylelint/class-name.scss:14:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__foo😁bar (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:18:2 コンポーネントのスタイル定義の中で別のコンポーネントを定義してはいけません: .c-component2 (selector-nested-pattern)',
 			'test/fixtures/stylelint/class-name.scss:23:1 スタイル定義でIDセレクタは使わないでください (selector-max-id)',
+			'test/fixtures/stylelint/class-name.scss:59:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__element (selector-nested-pattern)',
+			'test/fixtures/stylelint/class-name.scss:64:2 Stylelint v17以降「&」を使ったセレクタの文字列結合に対応しなくなったため、「&」の使用を禁止します: &__foo (selector-nested-pattern)',
 		]);
 	});
 
