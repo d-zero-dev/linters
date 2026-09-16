@@ -22,7 +22,7 @@
 		"*.js"
 	],
 	"dependencies": {
-		"@markuplint/pug-parser": "4.18.3",
+		"@markuplint/pug-parser": "5.0.0",
 		"markuplint": "4.18.3"
 	}
 }
