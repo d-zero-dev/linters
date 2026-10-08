@@ -43,7 +43,7 @@
 		"@d-zero/tsconfig": "2.0.0",
 		"@secretlint/secretlint-rule-preset-recommend": "13.0.7",
 		"@types/node": "26.6.4",
-		"execa": "10.0.1",
+		"execa": "10.1.0",
 		"husky": "9.1.7",
 		"lerna": "10.0.1",
 		"npm-run-all2": "9.0.3",
