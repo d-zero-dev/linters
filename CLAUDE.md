@@ -26,7 +26,7 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - `yarn test` — Vitest によるテスト実行
 - `yarn lint` — tsc/eslint/prettier/textlint/cspell/secretlint/actionlint を直列実行
 - `yarn lint:ci` — CI 用（actionlint を除く）
-- `yarn release`/`yarn release:alpha:latest`/`yarn release:next`/`yarn release:canary` — `lerna publish`。手順は`.claude/skills/npm-publish/SKILL.md`参照
+- `yarn release`系 — リリースは`v5`/`v6`ブランチから行い、そちらの`yarn release`（`lerna version --no-push`）を使う。`dev`に残っている`lerna publish`版の`yarn release`系は旧運用のもので、実行しない。手順は`.claude/skills/npm-publish/SKILL.md`参照
 - `yarn commit`/`yarn co` — Commitizen 経由のコミット作成
 
 ### コマンド制約
@@ -35,7 +35,22 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - **パッケージディレクトリに cd しない**: 常にリポジトリルートから実行
 - **ビルドは`yarn build`のみ**: `npx tsc`、`lerna run build --scope`等の個別指定は禁止
 - **コマンドの連続実行禁止**: `&&`、`;`、改行によるコマンド連結をしない。1回の Bash 呼び出しで1コマンドのみ実行する。連結されたコマンドは settings.json の permissions allow/deny でパターンマッチできず、毎回ユーザーの手動承認が必要になり効率が大幅に低下する
-- **main / dev ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、`main`/`dev`にいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する。これらのブランチでの直接コミットはリポジトリのルールで禁止されている
+- **main / dev / v5 / v6 ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、これらのブランチにいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する（リリースコミットを除く。`.claude/skills/npm-publish/SKILL.md`）
+
+## ブランチ構成
+
+| ブランチ | 役割                                                                                                       |
+| -------- | ---------------------------------------------------------------------------------------------------------- |
+| `dev`    | デフォルトブランチ。Renovate の更新と通常の PR が入る。publish workflow を持たず、ここからはリリースしない |
+| `v5`     | 現行メジャー（v5）のリリースライン。`latest` dist-tag はここから出る                                       |
+| `v6`     | 次メジャー（v6）の開発・リリースライン。`alpha` dist-tag はここから出る。`dev`と`v5`を取り込む             |
+| `main`   | 実運用されていない（v5.0.0-alpha.23 のまま残置）                                                           |
+
+- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-git`を OIDC Trusted Publishing（provenance 付き）で実行する。publish.yml は`v5`/`v6`にだけあり、`dev`には無い
+- `dev`の変更は自動では`v5`に入らない。`dev`にマージした修正を現行メジャーで出すには、`v5`に取り込んでからリリースする。何を取り込むかはユーザーが決める
+- `v6`は`dev`と`v5`をマージで取り込む（`v6`を`dev`/`v5`にマージしない）
+- `Fixes #N`が issue を閉じるのはデフォルトブランチ（`dev`）へのマージだけ。`v5`/`v6`への PR では`merged`スキルが手で閉じる
+- `dev`の CI（`test.yml`）は`main`/`dev`向けの PR にしか起動しない。`v5`向けの PR には CI が付かない（`v6`は`v*`向け PR でも起動する）
 
 ## パッケージ依存関係
 
@@ -102,7 +117,3 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 | npm-publish     | `.claude/skills/npm-publish/SKILL.md`     | npm パッケージのリリース                                                   |
 | product-manager | `.claude/skills/product-manager/SKILL.md` | リポジトリ分析、ドキュメント生成・レビュー、PR レビュー                    |
 | qa-engineer     | `.claude/skills/qa-engineer/SKILL.md`     | コードレビュー、テスト品質チェック、カバレッジ改善                         |
-
-## 注意
-
-- `main`ブランチは現時点で実運用されていない（古いバージョンのまま残置）。リリースは`dev`ブランチから行う（詳細は`.claude/skills/npm-publish/SKILL.md`）
