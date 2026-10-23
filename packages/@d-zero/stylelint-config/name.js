@@ -22,8 +22,9 @@ module.exports = {
 			},
 		],
 		'selector-nested-pattern': [
-			'^[^.&]+.*|^&(?:\\s|\\.|\\[|:|#)',
+			'^[^.&]+.*|^&(?:$|\\s|\\.|\\[|:|#)',
 			{
+				splitList: true,
 				/**
 				 * @param {string} selector
 				 * @returns {string}
