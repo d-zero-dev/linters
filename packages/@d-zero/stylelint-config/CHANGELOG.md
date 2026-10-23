@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/d-zero-dev/linters/compare/v5.1.0...v5.1.1) (2026-10-23)
+
+### Bug Fixes
+
+- **stylelint:** update stylelint to 17.14.1 in stylelint-config ([4006d8c](https://github.com/d-zero-dev/linters/commit/4006d8c4879e3483d60fd115a16fdb596a0c7f29))
+
 # [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
 
 ### Bug Fixes

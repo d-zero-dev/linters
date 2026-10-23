@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/stylelint-rules",
-	"version": "5.1.0",
+	"version": "5.1.1",
 	"description": "Rules of Stylelint for D-ZERO",
 	"repository": {
 		"type": "git",
@@ -26,7 +26,7 @@
 		"build": "tsc"
 	},
 	"dependencies": {
-		"@d-zero/csstree-scss-syntax": "5.1.0",
+		"@d-zero/csstree-scss-syntax": "5.1.1",
 		"css-tree": "3.2.1",
 		"postcss-selector-parser": "7.1.7",
 		"postcss-value-parser": "4.2.0",

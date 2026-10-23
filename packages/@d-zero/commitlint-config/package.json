@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/commitlint-config",
-	"version": "5.1.0",
+	"version": "5.1.1",
 	"description": "Configurations of commitlint",
 	"repository": {
 		"type": "git",
@@ -25,6 +25,6 @@
 	"dependencies": {
 		"@commitlint/cli": "21.2.4",
 		"@commitlint/config-conventional": "21.2.4",
-		"@d-zero/cz-config": "5.1.0"
+		"@d-zero/cz-config": "5.1.1"
 	}
 }

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/d-zero-dev/linters/compare/v5.1.0...v5.1.1) (2026-10-23)
+
+### Bug Fixes
+
+- **stylelint-rules:** update css-tree to v3.2.1 and adjust value-type tests ([35183c3](https://github.com/d-zero-dev/linters/commit/35183c32fc035ca75f79c6259247843d83ea6bac))
+- **stylelint-rules:** update postcss and stylelint to resolve version split ([85f25c0](https://github.com/d-zero-dev/linters/commit/85f25c0c2af6afe649c2a9d36f1b6a45ec0f3021))
+
 # [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
 
 ### Bug Fixes

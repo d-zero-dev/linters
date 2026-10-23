@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/d-zero-dev/linters/compare/v5.1.0...v5.1.1) (2026-10-23)
+
+### Bug Fixes
+
+- **deps:** disable platformAutomerge to keep Renovate direct-merge bypass ([7858ba5](https://github.com/d-zero-dev/linters/commit/7858ba53029046424c3c0c66853c43e1a6bf0569))
+- **github:** add dist-tag detection to publish workflow ([8ed2504](https://github.com/d-zero-dev/linters/commit/8ed25041e4d0ad56b0010d1ad5251f1000245a28))
+- **markuplint:** update markuplint to 4.18.4 ([78794eb](https://github.com/d-zero-dev/linters/commit/78794eb19d2ea19da213166da49162c709fed5c9))
+- **repo:** dedupe postcss/stylelint and prevent future lockfile splits ([26080a3](https://github.com/d-zero-dev/linters/commit/26080a3d7e8f2cde274bd734059bfb41efeb6c72))
+- **repo:** fix cspell ignorePaths glob matching every file ([32bdada](https://github.com/d-zero-dev/linters/commit/32bdadab79f0b718f54da45852a1a2852a494f07))
+- **repo:** make grill-me template comply with textlint jtf-style ([b77c185](https://github.com/d-zero-dev/linters/commit/b77c1858f9b003cb4707048c173bd5a2e12b4d5f))
+- **repo:** pin @types/node as an explicit devDependency ([8302e14](https://github.com/d-zero-dev/linters/commit/8302e14c9102b6f3106e44803e0045061357b403))
+- **repo:** remove duplicate root renovate.json ([7872457](https://github.com/d-zero-dev/linters/commit/787245762c628651eadea53cca18d8236fc71b24))
+- **stylelint-rules:** update css-tree to v3.2.1 and adjust value-type tests ([35183c3](https://github.com/d-zero-dev/linters/commit/35183c32fc035ca75f79c6259247843d83ea6bac))
+- **stylelint-rules:** update postcss and stylelint to resolve version split ([85f25c0](https://github.com/d-zero-dev/linters/commit/85f25c0c2af6afe649c2a9d36f1b6a45ec0f3021))
+- **stylelint:** update stylelint to 17.14.1 in stylelint-config ([4006d8c](https://github.com/d-zero-dev/linters/commit/4006d8c4879e3483d60fd115a16fdb596a0c7f29))
+
+### Features
+
+- **repo:** add 7-day cooldown period for npm package releases ([fcbb62b](https://github.com/d-zero-dev/linters/commit/fcbb62bcec49eabd1ad9a48a10c0074250ee95ca))
+
 # [5.1.0](https://github.com/d-zero-dev/linters/compare/v5.0.0...v5.1.0) (2026-04-08)
 
 ### Bug Fixes
