@@ -12,8 +12,9 @@
 	"scripts": {
 		"test": "vitest run",
 		"build": "lerna run build",
-		"lint": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
-		"lint:ci": "run-s lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint lint:actionlint",
+		"lint:ci": "run-s lint:dedupe lint:tsc lint:eslint lint:prettier lint:textlint lint:cspell lint:secretlint",
+		"lint:dedupe": "yarn dedupe --check",
 		"lint:cspell": "npx cspell --no-progress --show-suggestions \"{*,packages/@d-zero/*/{*,src/**/*}}/\"",
 		"lint:eslint": "npx eslint --fix \"{*,packages/@d-zero/*/{*,src/**/*}}.{js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
 		"lint:prettier": "npx prettier --write \"{*,**/*}.{md,mdc,json,js,cjs,mjs,jsx,ts,cts,mts,tsx}\"",
@@ -39,23 +40,25 @@
 		}
 	},
 	"devDependencies": {
-		"@d-zero/tsconfig": "1.0.0",
-		"@secretlint/secretlint-rule-preset-recommend": "11.3.1",
-		"execa": "9.6.1",
+		"@d-zero/tsconfig": "2.0.0",
+		"@secretlint/secretlint-rule-preset-recommend": "13.0.7",
+		"@types/node": "26.6.5",
+		"execa": "10.1.0",
 		"husky": "9.1.7",
-		"lerna": "9.0.4",
-		"npm-run-all2": "8.0.4",
-		"prettier": "3.8.1",
-		"secretlint": "11.3.1",
+		"lerna": "10.1.1",
+		"npm-run-all2": "9.0.4",
+		"prettier": "3.9.10",
+		"secretlint": "13.0.7",
 		"typescript": "5.9.3",
-		"vitest": "4.0.18"
+		"vitest": "4.1.12"
 	},
 	"resolutions": {
-		"baseline-browser-mapping": "^2"
+		"baseline-browser-mapping": "^2",
+		"nx/undici": "7.29.1"
 	},
-	"packageManager": "yarn@4.12.0",
+	"packageManager": "yarn@4.18.1",
 	"volta": {
-		"node": "24.14.0",
-		"yarn": "4.12.0"
+		"node": "24.21.0",
+		"yarn": "4.18.1"
 	}
 }

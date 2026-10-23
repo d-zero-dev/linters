@@ -22,7 +22,7 @@ describe('getValueType', () => {
 		expect(p('a { flex: 1 1 calc(var(--foo) * 10vw) }')).toEqual([
 			'number',
 			'number',
-			'length',
+			'length-percentage',
 		]);
 	});
 
@@ -31,7 +31,7 @@ describe('getValueType', () => {
 	});
 
 	test('height vw', () => {
-		expect(p('a { height: 100vw }')).toEqual(['length']);
+		expect(p('a { height: 100vw }')).toEqual(['length-percentage']);
 	});
 
 	test('background', () => {

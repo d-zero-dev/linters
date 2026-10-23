@@ -38,7 +38,7 @@ describe('length-pattern', () => {
 		} = await lint({
 			code: '* { flex: 1 1 10px }',
 			config: config({
-				length: ['/[0-9]{2,}px/'],
+				'/^length/': ['/[0-9]{2,}px/'],
 			}),
 		});
 
@@ -51,7 +51,7 @@ describe('length-pattern', () => {
 				endLine: 1,
 				column: 15,
 				endColumn: 19,
-				text: 'Unexpected value "10px" for type "length" (@d-zero/declaration-value-type-disallowed-list)',
+				text: 'Unexpected value "10px" for type "length-percentage" (@d-zero/declaration-value-type-disallowed-list)',
 				url: undefined,
 				fix: undefined,
 			},
@@ -65,7 +65,7 @@ describe('length-pattern', () => {
 		} = await lint({
 			code: '* { flex: 1 1 10px }',
 			config: config({
-				length: {
+				'/^length/': {
 					ignoreProperties: ['flex'],
 					patterns: ['/[0-9]{2,}px/'],
 				},
