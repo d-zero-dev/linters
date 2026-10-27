@@ -26,7 +26,7 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - `yarn test` — Vitest によるテスト実行
 - `yarn lint` — tsc/eslint/prettier/textlint/cspell/secretlint/actionlint を直列実行
 - `yarn lint:ci` — CI 用（actionlint を除く）
-- `yarn release`系 — リリースは`v5`/`v6`ブランチから行い、そちらの`yarn release`（`lerna version --no-push`）を使う。`dev`に残っている`lerna publish`版の`yarn release`系は旧運用のもので、実行しない。手順は`.claude/skills/npm-publish/SKILL.md`参照
+- `yarn release`系 — `lerna version --no-push`。リリースラインの`v5`/`v6`でだけ実行し、`dev`では実行しない。手順は`.claude/skills/npm-publish/SKILL.md`参照
 - `yarn commit`/`yarn co` — Commitizen 経由のコミット作成
 
 ### コマンド制約
@@ -35,20 +35,21 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - **パッケージディレクトリに cd しない**: 常にリポジトリルートから実行
 - **ビルドは`yarn build`のみ**: `npx tsc`、`lerna run build --scope`等の個別指定は禁止
 - **コマンドの連続実行禁止**: `&&`、`;`、改行によるコマンド連結をしない。1回の Bash 呼び出しで1コマンドのみ実行する。連結されたコマンドは settings.json の permissions allow/deny でパターンマッチできず、毎回ユーザーの手動承認が必要になり効率が大幅に低下する
-- **main / dev / v5 / v6 ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、これらのブランチにいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する（リリースコミットを除く。`.claude/skills/npm-publish/SKILL.md`）
+- **main / dev / v5 / v6 ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、これらのブランチにいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する（リリースラインでの`dev`の取り込みマージとリリースコミットを除く。`.claude/skills/npm-publish/SKILL.md`）
 
 ## ブランチ構成
 
-| ブランチ | 役割                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------- |
-| `dev`    | デフォルトブランチ。Renovate の更新と通常の PR が入る。publish workflow を持たず、ここからはリリースしない |
-| `v5`     | 現行メジャー（v5）のリリースライン。`latest` dist-tag はここから出る                                       |
-| `v6`     | 次メジャー（v6）の開発・リリースライン。`alpha` dist-tag はここから出る。`dev`と`v5`を取り込む             |
-| `main`   | 実運用されていない（v5.0.0-alpha.23 のまま残置）                                                           |
+| ブランチ | 役割                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------ |
+| `dev`    | デフォルトブランチ。Renovate の更新と通常の PR が入る。ここからはリリースしない                  |
+| `v5`     | 現行メジャー（v5）のリリースライン。`latest` dist-tag はここから出る                             |
+| `v6`     | 次メジャー（v6）の開発・リリースライン。`alpha` dist-tag はここから出る。`dev`と`v5`を取り込む   |
+| `main`   | 現行メジャーの最新リリースを指す。`v5`のリリース後に`v5`へ fast-forward する。直接コミットしない |
 
-- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-git`を OIDC Trusted Publishing（provenance 付き）で実行する。publish.yml は`v5`/`v6`にだけあり、`dev`には無い
-- `dev`の変更は自動では`v5`に入らない。`dev`にマージした修正を現行メジャーで出すには、`v5`に取り込んでからリリースする。何を取り込むかはユーザーが決める
-- `v6`は`dev`と`v5`をマージで取り込む（`v6`を`dev`/`v5`にマージしない）
+- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-git`を OIDC Trusted Publishing（provenance 付き）で実行する
+- `dev`の変更は自動では`v5`に入らない。`dev`にマージした修正を現行メジャーで出すには、`dev`を`v5`にローカルでマージしてからリリースする。何を取り込むかはユーザーが決める
+- `v5`のリリース後は、`v5`を`dev`と`main`に取り込む。`dev`へは`dev`から切ったトピックブランチに`v5`をマージして PR にする（`v5`を head にした PR は、ブランチの更新で未リリースの`dev`の変更を`v5`に入れてしまう）。`main`は`v5`への fast-forward。これで`dev`のバージョン・CHANGELOG・リリース用の設定が`v5`とずれない
+- `v6`は`dev`と`v5`をマージで取り込む（`v6`を`dev`/`v5`/`main`にマージしない）
 - `Fixes #N`が issue を閉じるのはデフォルトブランチ（`dev`）へのマージだけ。`v5`/`v6`への PR では`merged`スキルが手で閉じる
 - `dev`の CI（`test.yml`）は`main`/`dev`向けの PR にしか起動しない。`v5`向けの PR には CI が付かない（`v6`は`v*`向け PR でも起動する）
 
