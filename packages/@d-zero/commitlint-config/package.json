@@ -1,8 +1,12 @@
 {
 	"name": "@d-zero/commitlint-config",
-	"version": "5.0.0",
+	"version": "5.1.1",
 	"description": "Configurations of commitlint",
-	"repository": "https://github.com/d-zero-dev/linters.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/commitlint-config"
+	},
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"type": "module",
@@ -21,6 +25,6 @@
 	"dependencies": {
 		"@commitlint/cli": "21.2.4",
 		"@commitlint/config-conventional": "21.2.4",
-		"@d-zero/cz-config": "5.0.0"
+		"@d-zero/cz-config": "5.1.1"
 	}
 }
