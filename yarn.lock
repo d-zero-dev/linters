@@ -1050,7 +1050,7 @@ __metadata:
   resolution: "@d-zero/markuplint-config@workspace:packages/@d-zero/markuplint-config"
   dependencies:
     "@markuplint/pug-parser": "npm:4.18.4"
-    markuplint: "npm:4.18.4"
+    markuplint: "npm:4.18.5"
   languageName: unknown
   linkType: soft
 
@@ -1753,9 +1753,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@markuplint/file-resolver@npm:4.18.4":
-  version: 4.18.4
-  resolution: "@markuplint/file-resolver@npm:4.18.4"
+"@markuplint/file-resolver@npm:4.18.5":
+  version: 4.18.5
+  resolution: "@markuplint/file-resolver@npm:4.18.5"
   dependencies:
     "@markuplint/html-parser": "npm:4.18.4"
     "@markuplint/ml-ast": "npm:4.18.4"
@@ -1772,7 +1772,7 @@ __metadata:
     import-meta-resolve: "npm:4.2.0"
     jsonc: "npm:2.0.0"
     minimatch: "npm:10.2.6"
-  checksum: 10c0/b776149a04e9ee8237aa68325732d760347f03d859087b6772d820892724a9b0f117e5ae6beb90c838e404333e48b4caaed122b8d9cdf4d60b45e3ab669bbd96
+  checksum: 10c0/ca94a1c8f9a9b6ea6b63cade40d011599adacc942642cec0f6134df5f0a0a8327946ea886727f5b04e8c516eb43c8361ea68125439e8e3f74b30297a764d3b7a
   languageName: node
   linkType: hard
 
@@ -7965,12 +7965,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"markuplint@npm:4.18.4":
-  version: 4.18.4
-  resolution: "markuplint@npm:4.18.4"
+"markuplint@npm:4.18.5":
+  version: 4.18.5
+  resolution: "markuplint@npm:4.18.5"
   dependencies:
     "@markuplint/cli-utils": "npm:4.18.0"
-    "@markuplint/file-resolver": "npm:4.18.4"
+    "@markuplint/file-resolver": "npm:4.18.5"
     "@markuplint/html-parser": "npm:4.18.4"
     "@markuplint/html-spec": "npm:4.18.4"
     "@markuplint/i18n": "npm:4.18.0"
@@ -7990,7 +7990,7 @@ __metadata:
     type-fest: "npm:5.10.0"
   bin:
     markuplint: bin/markuplint.mjs
-  checksum: 10c0/1264b911ec59c7ca3de80a1d59a70604558d0ec10f9b94aa948a83137afbd696abc4670d32808e68b4cb85a04801de8f256d88a7ba535c899f83472d6905ee40
+  checksum: 10c0/b11e2b67a55da931eb4fd509511050c3584dfc277dd8b72180aec16c9eede0c72aa201e87ac3ee715e9035323d56550eda7409befea6f4f8ac1b4719bfd013bf
   languageName: node
   linkType: hard
 
