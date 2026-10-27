@@ -84,6 +84,14 @@ git diff yarn.lock
 
 差分が出たらユーザーに報告する。publish workflow の `yarn install --immutable` が失敗するのを防ぐため必須。
 
+あわせて、公開する各パッケージの `package.json` が固定している社外パッケージの版が、公開から 7 日以上たっているかを確認する。利用側は `npmMinimalAgeGate: 7d` を持つため、7 日未満の版を固定して公開すると、利用側は固定先が 7 日を過ぎるまでその版を `yarn install` できない。
+
+```bash
+npm view <pkg> time --json
+```
+
+7 日未満の版があれば止めてユーザーに提示する。7 日以上たった版に戻すか、ゲートを通過するまでリリースを待つ。
+
 ## 7. 事前チェック
 
 ```bash
