@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/d-zero-dev/linters/compare/v5.1.1...v5.1.2) (2026-10-27)
+
+**Note:** Version bump only for package @d-zero/textlint-config
+
 ## [5.1.1](https://github.com/d-zero-dev/linters/compare/v5.1.0...v5.1.1) (2026-10-23)
 
 **Note:** Version bump only for package @d-zero/textlint-config
