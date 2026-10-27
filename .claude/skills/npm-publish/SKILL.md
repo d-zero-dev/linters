@@ -1,13 +1,13 @@
 ---
 name: npm-publish
-description: npm パッケージのリリース（v5 / v6 ブランチでのバージョニング、タグ push、publish workflow 監視、publish 結果検証）
+description: npm パッケージのリリース（v5 / v6 ブランチでのバージョニング、タグ push、publish workflow 監視、publish 結果検証、v5 の dev / main への取り込み）
 when_to_use: ユーザーが「リリースして」「publish して」「バージョン上げて」「/npm-publish」と指示した場合
 disable-model-invocation: true
 ---
 
 # 前提
 
-- リリースは**リリースラインのブランチ**から行う。正式版（`latest`）は `v5`、次メジャーのプレリリース（`alpha`）は `v6`。`dev` はデフォルトブランチだが publish workflow を持たず、`package.json` の `yarn release` 系も旧運用（`lerna publish`）のままなので、**`dev` からはリリースしない**。`main` は実運用されていない（ルート `CLAUDE.md` の「ブランチ構成」）
+- リリースは**リリースラインのブランチ**から行う。正式版（`latest`）は `v5`、次メジャーのプレリリース（`alpha`）は `v6`。**`dev` からはリリースしない**。`main` は `v5` の最新リリースを指し、リリース後に `v5` へ fast-forward する（ルート `CLAUDE.md` の「ブランチ構成」）
 - `yarn release`（`lerna version --no-push`）がバージョン決定・`package.json` 更新・リリースコミット・タグ作成までを行う。コミットとタグを push すると、タグ（`v*`）の push で `.github/workflows/publish.yml` が発火し、`lerna publish from-git` が npm へ publish する（OIDC Trusted Publishing、provenance 付き）
 - **publish は取り消せない**。各ステップでユーザーの確認を取る
 - **`yarn release` と `git push` 系はユーザーが実行する**。エージェントは実行せず（`.claude/settings.json` で deny されている）`!` プレフィックス付きのコマンドを提示し、完了報告を待つ
@@ -65,7 +65,13 @@ git pull origin <line>
 git log --oneline <line>..origin/dev
 ```
 
-取り込むかどうか、どれを取り込むかはユーザーが決める（種別: scope）。`v6` は `dev` をマージで取り込む運用。`v5` に取り込むときは、`dev` の CLAUDE.md・skills の記述（リリースはリリースラインから）と `v5` 側の記述が衝突しうるので、コンフリクトはユーザーに報告して指示を仰ぐ。取り込みは PR 経由（`/pr` の手順、base `<line>`）にする。リリースラインに直接コミットしない。
+取り込むかどうか、どれを取り込むかはユーザーが決める（種別: scope）。取り込みは `<line>` 上でのローカルのマージにする（`v5` 向けの PR には CI が付かず、手順 7 の事前チェックが品質の判定になるため）。
+
+```bash
+git merge --no-ff --no-edit origin/dev
+```
+
+コンフリクトが出たらユーザーに報告して指示を仰ぐ。リリース後に `v5` を `dev` に戻している（手順 12）ので、通常はコンフリクトしない。マージコミットは手順 9 のリリースコミットと一緒に push する。
 
 ## 5. 未マージ PR の確認
 
@@ -184,6 +190,28 @@ npm view <package> --json
 fixed モードでも一部パッケージだけ publish に失敗する（部分 publish）ことがある。全対象パッケージを個別に確認し、漏れがあればユーザーに報告する。
 
 **ここが success の判定点**。npm 上の状態を確認するまでリリース完了と判断してはいけない。
+
+## 12. dev と main への取り込み（`v5` のみ）
+
+`v5` のリリースコミット（バージョン・CHANGELOG）と、`v5` に入った変更を `dev` と `main` に戻す。戻さないと、`dev` のバージョンと CHANGELOG が公開済みの版とずれ、`v5` にだけ入れた修正が `dev` に届かない。`v6` のリリースでは行わない（`v6` を `dev` / `main` にマージしない）。
+
+`dev` へは、`dev` から切ったトピックブランチで `v5` をマージし、`/pr` の手順で base `dev` の PR にする。`v5` を head にした PR は使わない（`dev` のブランチ保護が最新化を求めるため、GitHub のブランチ更新で未リリースの `dev` の変更が `v5` に入ってしまう）。
+
+```bash
+git fetch origin
+git switch -c chore/merge-v5-<version>-into-dev origin/dev
+git merge --no-ff --no-edit origin/v5
+```
+
+PR はマージコミットでマージする（squash しない。squash すると `v5` との合流点が記録されず、次の取り込みで同じ差分が再び出る）。
+
+`main` は `v5` への fast-forward（ユーザー実行）:
+
+```
+! git push origin origin/v5:main
+```
+
+fast-forward にならない（`main` に `v5` に無いコミットがある）ときは push が拒否される。その場合は止めてユーザーに報告する。
 
 # 失敗時の対処
 
