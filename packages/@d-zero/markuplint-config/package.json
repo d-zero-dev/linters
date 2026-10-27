@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/markuplint-config",
-	"version": "5.1.1",
+	"version": "5.1.3",
 	"description": "Configurations of Markuplint",
 	"repository": {
 		"type": "git",
