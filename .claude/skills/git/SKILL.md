@@ -8,7 +8,7 @@ description: Git 操作ルール（コミット作成、メッセージ形式、
 コミットを求められたら、他の何より先に以下を行う。
 
 1. `git branch --show-current` で現在のブランチを確認する
-2. 現在のブランチが `main` / `dev` / `v5` / `v6` のいずれかに該当する場合、コミットを進めず、ユーザーにトピックブランチの作成を提案する（`yarn release` が作るリリースコミットは例外。`npm-publish` スキル）
+2. 現在のブランチが `main` / `dev` / `v5` / `v6` のいずれかに該当する場合、コミットを進めず、ユーザーにトピックブランチの作成を提案する（リリースラインでの `dev` の取り込みマージと、`yarn release` が作るリリースコミットは例外。`npm-publish` スキル）
 3. 該当しない場合はそのまま以下のコミット作成手順に進む
 
 # コミット作成
@@ -77,8 +77,9 @@ description: Git 操作ルール（コミット作成、メッセージ形式、
 - Conventional Commits を使用すること
   - 使用するタイプ: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
   - 使用するスコープ:
-    - 各パッケージ名（ネームスペースなし）: `cspell-config`, `eslint-config`, `eslint-plugin`, `markuplint-config`, `prettier-config`, `pug-lint-config`, `stylelint-config`, `stylelint-rules`, `csstree-scss-syntax`, `textlint-config`, `lint-staged-config`, `commitlint-config`, `cz-config`
+    - 各パッケージ名からネームスペースと `-config` を除いたもの（`@d-zero/cz-config/scopes` が lerna.json のパッケージから生成し、commitlint の `scope-enum` が検査する）: `cspell`, `eslint`, `eslint-plugin`, `markuplint`, `prettier`, `pug-lint`, `stylelint`, `stylelint-rules`, `csstree-scss-syntax`, `textlint`, `lint-staged`, `commitlint`, `cz`
     - `repo`, `deps`, `github`
+    - `release`（`yarn release` のリリースコミットが使う）
 - メッセージ本文の各行は100文字以下
 - 件名は sentence-case, start-case, pascal-case, upper-case にしない
 

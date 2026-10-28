@@ -1,8 +1,12 @@
 {
 	"name": "@d-zero/markuplint-config",
-	"version": "5.0.0",
+	"version": "5.1.3",
 	"description": "Configurations of Markuplint",
-	"repository": "https://github.com/d-zero-dev/linters.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/d-zero-dev/linters.git",
+		"directory": "packages/@d-zero/markuplint-config"
+	},
 	"author": "D-ZERO Co., Ltd.",
 	"license": "MIT",
 	"publishConfig": {
@@ -23,6 +27,6 @@
 	],
 	"dependencies": {
 		"@markuplint/pug-parser": "4.18.4",
-		"markuplint": "4.18.4"
+		"markuplint": "4.18.5"
 	}
 }
