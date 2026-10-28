@@ -26,7 +26,7 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - `yarn test` — Vitest によるテスト実行
 - `yarn lint` — tsc/eslint/prettier/textlint/cspell/secretlint/actionlint を直列実行
 - `yarn lint:ci` — CI 用（actionlint を除く）
-- `yarn release`/`yarn release:alpha`/`yarn release:beta`/`yarn release:rc` — `lerna version`（push なし）。リリース手順は`.claude/skills/npm-publish/SKILL.md`参照
+- `yarn release`系 — `lerna version --no-push`。リリースラインの`v5`/`v6`でだけ実行し、`dev`では実行しない。手順は`.claude/skills/npm-publish/SKILL.md`参照
 - `yarn commit`/`yarn co` — Commitizen 経由のコミット作成
 
 ### コマンド制約
@@ -35,7 +35,23 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 - **パッケージディレクトリに cd しない**: 常にリポジトリルートから実行
 - **ビルドは`yarn build`のみ**: `npx tsc`、`lerna run build --scope`等の個別指定は禁止
 - **コマンドの連続実行禁止**: `&&`、`;`、改行によるコマンド連結をしない。1回の Bash 呼び出しで1コマンドのみ実行する。連結されたコマンドは settings.json の permissions allow/deny でパターンマッチできず、毎回ユーザーの手動承認が必要になり効率が大幅に低下する
-- **main / dev ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、`main`/`dev`にいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する。これらのブランチでの直接コミットはリポジトリのルールで禁止されている
+- **main / dev / v5 / v6 ブランチでの作業・コミット禁止**: 作業開始前に`git branch --show-current`で現ブランチを確認し、これらのブランチにいる場合は`git switch -c <topic>`でトピックブランチを作ってから作業する（リリースラインでの`dev`の取り込みマージとリリースコミットを除く。`.claude/skills/npm-publish/SKILL.md`）
+
+## ブランチ構成
+
+| ブランチ | 役割                                                                                             |
+| -------- | ------------------------------------------------------------------------------------------------ |
+| `dev`    | デフォルトブランチ。Renovate の更新と通常の PR が入る。ここからはリリースしない                  |
+| `v5`     | 現行メジャー（v5）のリリースライン。`latest` dist-tag はここから出る                             |
+| `v6`     | 次メジャー（v6）の開発・リリースライン。`alpha` dist-tag はここから出る。`dev`と`v5`を取り込む   |
+| `main`   | 現行メジャーの最新リリースを指す。`v5`のリリース後に`v5`へ fast-forward する。直接コミットしない |
+
+- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-package`（npm に無い版のパッケージを publish する）を OIDC Trusted Publishing（provenance 付き）で実行する
+- `dev`の変更は自動では`v5`に入らない。`dev`にマージした修正を現行メジャーで出すには、`dev`を`v5`にローカルでマージしてからリリースする。何を取り込むかはユーザーが決める
+- `v5`のリリース後は、`v5`を`dev`と`main`に取り込む。`dev`へは`dev`から切ったトピックブランチに`v5`をマージして PR にする（`v5`を head にした PR は、ブランチの更新で未リリースの`dev`の変更を`v5`に入れてしまう）。`main`は`v5`への fast-forward。これで`dev`のバージョン・CHANGELOG・リリース用の設定が`v5`とずれない
+- `v6`は`dev`と`v5`をマージで取り込む（`v6`を`dev`/`v5`/`main`にマージしない）
+- `Fixes #N`が issue を閉じるのはデフォルトブランチ（`dev`）へのマージだけ。`v5`/`v6`への PR では`merged`スキルが手で閉じる
+- `dev`の CI（`test.yml`）は`main`/`dev`向けの PR にしか起動しない。`v5`向けの PR には CI が付かない（`v6`は`v*`向け PR でも起動する）
 
 ## パッケージ依存関係
 
@@ -61,7 +77,13 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 
 - コードには How、テストコードには What、コミットログには Why、コードコメントには Why not（必要なら Why も）を書く
 - JSDoc は公開 API の API ユーザー向け文書（WHAT/HOW/WHY + `@example`必須）。非公開 API は必須にしない
-- 実装計画由来の相対概念（Phase/Step 番号、「本 PR」「今回」「旧実装」「導入予定」）を JSDoc・テスト名・ドキュメントに書かない。外部参照は issue/PR 番号のみ可
+- 実装計画由来の相対概念（Phase/Step 番号、「本 PR」「今回」「旧実装」「導入予定」）を JSDoc・テスト名・ドキュメントに書かない。コードコメント・JSDoc・テスト名に issue/PR 番号も書かず、理由そのものを書く（例外は PR 本文とコミットメッセージ）
+
+## 判断基準
+
+- **変更・修正・レビュー指摘を採用するかは 2 つで決める**: 共有設定・カスタムルールとして、利用側リポジトリで D-Zero のフロントエンドガイドライン（`d-zero-dev/frontend-guidelines`）どおりの lint/format 結果になること（誤検知と見逃しがなく、利用側の lint・ビルドが通る）。製品の振る舞いでない変更（tooling・docs・CI・skills）では「宣言した意図に対する正しさ」と「既存コードとの一貫性」。実装コスト、diff の大きさ、影響件数、「軽微」は基準ではなく、スキップ・先送り・質問の理由にならない
+- **基準が決めることは聞かずにやる**。質問は、基準が決めないことと、リポジトリ外への書き込みのためにある（質問の種別は`impl`スキルが定める）。Claude は「持ち越す」「スキップする」「そのままにする」を自分で決めない。それらは質問に対するユーザーの回答としてだけ存在し、「あとで」「別 PR で」「意図的に変更しない」と書く応答・PR 本文・コミットは、その質問と回答を指せなければならない
+- **レビュー指摘は直すか、証拠を添えてユーザーに出す**。「false positive」「元からあった」「意図どおり」はユーザーに対して主張することであって、Claude が 1 人で指摘を閉じる手段ではない
 
 ## セキュリティ
 
@@ -85,16 +107,14 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 
 タスクに応じて`.claude/skills/`配下のスキルを参照すること。
 
-| スキル          | パス                                      | 用途                                                    |
-| --------------- | ----------------------------------------- | ------------------------------------------------------- |
-| git             | `.claude/skills/git/SKILL.md`             | コミット作成・メッセージ形式・事前チェック              |
-| pr              | `.claude/skills/pr/SKILL.md`              | プルリクエストの作成とプッシュ                          |
-| grill-me        | `.claude/skills/grill-me/SKILL.md`        | 計画・設計の合意形成                                    |
-| impl            | `.claude/skills/impl/SKILL.md`            | 合意済み計画の実装〜PR作成オーケストレーション          |
-| npm-publish     | `.claude/skills/npm-publish/SKILL.md`     | npm パッケージのリリース                                |
-| product-manager | `.claude/skills/product-manager/SKILL.md` | リポジトリ分析、ドキュメント生成・レビュー、PR レビュー |
-| qa-engineer     | `.claude/skills/qa-engineer/SKILL.md`     | コードレビュー、テスト品質チェック、カバレッジ改善      |
-
-## 注意
-
-- `main`ブランチは現時点で実運用されていない（古いバージョンのまま残置）。リリースは`dev`ブランチから行う（詳細は`.claude/skills/npm-publish/SKILL.md`）
+| スキル          | パス                                      | 用途                                                                       |
+| --------------- | ----------------------------------------- | -------------------------------------------------------------------------- |
+| git             | `.claude/skills/git/SKILL.md`             | コミット作成・メッセージ形式・事前チェック・破壊的変更の扱い               |
+| pr              | `.claude/skills/pr/SKILL.md`              | プルリクエストの作成とプッシュ（本文の節構成、CI 監視）                    |
+| merged          | `.claude/skills/merged/SKILL.md`          | マージ後の手順（外部作者への完了コメント、issue への報告）                 |
+| create-issue    | `.claude/skills/create-issue/SKILL.md`    | 原因まで調べて Issue を起票する（持ち越しの引き継ぎ先）                    |
+| grill-me        | `.claude/skills/grill-me/SKILL.md`        | 計画・設計の合意形成                                                       |
+| impl            | `.claude/skills/impl/SKILL.md`            | 合意済み計画の実装・検証・持ち越しの Issue 化・PR 作成・マージ後の台帳確認 |
+| npm-publish     | `.claude/skills/npm-publish/SKILL.md`     | npm パッケージのリリース                                                   |
+| product-manager | `.claude/skills/product-manager/SKILL.md` | リポジトリ分析、ドキュメント生成・レビュー、PR レビュー                    |
+| qa-engineer     | `.claude/skills/qa-engineer/SKILL.md`     | コードレビュー、テスト品質チェック、カバレッジ改善                         |

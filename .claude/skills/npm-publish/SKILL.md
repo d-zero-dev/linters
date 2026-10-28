@@ -1,20 +1,20 @@
 ---
 name: npm-publish
-description: npm パッケージのリリース（lerna publish によるバージョニング・タグ作成・npm publish 一括実行、publish 結果検証）
+description: npm パッケージのリリース（v5 / v6 ブランチでのバージョニング、タグ push、publish workflow 監視、publish 結果検証、v5 の dev / main への取り込み）
 when_to_use: ユーザーが「リリースして」「publish して」「バージョン上げて」「/npm-publish」と指示した場合
 disable-model-invocation: true
 ---
 
 # 前提
 
-- リリースは `dev` ブランチから行う。`main` ブランチはこのリポジトリでは実運用されていない（古いバージョンのまま残置されており、リリース対象ではない）
-- `yarn release`（`lerna publish`）は、バージョンの決定・`package.json` 更新・コミット・git タグ作成・タグ push・npm publish を**一括で対話的に実行する**。タグ push を起点に発火する publish workflow は存在しない（OIDC Trusted Publishing 未導入）
+- リリースは**リリースラインのブランチ**から行う。正式版（`latest`）は `v5`、次メジャーのプレリリース（`alpha`）は `v6`。**`dev` からはリリースしない**。`main` は `v5` の最新リリースを指し、リリース後に `v5` へ fast-forward する（ルート `CLAUDE.md` の「ブランチ構成」）
+- `yarn release`（`lerna version --no-push`）がバージョン決定・`package.json` 更新・リリースコミット・タグ作成までを行う。コミットとタグを push すると、タグ（`v*`）の push で `.github/workflows/publish.yml` が発火し、`lerna publish from-package` が npm に無い版のパッケージを publish する（OIDC Trusted Publishing、provenance 付き）
 - **publish は取り消せない**。各ステップでユーザーの確認を取る
-- **`yarn release` はユーザーが実行する**。`lerna publish` は選択・確認のプロンプトを出すインタラクティブコマンドで、Claude Code の `!` 経由では対話できない（プロンプトが表示されても入力できず止まる）
+- **`yarn release` と `git push` 系はユーザーが実行する**。エージェントは実行せず（`.claude/settings.json` で deny されている）`!` プレフィックス付きのコマンドを提示し、完了報告を待つ
 
 # 対象パッケージ
 
-fixed モードのため全パッケージが同一バージョンで上がる（`lerna.json` の `version`）:
+fixed モードのため全パッケージが同一バージョンで上がる（リリースラインの `lerna.json` の `version`）。`lerna version` は前回タグ以降に変更のあったパッケージだけを上げるので、変更の無いパッケージは前のバージョンのまま残る（例: `@d-zero/eslint-config` は 5.1.0 で上がらず 5.0.0 が `latest`）:
 
 | ディレクトリ                           | npm パッケージ名              |
 | -------------------------------------- | ----------------------------- |
@@ -34,7 +34,11 @@ fixed モードのため全パッケージが同一バージョンで上がる�
 
 # 手順
 
-## 1. ワーキングツリーの状態確認
+## 1. リリースラインの決定
+
+ユーザーの指示からリリースラインを決める。正式版なら `v5`、v6 のプレリリースなら `v6`。指示から決まらなければ聞く（種別: spec silent）。以下 `<line>` と書く。
+
+## 2. ワーキングツリーの状態確認
 
 `git status` で未コミットの変更・未追跡ファイルがないか確認する。
 
@@ -43,25 +47,58 @@ fixed モードのため全パッケージが同一バージョンで上がる�
 
 汚れたまま先に進むとバージョニングが意図しない差分を巻き込むため、ここは省略しない。
 
-## 2. dev の最新化
+## 3. リリースラインの最新化
 
 ```bash
 git fetch origin
-git checkout dev
-git pull origin dev
+git switch <line>
+git pull origin <line>
 ```
 
 `pull` がコンフリクトやリジェクトで失敗したらユーザーに報告して指示を仰ぐ。
 
-## 3. 未マージ PR の確認
+## 4. dev から取り込む変更の確認
+
+`dev` の変更は自動では `<line>` に入らない。`dev` にあって `<line>` に無いコミットを提示する。
+
+```bash
+git log --oneline <line>..origin/dev
+```
+
+取り込むかどうか、どれを取り込むかはユーザーが決める（種別: scope）。取り込みは `<line>` 上でのローカルのマージにする（`v5` 向けの PR には CI が付かず、手順 7 の事前チェックが品質の判定になるため）。
+
+```bash
+git merge --no-ff --no-edit origin/dev
+```
+
+コンフリクトが出たらユーザーに報告して指示を仰ぐ。リリース後に `v5` を `dev` に戻している（手順 12）ので、通常はコンフリクトしない。マージコミットは手順 9 のリリースコミットと一緒に push する。
+
+## 5. 未マージ PR の確認
 
 リリースに含めるべき PR が残っていないか確認し、あればユーザーに提示して続行可否を尋ねる。
 
 ```bash
-gh pr list --base dev --state open
+gh pr list --base <line> --state open
 ```
 
-## 4. 事前チェック
+## 6. lockfile の同期確認
+
+```bash
+yarn install
+git diff yarn.lock
+```
+
+差分が出たらユーザーに報告する。publish workflow の `yarn install --immutable` が失敗するのを防ぐため必須。
+
+あわせて、公開する各パッケージの `package.json` が固定している社外パッケージの版が、公開から 7 日以上たっているかを確認する。利用側は `npmMinimalAgeGate: 7d` を持つため、7 日未満の版を固定して公開すると、利用側は固定先が 7 日を過ぎるまでその版を `yarn install` できない。
+
+```bash
+npm view <pkg> time --json
+```
+
+7 日未満の版があれば止めてユーザーに提示する。7 日以上たった版に戻すか、ゲートを通過するまでリリースを待つ。
+
+## 7. 事前チェック
 
 ```bash
 yarn lint
@@ -69,9 +106,9 @@ yarn build
 yarn test
 ```
 
-すべてパスすること。失敗があれば修正してから次へ。`yarn release` は build を再度走らせないため、ここで確実に検証しておく。
+すべてパスすること。失敗があれば修正してから次へ。`v5` 向けの PR には CI が付かない（`test.yml` の対象外）ので、ここでの結果がそのまま品質の判定になる。
 
-## 5. リリース内容の提示
+## 8. リリース内容の提示
 
 現在のバージョンと前回タグからの差分をユーザーに提示する。
 
@@ -80,60 +117,125 @@ git describe --tags --abbrev=0
 git log --oneline $(git describe --tags --abbrev=0)..HEAD
 ```
 
-`yarn release` は conventional commits からバージョンを自動決定するため、**リリース種別をユーザーに確認する必要はない**。差分は「何が入るか」の確認材料として提示するだけでよい。
+`<line>` の `lerna.json` の `version` が現行バージョンの正。`yarn release` は conventional commits からバージョンを自動決定するため、**リリース種別をユーザーに確認する必要はない**。差分は「何が入るか」の確認材料として提示するだけでよい。
 
-## 6. リリース実行（ユーザー実行）
-
-ユーザーに次のコマンドを案内する。
-
-```
-yarn release          # graduate（正式リリース。通常はこれだけで十分）
-```
-
-alpha / next / canary のプレリリースが必要な場合は、ユーザーが会話の中で明示的に指示したときだけ案内する。
-
-```
-yarn release:alpha:latest   # alpha プレリリース（latest dist-tag）
-yarn release:next           # alpha プレリリース（next dist-tag）
-yarn release:canary         # canary プレリリース
-```
-
-`lerna publish` は対話プロンプトを出すため、ユーザーがターミナルで直接実行する。実行後、バージョン・コミット・タグ push・npm publish まで完了しているはず。
-
-## 7. publish 結果の検証
-
-workflow を介さず `lerna publish` プロセスの終了コードのみで完了報告されるため、**各パッケージについて**実際の npm 上の状態を確認する。
+あわせて、前回タグ以降に破壊的変更マーカーが無いかを確認する。`v5` は安定版（`5.x.y`）なので、マーカー付きコミットが 1 つでもあれば `yarn release` が全パッケージのメジャー（6.0.0）を切ってしまう。`v6` の `6.0.0-alpha.n` ではプレリリース番号が進むだけ（段階ごとの効果と、付けてよい条件は `git` スキルの「破壊的変更と振る舞いの変更」）。
 
 ```bash
-npm view <package> version
-npm view <package> dist-tags
+git log <last-tag>..HEAD --format=%s | grep -E '^[a-z]+(\([^)]*\))?!:'
+git log <last-tag>..HEAD --format=%B | grep -iE '^(\* +)?BREAKING[ -]CHANGE:'
 ```
 
-確認項目:
+`v5` でヒットがあれば止めて提示する。ユーザーがメジャーを承認していた変更ならそのまま進む。承認の無いマーカー（誤って付いたもの、`dev` から取り込んだ v6 向けの変更など）でそれでもリリースするなら、バンプを明示して回避する: `yarn release minor`（または `patch`）。`lerna version` は `--conventional-commits` の推奨より位置引数のバンプを優先し、CHANGELOG は生成する。その CHANGELOG にはコミットの注記から「BREAKING CHANGES」節が入るので、マイナーリリースが破壊的変更を告知する形になる。選択肢を提示するときにそう言う。
 
-- バージョンが手順 6 で上げた値と一致しているか
-- dist-tag が意図通りか（正式リリースは `latest`、プレリリースは `alpha` / `next` / `dev`(canary)）
+振る舞いの変更の段落も集めて、リリース内容の一部として提示する。共有設定のルール追加・厳格化は利用側の lint を落とすので、ここで利用側への影響をユーザーと確認する。
 
-fixed モードでも一部パッケージだけ publish に失敗する（部分 publish）ことがある。全対象パッケージを個別に確認し、漏れがあればユーザーに報告する。
+```bash
+git log <last-tag>..HEAD --grep='^Behavior change'
+```
 
-**ここが success の判定点**。npm 上の状態を確認するまでリリース完了と判断してはいけない。
+## 9. バージョニングと push（ユーザー実行）
 
-## 8. タグ push の確認
+`lerna version` は選択・確認のプロンプトを出すインタラクティブコマンドで、Claude Code の `!` 経由では対話できない（プロンプトが表示されても入力できず止まる）。ユーザーに次の手順を依頼する:
 
-`lerna publish` は通常タグ push まで自動で行うが、念のため確認する。
+1. Claude Code のセッションを終了する（`exit`）
+2. ターミナルで `<line>` にいることを確認し、直接 `yarn release`（`v6` のプレリリースなら `yarn release:alpha`）を実行してプロンプトに対話的に回答する
+3. 完了したら `claude --continue` で会話に戻る
+
+```
+yarn release          # v5: 正式リリース
+yarn release:alpha    # v6: alpha プレリリース
+```
+
+beta / rc（`yarn release:beta` / `yarn release:rc`）は、ユーザーが明示的に指示したときだけ案内する。
+
+ユーザーから完了報告を受けたら、push の前に yarn.lock をリリースコミットに合わせる。lerna 10 の `lerna version` は yarn.lock を更新しないため、内部依存（`@d-zero/eslint-config` → `@d-zero/eslint-plugin` 等）の版が上がると、lockfile が古い版を指したまま残り、publish workflow の `yarn install --immutable` が失敗する。
+
+```bash
+yarn install
+git diff yarn.lock
+```
+
+差分が出たら、`chore(release): sync yarn.lock with v<version>` としてコミットし、タグをそのコミットに付け直す（タグはまだ push していないのでローカルの操作で済む。lerna と同じ注釈付きタグにする）。
+
+```
+! git tag -f -a v<version> -m v<version>
+```
+
+publish workflow は `lerna publish from-package` で npm に無い版を publish するので、タグがリリースコミットの次のコミットを指していても対象のパッケージは publish される。
+
+スクリプトは `--no-push` なので、**コミットとタグの push が別途必要**。次を提示する。
+
+```
+! git push origin <line> --follow-tags
+```
+
+実際にタグが push されたことを確認してから次へ進む。
 
 ```bash
 git ls-remote --tags origin
 ```
 
-取りこぼしがあれば `! git push --tags` をユーザーに依頼する。
+## 10. publish workflow の監視
+
+`v*` タグの push で `publish.yml` が発火する。バックグラウンド実行で完了を待つ。
+
+```bash
+gh run watch --exit-status
+```
+
+失敗したらログ URL をユーザーに提示し、「失敗時の対処」へ。
+
+## 11. publish 結果の検証
+
+workflow が success でも publish が意図通りとは限らない。**バージョンが上がったパッケージすべてについて**実際の npm 上の状態を確認する。
+
+```bash
+npm view <package> version
+npm view <package> dist-tags
+npm view <package> --json
+```
+
+確認項目:
+
+- バージョンが手順 9 で上げた値と一致しているか
+- **dist-tag が意図通りか**。`publish.yml` はタグ名から判定する（`-alpha` → `alpha`、`-beta` → `beta`、`-rc` → `rc`、それ以外で `-` を含む → `next`、それ以外 → `latest`）
+- provenance が付与されているか（`npm view <package> --json` の `dist.attestations`）
+
+fixed モードでも一部パッケージだけ publish に失敗する（部分 publish）ことがある。全対象パッケージを個別に確認し、漏れがあればユーザーに報告する。
+
+**ここが success の判定点**。npm 上の状態を確認するまでリリース完了と判断してはいけない。
+
+## 12. dev と main への取り込み（`v5` のみ）
+
+`v5` のリリースコミット（バージョン・CHANGELOG）と、`v5` に入った変更を `dev` と `main` に戻す。戻さないと、`dev` のバージョンと CHANGELOG が公開済みの版とずれ、`v5` にだけ入れた修正が `dev` に届かない。`v6` のリリースでは行わない（`v6` を `dev` / `main` にマージしない）。
+
+`dev` へは、`dev` から切ったトピックブランチで `v5` をマージし、`/pr` の手順で base `dev` の PR にする。`v5` を head にした PR は使わない（`dev` のブランチ保護が最新化を求めるため、GitHub のブランチ更新で未リリースの `dev` の変更が `v5` に入ってしまう）。
+
+```bash
+git fetch origin
+git switch -c chore/merge-v5-<version>-into-dev origin/dev
+git merge --no-ff --no-edit origin/v5
+```
+
+PR はマージコミットでマージする（squash しない。squash すると `v5` との合流点が記録されず、次の取り込みで同じ差分が再び出る）。
+
+`main` は `v5` への fast-forward（ユーザー実行）:
+
+```
+! git push origin origin/v5:main
+```
+
+fast-forward にならない（`main` に `v5` に無いコミットがある）ときは push が拒否される。その場合は止めてユーザーに報告する。
 
 # 失敗時の対処
 
-- **部分 publish**: 成功したパッケージは publish 済みで巻き戻せない。`lerna publish from-package` を実行すると、未 publish のバージョンのみを対象に再試行できる（成功済みパッケージは二重 publish されない）
+- **sigstore の transient 409 や一時的な失敗**: `gh run rerun --failed` で再実行する。`lerna publish from-package` は未 publish のバージョンのみを対象にするため、成功済みパッケージは二重 publish されない
+- **部分 publish**: 成功したパッケージは publish 済みで巻き戻せない。上と同じく workflow の再実行で未 publish のパッケージだけが対象になる
 - **誤ったバージョンを publish した**: unpublish は原則不可。`npm deprecate <package>@<version> "<理由>"` で非推奨化し、修正版を新バージョンとして publish する。この判断は必ずユーザーに確認を取る
 
 # 注意
 
-- **publish は取り消せない**。手順 4 の事前チェックを省略しない
-- 現状 OIDC Trusted Publishing・タグ push 起点の publish workflow は未導入。導入時はこのスキルの前提・手順 6〜8 を書き換える必要がある
+- **`v*` タグの作成・削除は CODEOWNERS のみ**（GitHub Rulesets で保護）。権限がない場合は手順 9 の push で失敗するため、実行者がタグ権限者か事前に確認する
+- **publish は取り消せない**。手順 6・7 の事前チェックを省略しない
+- **`.yarnrc.yml` の `npmMinimalAgeGate` を一時的に外していないか確認する**。自社パッケージの取り込みのために外したまま publish すると、保護が外れた状態がリリースに固定される
