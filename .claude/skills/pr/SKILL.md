@@ -3,7 +3,7 @@ name: pr
 description: プルリクエストの作成とプッシュ（プリフライトチェック、base 追従、コンフリクト検知、PR 本文の節構成、CI 監視。マージ後は merged スキルへ）
 ---
 
-1. `dev` / `main` / `v5` / `v6` ではないトピックブランチにいることを確認する。base は、トピックブランチを切った元のブランチ（通常は `dev`。リリースラインへの取り込みなら `v5` / `v6`。ルート `CLAUDE.md` の「ブランチ構成」）。以下 `<base>` と書く。
+1. `dev` / `main` / `v5` / `v6` ではないトピックブランチにいることを確認する。base は、トピックブランチを切った元のブランチ（通常は `dev`。リリースラインだけに入れる修正なら `v5` / `v6`。`dev` から `v5` への取り込みは PR にせず `npm-publish` スキルの手順 4 でローカルにマージし、リリース後の `v5` から `dev` への取り込みは同スキルの手順 12。ルート `CLAUDE.md` の「ブランチ構成」）。以下 `<base>` と書く。
 2. **base 追従（コンフリクト予防）**: `git fetch origin <base>` を実行し、`git log HEAD..origin/<base> --oneline` で base が進んでいないか確認する。進んでいれば push 前に `git merge origin/<base>` で取り込む。**rebase はしない** — worktree では rebase 中の `git commit --amend` で husky のフック解決が壊れることがあり、merge ならレビュー済みの履歴がそのまま残る。ドキュメント系のコンフリクトは機械的に解決せず、base 側で追加された内容を方針（README / JSDoc の役割分担）に沿って取り込むこと。
 3. **プリフライトチェック（必須 — 省略不可）:**
    - `yarn lint`、`yarn build`、`yarn test` がこのセッション内でまだ実行・成功していない場合、続行する前に**今すぐ実行**する。base を取り込んだ場合は取り込み後に再実行する。`yarn lint` は `yarn dedupe --check`・`tsc`・secretlint・actionlint も含む（actionlint のバイナリが無い環境では `yarn lint:ci` を使い、そう報告する）。
