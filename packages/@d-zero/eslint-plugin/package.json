@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/eslint-plugin",
-	"version": "5.1.1",
+	"version": "5.1.3",
 	"description": "Custom ESLint rules for D-ZERO",
 	"repository": {
 		"type": "git",
