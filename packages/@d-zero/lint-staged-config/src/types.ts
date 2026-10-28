@@ -21,13 +21,7 @@ export type TargetFileExtension =
 	| 'yml';
 
 export type CommandType =
-	| 'cspell'
-	| 'eslint'
-	| 'markuplint'
-	| 'prettier'
-	| 'puglint'
-	| 'stylelint'
-	| 'textlint';
+	'cspell' | 'eslint' | 'markuplint' | 'prettier' | 'puglint' | 'stylelint' | 'textlint';
 
 export type CommandMappings = Readonly<
 	Partial<Record<TargetFileExtension, CommandType[]>>
