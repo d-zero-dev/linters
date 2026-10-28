@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.3](https://github.com/d-zero-dev/linters/compare/v5.1.2...v5.1.3) (2026-10-27)
+
+### Bug Fixes
+
+- **markuplint:** update markuplint to 4.18.5 ([10f0c54](https://github.com/d-zero-dev/linters/commit/10f0c54a7a33869dda0b39e6b1b3897dffb1a845)), closes [markuplint/markuplint#4405](https://github.com/markuplint/markuplint/issues/4405)
+
 ## [5.1.2](https://github.com/d-zero-dev/linters/compare/v5.1.1...v5.1.2) (2026-10-27)
 
 **Note:** Version bump only for package linters

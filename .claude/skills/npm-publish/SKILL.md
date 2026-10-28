@@ -8,7 +8,7 @@ disable-model-invocation: true
 # 前提
 
 - リリースは**リリースラインのブランチ**から行う。正式版（`latest`）は `v5`、次メジャーのプレリリース（`alpha`）は `v6`。**`dev` からはリリースしない**。`main` は `v5` の最新リリースを指し、リリース後に `v5` へ fast-forward する（ルート `CLAUDE.md` の「ブランチ構成」）
-- `yarn release`（`lerna version --no-push`）がバージョン決定・`package.json` 更新・リリースコミット・タグ作成までを行う。コミットとタグを push すると、タグ（`v*`）の push で `.github/workflows/publish.yml` が発火し、`lerna publish from-git` が npm へ publish する（OIDC Trusted Publishing、provenance 付き）
+- `yarn release`（`lerna version --no-push`）がバージョン決定・`package.json` 更新・リリースコミット・タグ作成までを行う。コミットとタグを push すると、タグ（`v*`）の push で `.github/workflows/publish.yml` が発火し、`lerna publish from-package` が npm に無い版のパッケージを publish する（OIDC Trusted Publishing、provenance 付き）
 - **publish は取り消せない**。各ステップでユーザーの確認を取る
 - **`yarn release` と `git push` 系はユーザーが実行する**。エージェントは実行せず（`.claude/settings.json` で deny されている）`!` プレフィックス付きのコマンドを提示し、完了報告を待つ
 
@@ -149,7 +149,22 @@ yarn release:alpha    # v6: alpha プレリリース
 
 beta / rc（`yarn release:beta` / `yarn release:rc`）は、ユーザーが明示的に指示したときだけ案内する。
 
-スクリプトは `--no-push` なので、**コミットとタグの push が別途必要**。ユーザーから完了報告を受けたら、次を提示する。
+ユーザーから完了報告を受けたら、push の前に yarn.lock をリリースコミットに合わせる。lerna 10 の `lerna version` は yarn.lock を更新しないため、内部依存（`@d-zero/eslint-config` → `@d-zero/eslint-plugin` 等）の版が上がると、lockfile が古い版を指したまま残り、publish workflow の `yarn install --immutable` が失敗する。
+
+```bash
+yarn install
+git diff yarn.lock
+```
+
+差分が出たら、`chore(release): sync yarn.lock with v<version>` としてコミットし、タグをそのコミットに付け直す（タグはまだ push していないのでローカルの操作で済む。lerna と同じ注釈付きタグにする）。
+
+```
+! git tag -f -a v<version> -m v<version>
+```
+
+publish workflow は `lerna publish from-package` で npm に無い版を publish するので、タグがリリースコミットの次のコミットを指していても対象のパッケージは publish される。
+
+スクリプトは `--no-push` なので、**コミットとタグの push が別途必要**。次を提示する。
 
 ```
 ! git push origin <line> --follow-tags
@@ -215,7 +230,7 @@ fast-forward にならない（`main` に `v5` に無いコミットがある）
 
 # 失敗時の対処
 
-- **sigstore の transient 409 や一時的な失敗**: `gh run rerun --failed` で再実行する。`lerna publish from-git` は未 publish のバージョンのみを対象にするため、成功済みパッケージは二重 publish されない
+- **sigstore の transient 409 や一時的な失敗**: `gh run rerun --failed` で再実行する。`lerna publish from-package` は未 publish のバージョンのみを対象にするため、成功済みパッケージは二重 publish されない
 - **部分 publish**: 成功したパッケージは publish 済みで巻き戻せない。上と同じく workflow の再実行で未 publish のパッケージだけが対象になる
 - **誤ったバージョンを publish した**: unpublish は原則不可。`npm deprecate <package>@<version> "<理由>"` で非推奨化し、修正版を新バージョンとして publish する。この判断は必ずユーザーに確認を取る
 
