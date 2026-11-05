@@ -54,7 +54,7 @@
 	},
 	"resolutions": {
 		"baseline-browser-mapping": "^2",
-		"nx/undici": "7.30.1"
+		"nx/undici": "8.12.3"
 	},
 	"packageManager": "yarn@4.18.1",
 	"volta": {
