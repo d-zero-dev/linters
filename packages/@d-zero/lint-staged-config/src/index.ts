@@ -21,10 +21,11 @@ export type IgnoreMap = Partial<Record<CommandType, string | string[]>>;
 
 /**
  *
- * @param dirOptions
- * @param mapping
+ * @param dirOptions - The directory to search, or an options object
+ * @param mapping - The extension-to-command mapping to use instead of the default
+ * @returns A lint-staged command mapper
  */
-export default function (
+export default function lintStagedConfigGenerator(
 	dirOptions?: string | DirectoryOptions,
 	mapping?: CommandMappings,
 ): LintStagedCommandMapper {
@@ -33,7 +34,7 @@ export default function (
 		const cwd = process.cwd();
 
 		const dir = typeof dirOptions === 'string' ? dirOptions : dirOptions?.dir;
-		const ignore = typeof dirOptions === 'string' ? null : dirOptions?.ignore;
+		const ignore = typeof dirOptions === 'string' ? undefined : dirOptions?.ignore;
 
 		const baseDir = dir
 			? // 絶対パスかどうか

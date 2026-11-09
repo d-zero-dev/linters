@@ -3,10 +3,10 @@
 ## 個別インストール
 
 ```sh
-npm install -D @d-zero/prettier-config @prettier/plugin-pug
+npm install -D @d-zero/prettier-config @prettier/plugin-pug prettier-plugin-astro
 ```
 
-`@d-zero/prettier-config/base`を利用する場合は、`@prettier/plugin-pug`をインストールする必要はありません。
+`@d-zero/prettier-config/base`を利用する場合は、`@prettier/plugin-pug`と`prettier-plugin-astro`をインストールする必要はありません。
 
 ## 使い方
 
@@ -32,11 +32,12 @@ export default {
 
 ## 種類別プリセット
 
-| パッケージパス                 | 用途                       |
-| ------------------------------ | -------------------------- |
-| `@d-zero/prettier-config`      | フルセット（ベース + Pug） |
-| `@d-zero/prettier-config/base` | 基本セット（Pugなし）      |
-| `@d-zero/prettier-config/pug`  | Pug関連設定のみ            |
+| パッケージパス                  | 用途                               |
+| ------------------------------- | ---------------------------------- |
+| `@d-zero/prettier-config`       | フルセット（ベース + Pug + Astro） |
+| `@d-zero/prettier-config/base`  | 基本セット（Pugなし）              |
+| `@d-zero/prettier-config/astro` | Astro関連設定のみ                  |
+| `@d-zero/prettier-config/pug`   | Pug関連設定のみ                    |
 
 `@d-zero/prettier-config`はすべての設定を含んでいるので、一部の設定のみを利用する場合は、それぞれ種類別のものを利用します。
 

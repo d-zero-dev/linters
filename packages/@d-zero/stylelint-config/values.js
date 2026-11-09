@@ -26,7 +26,7 @@ module.exports = {
 					'table',
 					'inline-table',
 				],
-				'z-index': ['/^-?\\d+$/'],
+				'z-index': [String.raw`/^-?\d+$/`],
 				'/^(?:color|background|background-color|border|border-color|outline|outline-color)$/':
 					[/#[0-9a-f]{3}/, /(?:rgb|hsl)a?\(.+?\)/],
 				content: [/^"\\[0-9a-f]{1,6}"$/i],

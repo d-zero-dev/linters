@@ -10,7 +10,12 @@
 
 		// ESLint plugin
 		"dzero",
-		"TSES"
+		"TSES",
+
+		// Oxc tools
+		"oxfmt",
+		"oxfmtrc",
+		"oxlint"
 	],
 	"overrides": [
 		{

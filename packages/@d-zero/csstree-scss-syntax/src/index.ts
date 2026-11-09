@@ -27,7 +27,7 @@ const forked = CSSTree.fork(
 						switch (this.tokenType) {
 							case DELIM: {
 								// @ts-ignore
-								// eslint-disable-next-line unicorn/prefer-code-point
+								// oxlint-disable-next-line unicorn/prefer-code-point -- this is css-tree's TokenStream, not a string; it has no codePointAt
 								const code = this.charCodeAt(this.tokenStart);
 
 								if (code === DOLLAR_SIGN) {

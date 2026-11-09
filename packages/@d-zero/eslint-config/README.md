@@ -44,12 +44,8 @@ export default [
 
 以下のプリセットが用意されています。
 
-| プロパティ             | 型       | 説明                                               |
-| ---------------------- | -------- | -------------------------------------------------- |
-| `configs.frontend`     | `Array`  | フロントエンド開発用                               |
-| `configs.frontendNoTS` | `Array`  | フロントエンド開発用（TypeScriptを利用しない場合） |
-| `configs.node`         | `Array`  | Node.js開発用                                      |
-| `configs.nodeNoTS`     | `Array`  | Node.js開発用（TypeScriptを利用しない場合）        |
-| `configs.standard`     | `Array`  | `config.node`と同じ                                |
-| `configs.base`         | `Array`  | `config.nodeNoTS`と同じ                            |
-| `configs.commonjs`     | `Object` | CommonJS用単一設定                                 |
+| プロパティ         | 型       | 説明                                                                                                                                                                                                                            |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `configs.base`     | `Array`  | Oxlint と併用する前提の共通設定。Oxlint に実装がない領域（regexp・jsdoc の主要チェック・`import-x/no-extraneous-dependencies`・`import-x/order`・`sort-class-members`等）のみ検査。TypeScript ファイルは対象外（Oxlint が検査） |
+| `configs.frontend` | `Array`  | `configs.base`に加え、DOM/Vue/React 向けの`@d-zero/no-click-event`を検査するフロントエンド開発用                                                                                                                                |
+| `configs.commonjs` | `Object` | CommonJS用単一設定                                                                                                                                                                                                              |

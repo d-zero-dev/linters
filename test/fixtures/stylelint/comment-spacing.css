@@ -1,11 +1,11 @@
 .c-component1 {
-    /* 波括弧内のコメント - 空行不要 */
-    color: var(--color-primary);
+	/* 波括弧内のコメント - 空行不要 */
+	color: var(--color-primary);
 }
 /* rule間のコメント - 空行なし */
 .c-component2 {
-    color: var(--color-secondary);
+	color: var(--color-secondary);
 }
 .c-component3 {
-    color: var(--color-tertiary);
+	color: var(--color-tertiary);
 }

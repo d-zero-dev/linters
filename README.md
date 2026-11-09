@@ -4,15 +4,16 @@
 
 ### Linter & Formatter 設定
 
-| パッケージ名                                                           | 内容                                                          |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------- |
-| [`@d-zero/cspell-config`](./packages/%40d-zero/cspell-config/)         | [_CSpell_](https://cspell.org/)の設定ファイル                 |
-| [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)         | [_ESLint_](https://eslint.org/)の設定ファイル                 |
-| [`@d-zero/markuplint-config`](./packages/%40d-zero/markuplint-config/) | [_Markuplint_](https://markuplint.dev/)の設定ファイル         |
-| [`@d-zero/prettier-config`](./packages/%40d-zero/prettier-config/)     | [_Prettier_](https://prettier.io/)の設定ファイル              |
-| [`@d-zero/pug-lint-config`](./packages/%40d-zero/pug-lint-config/)     | [_pug-lint_](https://github.com/pugjs/pug-lint)の設定ファイル |
-| [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)   | [_Stylelint_](https://stylelint.io/)の設定ファイル            |
-| [`@d-zero/textlint-config`](./packages/%40d-zero/textlint-config/)     | [_textlint_](https://textlint.github.io/)の設定ファイル       |
+| パッケージ名                                                           | 内容                                                                        |
+| ---------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`@d-zero/cspell-config`](./packages/%40d-zero/cspell-config/)         | [_CSpell_](https://cspell.org/)の設定ファイル                               |
+| [`@d-zero/oxlint-config`](./packages/%40d-zero/oxlint-config/)         | [_Oxlint_](https://oxc.rs/docs/guide/usage/linter.html)の設定ファイル       |
+| [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)         | [_ESLint_](https://eslint.org/)の設定ファイル（Oxlintが未対応の領域を補う） |
+| [`@d-zero/markuplint-config`](./packages/%40d-zero/markuplint-config/) | [_Markuplint_](https://markuplint.dev/)の設定ファイル                       |
+| [`@d-zero/prettier-config`](./packages/%40d-zero/prettier-config/)     | [_Prettier_](https://prettier.io/)の設定ファイル                            |
+| [`@d-zero/pug-lint-config`](./packages/%40d-zero/pug-lint-config/)     | [_pug-lint_](https://github.com/pugjs/pug-lint)の設定ファイル               |
+| [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)   | [_Stylelint_](https://stylelint.io/)の設定ファイル                          |
+| [`@d-zero/textlint-config`](./packages/%40d-zero/textlint-config/)     | [_textlint_](https://textlint.github.io/)の設定ファイル                     |
 
 ### ツール & ユーティリティ
 
@@ -26,7 +27,8 @@
 
 | パッケージ名                                                               | 内容                                                                                                                                                                                                            |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@d-zero/eslint-plugin`](./packages/%40d-zero/eslint-plugin/)             | [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)に設定されているディーゼロ独自のESLintルール                                                                                                      |
+| [`@d-zero/oxlint-plugin`](./packages/%40d-zero/oxlint-plugin/)             | [`@d-zero/oxlint-config`](./packages/%40d-zero/oxlint-config/)で利用するディーゼロ独自のOxlintルール                                                                                                            |
+| [`@d-zero/eslint-plugin`](./packages/%40d-zero/eslint-plugin/)             | [`@d-zero/eslint-config`](./packages/%40d-zero/eslint-config/)で利用するディーゼロ独自のESLintルール                                                                                                            |
 | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)         | [`@d-zero/stylelint-config`](./packages/%40d-zero/stylelint-config/)に設定されているディーゼロ独自のStylelintルール                                                                                             |
 | [`@d-zero/csstree-scss-syntax`](./packages/%40d-zero/csstree-scss-syntax/) | [`@d-zero/stylelint-rules`](./packages/%40d-zero/stylelint-rules/)内で使用されている[CSSTree](https://github.com/csstree/csstree)用の[SCSS](https://sass-lang.com/documentation/syntax/#scss)パーサープラグイン |
 
@@ -40,15 +42,17 @@
   - このバージョンは[Renovate](https://www.mend.io/renovate/)によってアップデートされます。
 - [Commitizen](https://github.com/commitizen/cz-cli)を利用してコミットメッセージを作ります。メッセージは[_commitlint_](https://commitlint.js.org/)によってチェックされます。
 - [actionlint](https://github.com/rhysd/actionlint)によってGitHub Actionsの設定ファイルを検証しています。
+- [TypeScript](https://www.typescriptlang.org/)は7系を使用しています。
 
 ### メンテ用コマンド
 
-| コマンド        | 内容                                                                                   |
-| --------------- | -------------------------------------------------------------------------------------- |
-| `npm run build` | 各パッケージのビルドを行います                                                         |
-| `npm run lint`  | リポジトリ内のファイルのリント・自動フォーマット・型チェック・スペルチェックを行います |
-| `npm run test`  | テスト（*Vitest*を実行します）                                                         |
-| `npm run co`    | Gitコミットを*Commitizen*経由で実行します                                              |
+| コマンド        | 内容                                                                             |
+| --------------- | -------------------------------------------------------------------------------- |
+| `npm run build` | 各パッケージのビルドを行います                                                   |
+| `yarn lint`     | リポジトリ内のファイルを変更せずに、リント・フォーマット・型・スペルを検査します |
+| `yarn lint:fix` | oxlint／oxfmt／Prettier（Pug・Astro）で自動修正します                            |
+| `npm run test`  | テスト（*Vitest*を実行します）                                                   |
+| `npm run co`    | Gitコミットを*Commitizen*経由で実行します                                        |
 
 ---
 
