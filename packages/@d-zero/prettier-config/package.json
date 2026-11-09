@@ -31,10 +31,10 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"prettier": "3.9.6"
+		"prettier": "3.9.10"
 	},
 	"devDependencies": {
-		"@prettier/plugin-pug": "3.4.2",
+		"@prettier/plugin-pug": "3.6.0",
 		"prettier-plugin-astro": "0.14.1"
 	},
 	"optionalDependencies": {

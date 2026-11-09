@@ -20,8 +20,8 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@commitlint/cli": "21.2.0",
-		"@commitlint/config-conventional": "21.2.0",
+		"@commitlint/cli": "21.2.4",
+		"@commitlint/config-conventional": "21.2.4",
 		"@d-zero/cz-config": "6.0.0-alpha.2"
 	},
 	"engines": {

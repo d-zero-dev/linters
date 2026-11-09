@@ -41,23 +41,24 @@
 	"devDependencies": {
 		"@d-zero/eslint-config": "6.0.0-alpha.2",
 		"@d-zero/tsconfig": "2.0.0",
-		"@secretlint/secretlint-rule-preset-recommend": "13.0.4",
-		"@types/node": "24.13.3",
+		"@secretlint/secretlint-rule-preset-recommend": "13.0.7",
+		"@types/node": "26.6.5",
 		"eslint": "9.39.5",
-		"execa": "10.0.1",
+		"execa": "10.2.1",
 		"husky": "9.1.7",
-		"lerna": "10.0.0",
-		"npm-run-all2": "9.0.3",
+		"lerna": "10.1.1",
+		"npm-run-all2": "9.0.4",
 		"oxfmt": "0.62.0",
 		"oxlint": "1.77.0",
-		"prettier": "3.9.6",
+		"prettier": "3.9.10",
 		"prettier-plugin-astro": "0.14.1",
-		"secretlint": "13.0.4",
+		"secretlint": "13.0.7",
 		"typescript": "7.0.2",
-		"vitest": "4.1.10"
+		"vitest": "4.1.12"
 	},
 	"resolutions": {
-		"baseline-browser-mapping": "^2"
+		"baseline-browser-mapping": "^2",
+		"nx/undici": "7.30.1"
 	},
 	"config": {
 		"commitizen": {
@@ -69,7 +70,7 @@
 	},
 	"volta": {
 		"node": "26.6.0",
-		"yarn": "4.18.0"
+		"yarn": "4.18.1"
 	},
-	"packageManager": "yarn@4.18.0"
+	"packageManager": "yarn@4.18.1"
 }
