@@ -4,5 +4,5 @@
 		"noEmit": true
 	},
 	"include": ["**/*.ts", "**/*.tsx"],
-	"exclude": ["test/fixtures/oxlint/**"]
+	"exclude": ["test/fixtures/oxlint/**", "test/fixtures/markuplint/**"]
 }

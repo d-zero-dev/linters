@@ -1,0 +1,10 @@
+{
+	"extends": ["@d-zero/markuplint-config"],
+	"rules": {
+		"no-unsupported-browser-features": {
+			"options": {
+				"ignoreFeatures": ["button[command]", "button[commandfor]", "dialog"]
+			}
+		}
+	}
+}

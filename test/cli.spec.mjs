@@ -221,8 +221,16 @@ describe('ESLint', () => {
 });
 
 describe('markuplint', () => {
-	const markuplint = async (file, config) => {
-		const { stdout } = await execa(
+	/**
+	 * @param {string} file Glob of the files to lint
+	 * @param {object} [options] Options
+	 * @param {string} [options.config] Configuration file passed with `-c`
+	 * @param {string[]} [options.args] Extra CLI arguments
+	 * @param {Record<string, string>} [options.env] Extra environment variables
+	 * @returns {Promise<{ exitCode: number, violations: Record<string, unknown>[] }>} The exit code and the parsed JSON report
+	 */
+	const runMarkuplintJson = async (file, { config, args = [], env } = {}) => {
+		const { stdout, exitCode } = await execa(
 			'npx',
 			[
 				'markuplint',
@@ -232,55 +240,84 @@ describe('markuplint', () => {
 				'--locale',
 				'en',
 				config ? ['-c', config] : [],
+				args,
 			].flat(),
 			{
 				reject: false,
+				env,
 			},
 		);
 
 		try {
-			const violations = JSON.parse(stdout);
-			const formatted = violations.map(
-				(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`,
-			);
-			return formatted;
+			return { exitCode, violations: JSON.parse(stdout) };
 		} catch (error) {
 			if (error instanceof SyntaxError) {
-				throw new TypeError(`Output is not JSON: ${stdout}`, { ...error });
+				throw new TypeError(`Output is not JSON: ${stdout}`, { cause: error });
 			}
 			throw error;
 		}
 	};
 
+	const markuplint = async (file, config) => {
+		const { violations } = await runMarkuplintJson(file, { config });
+		return violations.map((v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.message}`);
+	};
+
+	/**
+	 * Runs markuplint and keeps the rule identity, severity and exit code that `markuplint` drops.
+	 * @param {string} file Glob of the files to lint
+	 * @param {object} [options] Options
+	 * @param {string} [options.config] Configuration file passed with `-c`
+	 * @param {string[]} [options.args] Extra CLI arguments
+	 * @param {Record<string, string>} [options.env] Extra environment variables
+	 * @returns {Promise<{ exitCode: number, violations: string[] }>} The exit code and `file:line:col name-or-ruleId severity` lines
+	 */
+	const markuplintDetails = async (file, options) => {
+		const { exitCode, violations } = await runMarkuplintJson(file, options);
+		return {
+			exitCode,
+			violations: violations.map(
+				(v) => `${n(v.filePath)}:${v.line}:${v.col} ${v.name ?? v.ruleId} ${v.severity}`,
+			),
+		};
+	};
+
 	test('CLI', async () => {
 		const violations = await markuplint('test/fixtures/markuplint/test.*');
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
-			'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference',
+			// Behavior change: 既定の設定が pug パーサーを含まなくなったため、.pug は検査されずに飛ばされる
+			// 'test/fixtures/markuplint/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/test.pug:9:4 The "div" element is not allowed in the "span" element in this context', // previous
+			// Behavior change: markuplint v5 は WHATWG に従い、セミコロンの無い `&and` を文字参照の誤りとして報告しない
+			// 'test/fixtures/markuplint/test.html:17:66 Illegal characters must escape in character reference', // previous
 			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
 			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
-			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
 			'test/fixtures/markuplint/test.html:9:9 The "div" element is not allowed in the "span" element in this context',
 			'test/fixtures/markuplint/test.html:23:3 Require accessible name',
 			'test/fixtures/markuplint/test.html:25:3 Require accessible name',
+			// Behavior change: D-ZERO 独自の nodeRule が名前付きルールになり、プリセットのルールの後に報告されるため、出力順が変わった
+			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
+			// 'test/fixtures/markuplint/test.html:1:1 Require the "h1" element', // previous（a 要素の href の行の後にあった）
 			'test/fixtures/markuplint/test.html:23:3 The "img" element expects the "alt" attribute',
 			'test/fixtures/markuplint/test.html:24:3 The "a" element expects the "href" attribute',
-			'test/fixtures/markuplint/test.html:1:1 Require the "h1" element',
+			// Behavior change: D-ZERO 独自の nodeRule が名前付きルールになり、プリセットのルールの後に報告されるため、出力順が変わった
+			'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
+			// 'test/fixtures/markuplint/test.html:25:12 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i', // previous（br の行の後にあった）
 		]);
 	});
 
 	test('Extended Naming', async () => {
 		const normalConfig = await markuplint('test/fixtures/markuplint/extended-naming.*');
 		expect(normalConfig).toStrictEqual([
-			'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
-			'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			// Behavior change: 既定の設定が pug パーサーを含まなくなったため、.pug は検査されずに飛ばされる
+			// 'test/fixtures/markuplint/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
+			// 'test/fixtures/markuplint/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"', // previous
 		]);
 
 		const addedClassName = await markuplint(
@@ -302,6 +339,8 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(invalidNaming).toStrictEqual([
+			// Behavior change: markuplint v5 は src の値を URL として検査し、空白を含む値を報告する
+			'test/fixtures/markuplint/image-naming-test.html:21:15 It includes unexpected characters (https://html.spec.whatwg.org/multipage/urls-and-fetching.html#valid-non-empty-url-potentially-surrounded-by-spaces)',
 			String.raw`test/fixtures/markuplint/image-naming-test.html:21:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
 			String.raw`test/fixtures/markuplint/image-naming-test.html:22:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
 			String.raw`test/fixtures/markuplint/image-naming-test.html:23:15 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
@@ -321,24 +360,360 @@ describe('markuplint', () => {
 			'packages/@d-zero/markuplint-config/base.js',
 		);
 		expect(violations).toStrictEqual([
-			'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
-			'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"',
+			// Behavior change: markuplint v5 は -c で指定した設定だけを読み、.markuplintrc を併せて読まないため、class-naming の違反が報告されない
+			// 'test/fixtures/markuplint/button-command.html:27:17 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"', // previous
+			// 'test/fixtures/markuplint/button-command.html:45:58 The "btn" class name is unmatched with the below patterns: "/^(?<Prefix>[lpc])-(?<ComponentName>[a-z][a-z0-9]*(?:-[a-z0-9]+)*)$/"', // previous
 			'test/fixtures/markuplint/button-command.html:41:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:42:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:102:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:103:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:104:2 Detected perceptible nodes between the trigger and corresponding target',
 			'test/fixtures/markuplint/button-command.html:111:6 Detected perceptible nodes between the trigger and corresponding target',
-			'test/fixtures/markuplint/button-command.html:110:2 Require accessible name',
+			// Behavior change: markuplint v5 は aria-label が要素の内容から得られるアクセシブルな名前を上書きすることを報告する
+			'test/fixtures/markuplint/button-command.html:24:2 The accessible name from "aria-label" overrides "content"',
+			'test/fixtures/markuplint/button-command.html:47:2 The accessible name from "aria-label" overrides "content"',
+			// Behavior change: markuplint v5 は dialog 要素にアクセシブルな名前を要求しない
+			// 'test/fixtures/markuplint/button-command.html:110:2 Require accessible name', // previous
 			'test/fixtures/markuplint/button-command.html:129:3 Require accessible name',
+			// Behavior change: markuplint v5 は show-modal で開く dialog 要素に autofocus 属性を持つ要素を要求する
+			'test/fixtures/markuplint/button-command.html:110:2 The "dialog" element referenced by a "show-modal" command requires an element with the "autofocus" attribute',
+			// Behavior change: D-ZERO 独自の nodeRule が名前付きルールになり、プリセットのルールの後に報告されるため、出力順が変わった
+			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
+			// 'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element', // previous（末尾にあった）
+			// Behavior change: markuplint v5 は tab/menuitem/option ロールに必要な親ロールを検査する
+			'test/fixtures/markuplint/button-command.html:54:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:55:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:57:16 The "menuitem" role requires an accessibility parent with one of the roles: "menu", "menubar", "menu > group", "menubar > group"',
+			'test/fixtures/markuplint/button-command.html:58:16 The "option" role requires an accessibility parent with one of the roles: "listbox", "listbox > group"',
+			'test/fixtures/markuplint/button-command.html:66:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			'test/fixtures/markuplint/button-command.html:88:16 The "tab" role requires an accessibility parent with the "tablist" role',
+			// Behavior change: D-ZERO 独自の nodeRule が名前付きルールになり、プリセットのルールの後に報告されるため、出力順が変わった
+			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
+			// 'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state', // previous（末尾から 2 つめにあった）
 			'test/fixtures/markuplint/button-command.html:18:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:101:2 The "button" element expects the "commandfor" attribute',
+			// Behavior change: D-ZERO 独自の nodeRule が名前付きルールになって互いに上書きしなくなったため、popovertarget と popovertargetaction を両方持つボタンで commandfor の欠落も報告される
+			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "commandfor" attribute',
 			'test/fixtures/markuplint/button-command.html:102:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:103:2 The "button" element expects the "command" attribute',
 			'test/fixtures/markuplint/button-command.html:104:2 The "button" element expects the "command" attribute',
-			'test/fixtures/markuplint/button-command.html:55:21 The "aria-selected" ARIA state is not global state',
-			'test/fixtures/markuplint/button-command.html:63:16 The "button" role is the implicit role of the "button" element',
 		]);
+	});
+
+	test('Pug config parses .pug files when extended alongside the default config', async () => {
+		const violations = await markuplint('test/fixtures/markuplint/pug/*.pug');
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/pug/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
+			'test/fixtures/markuplint/pug/extended-naming.pug:2:2 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:4:4 The "splide__track" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:5:5 The "splide__list" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:6:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:8:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:10:6 The "splide__slide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:12:4 The "splide__arrows" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/pug/extended-naming.pug:15:29 The "splide__pagination" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+		]);
+	});
+
+	test('Pug config turns off character reference checks that the Pug parser would otherwise report', async () => {
+		const withoutOverride = await markuplint(
+			'test/fixtures/markuplint/pug/character-reference.pug',
+			'test/fixtures/markuplint/pug/parser-only.config.js',
+		);
+		expect(withoutOverride).toStrictEqual([
+			'test/fixtures/markuplint/pug/character-reference.pug:3:6 Illegal characters must escape in character reference',
+		]);
+
+		const withPugConfig = await markuplint(
+			'test/fixtures/markuplint/pug/character-reference.pug',
+		);
+		expect(withPugConfig).toStrictEqual([]);
+	});
+
+	test('Pug config combined with extendsConfig allows added class names and still parses .pug files', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/pug/*.pug',
+			'test/fixtures/markuplint/pug/extended.config.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/pug/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/", "/^splide(?:__[a-z]+)?$/"',
+			'test/fixtures/markuplint/pug/test.pug:9:4 The "div" element is not allowed in the "span" element in this context',
+		]);
+	});
+
+	test('Pug config combined with nameWith allows added class names and still parses .pug files', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/pug/*.pug',
+			'test/fixtures/markuplint/pug/extended-naming.config.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/pug/test.pug:14:6 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/", "/^splide(?:__[a-z]+)?$/"',
+		]);
+	});
+
+	test('Default config skips .pug and .tsx files without reporting anything', async () => {
+		const pug = await markuplintDetails('test/fixtures/markuplint/pug/test.pug', {
+			config: 'packages/@d-zero/markuplint-config/index.js',
+			args: ['--no-allow-warnings'],
+		});
+		expect(pug).toStrictEqual({ exitCode: 0, violations: [] });
+
+		const tsx = await markuplintDetails('test/fixtures/markuplint/jsx/component.tsx', {
+			config: 'packages/@d-zero/markuplint-config/index.js',
+			args: ['--no-allow-warnings'],
+		});
+		expect(tsx).toStrictEqual({ exitCode: 0, violations: [] });
+	});
+
+	test('JSX config parses .tsx files, maps className to class naming, reports hard-coded ids, and does not report character references', async () => {
+		const violations = await markuplint('test/fixtures/markuplint/jsx/component.tsx');
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/jsx/component.tsx:7:20 The "c-component__invalid_element" class name is unmatched with the below patterns: "/^c-component__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+			'test/fixtures/markuplint/jsx/component.tsx:13:4 The "br" element is disallowed',
+			'test/fixtures/markuplint/jsx/component.tsx:9:5 The "div" element is not allowed in the "span" element in this context',
+			'test/fixtures/markuplint/jsx/component.tsx:11:4 Require accessible name',
+			'test/fixtures/markuplint/jsx/component.tsx:14:9 It is hard-coded',
+			'test/fixtures/markuplint/jsx/component.tsx:11:4 The "img" element expects the "alt" attribute',
+			String.raw`test/fixtures/markuplint/jsx/component.tsx:11:14 The "src" attribute is matched with the below disallowed patterns: /[A-Z\s_]/`,
+			'test/fixtures/markuplint/jsx/component.tsx:12:13 The "href" attribute is matched with the below disallowed patterns: /^javascript:/i',
+		]);
+	});
+
+	test('JSX config reports hard-coded ids only in .jsx/.tsx, not in HTML partials of the same project', async () => {
+		const violations = await markuplint('test/fixtures/markuplint/jsx/partial.html');
+		expect(violations).toStrictEqual([]);
+	});
+
+	test('JSX config parses .jsx files and combines with extendsConfig', async () => {
+		const withDefault = await markuplint('test/fixtures/markuplint/jsx/carousel.jsx');
+		expect(withDefault).toStrictEqual([
+			'test/fixtures/markuplint/jsx/carousel.jsx:3:19 The "splide" class name is unmatched with the below patterns: "/^c-carousel__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!carousel)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-carousel[a-z0-9]*(?:-[a-z0-9]+)*$/"',
+		]);
+
+		const withExtendsConfig = await markuplint(
+			'test/fixtures/markuplint/jsx/carousel.jsx',
+			'test/fixtures/markuplint/jsx/extended.config.js',
+		);
+		expect(withExtendsConfig).toStrictEqual([]);
+	});
+
+	// named-rules.html also holds the inputs the unnamed loosening rules must keep quiet:
+	// the OGP prefix on html, an external https script without defer, and an img without width/height
+	test('D-ZERO node rules run alongside preset rules, and the loosening rules still apply', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/named-rules.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/named-rules.html:12:3 The "img" element expects the "src" or the "srcset" attribute',
+			'test/fixtures/markuplint/named-rules.html:11:43 The "accesskey" attribute is disallowed',
+			'test/fixtures/markuplint/named-rules.html:13:15 The "accesskey" attribute is disallowed',
+			'test/fixtures/markuplint/named-rules.html:14:3 The "button" element expects the "commandfor" attribute',
+			'test/fixtures/markuplint/named-rules.html:14:3 The "button" element expects the "command" attribute',
+		]);
+	});
+
+	test('Base config keeps checks dropped from Markuplint presets and reports non-standard features', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/restored-coverage.html',
+			'packages/@d-zero/markuplint-config/base.js',
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/restored-coverage.html:12:4 The name duplicated',
+			'test/fixtures/markuplint/restored-coverage.html:15:11 The "src" attribute is ineffective. It doesn\'t need the attribute',
+			'test/fixtures/markuplint/restored-coverage.html:16:24 The "incremental" attribute is non-standard',
+		]);
+	});
+
+	test('Compat preset reports features the browserslist targets lack, except the attributes D-ZERO rules require', async () => {
+		const { violations } = await markuplintDetails(
+			'test/fixtures/markuplint/compat/unsupported.html',
+			{
+				config: 'packages/@d-zero/markuplint-config/base.js',
+			},
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/compat/unsupported.html:9:3 no-unsupported-browser-features warning',
+			'test/fixtures/markuplint/compat/unsupported.html:11:3 no-unsupported-browser-features warning',
+		]);
+	});
+
+	test('Compat features can be allowed per project with ignoreFeatures as the README shows', async () => {
+		const { violations } = await markuplintDetails(
+			'test/fixtures/markuplint/compat/unsupported.html',
+			{
+				config: 'test/fixtures/markuplint/compat/ignore-features.json',
+			},
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/compat/unsupported.html:9:3 no-unsupported-browser-features warning',
+		]);
+	});
+
+	test('Extending rules as the README shows keeps the rules of the default config', async () => {
+		const violations = await markuplint(
+			'test/fixtures/markuplint/test.html',
+			'test/fixtures/markuplint/readme-rules.config.js',
+		);
+		expect(violations).toContain(
+			'test/fixtures/markuplint/test.html:26:3 The "br" element is disallowed',
+		);
+		expect(violations).toContain(
+			'test/fixtures/markuplint/test.html:14:18 The "c-component__invalid-element-nesting" class name is unmatched with the below patterns: "/^c-component2__[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^[lpc]-(?!component2)[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/", "/^c-component2[a-z0-9]*(?:-[a-z0-9]+)*$/", "/^splide(?:__[a-z]+)?$/"',
+		);
+	});
+
+	test('Turning off a base rule as the README shows also turns off the preset groups that wrap it', async () => {
+		const byDefault = await markuplint('test/fixtures/markuplint/unescaped-char.html');
+		expect(byDefault).toStrictEqual([
+			'test/fixtures/markuplint/unescaped-char.html:9:8 Illegal characters must escape in character reference',
+		]);
+
+		const withReadmeRules = await markuplint(
+			'test/fixtures/markuplint/unescaped-char.html',
+			'test/fixtures/markuplint/readme-rules.config.js',
+		);
+		expect(withReadmeRules).toStrictEqual([]);
+	});
+
+	test('User overrides are merged into the default config instead of replacing it', async () => {
+		const violations = await markuplint('test/fixtures/markuplint/overrides/page.html');
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/overrides/page.html:9:10 The "br" element is disallowed',
+		]);
+	});
+
+	test('D-ZERO rules report under their d-zero/ names at error severity', async () => {
+		const { violations } = await markuplintDetails(
+			'test/fixtures/markuplint/d-zero-rules.html',
+			{
+				config: 'packages/@d-zero/markuplint-config/base.js',
+			},
+		);
+		expect(violations).toStrictEqual([
+			'test/fixtures/markuplint/d-zero-rules.html:21:3 a11y/neighbor-popovers warning',
+			'test/fixtures/markuplint/d-zero-rules.html:9:3 a11y/require-accessible-name error',
+			'test/fixtures/markuplint/d-zero-rules.html:11:3 a11y/media-track error',
+			'test/fixtures/markuplint/d-zero-rules.html:12:3 a11y/media-track error',
+			'test/fixtures/markuplint/d-zero-rules.html:15:3 a11y/media-track error',
+			'test/fixtures/markuplint/d-zero-rules.html:16:3 a11y/media-track error',
+			'test/fixtures/markuplint/d-zero-rules.html:9:3 d-zero/img-require-alt error',
+			'test/fixtures/markuplint/d-zero-rules.html:10:13 d-zero/img-src-naming error',
+			'test/fixtures/markuplint/d-zero-rules.html:11:15 d-zero/media-src-naming error',
+			'test/fixtures/markuplint/d-zero-rules.html:11:45 d-zero/media-src-naming error',
+			'test/fixtures/markuplint/d-zero-rules.html:13:17 d-zero/media-src-naming error',
+			'test/fixtures/markuplint/d-zero-rules.html:15:15 d-zero/media-src-naming error',
+			'test/fixtures/markuplint/d-zero-rules.html:17:3 d-zero/a-require-href error',
+			'test/fixtures/markuplint/d-zero-rules.html:18:12 d-zero/a-no-javascript-href error',
+			'test/fixtures/markuplint/d-zero-rules.html:19:3 d-zero/button-require-command error',
+			'test/fixtures/markuplint/d-zero-rules.html:20:3 d-zero/button-require-commandfor error',
+			'test/fixtures/markuplint/d-zero-rules.html:21:3 d-zero/button-require-commandfor error',
+			'test/fixtures/markuplint/d-zero-rules.html:21:3 d-zero/popovertargetaction-require-command error',
+		]);
+	});
+
+	test('Missing h1 is a warning in Markuplint v5', async () => {
+		const { violations } = await markuplintDetails('test/fixtures/markuplint/test.html');
+		expect(violations).toContain(
+			'test/fixtures/markuplint/test.html:1:1 a11y/required-h1 warning',
+		);
+	});
+
+	// Runs with the default output format as @d-zero/lint-staged-config does
+	test('--no-allow-warnings makes a file with only warnings fail the run', async () => {
+		const runWithDefaultFormat = (args) =>
+			execa(
+				'npx',
+				[
+					'markuplint',
+					'test/fixtures/markuplint/restored-coverage.html',
+					'-c',
+					'packages/@d-zero/markuplint-config/base.js',
+					...args,
+				],
+				{ reject: false },
+			);
+
+		const allowed = await runWithDefaultFormat([]);
+		expect(allowed.exitCode).toBe(0);
+
+		const disallowed = await runWithDefaultFormat(['--no-allow-warnings']);
+		expect(disallowed.exitCode).toBe(1);
+
+		const disallowedWithJson = await markuplintDetails(
+			'test/fixtures/markuplint/restored-coverage.html',
+			{
+				config: 'packages/@d-zero/markuplint-config/base.js',
+				args: ['--no-allow-warnings'],
+			},
+		);
+		expect(disallowedWithJson.exitCode).toBe(1);
+	});
+
+	const dZeroRuleNames = [
+		'd-zero/img-require-alt',
+		'd-zero/img-src-naming',
+		'd-zero/media-src-naming',
+		'd-zero/a-require-href',
+		'd-zero/a-no-javascript-href',
+		'd-zero/button-require-command',
+		'd-zero/button-require-commandfor',
+		'd-zero/popovertargetaction-require-command',
+	];
+
+	test.each(dZeroRuleNames)(
+		'%s can be disabled by name without disabling the other D-ZERO rules',
+		async (name) => {
+			const { violations } = await markuplintDetails(
+				'test/fixtures/markuplint/d-zero-rules.html',
+				{
+					config: 'test/fixtures/markuplint/disable-named-rule.config.js',
+					env: { MARKUPLINT_DISABLE_RULE: name },
+				},
+			);
+			const reportedNames = new Set(
+				violations.map((v) => v.split(' ')[1]).filter((v) => v.startsWith('d-zero/')),
+			);
+			expect([...reportedNames].toSorted()).toStrictEqual(
+				dZeroRuleNames.filter((n) => n !== name).toSorted(),
+			);
+		},
+	);
+
+	test('An unnamed nodeRule turns off a D-ZERO rule only for the elements it selects, as the README shows', async () => {
+		const { violations } = await markuplintDetails(
+			'test/fixtures/markuplint/d-zero-rules.html',
+			{
+				config: 'test/fixtures/markuplint/disable-for-selector.json',
+			},
+		);
+		expect(violations).not.toContain(
+			'test/fixtures/markuplint/d-zero-rules.html:17:3 d-zero/a-require-href error',
+		);
+		expect(violations).toContain(
+			'test/fixtures/markuplint/d-zero-rules.html:18:12 d-zero/a-no-javascript-href error',
+		);
+		expect(violations).toContain(
+			'test/fixtures/markuplint/d-zero-rules.html:9:3 d-zero/img-require-alt error',
+		);
+	});
+
+	test('D-ZERO rules can be disabled by name in the JSON form the README shows', async () => {
+		const { violations } = await markuplintDetails(
+			'test/fixtures/markuplint/d-zero-rules.html',
+			{
+				config: 'test/fixtures/markuplint/disable-named-rule.json',
+			},
+		);
+		const reportedNames = new Set(
+			violations.map((v) => v.split(' ')[1]).filter((v) => v.startsWith('d-zero/')),
+		);
+		expect([...reportedNames].toSorted()).toStrictEqual(
+			dZeroRuleNames.filter((n) => n !== 'd-zero/button-require-command').toSorted(),
+		);
 	});
 });
 

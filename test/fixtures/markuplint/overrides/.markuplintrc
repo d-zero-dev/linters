@@ -1,0 +1,10 @@
+{
+	"extends": ["@d-zero/markuplint-config"],
+	"overrides": {
+		"./*.html": {
+			"rules": {
+				"class-naming": false
+			}
+		}
+	}
+}

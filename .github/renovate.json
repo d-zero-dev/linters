@@ -42,6 +42,11 @@
 			"automerge": true
 		},
 		{
+			"description": "Keep TypeScript on 6.x: @markuplint/jsx-parser loads the root typescript without declaring it, and its typescript-estree supports only typescript <6.1.0, so TypeScript 7 breaks the JSX config and its tests",
+			"matchPackageNames": ["typescript"],
+			"allowedVersions": "<7.0.0"
+		},
+		{
 			"description": "Group postcss with stylelint to avoid lockfile split across their shared postcss dependency",
 			"matchPackageNames": ["postcss", "stylelint"],
 			"groupName": "postcss and stylelint"

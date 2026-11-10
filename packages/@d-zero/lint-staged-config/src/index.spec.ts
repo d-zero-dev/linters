@@ -65,7 +65,9 @@ describe('lintStagedConfigGenerator', () => {
 		const commands = toRelativePath(...config([resolve('src', 'App.vue')]));
 		expect(commands).toStrictEqual([
 			'oxlint --fix "./src/App.vue"',
-			'markuplint "./src/App.vue"',
+			// Behavior change: markuplint v5 が警告で終了コード 0 になったため、警告でもコミットを止めるよう --no-allow-warnings を付ける
+			'markuplint --no-allow-warnings "./src/App.vue"',
+			// 'markuplint "./src/App.vue"', // previous
 			'oxfmt --write "./src/App.vue"',
 			'cspell --no-must-find-files --show-suggestions "./src/App.vue"',
 		]);
@@ -85,7 +87,9 @@ describe('lintStagedConfigGenerator', () => {
 		const config = lintStagedConfigGenerator();
 		const commands = toRelativePath(...config([resolve('src', 'index.html')]));
 		expect(commands).toStrictEqual([
-			'markuplint "./src/index.html"',
+			// Behavior change: markuplint v5 が警告で終了コード 0 になったため、警告でもコミットを止めるよう --no-allow-warnings を付ける
+			'markuplint --no-allow-warnings "./src/index.html"',
+			// 'markuplint "./src/index.html"', // previous
 			'oxfmt --write "./src/index.html"',
 			'cspell --no-must-find-files --show-suggestions "./src/index.html"',
 		]);
@@ -106,6 +110,16 @@ describe('lintStagedConfigGenerator', () => {
 		expect(commands).toStrictEqual([
 			'oxfmt --write "./config.yaml"',
 			'cspell --no-must-find-files --show-suggestions "./config.yaml"',
+		]);
+	});
+
+	test('pug extension mapping runs markuplint with --no-allow-warnings', () => {
+		const config = lintStagedConfigGenerator();
+		const commands = toRelativePath(...config([resolve('src', 'index.pug')]));
+		expect(commands).toStrictEqual([
+			'markuplint --no-allow-warnings "./src/index.pug"',
+			'prettier --write "./src/index.pug"',
+			'cspell --no-must-find-files --show-suggestions "./src/index.pug"',
 		]);
 	});
 

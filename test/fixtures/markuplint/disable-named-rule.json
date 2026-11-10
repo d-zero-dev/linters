@@ -1,0 +1,6 @@
+{
+	"extends": ["@d-zero/markuplint-config"],
+	"rules": {
+		"d-zero/button-require-command": false
+	}
+}

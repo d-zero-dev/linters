@@ -53,19 +53,49 @@ oxfmt のフォーマットルールはこのリポジトリの`.oxfmtrc.json`�
 
 `@d-zero/lint-staged-config`の拡張子別コマンドマッピングを Oxlint/oxfmt ベースに変更しました。pre-commit 時の挙動が変わるため、`lint-staged.config.js`を差し替えるだけのプロジェクトでも影響を受けます。
 
-| 拡張子                                      | v5 まで                                            | v6 から                                            |
-| ------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `js` / `ts` / `cjs` / `mjs` / `cts` / `mts` | `eslint --fix` + `prettier --write`                | `oxlint --fix` + `oxfmt --write`                   |
-| `jsx` / `tsx` / `vue` / `svelte`            | `eslint --fix` + `markuplint` + `prettier --write` | `oxlint --fix` + `markuplint` + `oxfmt --write`    |
-| `astro`                                     | `eslint --fix` + `markuplint` + `prettier --write` | `oxlint --fix` + `markuplint` + `prettier --write` |
-| `css` / `scss`                              | `stylelint --fix` + `prettier --write`             | `stylelint --fix` + `oxfmt --write`                |
-| `html`                                      | `markuplint` + `prettier --write`                  | `markuplint` + `oxfmt --write`                     |
-| `json` / `yaml` / `yml`                     | `prettier --write`                                 | `oxfmt --write`                                    |
-| `md` / `mdx`                                | `prettier --write` + `textlint`                    | `oxfmt --write` + `textlint`                       |
-| `pug`                                       | `markuplint` + `prettier --write`（変更なし）      | `markuplint` + `prettier --write`（変更なし）      |
+| 拡張子                                      | v5 まで                                            | v6 から                                                                |
+| ------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------- |
+| `js` / `ts` / `cjs` / `mjs` / `cts` / `mts` | `eslint --fix` + `prettier --write`                | `oxlint --fix` + `oxfmt --write`                                       |
+| `jsx` / `tsx` / `vue` / `svelte`            | `eslint --fix` + `markuplint` + `prettier --write` | `oxlint --fix` + `markuplint --no-allow-warnings` + `oxfmt --write`    |
+| `astro`                                     | `eslint --fix` + `markuplint` + `prettier --write` | `oxlint --fix` + `markuplint --no-allow-warnings` + `prettier --write` |
+| `css` / `scss`                              | `stylelint --fix` + `prettier --write`             | `stylelint --fix` + `oxfmt --write`                                    |
+| `html`                                      | `markuplint` + `prettier --write`                  | `markuplint --no-allow-warnings` + `oxfmt --write`                     |
+| `json` / `yaml` / `yml`                     | `prettier --write`                                 | `oxfmt --write`                                                        |
+| `md` / `mdx`                                | `prettier --write` + `textlint`                    | `oxfmt --write` + `textlint`                                           |
+| `pug`                                       | `markuplint` + `prettier --write`                  | `markuplint --no-allow-warnings` + `prettier --write`                  |
 
 詳細な対応表は[`packages/@d-zero/lint-staged-config/src/default-mapping.ts`](./packages/@d-zero/lint-staged-config/src/default-mapping.ts)を参照してください。
 
-## TypeScript 7
+`markuplint`には`--no-allow-warnings`が付きます。Markuplint v5 は警告だけなら終了コード0で終わるため、v5 まで（Markuplint v4）と同じく警告でもコミットを止めます。旧ルール名を使っている設定は、Markuplint v5 が出す非推奨の警告でもコミットが止まるので、次節の対応表で書き換えてください。
 
-TypeScript は 7 系を使用しています。
+Markuplint はパーサーが設定されていない拡張子のファイルを黙って飛ばします。`.pug`/`.jsx`/`.tsx`/`.vue`/`.svelte`/`.astro`を検査するには、Markuplint の設定で対応するパーサーを読み込んでください（[`@d-zero/lint-staged-config`の README](./packages/@d-zero/lint-staged-config/README.md#markuplint)）。
+
+## Markuplint v5
+
+`@d-zero/markuplint-config`は Markuplint v5 を使います。Markuplint 自体の変更は[上流の移行ガイド](https://markuplint.dev/docs/migration/v4-to-v5)を参照してください。このパッケージを使う側に関わる変更は次のとおりです。
+
+- **Node.js 24 以上が必要です**。Markuplint v5 の要件で、このパッケージだけが対象です（他の`@d-zero/*`は Node.js 22 以上のまま）
+- **Pug は既定の設定から外れました**。`.pug`を検査するには`@d-zero/markuplint-config/pug`を extends し、`@markuplint/pug-parser`を開発依存に追加してください。追加しないと`.pug`は黙って飛ばされます
+- **JSX/TSX 用の`@d-zero/markuplint-config/jsx`を追加しました**。`@markuplint/jsx-parser`と`@markuplint/react-spec`を開発依存に追加して extends します。TypeScript 7 のプロジェクトでは追加の設定が要ります（[README](./packages/@d-zero/markuplint-config/README.md#jsx--react)）
+- **D-ZERO 独自ルールは`d-zero/`で始まる名前付きルールになりました**。違反の出力にこの名前が表示され、`rules`で`"d-zero/button-require-command": false`のように個別に無効化できます。出力順も変わります
+- **`markuplint:compat`を追加しました**。browserslist の設定があるプロジェクトでは、対象ブラウザーが対応していない機能を警告します
+- **`no-ineffective-attr`と`no-duplicate-dt`は引き続き有効です**（Markuplint v5 のプリセットからは外れました）
+- **`require-h1`などの severity が`error`から`warning`に下がりました**（[一覧](https://markuplint.dev/docs/migration/v4-to-v5/rules/rule-names#severity-changes)）
+- **`markuplint -c <file>`は指定したファイルだけを読みます**。v4 は`.markuplintrc`も合わせて読んでいました
+
+設定で旧ルール名を使っている場合は書き換えてください。Markuplint v5 の間は旧名も動きますが、非推奨の警告が出ます。旧名は Markuplint の次のメジャーバージョン（Markuplint v6）で削除されます。
+
+| 旧ルール名            | 新ルール名                                                                                                        |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `character-reference` | `no-unescaped-char`、`no-malformed-character-reference`                                                           |
+| `required-attr`       | `require-attr`                                                                                                    |
+| `invalid-attr`        | `no-unknown-attr`、`no-disallowed-attr`、`no-invalid-attr-value`、`no-restricted-attr`（`disallowAttrs`の移行先） |
+| `disallowed-element`  | `no-restricted-element`                                                                                           |
+
+ほかの改名は[上流の対応表](https://markuplint.dev/docs/migration/v4-to-v5/rules/rule-names)を参照してください。
+
+## TypeScript
+
+このリポジトリは TypeScript 6 系を使用しています。`@d-zero/markuplint-config/jsx`が使う`@markuplint/jsx-parser`が TypeScript 6 以下（`>=4.8.4 <6.1.0`）を必要とし、TypeScript 7 では読み込めないためです。
+
+TypeScript 7 のプロジェクトで`@d-zero/markuplint-config/jsx`を使う場合は、[README の手順](./packages/@d-zero/markuplint-config/README.md#jsx--react)で TypeScript 6 を補ってください。
