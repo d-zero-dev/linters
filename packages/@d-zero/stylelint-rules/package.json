@@ -30,6 +30,7 @@
 		"stylelint": "17.16.0"
 	},
 	"devDependencies": {
+		"@types/css-tree": "2.3.11",
 		"postcss": "8.5.32"
 	},
 	"engines": {
