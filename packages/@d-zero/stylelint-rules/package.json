@@ -30,7 +30,7 @@
 		"stylelint": "17.16.0"
 	},
 	"devDependencies": {
-		"postcss": "8.5.31"
+		"postcss": "8.5.32"
 	},
 	"engines": {
 		"node": ">=22.0.0"
