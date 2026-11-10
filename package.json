@@ -39,7 +39,7 @@
 		"update": "yarn upgrade-interactive"
 	},
 	"devDependencies": {
-		"@d-zero/eslint-config": "6.0.0-alpha.2",
+		"@d-zero/eslint-config": "6.0.0-alpha.3",
 		"@d-zero/tsconfig": "2.0.0",
 		"@secretlint/secretlint-rule-preset-recommend": "13.1.0",
 		"@types/node": "26.6.6",

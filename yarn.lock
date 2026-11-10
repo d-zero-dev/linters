@@ -983,7 +983,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:21.2.4"
     "@commitlint/config-conventional": "npm:21.2.4"
-    "@d-zero/cz-config": "npm:6.0.0-alpha.2"
+    "@d-zero/cz-config": "npm:6.0.0-alpha.3"
   languageName: unknown
   linkType: soft
 
@@ -995,7 +995,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/csstree-scss-syntax@npm:6.0.0-alpha.2, @d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax":
+"@d-zero/csstree-scss-syntax@npm:6.0.0-alpha.3, @d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax":
   version: 0.0.0-use.local
   resolution: "@d-zero/csstree-scss-syntax@workspace:packages/@d-zero/csstree-scss-syntax"
   dependencies:
@@ -1004,7 +1004,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/cz-config@npm:6.0.0-alpha.2, @d-zero/cz-config@workspace:packages/@d-zero/cz-config":
+"@d-zero/cz-config@npm:6.0.0-alpha.3, @d-zero/cz-config@workspace:packages/@d-zero/cz-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/cz-config@workspace:packages/@d-zero/cz-config"
   dependencies:
@@ -1013,12 +1013,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/eslint-config@npm:6.0.0-alpha.2, @d-zero/eslint-config@workspace:packages/@d-zero/eslint-config":
+"@d-zero/eslint-config@npm:6.0.0-alpha.3, @d-zero/eslint-config@workspace:packages/@d-zero/eslint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/eslint-config@workspace:packages/@d-zero/eslint-config"
   dependencies:
-    "@d-zero/eslint-plugin": "npm:6.0.0-alpha.2"
-    "@d-zero/oxlint-config": "npm:6.0.0-alpha.2"
+    "@d-zero/eslint-plugin": "npm:6.0.0-alpha.3"
+    "@d-zero/oxlint-config": "npm:6.0.0-alpha.3"
     "@eslint/js": "npm:9.39.5"
     eslint: "npm:9.39.5"
     eslint-plugin-eslint-comments: "npm:3.2.0"
@@ -1032,7 +1032,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/eslint-plugin@npm:6.0.0-alpha.2, @d-zero/eslint-plugin@workspace:packages/@d-zero/eslint-plugin":
+"@d-zero/eslint-plugin@npm:6.0.0-alpha.3, @d-zero/eslint-plugin@workspace:packages/@d-zero/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@d-zero/eslint-plugin@workspace:packages/@d-zero/eslint-plugin"
   dependencies:
@@ -1074,7 +1074,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/oxlint-config@npm:6.0.0-alpha.2, @d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config":
+"@d-zero/oxlint-config@npm:6.0.0-alpha.3, @d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config":
   version: 0.0.0-use.local
   resolution: "@d-zero/oxlint-config@workspace:packages/@d-zero/oxlint-config"
   languageName: unknown
@@ -1117,7 +1117,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@d-zero/stylelint-config@workspace:packages/@d-zero/stylelint-config"
   dependencies:
-    "@d-zero/stylelint-rules": "npm:6.0.0-alpha.2"
+    "@d-zero/stylelint-rules": "npm:6.0.0-alpha.3"
     postcss-scss: "npm:4.0.9"
     stylelint: "npm:17.16.0"
     stylelint-config-recess-order: "npm:7.10.0"
@@ -1128,11 +1128,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@d-zero/stylelint-rules@npm:6.0.0-alpha.2, @d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules":
+"@d-zero/stylelint-rules@npm:6.0.0-alpha.3, @d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules":
   version: 0.0.0-use.local
   resolution: "@d-zero/stylelint-rules@workspace:packages/@d-zero/stylelint-rules"
   dependencies:
-    "@d-zero/csstree-scss-syntax": "npm:6.0.0-alpha.2"
+    "@d-zero/csstree-scss-syntax": "npm:6.0.0-alpha.3"
     "@types/css-tree": "npm:2.3.11"
     css-tree: "npm:3.2.1"
     postcss: "npm:8.5.32"
@@ -8201,7 +8201,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "linters@workspace:."
   dependencies:
-    "@d-zero/eslint-config": "npm:6.0.0-alpha.2"
+    "@d-zero/eslint-config": "npm:6.0.0-alpha.3"
     "@d-zero/tsconfig": "npm:2.0.0"
     "@secretlint/secretlint-rule-preset-recommend": "npm:13.1.0"
     "@types/node": "npm:26.6.6"
