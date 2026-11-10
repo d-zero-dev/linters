@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/csstree-scss-syntax",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"description": "SCSS syntax processor based on csstree",
 	"license": "MIT",
 	"author": "D-ZERO Co., Ltd.",

@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/commitlint-config",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"description": "Configurations of commitlint",
 	"license": "MIT",
 	"author": "D-ZERO Co., Ltd.",
@@ -22,7 +22,7 @@
 	"dependencies": {
 		"@commitlint/cli": "21.2.4",
 		"@commitlint/config-conventional": "21.2.4",
-		"@d-zero/cz-config": "6.0.0-alpha.2"
+		"@d-zero/cz-config": "6.0.0-alpha.3"
 	},
 	"engines": {
 		"node": ">=22.0.0"

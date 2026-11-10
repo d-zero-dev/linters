@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/stylelint-config",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"description": "Configurations of Stylelint",
 	"license": "MIT",
 	"author": "D-ZERO Co., Ltd.",
@@ -26,7 +26,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@d-zero/stylelint-rules": "6.0.0-alpha.2",
+		"@d-zero/stylelint-rules": "6.0.0-alpha.3",
 		"postcss-scss": "4.0.9",
 		"stylelint": "17.16.0",
 		"stylelint-config-recess-order": "7.10.0",

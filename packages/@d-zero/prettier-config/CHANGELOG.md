@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+### Features
+
+- **prettier:** add astro formatting support ([1cd2949](https://github.com/d-zero-dev/linters/commit/1cd2949d4adcba9c60c148c6a0b3d91e78bc778b))
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package @d-zero/prettier-config

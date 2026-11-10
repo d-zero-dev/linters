@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
+### Features
+
+- **stylelint-config:** add l- and p- prefixes to class naming rule ([61e8319](https://github.com/d-zero-dev/linters/commit/61e8319cea1f52a4557fc1705ca44031d1c167c2))
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package @d-zero/stylelint-config

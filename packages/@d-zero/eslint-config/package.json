@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/eslint-config",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"description": "Configurations of ESLint",
 	"license": "MIT",
 	"author": "D-ZERO Co., Ltd.",
@@ -20,8 +20,8 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@d-zero/eslint-plugin": "6.0.0-alpha.2",
-		"@d-zero/oxlint-config": "6.0.0-alpha.2",
+		"@d-zero/eslint-plugin": "6.0.0-alpha.3",
+		"@d-zero/oxlint-config": "6.0.0-alpha.3",
 		"@eslint/js": "9.39.5",
 		"eslint": "9.39.5",
 		"eslint-plugin-eslint-comments": "3.2.0",

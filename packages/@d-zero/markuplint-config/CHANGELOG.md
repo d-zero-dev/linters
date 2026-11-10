@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+- feat(markuplint)!: upgrade to Markuplint v5 and add a JSX config ([1937221](https://github.com/d-zero-dev/linters/commit/1937221a6c5c987d77208baf3ab33371c48e2e7e))
+
+### BREAKING CHANGES
+
+- the package requires Node.js 24 or later. The default
+  config no longer parses .pug files; extend
+  @d-zero/markuplint-config/pug and install @markuplint/pug-parser,
+  otherwise .pug files are skipped. The parsers and @markuplint/react-spec
+  are optional peer dependencies that projects install themselves.
+  markuplint:compat is enabled. Markuplint v5 reports new violations
+  (URL values, ARIA parent roles, dialog autofocus and others),
+  lowers some severities such as require-h1 to warning, and D-ZERO rules
+  now appear as d-zero/* in the output.
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
+### Features
+
+- **markuplint-config:** add l- and p- prefixes to class naming rule ([659e20d](https://github.com/d-zero-dev/linters/commit/659e20db7fc8b3e95ac3c8c5996fb44533524cf1))
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package @d-zero/markuplint-config

@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+- feat(markuplint)!: upgrade to Markuplint v5 and add a JSX config ([1937221](https://github.com/d-zero-dev/linters/commit/1937221a6c5c987d77208baf3ab33371c48e2e7e))
+- feat(lint-staged)!: run markuplint with --no-allow-warnings ([a9c7651](https://github.com/d-zero-dev/linters/commit/a9c7651d50045ce659fde3c75cd02336cc0ee29f))
+
+### Bug Fixes
+
+- **eslint-plugin:** detect Vue [@click](https://github.com/click) and v-on:click via template body visitor ([aa87919](https://github.com/d-zero-dev/linters/commit/aa87919a68909fc961ce541963ddd4f6ead76b05))
+- **eslint:** restore pre-migration unicorn rule offs ([ce7bd9b](https://github.com/d-zero-dev/linters/commit/ce7bd9b40fa281f6349b9f1b1ecd4ec9c61784cb))
+- **github:** install corepack explicitly for Node.js 26 CI ([34d580c](https://github.com/d-zero-dev/linters/commit/34d580c75ba22ddd7080adbc7f38abb381482f64))
+- **oxlint:** drop 4 unicorn rules reintroduced as errors ([02cb1a7](https://github.com/d-zero-dev/linters/commit/02cb1a7578b0df0b48744d3f90506181d9aaa74c))
+- **repo:** fix cspell ignorePaths glob matching every file ([e2b09d2](https://github.com/d-zero-dev/linters/commit/e2b09d2c8d35e12da07cddc323ec0bdd3cf5282d))
+
+### Features
+
+- **eslint:** auto-generate the oxlint overlap disable list ([126503b](https://github.com/d-zero-dev/linters/commit/126503b9147c6a4a5c298a3c13247851622cb509))
+- **lint-staged:** switch default command mapping to oxlint and oxfmt ([28c919b](https://github.com/d-zero-dev/linters/commit/28c919b58b823934f96cbaf427181f99ce0ec8dd))
+- **oxlint-plugin:** add custom oxlint rules package ([149213e](https://github.com/d-zero-dev/linters/commit/149213ec00ccd6a4be8288427d83e805df29fb73))
+- **oxlint:** add shared oxlint configuration package ([a57fd53](https://github.com/d-zero-dev/linters/commit/a57fd53f9fa50897bc16cca5572124d86e9f638d))
+- **oxlint:** enable rules outside the correctness category ([5522bd1](https://github.com/d-zero-dev/linters/commit/5522bd1110f16ffe6f1f6932e5a5b1874d44a77c))
+- **prettier:** add astro formatting support ([1cd2949](https://github.com/d-zero-dev/linters/commit/1cd2949d4adcba9c60c148c6a0b3d91e78bc778b))
+- **repo:** migrate lint pipeline from eslint/prettier to oxlint/oxfmt ([7566888](https://github.com/d-zero-dev/linters/commit/756688820b6fc7f87b887b5a1e429c6550edf5f3))
+
+### BREAKING CHANGES
+
+- markuplint now runs with --no-allow-warnings, so
+  Markuplint warnings, including deprecation warnings for old rule
+  names in a project's config, fail the commit.
+- the package requires Node.js 24 or later. The default
+  config no longer parses .pug files; extend
+  @d-zero/markuplint-config/pug and install @markuplint/pug-parser,
+  otherwise .pug files are skipped. The parsers and @markuplint/react-spec
+  are optional peer dependencies that projects install themselves.
+  markuplint:compat is enabled. Markuplint v5 reports new violations
+  (URL values, ARIA parent roles, dialog autofocus and others),
+  lowers some severities such as require-h1 to warning, and D-ZERO rules
+  now appear as d-zero/* in the output.
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
+### Features
+
+- **markuplint-config:** add l- and p- prefixes to class naming rule ([659e20d](https://github.com/d-zero-dev/linters/commit/659e20db7fc8b3e95ac3c8c5996fb44533524cf1))
+- **stylelint-config:** add l- and p- prefixes to class naming rule ([61e8319](https://github.com/d-zero-dev/linters/commit/61e8319cea1f52a4557fc1705ca44031d1c167c2))
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package linters

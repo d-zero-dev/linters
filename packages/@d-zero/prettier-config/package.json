@@ -1,6 +1,6 @@
 {
 	"name": "@d-zero/prettier-config",
-	"version": "6.0.0-alpha.2",
+	"version": "6.0.0-alpha.3",
 	"description": "Configurations of Prettier",
 	"license": "MIT",
 	"author": "D-ZERO Co., Ltd.",

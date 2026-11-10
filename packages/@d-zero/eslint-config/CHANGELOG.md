@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+### Bug Fixes
+
+- **eslint:** restore pre-migration unicorn rule offs ([ce7bd9b](https://github.com/d-zero-dev/linters/commit/ce7bd9b40fa281f6349b9f1b1ecd4ec9c61784cb))
+
+### Features
+
+- **eslint:** auto-generate the oxlint overlap disable list ([126503b](https://github.com/d-zero-dev/linters/commit/126503b9147c6a4a5c298a3c13247851622cb509))
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package @d-zero/eslint-config

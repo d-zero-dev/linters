@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0-alpha.3](https://github.com/d-zero-dev/linters/compare/v5.1.3...v6.0.0-alpha.3) (2026-11-10)
+
+- feat(lint-staged)!: run markuplint with --no-allow-warnings ([a9c7651](https://github.com/d-zero-dev/linters/commit/a9c7651d50045ce659fde3c75cd02336cc0ee29f))
+
+### Features
+
+- **lint-staged:** switch default command mapping to oxlint and oxfmt ([28c919b](https://github.com/d-zero-dev/linters/commit/28c919b58b823934f96cbaf427181f99ce0ec8dd))
+
+### BREAKING CHANGES
+
+- markuplint now runs with --no-allow-warnings, so
+  Markuplint warnings, including deprecation warnings for old rule
+  names in a project's config, fail the commit.
+
+# 6.0.0-alpha.2 (2026-06-24)
+
+# 6.0.0-alpha.1 (2026-06-24)
+
+# 6.0.0-alpha.0 (2026-06-24)
+
 # [6.0.0-alpha.2](https://github.com/d-zero-dev/linters/compare/v6.0.0-alpha.1...v6.0.0-alpha.2) (2026-06-24)
 
 **Note:** Version bump only for package @d-zero/lint-staged-config
