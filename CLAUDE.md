@@ -46,7 +46,7 @@ D-ZERO 株式会社の Lint/Formatter 設定パッケージ群を管理する Le
 | `v6`     | 次メジャー（v6）の開発・リリースライン。`alpha` dist-tag はここから出る。`dev`と`v5`を取り込む   |
 | `main`   | 現行メジャーの最新リリースを指す。`v5`のリリース後に`v5`へ fast-forward する。直接コミットしない |
 
-- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-git`を OIDC Trusted Publishing（provenance 付き）で実行する
+- リリースは`v5`/`v6`で`yarn release`（`lerna version --no-push`）→ コミットとタグを push → タグ（`v*`）の push で`.github/workflows/publish.yml`が`lerna publish from-package`（npm に無い版のパッケージを publish する）を OIDC Trusted Publishing（provenance 付き）で実行する
 - `dev`の変更は自動では`v5`に入らない。`dev`にマージした修正を現行メジャーで出すには、`dev`を`v5`にローカルでマージしてからリリースする。何を取り込むかはユーザーが決める
 - `v5`のリリース後は、`v5`を`dev`と`main`に取り込む。`dev`へは`dev`から切ったトピックブランチに`v5`をマージして PR にする（`v5`を head にした PR は、ブランチの更新で未リリースの`dev`の変更を`v5`に入れてしまう）。`main`は`v5`への fast-forward。これで`dev`のバージョン・CHANGELOG・リリース用の設定が`v5`とずれない
 - `v6`は`dev`と`v5`をマージで取り込む（`v6`を`dev`/`v5`/`main`にマージしない）

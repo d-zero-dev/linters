@@ -77,8 +77,9 @@ description: Git 操作ルール（コミット作成、メッセージ形式、
 - Conventional Commits を使用すること
   - 使用するタイプ: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
   - 使用するスコープ:
-    - 各パッケージ名（ネームスペースなし）: `cspell-config`, `eslint-config`, `eslint-plugin`, `markuplint-config`, `prettier-config`, `pug-lint-config`, `stylelint-config`, `stylelint-rules`, `csstree-scss-syntax`, `textlint-config`, `lint-staged-config`, `commitlint-config`, `cz-config`
+    - 各パッケージ名からネームスペースと `-config` を除いたもの（`@d-zero/cz-config/scopes` が lerna.json のパッケージから生成し、commitlint の `scope-enum` が検査する）: `cspell`, `eslint`, `eslint-plugin`, `markuplint`, `prettier`, `pug-lint`, `stylelint`, `stylelint-rules`, `csstree-scss-syntax`, `textlint`, `lint-staged`, `commitlint`, `cz`
     - `repo`, `deps`, `github`
+    - `release`（`yarn release` のリリースコミットが使う）
 - メッセージ本文の各行は100文字以下
 - 件名は sentence-case, start-case, pascal-case, upper-case にしない
 
