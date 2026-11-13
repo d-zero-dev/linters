@@ -20,6 +20,6 @@
 	],
 	"main": "cspell.json",
 	"dependencies": {
-		"cspell": "10.4.0"
+		"cspell": "10.4.1"
 	}
 }
