@@ -4048,11 +4048,11 @@ __metadata:
   linkType: hard
 
 "baseline-browser-mapping@npm:^2":
-  version: 2.11.35
-  resolution: "baseline-browser-mapping@npm:2.11.35"
+  version: 2.11.36
+  resolution: "baseline-browser-mapping@npm:2.11.36"
   bin:
     baseline-browser-mapping: dist/cli.cjs
-  checksum: 10c0/2f34ab2ed285a03860bc633cbf9cfea8974c37bb366d04e1adfa07a95ebec77a24d3daa2800d2d685b499aa9514700229b2cc7c6d49c0f5a363297e3382f7322
+  checksum: 10c0/8ff5219954a7274d2d63791370ac57c384a07751e2b95ecda41f92531c74d517e4b95a5ea2b6d054ef7bc11b11a30cb47fe74a4e2ce472314b95386663b51d67
   languageName: node
   linkType: hard
 
