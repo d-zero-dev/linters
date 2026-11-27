@@ -30,7 +30,7 @@
 		"css-tree": "3.2.1",
 		"postcss-selector-parser": "7.2.1",
 		"postcss-value-parser": "4.2.0",
-		"stylelint": "17.16.0"
+		"stylelint": "18.1.0"
 	},
 	"devDependencies": {
 		"postcss": "8.5.33"
