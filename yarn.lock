@@ -11562,17 +11562,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:7.30.2":
-  version: 7.30.2
-  resolution: "undici@npm:7.30.2"
-  checksum: 10c0/806e17f14fb49d2b63be314cf2be68efbe105469118b366d19a3cb6fd6686089220c74c1e8e947e6b337a16ff434c10c3860f3e637db314381c4ce8c071c3daf
-  languageName: node
-  linkType: hard
-
-"undici@npm:^8.4.1":
-  version: 8.12.2
-  resolution: "undici@npm:8.12.2"
-  checksum: 10c0/25b0e0a69585b2b2e2678fdcd07942bbe15b14c6686d496712b0ee37ce15753af90ab7335ee42c8e65ec60b72bf3a21adc72bbabf86c1eaca74f27a3779532de
+"undici@npm:8.13.1, undici@npm:^8.4.1":
+  version: 8.13.1
+  resolution: "undici@npm:8.13.1"
+  checksum: 10c0/ee202b4da4f4a663e723696c6d6f6f27f3424aaddd652ceccf1062beaddce171809445cbdbedc50dcd53f0119a1fe8ce20f7c5d320039e71915418dfc98b58a0
   languageName: node
   linkType: hard
 
